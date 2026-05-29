@@ -1,0 +1,1325 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="https://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
+
+
+
+    <head>
+<base href="https://nectarofficial.com/"><script>(function(i, s, o, g, r) {
+    var a = s.createElement(o);
+    var m = s.getElementsByTagName(o)[0];
+    a.async = true;
+    a.src = g;
+    a.onload = function() {
+        if (i[r].init) {
+            i[r].init('https://js-error-tracer-api.cafe24.com', 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhcmZpbm8uY2FmZTI0LmNvbSIsImF1ZCI6ImpzLWVycm9yLXRyYWNlci1hcGkuY2FmZTI0LmNvbSIsIm1hbGxfaWQiOiJhcmZpbm8iLCJzaG9wX25vIjoxLCJwYXRoX3JvbGUiOiJQUk9EVUNUX0xJU1QiLCJsYW5ndWFnZV9jb2RlIjoia29fS1IiLCJjb3VudHJ5X2NvZGUiOiJLUiIsImlzX3l0cyI6ZmFsc2UsImlzX2NvbnRhaW5lciI6ZmFsc2UsIndvcmtzcGFjZSI6InByb2R1Y3Rpb24ifQ.119eRJ12HOYswvjYLqEgfvd5Lbw9KsNJDqc_Iup3PQM', {"errors":{"path":"\/api\/v1\/store","collectWindowErrors":true,"preventDuplicateReports":true,"storageKeyPrefix":"EC_JET.PRODUCT_LIST","samplingEnabled":true,"samplingRate":0.5},"vitals":{"path":"\/api\/v1\/vitals","samplingEnabled":true,"samplingRate":0.3},"resources":{"path":"\/api\/v1\/resources","samplingEnabled":true,"samplingRate":0.5,"durationThreshold":3000}});
+        }
+    };
+    m.parentNode.insertBefore(a, m);
+}(window, document, 'script', 'https://assets.poxo.com/jet/jet.js', 'EC_JET'));</script>
+<script type="text/javascript">window.CAFE24 = window.CAFE24 || {};CAFE24.ROUTE = {"is_mobile":false,"is_need_route":false,"language_code":"ZZ","path":{"origin":"\/collection.html","result":"\/collection.html","prefix":""},"shop_no":0,"skin_code":"default","support_language_list":{"ar":"ar_EG","ar-EG":"ar_EG","de":"de_DE","de-DE":"de_DE","en":"en_US","en-IN":"en_IN","en-PH":"en_PH","en-US":"en_US","es":"es_ES","es-ES":"es_ES","hi":"hi_IN","hi-IN":"hi_IN","id":"id_ID","id-ID":"id_ID","it":"it_IT","it-IT":"it_IT","ja":"ja_JP","ja-JP":"ja_JP","ko":"ko_KR","ko-KR":"ko_KR","ms":"ms_MY","ms-MY":"ms_MY","pt":"pt_PT","pt-PT":"pt_PT","ru":"ru_RU","ru-RU":"ru_RU","th":"th_TH","th-TH":"th_TH","tr":"tr_TR","tr-TR":"tr_TR","vi":"vi_VN","vi-VN":"vi_VN","zh":"zh_CN","zh-CN":"zh_CN","zh-HK":"zh_HK","zh-MO":"zh_MO","zh-SG":"zh_SG","zh-TW":"zh_TW"}};</script><script type="text/javascript">if (typeof EC_ROUTE === "undefined") {
+    /**
+     * 프론트용 라우트 플러그인
+     * @type {{bInit: boolean, init: EC_ROUTE.init}}
+     * CAFE24.ROUTE 참조
+     */
+    var EC_ROUTE = {
+        EC_DOMAIN_PATH_INFO: 'EC_DOMAIN_PATH_INFO',
+        bInit: false,
+        aFromList: [],
+        aToList: [],
+        aCleanFilter: null,
+        init: function () {
+            if (this.bInit || typeof CAFE24.ROUTE === 'undefined') {
+                return;
+            }
+            this.bInit = true;
+            this.aCleanFilter = [
+                /^shop[1-9][0-9]*$/,
+                /^(m|p)$/,
+                new RegExp('^(' + Object.keys(CAFE24.ROUTE.support_language_list).join('|')  + ')$'),
+                /^skin-(base|skin[1-9][0-9]*|mobile[0-9]*)$/,
+            ];
+        },
+        isNeedRoute: function ()
+        {
+            return CAFE24.ROUTE.is_need_route;
+        },
+        /**
+         *
+         * @param iShopNo
+         * @param bMobile
+         * @param sFrontLanguage
+         * @param sSkinCode
+         * @returns {*|string}
+         */
+        getUrlDomain: function (iShopNo, bMobile, sFrontLanguage, sSkinCode)
+        {
+            var oRouteConfig = {};
+            if (typeof iShopNo == 'undefined') {
+                oRouteConfig.shop_no = CAFE24.SDE_SHOP_NUM;
+            } else {
+                oRouteConfig.shop_no = iShopNo;
+            }
+            if (typeof bMobile == 'undefined') {
+                oRouteConfig.is_mobile = false;
+            } else {
+                oRouteConfig.is_mobile = bMobile;
+            }
+            if (typeof sFrontLanguage == 'undefined') {
+                oRouteConfig.language_code = '';
+            }else {
+                oRouteConfig.language_code = sFrontLanguage; // 내부에서 로직으로 동작할땐 언어_지역 형태의 로케일 형태를 따른다.
+            }
+            if (typeof sSkinCode == 'undefined') {
+                oRouteConfig.skin_code = '';
+            }else {
+                oRouteConfig.skin_code = sSkinCode;
+            }
+
+            var sDomain = '';
+            if (oRouteConfig.shop_no != CAFE24.SDE_SHOP_NUM) {
+                // 접근된 다른 멀티샵 도메인 정보는 primary domain 를 조회해야함으로 ajax 를 통해 정보를 얻는다.
+                sDomain = this._getUrlDomainMultishop(oRouteConfig);
+            } else {
+                // 샵이 동일할 경우에는 접근된 domain 에 path 정보만 정리하여 반환함.
+                sDomain = this._getUrlDomain(oRouteConfig);
+            }
+            return sDomain;
+        },
+        _getUrlDomainMultishop: function (oRouteConfig)
+        {
+            var sDomain = '';
+            EC$.ajax({
+                type: 'GET',
+                url: '/exec/front/Shop/Domain',
+                data: {
+                    '_shop_no' : oRouteConfig.shop_no,
+                    'is_mobile' : oRouteConfig.is_mobile,
+                    'language_code' : oRouteConfig.language_code,
+                    'skin_code' : oRouteConfig.skin_code,
+                },
+                async: false,
+                dataType: 'json',
+                cache: true,
+                success: function(oResult) {
+                    switch (oResult.code) {
+                        case '0000' :
+                            sDomain = oResult.data;
+                            break;
+                        default :
+                            break;
+                    }
+                    return false;
+                }
+            });
+            return sDomain;
+        },
+        _getUrlDomain: function (oRouteConfig)
+        {
+            oRouteConfig.domain = this._getCreateHost(oRouteConfig);
+            return location.protocol + 'https://' + oRouteConfig.domain + this._getCreateUri(oRouteConfig);
+        },
+        _getCreateHost : function (oRouteConfig)
+        {
+            var sHost = location.host;
+            var aHost = sHost.split('.');
+            if (this.isBaseDomain(sHost)) {
+                if (aHost.length > 3) {
+                    aHost[0] = '';
+                }
+            } else if (oRouteConfig.is_mobile) {
+                if (this.isMobileDomain()) {
+                    oRouteConfig.is_mobile = false;
+                }
+            }
+            return aHost.filter(Boolean).join('.');
+        },
+        _getCreateUri: function (oRouteInfo)
+        {
+            var aUrl = [];
+            if (this.isBaseDomain() && oRouteInfo.shop_no > 1) {
+                aUrl.push('shop' + oRouteInfo.shop_no);
+            }
+            if (oRouteInfo.is_mobile) {
+                aUrl.push('m');
+            }
+            if (oRouteInfo.language_code != 'ZZ' && oRouteInfo.language_code != '') {
+                var iIndex = Object.values(CAFE24.ROUTE.support_language_list).indexOf(oRouteInfo.language_code);
+                if (iIndex !== -1) {
+                    aUrl.push(Object.keys(CAFE24.ROUTE.support_language_list)[iIndex]);
+                }
+            }
+            if (this.isBaseDomain() && oRouteInfo.skin_code != 'default' && oRouteInfo.skin_code != '') {
+                aUrl.push('skin-' + oRouteInfo.skin_code);
+            }
+            var sUrl= '/';
+            if (aUrl.length > 0) {
+                sUrl= '/' + aUrl.join('/');
+                sUrl = this.rtrim(sUrl, '/');
+            }
+            return sUrl;
+        },
+        /**
+         * en, en-US => en_US
+         */
+        convertValidLanguageCode: function (sUrlLanguageCode)
+        {
+            if (typeof CAFE24.ROUTE.support_language_list[sUrlLanguageCode] != 'undefined') {
+                return CAFE24.ROUTE.support_language_list[sUrlLanguageCode];
+            }
+            return false;
+        },
+        isMobileDomain: function (sHost)
+        {
+            if (typeof sHost == 'undefined') {
+                sHost = location.host;
+            }
+            var aMatched = sHost.match(/^(m|mobile|skin\-mobile|skin\-mobile[0-9]+[\-]{2}shop[0-9]+|skin\-mobile[0-9]+|mobile[\-]{2}shop[0-9]+)\./i);
+            return aMatched != null;
+        },
+        isBaseDomain: function (sHost)
+        {
+            if (typeof sHost == 'undefined') {
+                sHost = location.host;
+            }
+            return sHost.indexOf(CAFE24.GLOBAL_INFO.getRootDomain()) !== -1;
+        },
+        removePrefixUrl: function (sUrl)
+        {
+            if (this.isNeedRoute()) {
+                sUrl = sUrl.replace(this.getPrefixUrl('/'), '/'); // 자동으로  prefix 붙은 영역을 제거해준다.
+            }
+            return sUrl;
+        },
+        getPrefixUrl: function (sUrl)
+        {
+            if (this.isNeedRoute() === false) {
+                return sUrl;
+            }
+            if (sUrl.indexOf('/') !== 0) {
+                return sUrl;
+            }
+            if (sUrl.match(/^\/{2,}/) !== null) {
+                return sUrl;
+            }
+
+            var iCachedPosition = this.aFromList.indexOf(sUrl);
+            if (iCachedPosition > -1) {
+                return this.aToList[iCachedPosition];
+            }
+
+            var bTailSlash = (sCleanUrl !== '/' && sUrl.substr(-1) === '/');
+            var sCleanUrl = this.getCleanUrl(sUrl);
+            var aPrefixPart = CAFE24.ROUTE.path.prefix.split('/');
+            var aUrlPart = sCleanUrl.split('/');
+            var bMatched = true;
+            var sReturnUrl = sCleanUrl;
+            if (aUrlPart.length < aPrefixPart.length) {
+                bMatched = false;
+            } else {
+                for (var i = 0; i < aPrefixPart.length ; i++) {
+                    if (aPrefixPart[i] != aUrlPart[i]) {
+                        bMatched = false;
+                        break;
+                    }
+                }
+            }
+            if (bMatched === false) {
+                if (sCleanUrl == '/') {
+                    sReturnUrl = CAFE24.ROUTE.path.prefix;
+                } else {
+                    sReturnUrl = CAFE24.ROUTE.path.prefix +  sCleanUrl;
+                }
+                sReturnUrl = bTailSlash ? sReturnUrl : this.rtrim(sReturnUrl, '/')
+                this.aFromList.push(sUrl);
+                this.aToList.push(sReturnUrl);
+            }
+            return sReturnUrl;
+        },
+        /**
+         * document.location.pathname 이 필요할 경우 사용한다.
+         * @returns {*}
+         */
+        getPathName: function()
+        {
+            if (typeof CAFE24.ROUTE.path.result == 'undefined') {
+                return document.location.pathname;
+            }
+            return CAFE24.ROUTE.path.result;
+        },
+        rtrim: function (str, chr)
+        {
+            var rgxtrim = (!chr) ? new RegExp('\\s+$') : new RegExp(chr+'+$');
+            return str.replace(rgxtrim, '');
+        },
+        getShopNo: function ()
+        {
+            return CAFE24.ROUTE.shop_no;
+        },
+        getSkinCode: function ()
+        {
+            return CAFE24.ROUTE.skin_code;
+        },
+        getLanguageCode: function ()
+        {
+            return CAFE24.ROUTE.language_code;
+        },
+        getMobile: function ()
+        {
+            return CAFE24.ROUTE.is_mobile;
+        },
+        getIsMobile: function ()
+        {
+            return CAFE24.ROUTE.is_mobile || CAFE24.ROUTE.skin_code.match(/^mobile[0-9]*$/);
+        },
+        getCleanUrl: function (sUrl)
+        {
+            if (sUrl === '/') {
+                return sUrl;
+            }
+
+            var aUrl = sUrl.split('/');
+            aUrl.shift();
+
+            if (aUrl.length < 1) {
+                return sUrl;
+            }
+
+            // 현재 4 depth 까지 미리보기 기능이 구현되어있음
+            var iPos = 0;
+            var bFind = false;
+            for (var i = 0; i < aUrl.length ; i++) {
+                bFind = false;
+                for (var iSub = iPos, iSubCount = this.aCleanFilter.length; iSub < iSubCount ; iSub++) {
+                    if (aUrl[i].match(this.aCleanFilter[iSub]) !== null) {
+                        bFind = true;
+                        iPos = iSub + 1;
+                        aUrl.splice(i, 1);
+                        i--; // aUrl 을 삭제해 주었으니 검색 조건을 -1 제거하여 초기화 한다. 다음 for i++ 로 증감 조회됨.
+                        break;
+                    }
+                }
+                if (bFind === false) {
+                    break;
+                }
+            }
+            return '/' + aUrl.join('/');
+        },
+        getIsEasyUrl : function ()
+        {
+            return !window.location.pathname.match(/^[\w\/\-\.]+(php|html|htm)$/i);
+        }
+    };
+    EC_ROUTE.init();
+}
+</script>
+<meta name="path_role" content="PRODUCT_LIST" />
+<meta name="author" content="NECTAR" />
+<meta name="keywords" content=", NECTAR, " /><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<!--카페24PRO 로케일 팝업 스크립트-->
+<script src="https://procomms.cafe24.com/web/upload/cafe24pro_locale_popup.js"></script>
+
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        
+        <!-- PG크로스브라우징필수내용 -->
+        <meta http-equiv="Cache-Control" content="no-cache"/>
+        <meta http-equiv="Expires" content="0"/>
+        <meta http-equiv="Pragma" content="no-cache"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=yes"/>        <!-- // PG크로스브라우징필수내용 -->
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+        <link rel="preconnect" href="https://fonts.googleapis.com"/>
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+        <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&amp;display=swap" rel="stylesheet"/>
+        <link href="https://fonts.googleapis.com/earlyaccess/notosanskr.css" rel="stylesheet"/>
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard-dynamic-subset.css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.min.css"/>
+    <!-- Cafe24 SEO -->
+<meta name="google-site-verification" content="W_Hanv805e5PPwPkAxZn8Cnvnh_HEKJctwKfO7womsI" />
+<!-- Cafe24 SEO -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "NECTAR",
+  "url": "https://nectarofficial.com",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "02-2028-8399",
+    "contactType": "customer service",
+    "email": "hello@nectarofficial.com"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "서울특별시 강남구 강남대로 464 (역삼동)",
+    "postalCode": "06123",
+    "addressCountry": "KOR"
+  }
+}
+</script>
+<link rel="canonical" href="https://nectarofficial.com/category/$1/$2/" />
+<meta property="og:url" content="https://nectarofficial.com/category/$1/$2/" />
+<meta property="og:title" content=" -  - NECTAR" />
+<meta property="og:site_name" content="NECTAR" />
+<meta property="og:type" content="product.group" />
+<meta property="og:image" content="https://nectarofficial.com/web/upload/share-image-1-f03faad55c3f34257fa821d8ed684f0c.png" />
+<meta name="google-site-verification" content="VOzqhTY7qqd1vEKGKyTstDrdW2Zk5mpe5KVxocNaG_A" />
+<meta name="naver-site-verification" content="c0d8e7d6e9440c89ef919baa9ab1488f85da9975" />
+<link rel="shortcut icon" href="/web/upload/favicon-be65600b8a0278e945a862a1f5f678fb.ico" />
+<script type="text/javascript" src="https://wcs.naver.net/wcslog.js"></script>
+<script type="text/javascript">var CAFE24API = { instance: [], MALL_ID: 'arfino', SHOP_NO: 1, basicAuthKeys: {}, setBasicAuthKey: function (clientId, basicAuthKey) { if (typeof basicAuthKey !== 'string') { return; } if (clientId) { CAFE24API.basicAuthKeys[clientId] = basicAuthKey; } else { CAFE24API.basicAuthKeys['default'] = basicAuthKey; } }, init: function (appInfo) { if (typeof appInfo == 'object') { if (appInfo.hasOwnProperty('client_id')) { var appKey = appInfo.client_id; } } else { var appKey = appInfo; } if (appKey) { if (!this.instance[appKey]) { CAFE24API.clientId = appKey; if (appInfo.hasOwnProperty('version')) { CAFE24API.version = appInfo.version; } else { if (CAFE24API.hasOwnProperty('version')) { delete CAFE24API.version; } } var copyObject = CAFE24API.constructor(); for (var attr in CAFE24API) { if (CAFE24API.hasOwnProperty(attr)) { copyObject[attr] = CAFE24API[attr]; } } this.instance[appKey] = copyObject; } return this.instance[appKey]; } }, initializeXhr: function () { try { return new XMLHttpRequest(); } catch (error) { return new window.ActiveXObject('Microsoft.XMLHTTP'); } }, fullPath: function (url) { return 'https://arfino.cafe24api.com' + url; }, getLoginProvider: function (callback) { if (!CAFE24API.__chkValidSessionScope(callback, 'customer')) { return; } callback(null, { 'login': CAPP_ASYNC_METHODS.AppCommon.getLoginProvider() }); }, getCustomerProvider: function (callback) { if (!CAFE24API.__chkValidSessionScope(callback, 'customer')) { return; } callback(null, { 'login': CAPP_ASYNC_METHODS.AppCommon.getCustomerProvider() }); }, getMemberID: function (callback) { if (!CAPP_ASYNC_METHODS.IS_LOGIN) { callback(null); } else { callback(CAPP_ASYNC_METHODS.AppCommon.getMemberID()); } }, getEncryptedMemberId: function (client_id, callback) { if (!CAFE24API.__chkValidSessionScope(callback, 'customer')) { return; } callback(null, CAPP_ASYNC_METHODS.AppCommon.getEncryptedMemberId(client_id)); }, getMemberInfo: function (callback) { callback({ 'id': CAPP_ASYNC_METHODS.AppCommon.getMemberInfo() }); }, getCustomerIDInfo: function (callback) { if (!CAFE24API.__scopeErr(callback, 'application')) { return; } callback(null, { 'id': CAPP_ASYNC_METHODS.AppCommon.getCustomerIDInfo() }); }, getCustomerInfo: function (callback) { if (!CAFE24API.__chkValidSessionScope(callback, 'customer')) { return; } callback(null, { 'customer': CAPP_ASYNC_METHODS.AppCommon.getCustomerInfo() }); }, getDefaultShippingAddress: function (callback) { if (!CAFE24API.__chkValidSessionScope(callback, 'customer')) { return; } callback(null, { 'shipping_address': CAPP_ASYNC_METHODS.AppCommon.getDefaultShippingAddress() }); }, getMileageInfo: function (callback) { if (!CAFE24API.__chkValidSessionScope(callback, 'customer')) { return; } callback(null, { 'mileage': CAPP_ASYNC_METHODS.AppCommon.getMileageInfo() }); }, getPointInfo: function (callback) { if (!CAFE24API.__chkValidSessionScope(callback, 'customer')) { return; } callback(null, { 'point': CAPP_ASYNC_METHODS.AppCommon.getPointInfo() }); }, getDepositInfo: function (callback) { if (!CAFE24API.__chkValidSessionScope(callback, 'customer')) { return; } callback(null, { 'deposit': CAPP_ASYNC_METHODS.AppCommon.getDepositInfo() }); }, getCreditInfo: function (callback) { if (!CAFE24API.__chkValidSessionScope(callback, 'customer')) { return; } callback(null, { 'credit': CAPP_ASYNC_METHODS.AppCommon.getCreditInfo() }); }, getCartList: function (callback) { if (!CAFE24API.__scopeErr(callback, 'personal')) { return; } CAPP_ASYNC_METHODS.AppCommon.getCartList().then(function (data) { callback(null, { 'carts': data }); }); }, getCartInfo: function (callback) { if (!CAFE24API.__chkValidSessionScope(callback, 'personal')) { return; } callback(null, { 'cart': CAPP_ASYNC_METHODS.AppCommon.getCartInfo() }); }, getCartItemList: function (callback) { if (!CAFE24API.__scopeErr(callback, 'order')) { return; } callback(null, { 'items': CAPP_ASYNC_METHODS.AppCommon.getCartItemList() }); }, getCartCount: function (callback) { if (!CAFE24API.__chkValidSessionScope(callback, 'personal')) { return; } callback(null, CAPP_ASYNC_METHODS.AppCommon.getCartCount()); }, getCouponCount: function (callback) { if (!CAFE24API.__chkValidSessionScope(callback, 'promotion')) { return; } callback(null, CAPP_ASYNC_METHODS.AppCommon.getCouponCount()); }, getWishCount: function (callback) { if (!CAFE24API.__chkValidSessionScope(callback, 'personal')) { return; } callback(null, CAPP_ASYNC_METHODS.AppCommon.getWishCount()); }, getShopInfo: function (callback) { if (!CAFE24API.__scopeErr(callback, 'store')) { return; } callback(null, { 'shop': CAPP_ASYNC_METHODS.AppCommon.getShopInfo() }); }, addCurrentProductToCart: function (mall_id, time, app_key, member_id, hmac, callback) { if (!CAFE24API.__scopeErr(callback, 'order')) { return; } CAPP_ASYNC_METHODS.AppCommon.addCurrentProductToCart(mall_id, time, app_key, member_id, hmac).then(function (data) { callback(null, { 'cart': data }); }).catch(function (data) { if (data) { callback(new Error('422'), { 'error': { code: data.code, message: data.message } }); } else { callback(new Error('422'), { 'error': { code: 422, message: 'This sdk is not available on the current page' } }); } }); }, precreateOrder: function (mall_id, time, app_key, member_id, hmac, callback) { if (!CAFE24API.__scopeErr(callback, 'order')) { return; } CAPP_ASYNC_METHODS.AppCommon.precreateOrder(mall_id, time, app_key, member_id, hmac).then(function (data) { callback(null, { 'order': data }); }).catch(function (data) { if (data) { callback(new Error('422'), { 'error': { code: data.code, message: data.message } }); } else { callback(new Error('422'), { 'error': { code: 422, message: 'This sdk is not available on the current page' } }); } }); }, calculatePayment: function (mall_id, request_time, app_key, member_id, request_data_json, hmac, callback) { if (!CAFE24API.__scopeErr(callback, 'order')) { return; } CAPP_ASYNC_METHODS.AppCommon.calculatePayment(mall_id, request_time, app_key, member_id, request_data_json, hmac).then(function (data) { callback(null, { 'expected_payment': data }); }).catch(function (data) { if (data) { callback(new Error('422'), { 'error': { code: data.code, message: data.message } }); } else { callback(new Error('422'), { 'error': { code: 422, message: 'This sdk is not available on the current page' } }); } }); }, precreateOrderV2: function (mall_id, time, app_key, member_id, request_data_json, hmac, callback) { if (!CAFE24API.__scopeErr(callback, 'order')) { return; } CAPP_ASYNC_METHODS.AppCommon.precreateOrderV2(mall_id, time, app_key, member_id, request_data_json, hmac).then(function (data) { callback(null, { 'order': data }); }).catch(function (data) { if (data) { callback(new Error('422'), { 'error': { code: data.code, message: data.message } }); } else { callback(new Error('422'), { 'error': { code: 422, message: 'This sdk is not available on the current page' } }); } }); }, getOrderItemList: function (start_date, end_date, order_status, page, count, order_id, callback) { if (!CAFE24API.__scopeErr(callback, 'order')) { return; } CAPP_ASYNC_METHODS.AppCommon.getOrderItemList(start_date, end_date, order_status, page, count, order_id).then(function (data) { callback(null, { 'items': data }); }).catch(function (data) { if (data) { callback(new Error('422'), { 'error': { code: data.code, message: data.message } }); } else { callback(new Error(422), { 'error': { code: 422, message: 'This sdk is not available on the current page' } }); } }); }, getOrderDetailInfo: function (shop_no, order_id, callback) { if (!CAFE24API.__scopeErr(callback, 'order')) { return; } CAPP_ASYNC_METHODS.AppCommon.getOrderDetailInfo(shop_no, order_id).then(function (data) { callback(null, { 'orders': data }); }).catch(function (data) { if (data) { callback(new Error('422'), { 'error': { code: data.code, message: data.message } }); } else { callback(new Error(422), { 'error': { code: 422, message: 'This sdk is not available on the current page' } }); } }); }, getClaimableItemList: function (order_id, customer_service_type, callback) { if (!CAFE24API.__scopeErr(callback, 'order')) { return; } CAPP_ASYNC_METHODS.AppCommon.getClaimableItemList(order_id, customer_service_type).then(function (data) { callback(null, { 'items': data }); }).catch(function (data) { if (data) { callback(new Error('422'), { 'error': { code: data.code, message: data.message } }); } else { callback(new Error(422), { 'error': { code: 422, message: 'This sdk is not available on the current page' } }); } }); }, emptyCart: function (basket_shipping_type, callback) { if (!CAFE24API.__scopeErr(callback, 'personal')) { return; } CAPP_ASYNC_METHODS.AppCommon.emptyCart(basket_shipping_type).then(function (data) { callback(null, { 'result': data }); }).catch(function (data) { if (data) { callback(new Error('422'), { 'error': { code: data.code, message: data.message } }); } else { callback(new Error(422), { 'error': { code: 422, message: 'This sdk is not available on the current page' } }); } }); }, deleteCartItems: function (basket_shipping_type, product_list, callback) { if (!CAFE24API.__scopeErr(callback, 'personal')) { return; } CAPP_ASYNC_METHODS.AppCommon.deleteCartItems(basket_shipping_type, product_list).then(function (data) { callback(null, { 'result': data }); }).catch(function (data) { if (data) { callback(new Error('422'), { 'error': { code: data.code, message: data.message } }); } else { callback(new Error(422), { 'error': { code: 422, message: 'This sdk is not available on the current page' } }); } }); }, addCart: function (basket_type, prepaid_shipping_fee, product_list, callback) { if (!CAFE24API.__scopeErr(callback, 'personal')) { return; } CAPP_ASYNC_METHODS.AppCommon.addCart(basket_type, prepaid_shipping_fee, product_list).then(function (data) { callback(null, data); }).catch(function (data) { if (data) { callback(new Error('422'), { 'error': { code: data.code, message: data.message } }); } else { callback(new Error(422), { 'error': { code: 422, message: 'This sdk is not available on the current page' } }); } }) }, addBundleProductsCart: function (basket_type, prepaid_shipping_fee, product_list, callback) { if (!CAFE24API.__scopeErr(callback, 'personal')) { return; } CAPP_ASYNC_METHODS.AppCommon.addBundleProductsCart(basket_type, prepaid_shipping_fee, product_list).then(function (data) { callback(null, data); }).catch(function (data) { if (data) { callback(new Error('422'), { 'error': { code: data.code, message: data.message } }); } else { callback(new Error(422), { 'error': { code: 422, message: 'This sdk is not available on the current page' } }); } }) }, get: function (url, callback) { return CAFE24API.complete('GET', url, this, null, callback); }, post: function (url, params, callback) { return CAFE24API.complete('POST', url, this, params, callback); }, put: function (url, params, callback) { return CAFE24API.complete('PUT', url, this, params, callback); }, delete: function (url, callback) { return CAFE24API.complete('DELETE', url, this, null, callback); }, complete: function (method, url, obj, params, callback) { var xhr = CAFE24API.sendXhr(method, url, obj, params, callback); xhr.onreadystatechange = function () { if (xhr.readyState === XMLHttpRequest.DONE) { if (xhr.status >= 200 && xhr.status <= 208) { callback(null, JSON.parse(xhr.responseText)); } else { callback(new Error(xhr.status), JSON.parse(xhr.responseText)); } } }; }, sendXhr: function (method, url, obj, params, callback) { if (method !== 'POST') { var url = obj.fullPath(url); } var xhr = obj.initializeXhr(); var queryVars = {}; if (obj.clientId) queryVars['cafe24_app_key'] = obj.clientId; if (obj.version) queryVars['cafe24_api_version'] = obj.version; var basicAuthKey = CAFE24API.basicAuthKeys[obj.clientId] || CAFE24API.basicAuthKeys['default']; if (basicAuthKey && basicAuthKey.length > 0) { queryVars['authorization'] = 'Basic ' + basicAuthKey; } if (params === null) { var seperator = url.indexOf('?') == -1 ? '?' : '&'; var queryString = []; for (var key in queryVars) { queryString.push(key + '=' + encodeURIComponent(queryVars[key])); } if (queryString.length > 0) { url = url + seperator + queryString.join('&'); } } xhr.open(method, url, true); if (typeof params == 'object' && params !== null) { xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded; charset=utf-8'); for (var key in queryVars) { params[key] = queryVars[key]; } params = 'formData=' + JSON.stringify(params); } xhr.send(params || null); return xhr; }, __sessionErr: function (callback) { callback(new Error(403), { 'error': { code: 403, message: 'Failed to get session. Only available when log in.' } }); }, __scopeErr: function (callback, scope) { if (typeof CAFE24.APPSCRIPT_SDK_DATA != "undefined" && jQuery.inArray(scope, CAFE24.APPSCRIPT_SDK_DATA) > -1) { return true; } callback(new Error(403), { 'error': { code: 403, message: 'You do not have the necessary authority(scope) to use the SDK.' } }); }, __chkValidSessionScope: function (callback, scope) { if (!CAPP_ASYNC_METHODS.IS_LOGIN) { CAFE24API.__sessionErr(callback); return false; } if (!CAFE24API.__scopeErr(callback, scope)) { return false; } return true; } }; </script>
+<script type="text/javascript">
+window.CAFE24 = window.CAFE24 || {};
+CAFE24.MANIFEST_CACHE_REVISION = '2605201482';
+CAFE24.getDeprecatedNamespace = function(sDeprecatedNamespace, sSupersededNamespace) {
+var sNamespace = sSupersededNamespace 
+? sSupersededNamespace 
+: sDeprecatedNamespace.replace(/^EC_/, '');
+return CAFE24[sNamespace];
+}
+CAFE24.FRONT_LANGUAGE_CODE = "ko_KR";
+CAFE24.MOBILE = false;
+CAFE24.MOBILE_DEVICE = false;
+CAFE24.MOBILE_USE = false;
+var EC_MOBILE = CAFE24.MOBILE;
+var EC_MOBILE_DEVICE = CAFE24.MOBILE_DEVICE;
+var EC_MOBILE_USE = CAFE24.MOBILE_USE;
+CAFE24.SKIN_CODE = "skin1";
+CAFE24.FRONT_EXTERNAL_SCRIPT_VARIABLE_DATA = {"common_member_id_crypt":""};
+var EC_FRONT_EXTERNAL_SCRIPT_VARIABLE_DATA = CAFE24.getDeprecatedNamespace('EC_FRONT_EXTERNAL_SCRIPT_VARIABLE_DATA');
+CAFE24.SDE_SHOP_NUM = 1;CAFE24.SHOP = {getLanguage : function() { return "ko_KR"; },getSkinLanguageCode : function() { return "ko_KR"; },getCurrency : function() { return "KRW"; },getFlagCode : function() { return "KR"; },getTimezone: function() { return "Asia/Seoul" },getDateFormat: function() { return "Y-m-d" },isMultiShop : function() { return false; },isDefaultShop : function() { return true; },isDefaultLanguageShop : function(sLanguageCode) { return SHOP.isDefaultShop() && SHOP.isLanguageShop(sLanguageCode); },isKR : function() { return true; },isUS : function() { return false; },isJP : function() { return false; },isCN : function() { return false; },isTW : function() { return false; },isES : function() { return false; },isPT : function() { return false; },isVN : function() { return false; },isPH : function() { return false; },getCountryAndLangMap : function() { return {
+"KR": "ko_KR",
+"US": "en_US",
+"JP": "ja_JP",
+"CN": "zh_CN",
+"TW": "zh_TW",
+"VN": "vi_VN",
+"PH": "en_PH"
+}},isLanguageShop : function(sLanguageCode) { return sLanguageCode === "ko_KR"; },getDefaultShopNo : function() { return 1; },getProductVer : function() { return 2; },isSDE : function() { return true; },isMode : function() {return false; },getModeName : function() {return false; },isMobileAdmin : function() {return false; },isNewProMode : function() {return true; },isExperienceMall : function() { return false; },isDcollection : function() {return false; },isYoutubeShops : function() {return false; },getYtShopsShopNo : function() {return 0; },isFrontDesignChangeRequired : function() {return false;},isG2G : function() {return false; },getAdminID : function() {return ''},getMallID : function() {return 'arfino'},getCurrencyFormat : function(sPriceTxt, bIsNumberFormat) { 
+sPriceTxt = String(sPriceTxt);
+var aCurrencySymbol = ["","\uc6d0",false];
+if (typeof CAFE24.SHOP_PRICE !== 'undefined' && isNaN(sPriceTxt.replace(/[,]/gi, '')) === false && bIsNumberFormat === true) {
+// bIsNumberFormat 사용하려면 Ui(':libUipackCurrency')->plugin('Currency') 화폐 라이브러리 추가 필요
+sPriceTxt = CAFE24.SHOP_PRICE.toShopPrice(sPriceTxt.replace(/[,]/gi, ''), true, CAFE24.SDE_SHOP_NUM);
+}
+try {
+var sPlusMinusSign = (sPriceTxt.toString()).substr(0, 1);
+if (sPlusMinusSign === '-' || sPlusMinusSign === '+') {
+sPriceTxt = (sPriceTxt.toString()).substr(1);
+return sPlusMinusSign + aCurrencySymbol[0] + sPriceTxt + aCurrencySymbol[1];
+} else {
+return aCurrencySymbol[0] + sPriceTxt + aCurrencySymbol[1];
+}
+} catch (e) {
+return aCurrencySymbol[0] + sPriceTxt + aCurrencySymbol[1];
+}
+}};CAFE24.CURRENCY_INFO = {getOriginReferenceCurrency : function() {return 'USD'},getCurrencyList : function(sCurrencyCode) { var aCurrencyList = {"JPY":{"currency_symbol":"&yen;","decimal_place":0,"round_method_type":"F"},"VND":{"currency_symbol":"&#8363;","decimal_place":0,"round_method_type":"F"},"PHP":{"currency_symbol":"&#8369;","decimal_place":2,"round_method_type":"R"},"USD":{"currency_symbol":"$","decimal_place":2,"round_method_type":"R"},"CNY":{"currency_symbol":"&yen;","decimal_place":2,"round_method_type":"R"},"TWD":{"currency_symbol":"NT$","decimal_place":0,"round_method_type":"F"},"EUR":{"currency_symbol":"\u20ac","decimal_place":2,"round_method_type":"R"},"BRL":{"currency_symbol":"R$","decimal_place":2,"round_method_type":"R"},"AUD":{"currency_symbol":"A$","decimal_place":2,"round_method_type":"R"},"BHD":{"currency_symbol":".&#1583;.&#1576;","decimal_place":3,"round_method_type":"R"},"BDT":{"currency_symbol":"&#2547;","decimal_place":2,"round_method_type":"R"},"GBP":{"currency_symbol":"&pound;","decimal_place":2,"round_method_type":"R"},"CAD":{"currency_symbol":"C$","decimal_place":2,"round_method_type":"R"},"CZK":{"currency_symbol":"K&#269;","decimal_place":2,"round_method_type":"R"},"DKK":{"currency_symbol":"kr","decimal_place":2,"round_method_type":"R"},"HKD":{"currency_symbol":"HK$","decimal_place":2,"round_method_type":"R"},"HUF":{"currency_symbol":"Ft","decimal_place":2,"round_method_type":"R"},"INR":{"currency_symbol":"&#8377;","decimal_place":2,"round_method_type":"R"},"IDR":{"currency_symbol":"Rp","decimal_place":0,"round_method_type":"F"},"ILS":{"currency_symbol":"&#8362;","decimal_place":2,"round_method_type":"R"},"JOD":{"currency_symbol":" &#1583;&#1610;&#1606;&#1575;&#1585;","decimal_place":3,"round_method_type":"R"},"KWD":{"currency_symbol":"&#1583;&#1610;&#1606;&#1575;&#1585;","decimal_place":3,"round_method_type":"R"},"MYR":{"currency_symbol":"RM","decimal_place":2,"round_method_type":"R"},"MXN":{"currency_symbol":"Mex$","decimal_place":2,"round_method_type":"R"},"NZD":{"currency_symbol":"NZ$","decimal_place":2,"round_method_type":"R"},"NOK":{"currency_symbol":"kr","decimal_place":2,"round_method_type":"R"},"PKR":{"currency_symbol":"&#8360;","decimal_place":2,"round_method_type":"R"},"PLN":{"currency_symbol":"z\u0142","decimal_place":2,"round_method_type":"R"},"RUB":{"currency_symbol":"\u0440\u0443\u0431","decimal_place":2,"round_method_type":"R"},"SAR":{"currency_symbol":"&#65020;","decimal_place":2,"round_method_type":"R"},"SGD":{"currency_symbol":"S$","decimal_place":2,"round_method_type":"R"},"ZAR":{"currency_symbol":"R","decimal_place":2,"round_method_type":"R"},"SEK":{"currency_symbol":"kr","decimal_place":2,"round_method_type":"R"},"CHF":{"currency_symbol":"Fr","decimal_place":2,"round_method_type":"R"},"THB":{"currency_symbol":"&#3647;","decimal_place":2,"round_method_type":"R"},"TRY":{"currency_symbol":"TL","decimal_place":2,"round_method_type":"R"},"AED":{"currency_symbol":"&#1601;&#1604;&#1587;","decimal_place":2,"round_method_type":"R"}}; return aCurrencyList[sCurrencyCode] },isUseReferenceCurrency : function() {return false }};CAFE24.COMMON_UTIL = {convertSslForString : function(sString) { return sString.replace(/http:/gi, '');},convertSslForHtml : function(sHtml) { return sHtml.replace(/((?:src|href)\s*=\s*['"])http:(\/\/(?:[a-z0-9\-_\.]+)\/)/ig, '$1$2');},getProtocol : function() { return 'https'; },moveSsl : function() { if (CAFE24.COMMON_UTIL.getProtocol() === 'http') { var oLocation = jQuery(window.location); var sUrl = 'https://' + oLocation.attr('host') + oLocation.attr('pathname') + oLocation.attr('search'); window.location.replace(sUrl); } },setEcCookie : function(sKey, sValue, iExpire) {var exdate = new Date();exdate.setDate(exdate.getDate() + iExpire);var setValue = escape(sValue) + "; domain=." + CAFE24.GLOBAL_INFO.getBaseDomain() + "; path=/;expires=" + exdate.toUTCString();document.cookie = sKey + "=" + setValue;}};CAFE24.SHOP_LIB_INFO = {getBankInfo : function() { 
+var oBankInfo = "";
+$.ajax({
+type: "GET",
+url: "/exec/front/Shop/Bankinfo",
+dataType: "json",
+async: false,
+success: function(oResponse) {
+oBankInfo = oResponse;
+}
+});
+return oBankInfo; }};            var EC_SDE_SHOP_NUM = CAFE24.SDE_SHOP_NUM;
+var SHOP = CAFE24.getDeprecatedNamespace('SHOP');
+var EC_COMMON_UTIL = CAFE24.getDeprecatedNamespace('EC_COMMON_UTIL');
+var EC_SHOP_LIB_INFO = CAFE24.getDeprecatedNamespace('EC_SHOP_LIB_INFO');
+var EC_CURRENCY_INFO = CAFE24.getDeprecatedNamespace('EC_CURRENCY_INFO');
+CAFE24.ROOT_DOMAIN = "cafe24.com";
+CAFE24.API_DOMAIN = "cafe24api.com";
+CAFE24.GLOBAL_INFO = (function() {
+var oData = {"base_domain":"arfino.cafe24.com","root_domain":"cafe24.com","api_domain":"cafe24api.com","is_global":false,"is_global_standard":false,"country_code":"KR","language_code":"ko_KR","admin_language_code":"ko_KR","front_language_code":"ko_KR"};
+return {
+getBaseDomain: function() {
+return oData['base_domain'];
+},
+getRootDomain: function() {
+return oData['root_domain'];
+},
+getApiDomain: function() {
+return oData['api_domain'];
+},
+isGlobal: function() {
+return oData['is_global'];
+},
+isGlobalStandard: function() {
+return oData['is_global_standard'];
+},
+getCountryCode: function() {
+return oData['country_code'];
+},
+getLanguageCode: function() {
+return oData['language_code'];
+},
+getAdminLanguageCode: function() {
+return oData['admin_language_code'];
+},
+getFrontLanguageCode: function() {
+return oData['front_language_code'];
+}
+};
+})();
+var EC_ROOT_DOMAIN = CAFE24.ROOT_DOMAIN;
+var EC_API_DOMAIN = CAFE24.API_DOMAIN;
+var EC_TRANSLATE_LOG_STATUS = CAFE24.TRANSLATE_LOG_STATUS;
+var EC_GLOBAL_INFO = CAFE24.getDeprecatedNamespace('EC_GLOBAL_INFO');
+CAFE24.AVAILABLE_LANGUAGE = ["ko_KR","zh_CN","en_US","zh_TW","es_ES","pt_PT","vi_VN","ja_JP","en_PH"];
+CAFE24.AVAILABLE_LANGUAGE_CODES = {"ko_KR":"KOR","zh_CN":"CHN","en_US":"ENG","zh_TW":"TWN","es_ES":"ESP","pt_PT":"PRT","vi_VN":"VNM","ja_JP":"JPN","en_PH":"PHL"};
+var EC_AVAILABLE_LANGUAGE = CAFE24.AVAILABLE_LANGUAGE;
+var EC_AVAILABLE_LANGUAGE_CODES = CAFE24.AVAILABLE_LANGUAGE_CODES;
+CAFE24.GLOBAL_PRODUCT_LANGUAGE_CODES = {  
+sClearanceCategoryCode: '',
+sManualLink: 'https://support.cafe24.com/hc/ko/articles/7739013909529',
+sHsCodePopupLink: 'https://www.wcotradetools.org/en/harmonized-system',
+aCustomRegex: '"PHL" : "^[0-9]{8}[A-Z]?$"',
+sCountryCodeData: 'kor',
+sEnglishExampleURlForGlobal: '',
+aReverseAddressCountryCode: ["VNM","PHL"],
+aSizeGuideCountryAlign: '["US","UK","EU","KR","JP","CN"]',
+aIsSupportTran: ["ja_JP","zh_CN","zh_TW","en_US","vi_VN","en_PH","pt_PT","es_ES"]
+};
+var EC_GLOBAL_PRODUCT_LANGUAGE_CODES = CAFE24.getDeprecatedNamespace('EC_GLOBAL_PRODUCT_LANGUAGE_CODES');
+CAFE24.GLOBAL_ORDER_LANGUAGE_CODES = {
+aModifyOrderLanguage: {"KR":"ko_KR","JP":"ja_JP","CN":"zh_CN","TW":"zh_TW","VN":"vi_VN","PH":"en_PH"},
+aUseIdCardKeyCountry: ["CN","TW"],
+aLanguageWithCountryCode: {"zh_CN":["CN","CHN","HK","HNK"],"ja_JP":["JP","JPN"],"zh_TW":["TW","TWN"],"ko_KR":["KR","KOR"],"vi_VN":["VN","VNM"],"en_PH":["PH","PHL"]},
+aCheckDisplayRequiredIcon: ["ja_JP","zh_CN","zh_TW","en_US","vi_VN","en_PH"],
+aSetReceiverName: {"zh_CN":{"sCountry":"CN","bUseLastName":true},"zh_TW":{"sCountry":"TW","bUseLastName":false},"ja_JP":{"sCountry":"JP","bUseLastName":true}},
+aSetDeferPaymethodLanguage: {"ja_JP":"\uc77c\ubcf8","zh_CN":"\uc911\uad6d"},
+aUseDeferPaymethod: ["ja_JP","zh_CN"],
+aCheckShippingCompanyAndPaymethod: ["ja_JP","zh_CN"],
+aSetDeferPaymethodLanguageForShipping: {"ja_JP":"\u65e5\u672c","zh_CN":"\uc911\uad6d"},
+aCheckStoreByPaymethod: ["ja_JP","zh_CN"],
+aCheckIsEmailRequiredForJs: ["en_US","zh_CN","zh_TW","ja_JP","vi_VN","en_PH"],
+aSetIdCardKeyCountryLanguage: {"CN":"\uc911\uad6d\uc758","TW":"\ub300\ub9cc\uc758"},
+aReverseGlobalAddress: ["en_PH","vi_VN","PHL","VNM","VN","PH"],
+aNoCheckZipCode: ["KOR","JPN"],
+aNotPostCodeAPICountryList: ["en_US","es_ES","pt_PT","en_PH"],
+aEnableSearchExchangeAddr: ["KR","JP","CN","VN","TW","PH"],
+aDuplicatedBaseAddr: ["TW","JP"],
+aReverseAddressCountryCode: ["VN","PH"],
+aCheckZipCode: ["PHL","en_PH","PH"]
+};
+var EC_GLOBAL_ORDER_LANGUAGE_CODES = CAFE24.getDeprecatedNamespace('EC_GLOBAL_ORDER_LANGUAGE_CODES');
+CAFE24.GLOBAL_MEMBER_LANGUAGE_CODES = {  
+sAdminWebEditorLanguageCode: 'ko' ,
+oNotAvailDecimalPointLanguages: ["ko_KR","ja_JP","zh_TW","vi_VN"],
+oAddressCountryCode: {"KOR":"ko_KR","JPN":"ja_JP","CHN":"zh_CN","TWN":"zh_TW","VNM":"vi_VN","PHL":"en_PH"},
+};
+var EC_GLOBAL_MEMBER_LANGUAGE_CODES = CAFE24.getDeprecatedNamespace('EC_GLOBAL_MEMBER_LANGUAGE_CODES');
+CAFE24.GLOBAL_BOARD_LANGUAGE_CODES = {  
+bUseLegacyBoard: true
+};
+var EC_GLOBAL_BOARD_LANGUAGE_CODES = CAFE24.getDeprecatedNamespace('EC_GLOBAL_BOARD_LANGUAGE_CODES');
+CAFE24.GLOBAL_MALL_LANGUAGE_CODES = {
+oDesign: {
+oDesignAddReplaceInfo: {"group_id":"SKIN.ADD.ADMIN.DESIGNDETAIL","replacement":{"KR":"KOREAN","US":"ENGLISH","JP":"JAPANESE","CN":"SIMPLIFIED.CHINESE","TW":"TRADITIONAL.CHINESE","ES":"SPANISH","PT":"PORTUGUESE","PH":"ENGLISH"}},
+oDesignDetailLanguageCountryMap: {"KR":"ko_KR","JP":"ja_JP","CN":"zh_CN","TW":"zh_TW","US":"en_US","ES":"es_ES","PT":"pt_PT","PH":"en_PH"},
+oSmartDesignSwitchTipLink: {"edibot":{"img":"\/\/img.echosting.cafe24.com\/smartAdmin\/img\/design\/img_editor_dnd.png","link":"\/\/ecsupport.cafe24.com\/board\/free\/list.html?board_act=list&board_no=12&category_no=9&cate_no=9"},"smart":{"img":"\/\/img.echosting.cafe24.com\/smartAdmin\/img\/design\/ko_KR\/img_editor_smart.png","link":"\/\/sdsupport.cafe24.com"}},
+oSmartDesignDecoShopList: ["ko_KR","ja_JP","zh_CN","en_US","zh_TW","es_ES","pt_PT"],
+oSmartDesignDecoMultilingual: {"list":{"ko_KR":"KOREAN","en_US":"ENGLISH","ja_JP":"JAPANESE","zh_CN":"SIMPLIFIED.CHINESE","zh_TW":"TRADITIONAL.CHINESE","es_ES":"SPANISH","pt_PT":"PORTUGUESE","vi_VN":"VIETNAMESE"},"group_id":"EDITOR.LAYER.EDITING.DECO"},
+aSmartDesignModuleShopList: ["ko_KR","ja_JP","zh_CN","en_US","zh_TW","es_ES","pt_PT"]
+},
+oStore: {
+oMultiShopCurrencyInfo: {"en_US":{"currency":"USD"},"zh_CN":{"currency":"USD","sub_currency":"CNY"},"ja_JP":{"currency":"JPY"},"zh_TW":{"currency":"TWD"},"es_ES":{"currency":"EUR"},"pt_PT":{"currency":"EUR"},"ko_KR":{"currency":"KRW"},"vi_VN":{"currency":"VND"},"en_PH":{"currency":"PHP"}},
+oBrowserRedirectLanguage: {"ko":{"primary":"ko_KR","secondary":"en_US"},"en":{"detail":{"en-ph":{"primary":"en_PH","secondary":"en_US"},"en-us":{"primary":"en_US","secondary":"es_ES"},"default":{"primary":"en_US","secondary":"es_ES"}}},"ja":{"primary":"ja_JP","secondary":"en_US"},"zh":{"detail":{"zh-cn":{"primary":"zh_CN","secondary":"en_US"},"zh-tw":{"primary":"zh_TW","secondary":"zh_CN"},"default":{"primary":"en_US","secondary":"ko_KR"}}},"es":{"primary":"es_ES","secondary":"en_US"},"pt":{"primary":"pt_PT","secondary":"en_US"},"vi":{"primary":"vi_VN","secondary":"en_US"},"default":{"primary":"en_US","secondary":"ko_KR"}},
+aChangeableLanguages: ["en_US","ja_JP","ko_KR"],
+aNoZipCodeLanguage: ["ko_KR","ja_JP"]
+},
+oMobile: {
+sSmartWebAppFaqUrl: "https://support.cafe24.com/hc/ko/articles/8466586607641",
+sAmpFaqUrl: "https://ecsupport.cafe24.com/board/free/read.html?no=1864&board_no=5&category_no=13&cate_no=13&category_no=13&category_no=13",
+},
+oPromotion: {
+bQrCodeAvailable: true,
+bSnsMarketingAvailable: true
+},
+oShippingReverseAddressLanguage: ["vi_VN","en_PH"] ,
+oGlobalStandardSwitchHelpCodeLink: {"SH.DS":{"link":"\/\/serviceguide.cafe24shop.com\/en_PH\/SH.DS.html"},"PR.DS":{"link":"\/\/serviceguide.cafe24shop.com\/en_PH\/PR.DS.html"},"OR.SM.BO":{"link":"\/\/serviceguide.cafe24shop.com\/en_PH\/OR.SM.BO.html"},"DE.DS":{"link":"\/\/serviceguide.cafe24shop.com\/en_PH\/DE.DS.html"},"MB.DS":{"link":"\/\/serviceguide.cafe24shop.com\/en_PH\/MB.DS.html"},"PM.DS":{"link":"\/\/serviceguide.cafe24shop.com\/en_PH\/PM.DS.html"}},
+getAdminMainLocaleLanguage: function(sSkinLocaleCode) {
+var oLocaleData = [];
+var locale = "";
+var shopLangName = "";
+if (sSkinLocaleCode == "US") {
+locale = "en_US";
+shopLangName = "ENGLISH";
+} else if (sSkinLocaleCode == "JP") {
+locale = "ja_JP";
+shopLangName = "JAPANESE";
+} else if (sSkinLocaleCode == "CN") {
+locale = "zh_CN";
+shopLangName = "SIMPLIFIED.CHINESE";
+} else if (sSkinLocaleCode == "TW") {
+locale = "zh_TW";
+shopLangName = "TRADITIONAL.CHINESE";
+} else if (sSkinLocaleCode == "ES") {
+locale = "es_ES";
+shopLangName = "SPANISH";
+} else if (sSkinLocaleCode == "PT") {
+locale = "pt_PT";
+shopLangName = "PORTUGUESE";
+} else if (sSkinLocaleCode == "VN") {
+locale = "vi_VN";
+shopLangName = "VIETNAMESE";
+} else if(sSkinLocaleCode == "PH") {
+locale = "en_PH";
+shopLangName = "ENGLISH.PH";
+}
+oLocaleData["locale"] = locale;
+oLocaleData["shopLangName"] = shopLangName;
+return oLocaleData;
+}
+};
+var EC_GLOBAL_MALL_LANGUAGE_CODES = CAFE24.getDeprecatedNamespace('EC_GLOBAL_MALL_LANGUAGE_CODES');
+CAFE24.GLOBAL_DATETIME_INFO = {
+oConstants: {"STANDARD_DATE_REGEX":"\/([12]\\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01]))\/","IN_ZONE":"inZone","OUT_ZONE":"outZone","IN_FORMAT":"inFormat","OUT_FORMAT":"outFormat","IN_DATE_FORMAT":"inDateFormat","IN_TIME_FORMAT":"inTimeFormat","OUT_DATE_FORMAT":"outDateFormat","OUT_TIME_FORMAT":"outTimeFormat","IN_FORMAT_DATE_ONLY":1,"IN_FORMAT_TIME_ONLY":2,"IN_FORMAT_ALL":3,"OUT_FORMAT_DATE_ONLY":1,"OUT_FORMAT_TIME_ONLY":2,"OUT_FORMAT_ALL":3,"DATE_ONLY":"YYYY-MM-DD","TIME_ONLY":"HH:mm:ss","FULL_TIME":"YYYY-MM-DD HH:mm:ss","ISO_8601":"YYYY-MM-DD[T]HH:mm:ssZ","YEAR_ONLY":"YYYY","MONTH_ONLY":"MM","DAY_ONLY":"DD","WEEK_ONLY":"e","TIME_H_I_ONLY":"HH:mm","TIME_HOUR_ONLY":"HH","TIME_MINUTE_ONLY":"mm","POSTGRE_FULL_TIME":"YYYY-MM-DD HH24:MI:SS","POSTGRE_TIME_ONLY":" HH24:MI:SS","MICRO_SECOND_ONLY":"u","SEOUL":"Asia\/Seoul","TOKYO":"Asia\/Tokyo","SHANGHAI":"Asia\/Shanghai","TAIPEI":"Asia\/Taipei","HANOI":"Asia\/Bangkok","LOS_ANGELES":"America\/Los_Angeles","LISBON":"Europe\/Lisbon","MADRID":"Europe\/Madrid","SINGAPORE":"Asia\/Singapore","UTC":"Etc\/UTC","MAX_DATETIME":"9999-12-31 23:59:59"},
+oOptions: {"inZone":"Asia\/Seoul","inFormat":"YYYY-MM-DD HH:mm:ss","inDateFormat":"YYYY-MM-DD","inTimeFormat":"HH:mm:ss","outZone":"Asia\/Seoul","outFormat":"YYYY-MM-DD HH:mm:ss","outDateFormat":"YYYY-MM-DD","outTimeFormat":"HH:mm:ss"},
+oPolicies: [],
+sOverrideTimezone: '',
+sMomentNamespace: 'EC_GLOBAL_MOMENT'
+};
+CAFE24.FRONT_JS_CONFIG_MANAGE = {"sSmartBannerScriptUrl":"https:\/\/app4you.cafe24.com\/SmartBanner\/tunnel\/scriptTags?vs=1563164396689206","sMallId":"arfino","sDefaultAppDomain":"https:\/\/app4you.cafe24.com","sWebLogOffFlag":"F"};
+var EC_FRONT_JS_CONFIG_MANAGE = CAFE24.getDeprecatedNamespace('EC_FRONT_JS_CONFIG_MANAGE');
+CAFE24.FRONT_JS_CONFIG_MEMBER = {"sAuthUrl":"https:\/\/ipin-ec.cafe24.com\/certify\/v1\/?action=auth"};
+var EC_FRONT_JS_CONFIG_MEMBER = CAFE24.getDeprecatedNamespace('EC_FRONT_JS_CONFIG_MEMBER');
+CAFE24.FRONT_JS_CONFIG_SHOP = {"search_period":[],"calendar_config":{"maxDate":"2028-05-29","locale":"ko"}};
+var EC_FRONT_JS_CONFIG_SHOP = CAFE24.getDeprecatedNamespace('EC_FRONT_JS_CONFIG_SHOP');
+typeof window.CAFE24 === "undefined" && (window.CAFE24 = {});
+CAFE24.FRONTEND = {"FW_MANIFEST_CACHE_REVISION":2605201482,"IS_WEB_VIEW":"F"};
+CAFE24.ROUTE = {"is_mobile":false,"is_need_route":false,"language_code":"ZZ","path":{"origin":"\/collection.html","result":"\/collection.html","prefix":""},"shop_no":0,"skin_code":"default","support_language_list":{"ar":"ar_EG","ar-EG":"ar_EG","de":"de_DE","de-DE":"de_DE","en":"en_US","en-IN":"en_IN","en-PH":"en_PH","en-US":"en_US","es":"es_ES","es-ES":"es_ES","hi":"hi_IN","hi-IN":"hi_IN","id":"id_ID","id-ID":"id_ID","it":"it_IT","it-IT":"it_IT","ja":"ja_JP","ja-JP":"ja_JP","ko":"ko_KR","ko-KR":"ko_KR","ms":"ms_MY","ms-MY":"ms_MY","pt":"pt_PT","pt-PT":"pt_PT","ru":"ru_RU","ru-RU":"ru_RU","th":"th_TH","th-TH":"th_TH","tr":"tr_TR","tr-TR":"tr_TR","vi":"vi_VN","vi-VN":"vi_VN","zh":"zh_CN","zh-CN":"zh_CN","zh-HK":"zh_HK","zh-MO":"zh_MO","zh-SG":"zh_SG","zh-TW":"zh_TW"}};
+</script>
+
+<link rel="stylesheet" type="text/css" href="/ind-script/optimizer.php?filename=lY2xCoAwDAX34Op39JvaEqXQ5pUkBf17BWeHrMcdNxWn5pGUDUsrp2qWDoV4qhgDsr1gn_8WVzL05Q1CBVdIX-6xQc83ayTwXDqHAkzqTZhKFvleDw&type=css&k=c39ac116ce20047f7b882a469c007f7c122f68fa&t=1745316406"  /><link rel="stylesheet" type="text/css" href="/ind-script/optimizer_user.php?filename=lZJbDgIhDEUXgL-ug7ikAs1MY2knU0h09xLHPx_UT8o5ye3DCoaCRotEu5JcYu1SQDBms2g9hQ2W8VBmzI1UTqN-tl8Sw117i1UTMYaK0t2OIex5_Yy_kARG-elkrfVbnjf4KMyDDAPnVAWSYEwF97_gMAY6F8bESaA5cjRI7MCS3hxQb82z3k6OXKrcaJuDK_LmanMOjY_sOrRjZw8&type=css&k=acc0987849ab3f43a0f1623533f3f8e341d801e0&t=1779461377&user=T"  />
+<style type="text/css">
+
+</style>
+<title> -  - NECTAR</title></head>
+    
+    <body class="Mtype_layout">        <div id="loading"></div>
+        <div id="background-opacity"></div>
+        <div id="Mpage_header">
+    <div id="header_notice" class="swiper header_notice_slide">
+        <ul class="swiper-wrapper morenvy-banner-area" area_id="e11a">
+    <li class="swiper-slide app-box morenvy-banner"><div style="{#text_1} {#text_2}">{#title}</div></li>
+</ul>
+    </div>
+    <div id="header">
+        <div class="header-left">
+            <a href="#;" class="mobile-btn"><span class="arrow"><span></span><span></span><span></span></span></a>
+        </div>
+        <div class="header-center">
+            <div class="morenvy-banner-area logo" area_id="58fd">
+
+    <div class="app-box morenvy-banner">
+        <a href="/" style="height:{#link_1};">{#html}</a>
+    </div>
+
+</div>
+        </div>
+        <div class="header-right">
+            <ul class="list-cover"><li class="group sub search"><a href="#;" class="search-btn"><svg id="_레이어_1" data-name="레이어_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewbox="0 0 18.4 18.9">
+  <path class="st0" d="M13.6,13c1.2-1.4,2-3.2,2-5.2C15.6,3.5,12.1,0,7.8,0S0,3.5,0,7.8s3.5,7.8,7.8,7.8,3.3-.6,4.6-1.5l4.8,4.8.6-.6.6-.6-4.7-4.7ZM1.6,7.8C1.6,4.4,4.4,1.6,7.8,1.6s6.2,2.8,6.2,6.2-2.8,6.2-6.2,6.2S1.6,11.2,1.6,7.8Z"></path>
+</svg></a></li>
+<li class="xans-element- xans-layout xans-layout-statelogoff group sub log "><a href="/myshop/order/list.html"><svg id="_레이어_1" data-name="레이어_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewbox="0 0 18.6 20">
+  <path class="st0" d="M9.7,10.8c2.8-.2,5-2.5,5-5.4S12.3,0,9.3,0,3.9,2.4,3.9,5.4s2.2,5.2,5,5.4C4,11,0,15,0,20h1.5c0-4.3,3.5-7.8,7.8-7.8s7.8,3.5,7.8,7.8h1.5c0-5-4-9.1-8.9-9.3ZM5.4,5.4c0-2.1,1.7-3.9,3.9-3.9s3.9,1.7,3.9,3.9-1.7,3.9-3.9,3.9-3.9-1.7-3.9-3.9Z"></path>
+</svg></a>
+</li>
+<li class="group sub cart"><a href="/order/basket.html"><svg id="_레이어_1" data-name="레이어_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewbox="0 0 17.6 18.6">
+  <path class="st0" d="M16.8,4h-2.5l-1.8-3.6-.2-.4h-7l-.2.4-1.8,3.6H0v14.6h17.6V4h-.8ZM6.3,1.6h5l1.2,2.4h-7.4l1.2-2.4ZM3.8,5.6h12.2v11.4H1.6V5.6h2.2Z"></path>
+</svg><span class="xans-element- xans-layout xans-layout-orderbasketcount count ">0</span>
+</a></li>
+
+</ul>
+        </div>
+    </div>
+</div>
+<div class="morenvy-banner-area displaynone" area_id="831b">
+    <div class="morenvy-banner M_search_target">{#title}</div>
+</div>
+        <div id="contents_cover">
+            <div id="contents" class="header_notice_margin">
+
+
+<div id="collection" class="header_layout_padding">
+    <div class="section1 morenvy-banner-area" area_id="6472">
+        <div class="app-box morenvy-banner">
+            <div class="image-Area"><div class="M_pc window-height-layout background-type">{#imgTag_1}</div><div class="M_mobile">{#imgTag_2}</div></div>
+            <div class="text-Area">
+                <div class="sub-text">{#text_1}</div>
+                <div class="title">{#title}</div>
+                <div class="desc">{#html}</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="section2">
+
+        <div class="xans-element- xans-product xans-product-menupackage title-Area "><h2 class="xans-element- xans-product xans-product-headcategory "></h2>
+</div>
+
+            </div>
+    
+    
+    <div class="section3 morenvy-banner-area" area_id="6472">
+        <div class="app-box morenvy-banner">
+            <div class="image-Area">{#imgTag_1_or_video_1}</div>
+        </div>
+    </div>
+    
+</div>
+
+
+
+</div>
+            <div id="Mpage_footer" class="xans-element- xans-layout xans-layout-footer "><div id="footer">
+        <div class="section1">
+            <div class="section1T">
+                <svg id="_레이어_1" data-name="레이어_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewbox="0 0 720 464.7">
+  <path class="st0" d="M156.8,61.3c-23.9,15.4-42.9,35.7-56.5,60.4-16.9,30.5-25.4,67.7-25.4,110.6,0,42.9,8.6,80.2,25.5,110.8,13.7,24.7,32.7,45,56.7,60.4,40.5,26,80.8,28.6,82.5,28.7l10.6.6V31l-11,1.5c-4.6.3-43.5,3.9-82.3,28.8ZM230.1,410.7c-13.6-2.4-38.4-8.7-62.9-24.5-21-13.6-37.6-31.5-49.6-53.2-15.1-27.5-22.8-61.4-22.8-100.7,0-39.5,7.7-73.4,22.9-101,12-21.8,28.8-39.7,49.8-53.2,24.4-15.7,49-21.9,62.5-24.3v356.9Z"></path>
+  <path class="st0" d="M409.7,195l-116-137.1v197.8s4.9-7.9,4.9-7.9c3.1,8.4,7.2,15.5,10.9,21l.3.4,116.4,137.6v-162.8c0-20.8-8.8-37.9-16.3-48.6l-.3-.4ZM406.3,352.2l-80.5-95.1c-5.6-8.3-12.1-21.1-12.1-36.2v-108.3s80.1,94.7,80.1,94.7c5.7,8.3,12.4,21.4,12.4,36.8v108.2Z"></path>
+  <path class="st0" d="M487.7,0h-91.4v12.2l.4,1.4c5.9,19.4,8.7,39.2,9.5,66.4v1.3s0,45.8,0,45.8c-23.7-25.8-67.4-76.1-93.9-122l-2.9-5h-77.1C104.2,0,0,104.2,0,232.3s104.2,232.3,232.3,232.3h91.4v-12.2l-.4-1.4c-5.9-19.4-8.7-39.2-9.5-66.4v-2.1c0,0,0-45,0-45,23.8,26.1,66.9,76,93.9,122.1l2.9,4.9h77.1c128.1,0,232.3-104.2,232.3-232.3S615.8,0,487.7,0ZM487.7,444.7h-65.7c-40.3-66.7-108.2-136.4-111.1-139.4l-17.2-17.6v107.3h.5c1,19,3.1,34.7,6.7,49.7h-68.5c-117.1,0-212.3-95.3-212.3-212.3S115.3,20,232.3,20h65.7c39.4,65.9,107.5,135.6,110.4,138.6l4.4,4.5,13.4-4.7v-88.7h-.4c-1-19-3.1-34.7-6.7-49.7h68.5c117.1,0,212.3,95.3,212.3,212.3s-95.3,212.3-212.3,212.3Z"></path>
+  <path class="st0" d="M619.7,121.6c-13.7-24.7-32.7-45-56.7-60.4-40.5-26-80.8-28.6-82.5-28.7l-10.6-.6v400.3h10c.4,0,41.6-2.1,83-28.7,23.9-15.3,43-35.6,56.7-60.4,16.9-30.6,25.5-67.8,25.5-110.8,0-42.9-8.6-80.2-25.5-110.8ZM602.4,333c-11.9,21.8-28.6,39.7-49.5,53.2-24.5,15.9-49.4,22.2-63,24.6V53.9c13.6,2.4,38.4,8.7,62.9,24.5,21,13.6,37.6,31.5,49.6,53.2,15.1,27.5,22.8,61.4,22.8,100.7,0,39.3-7.7,73.2-22.7,100.6Z"></path>
+</svg>
+            </div>
+            <div class="section1B">
+                <div class="box">
+<span>주식회사 아르피노(ARFINO)  </span> | <span>대표이사 : 황수연</span> | <span>전화번호 : 02-2028-8399</span>
+</div>
+                <div class="box">
+<span>사업자등록번호 : <a href="http://www.ftc.go.kr/info/bizinfo/communicationViewPopup.jsp?wrkr_no=367-88-03475" target="_blank">367-88-03475</a></span> | <span>통신판매업신고번호 : 2025-서울강남-05084</span>
+</div>
+                <div class="box">
+<span>주소 : 서울특별시 강남구 강남대로 464 (역삼동)</span> | <span>이메일 : hello@nectarofficial.com</span>
+</div>
+                <div class="box-">
+<span><a href="/member/agreement.html">이용약관</a></span><span><a href="/member/privacy.html">개인정보처리방침</a></span>
+</div>                
+            </div>
+        </div>
+        <div class="section2">
+            <div class="section2T"><div id="category">
+    <ul class="list-cover">
+        <li class="group collection">
+            <a href="/Collection.html?cate_no=42">Collection</a>
+            <div class="middle-category">
+                <ul>
+                    <li><a href="/Collection.html?cate_no=42">The Red Invitation</a></li>
+                </ul>
+            </div>
+        </li>        
+        <li class="group experience"><a href="/Experience.html?cate_no=44">Experience</a></li>
+        <li class="group shop">
+            <a href="/product/list.html?cate_no=45">Object</a>
+            <div class="middle-category">
+                <ul>
+                    <li><a href="/product/list.html?cate_no=46">All</a></li>
+                    <li><a href="/product/list.html?cate_no=47">Bestseller</a></li>
+                    <li><a href="/product/list.html?cate_no=48">Glassware</a></li>
+                    <li><a href="/product/list.html?cate_no=49">Essential</a></li>
+                    <li><a href="/product/list.html?cate_no=53">Limited Edition</a></li>
+                    <li><a href="/product/list.html?cate_no=51">Gifts</a></li>                  
+                </ul>
+            </div>
+        </li>    
+        <li class="group brand">
+            <a href="/About.html">Brand</a>
+            <div class="middle-category">
+                <ul>
+                    <li><a href="/About.html">About</a></li>
+                    <li><a href="/Stockist.html">Stockist</a></li>
+                </ul>
+            </div>
+        </li>    
+        <li class="group contact"><a href="/Contact.html">Contact</a></li>
+        <li class="group sns">
+<a href="/Contact.html">Contact</a>
+            <div class="middle-category">
+                    <ul class="sns morenvy-banner-area" area_id="c62f">
+    <li class="morenvy-banner"><a href="%7B#link_1%7D" target="{#target_1}">{#title}</a></li>
+</ul>
+            </div>
+        </li>
+    </ul>
+</div></div>
+            <div class="section2B">
+                <div class="section2BL"><div id="category">
+    <ul class="list-cover">
+        <li class="group collection">
+            <a href="/Collection.html?cate_no=42">Collection</a>
+            <div class="middle-category">
+                <ul>
+                    <li><a href="/Collection.html?cate_no=42">The Red Invitation</a></li>
+                </ul>
+            </div>
+        </li>        
+        <li class="group experience"><a href="/Experience.html?cate_no=44">Experience</a></li>
+        <li class="group shop">
+            <a href="/product/list.html?cate_no=45">Object</a>
+            <div class="middle-category">
+                <ul>
+                    <li><a href="/product/list.html?cate_no=46">All</a></li>
+                    <li><a href="/product/list.html?cate_no=47">Bestseller</a></li>
+                    <li><a href="/product/list.html?cate_no=48">Glassware</a></li>
+                    <li><a href="/product/list.html?cate_no=49">Essential</a></li>
+                    <li><a href="/product/list.html?cate_no=53">Limited Edition</a></li>
+                    <li><a href="/product/list.html?cate_no=51">Gifts</a></li>                  
+                </ul>
+            </div>
+        </li>    
+        <li class="group brand">
+            <a href="/About.html">Brand</a>
+            <div class="middle-category">
+                <ul>
+                    <li><a href="/About.html">About</a></li>
+                    <li><a href="/Stockist.html">Stockist</a></li>
+                </ul>
+            </div>
+        </li>    
+        <li class="group contact"><a href="/Contact.html">Contact</a></li>
+        <li class="group sns">
+<a href="/Contact.html">Contact</a>
+            <div class="middle-category">
+                    <ul class="sns morenvy-banner-area" area_id="c62f">
+    <li class="morenvy-banner"><a href="%7B#link_1%7D" target="{#target_1}">{#title}</a></li>
+</ul>
+            </div>
+        </li>
+    </ul>
+</div></div>
+                <div class="section2BR"><div id="category">
+    <ul class="list-cover">
+        <li class="group collection">
+            <a href="/Collection.html?cate_no=42">Collection</a>
+            <div class="middle-category">
+                <ul>
+                    <li><a href="/Collection.html?cate_no=42">The Red Invitation</a></li>
+                </ul>
+            </div>
+        </li>        
+        <li class="group experience"><a href="/Experience.html?cate_no=44">Experience</a></li>
+        <li class="group shop">
+            <a href="/product/list.html?cate_no=45">Object</a>
+            <div class="middle-category">
+                <ul>
+                    <li><a href="/product/list.html?cate_no=46">All</a></li>
+                    <li><a href="/product/list.html?cate_no=47">Bestseller</a></li>
+                    <li><a href="/product/list.html?cate_no=48">Glassware</a></li>
+                    <li><a href="/product/list.html?cate_no=49">Essential</a></li>
+                    <li><a href="/product/list.html?cate_no=53">Limited Edition</a></li>
+                    <li><a href="/product/list.html?cate_no=51">Gifts</a></li>                  
+                </ul>
+            </div>
+        </li>    
+        <li class="group brand">
+            <a href="/About.html">Brand</a>
+            <div class="middle-category">
+                <ul>
+                    <li><a href="/About.html">About</a></li>
+                    <li><a href="/Stockist.html">Stockist</a></li>
+                </ul>
+            </div>
+        </li>    
+        <li class="group contact"><a href="/Contact.html">Contact</a></li>
+        <li class="group sns">
+<a href="/Contact.html">Contact</a>
+            <div class="middle-category">
+                    <ul class="sns morenvy-banner-area" area_id="c62f">
+    <li class="morenvy-banner"><a href="%7B#link_1%7D" target="{#target_1}">{#title}</a></li>
+</ul>
+            </div>
+        </li>
+    </ul>
+</div></div>
+            </div>
+        </div>
+    </div>
+</div>
+        </div>
+        
+
+<div class="mobile-category">
+    <div class="cover header_notice_margin window-height-layoutN">
+        <div class="sectionT">
+            <div class="close"><a href="#;" class="mobile-btn"><span></span><span></span></a></div>
+            <div class="morenvy-banner-area logo" area_id="58fd">
+
+    <div class="app-box morenvy-banner">
+        <a href="/" style="height:{#link_1};">{#html}</a>
+    </div>
+
+</div>
+            <div class="right"></div>
+        </div>
+        <div class="sectionB">
+            <div id="category">
+    <ul class="list-cover">
+        <li class="group collection">
+            <a href="/Collection.html?cate_no=42">Collection</a>
+            <div class="middle-category">
+                <ul>
+                    <li><a href="/Collection.html?cate_no=42">The Red Invitation</a></li>
+                </ul>
+            </div>
+        </li>        
+        <li class="group experience"><a href="/Experience.html?cate_no=44">Experience</a></li>
+        <li class="group shop">
+            <a href="/product/list.html?cate_no=45">Object</a>
+            <div class="middle-category">
+                <ul>
+                    <li><a href="/product/list.html?cate_no=46">All</a></li>
+                    <li><a href="/product/list.html?cate_no=47">Bestseller</a></li>
+                    <li><a href="/product/list.html?cate_no=48">Glassware</a></li>
+                    <li><a href="/product/list.html?cate_no=49">Essential</a></li>
+                    <li><a href="/product/list.html?cate_no=53">Limited Edition</a></li>
+                    <li><a href="/product/list.html?cate_no=51">Gifts</a></li>                  
+                </ul>
+            </div>
+        </li>    
+        <li class="group brand">
+            <a href="/About.html">Brand</a>
+            <div class="middle-category">
+                <ul>
+                    <li><a href="/About.html">About</a></li>
+                    <li><a href="/Stockist.html">Stockist</a></li>
+                </ul>
+            </div>
+        </li>    
+        <li class="group contact"><a href="/Contact.html">Contact</a></li>
+        <li class="group sns"><a href="/Contact.html">Contact</a>
+            <div class="middle-category">
+                    <ul class="sns morenvy-banner-area" area_id="c62f">
+    <li class="morenvy-banner"><a href="%7B#link_1%7D" target="{#target_1}">{#title}</a></li>
+</ul>
+            </div>
+        </li>
+    </ul>
+</div>
+        </div>
+    </div>
+</div>
+        
+<div id="search-Area">
+    <div class="cover header_notice_margin window-height-layoutN">
+        <div class="sectionT">
+            <div class="close"><a href="#;" class="search-btn"><span></span><span></span></a></div>
+            <div class="morenvy-banner-area logo" area_id="58fd">
+
+    <div class="app-box morenvy-banner">
+        <a href="/" style="height:{#link_1};">{#html}</a>
+    </div>
+
+</div>
+            <div class="right"></div>
+        </div>
+        <div class="sectionB">
+            <form id="searchForm" name="" action="/product/search.html" method="get" target="_self" enctype="multipart/form-data" >
+<input id="view_type" name="view_type" value="" type="hidden"  />
+<input id="supplier_code" name="supplier_code" value="" type="hidden"  /><div class="xans-element- xans-search xans-search-form cover "><!--
+                $product_page=/product/detail.html
+                $category_page=/product/list.html
+                -->
+<fieldset>
+                    <legend>검색</legend>
+                    <span class="displaynone"><select id="category_no" name="category_no" fw-filter="" fw-label="" fw-msg=""  >
+<option value="0" selected="selected">상품분류 선택</option>
+<option value="45">Object</option>
+<option value="53">Limited Edition</option>
+<option value="51">Gifts</option>
+</select></span>
+                    <span class="ePlaceholder" title="원하시는 상품을 검색하세요."><input id="keyword" name="keyword" fw-filter="" fw-label="상품명/제조사" fw-msg="" class="inputTypeText" placeholder="" size="15" value="" type="text"  /></span><input type="image" src="/web/upload/mundane/search_.png" alt="검색" onclick=""/>
+                 </fieldset>
+</div>
+</form>            <div class="xans-element- xans-search xans-search-hotkeyword popular"><a href="/product/search.html?keyword=WINE GLASS" class="xans-record-">WINE GLASS</a>
+<a href="/product/search.html?keyword=WINE BAG" class="xans-record-">WINE BAG</a></div>
+        </div>
+    </div>
+</div>
+
+        
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
+<script src="https://arfino.cafe24.com/web/upload/appfiles/gSOPn7dNJxAp8cu31kDDtD/42e5ede08f973cab0588c94cf904b480.js"></script>
+<script type="text/javascript">
+    load_Morenvy_BannerManagerScript( false,
+        "https://arfino.cafe24.com/web/upload/appfiles/gSOPn7dNJxAp8cu31kDDtD/70b9cb3c154d1c9c8d566bd4bbd01e40.js" );
+</script>
+        
+        
+        <!-- 결제를 위한 필수 영역 -->
+        <div id="progressPaybar" style="display:none;">
+            <div id="progressPaybarBackground" class="layerProgress"></div>
+            <div id="progressPaybarView">
+                <div class="box">
+                    <p class="graph">
+                        <span><img src="https://img.echosting.cafe24.com/skin/base_ko_KR/layout/txt_progress.gif" alt="현재 결제가 진행중입니다."/></span>
+                        <span><img src="https://img.echosting.cafe24.com/skin/base/layout/img_loading.gif" alt=""/></span>
+                    </p>
+                    <p class="txt">
+                        본 결제 창은 결제완료 후 자동으로 닫히며,결제 진행 중에 본 결제 창을 닫으시면<br/>
+                        주문이 되지 않으니 결제 완료 될 때 까지 닫지 마시기 바랍니다.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!-- // 결제를 위한 필수 영역 -->
+    <span itemscope="" itemtype="https://schema.org/Organization">
+<link itemprop="url" href="https://nectarofficial.com">
+<a itemprop="sameAs" href="https://smartstore.naver.com/nectarofficialcom"></a>
+<a itemprop="sameAs" href="https://www.instagram.com/nectarofficial_com/"></a>
+<a itemprop="sameAs" href="http://pf.kakao.com/_xixiexen"></a>
+<a itemprop="sameAs" href="https://gift.kakao.com/brand/19631"></a>
+<a itemprop="sameAs" href="www.youtube.com/@NECTAR_OFFICIAL"></a>
+<a itemprop="sameAs" href="https://display.wconcept.co.kr/rn/brand/117386"></a>
+<a itemprop="sameAs" href="https://store.ohou.se/brands/102312"></a>
+</span>
+<script type="text/javascript" src="/app/Eclog/js/cid.generate.js?vs=fc6e68c9c2dc224ddd58c504af408f97&u=arfino.1"></script>
+<script>        (function (i, s, o, g) {
+            var a = s.createElement(o), m = s.getElementsByTagName(o)[0];
+            var initialized = false;
+            var interval = null;
+
+            function safeInit() {
+              if (initialized) return;
+              if (typeof i.initCaWebAnalytics === 'function') {
+                try {
+                  i.initCaWebAnalytics({"mid":"arfino","stype":"e","domain":"","shop_no":1,"lang":"ko_KR","mobile_flag":"F","send_endpoint":"https://ca-log.cafe24data.com","path_role":"PRODUCT_LIST"});
+                  initialized = true;
+                } finally {
+                  if (interval) clearInterval(interval);
+                  a.onload = a.onreadystatechange = a.onerror = null;
+                }
+              }
+            }
+
+            a.onload = a.onreadystatechange = function () {
+              if (!a.readyState || a.readyState === 'loaded' || a.readyState === 'complete') {
+                safeInit();
+              }
+            };
+
+            a.onerror = function () {
+              if (interval) { clearInterval(interval); interval = null; }
+              a.onload = a.onreadystatechange = a.onerror = null;
+            };
+
+            interval = setInterval(safeInit, 200);
+            setTimeout(function () {
+              if (interval) { clearInterval(interval); interval = null; }
+            }, 10000);
+
+            safeInit();
+
+            a.async = 1;
+            a.setAttribute('crossorigin', 'anonymous');
+            a.src = g;
+            m.parentNode.insertBefore(a, m);
+        })(window, document, 'script', "https://optimizer.poxo.com/ca2/analytics.js?v=20260529");</script>
+
+                <script>
+                try {
+                    // Account ID 적용
+                    if (!wcs_add) var wcs_add = {};
+                    wcs_add["wa"] = "s_151406af634f";
+            
+                    // 네이버 페이 White list가 있을 경우
+                    wcs.checkoutWhitelist = ["arfino.cafe24.com", "www.arfino.cafe24.com", "m.arfino.cafe24.com", "nectarofficial.com", "www.nectarofficial.com", "m.nectarofficial.com"];
+                
+                    // 레퍼러 
+                    wcs.setReferer("");
+
+                    // 유입 추적 함수 호출
+                    wcs.inflow("nectarofficial.com");
+
+                    // 로그수집
+                    wcs_do();
+                } catch (e) {};
+                </script>
+            
+
+<!-- External Script Start -->
+
+<!-- kmp -->
+<!-- CMC3 script -->
+<div id="kmp_common_top_script" style="display:none;">
+<script type="text/javascript" charset="UTF-8" src="https://t1.daumcdn.net/kas/static/kp.js"></script>
+<script type="text/javascript">
+  kakaoPixel('7724023408260630784').pageView();
+  kakaoPixel.setServiceOrigin('20001');
+</script>
+
+</div>
+<!-- CMC3 script -->
+ 
+<!-- External Script End -->
+
+<script type="text/javascript" src="https://t1.daumcdn.net/adfit/static/kp.js" charset="utf-8"></script>
+<script type="text/javascript" src="https://t1.kakaocdn.net/kakao_js_sdk/v1/kakao.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="/ind-script/i18n.php?v=2605201482&lang=ko_KR&domain=front&type=" charset="utf-8"></script>
+
+<script src="/ind-script/optimizer.php?filename=vVhNc9s4DL0nvu7vUHd2ZmevjrzZdpq0niSdnikKkhBRBMuPOOqvLyS7rW1Zsai0e4itSHgACT88gCqsaGBDtk4sOApWQvLoEvzzH714dH8Uw6cBjZB18vglgG13X38t_l68mWQPzx6sFsrtbiwkUY0wDxusiljkAuSi0JEAoVC4GAw_9WT7DRlLJaMOEpsLDx4bSBpqQPsE5G1_8Rl99fB1JbxYNKjPohVmbAsPfD1m64xF7YtRVyRDF_iabJOS9paUAjtmvVbBLY25spiXoxGDRzX2rLDU7_bCkWI70heezIVCDReZ0Ho88hYoqWlIv2zzLDQTVzNHjAV_zmNv7aExivO4byqMSW4pQwXJ3R5qu4LBHkesG8oD33IbNFOcF0HLLikJ2-VB-kVzRKGpuEFAJkryacvTfaASX1tFIp9g2gQvuhgfMwf26TCtIxBDqi1QnSFDDoUIyndbc42w_uoHD-KVICuxB_3_GpRzCWrH-XHz8CAc6nIetgEv8k4yjphyX5E5-EGu-4S_F7WgpO4-1_gMaljNL4DTnv-fTtB_BLCCLJQTbe-gAAtaQhps992uLcqpK_sAm-QGa0iuLG2Yo6mQVTQ2HQjMdFTKClIS_x7T0XfwhLDxQtW7y5SC9hEO-G-9rfkbdPOAy146ZkHvPcl6HhKEldVqOmmPcr1zM6lejAolsso_cRPnMiH7vW5-3Iho70NnXTnq3A2dsgfDegC_2m8FysBvWnMldK4mqm-EW-4XWLS_2iv3Fv_KRCiSgptpTWM96me04zYstCgP2_AGMkXlhMb4Xd4Sx2S_NMciNwkld_9dFjy5CT8v6uvALw16lW8Uj5XoEdyYTWpb4-k9tBNyK1yr5fYz0rqBJgMbCfpoc7ByKMVnYFfC1eDn4sypbjcJuSeHEVhuNixQ8au95flTlLErXYEhh7GxPqOrTrW2CTB5qpeewVmQEA2660E1tKw9-SzsA_EMkM5Yb8_TWMqAhgLnUfRGtNHx_rMijyXLMnhiYULZg3km2MRylI8UuCYTTGxRBD64N2C5pJ4wPrmr7WnmvkJjeKBf5jkrnotdfNuNOruinkOLAwczyqen1VvsXmG0s2m5wz-I7BXod3w2n7uBFZ-LUL3TBcVyQAlsRKYgOroRvrKk4DJmbtgPfXN0Gh-BmMmCv21_lzyYoJ5g7jYLnojUkPf_7k6dhy8e-tmcHztp0fhJmO7smCy7Sd-A7N_TFGLY9k5CDxTCmPTFt0GWgodrfObn3wA&type=js&k=247a787f87c793fda352c54819c7f1ed2bd08759&t=1779149242" ></script><script src="/ind-script/optimizer_user.php?filename=dcxBCoAwDETRA9St5wgeqbZB0jYpEqN4e6vQjejuwzxGI7qISouAZpIJ2CR6QUjac0g66psVf1bbYPZK4bZPfMo2hspc5W_lGq1gf1yNQnY74dH8BQ&type=js&k=fd438068b015cab302bf4ae405d7573f8e788f03&t=1763025082&user=T" ></script>
+<script type="text/javascript">
+var sIsFrontDesignChangeRequired = 'F';
+var sYtshopping = 'F';
+var sIsYoutubeShops = 'F';
+var sIsValidChRef = 'F';
+var sChRef = '';
+var sIsDropshipping = 'F';
+if (sIsValidChRef === 'T') {
+sessionStorage.setItem('ch_ref', sChRef);
+}
+// ch_ref 존재 여부 체크
+CAFE24.hasChRef = function() {
+if (sIsValidChRef === 'T' && sessionStorage.getItem('ch_ref')) {
+return true;
+}
+return false;
+}
+// ch_ref 데이터 조회
+CAFE24.getChRefData = function() {
+if (sIsValidChRef === 'T') {
+return sessionStorage.getItem('ch_ref');
+}
+}
+// 프론트 디자인 변경이 필요한지 여부 반환
+CAFE24.checkChannelUI = function() {
+// [ECHOSTING-598429] 드롭쉬핑은 항상 전체 UI 노출
+if (sIsDropshipping === 'T') {
+return false;
+}
+if ((sIsFrontDesignChangeRequired === 'T' && sessionStorage.getItem('ch_ref')) || sIsYoutubeShops === 'T') {
+return true;
+} else {
+return false;
+}
+}
+// 파라미터에 ch_ref 추가
+CAFE24.attachChRef = function(sUrl) {
+if (sUrl) {
+var sChRef = CAFE24.getChRefData();
+if (sChRef) {
+var sSeparator = (sUrl.includes('?')) ? '&' : '?';
+sUrl += sSeparator + 'ch_ref=' + sChRef;
+}
+}
+return sUrl;
+}
+var sIsCheckout = 'F';
+var sCheckoutToken = '';
+if (sIsCheckout === 'T') {
+sessionStorage.setItem('checkoutToken', sCheckoutToken);
+} else {
+sessionStorage.removeItem('checkoutToken');
+}
+CAFE24.getCheckoutToken = function() {
+if (sIsCheckout === 'T') {
+return sessionStorage.getItem('checkoutToken');
+}
+}
+CAFE24.attachCheckoutParam = function(sUrl) {
+if (sUrl) {
+var sCheckoutToken = CAFE24.getCheckoutToken();
+if (sCheckoutToken) {
+var sSeparator = (sUrl.includes('?')) ? '&' : '?';
+sUrl += sSeparator + 'checkoutToken=' + sCheckoutToken;
+}
+}
+return sUrl;
+}
+CAFE24.MOBILE_WEB = false; var mobileWeb = CAFE24.MOBILE_WEB;
+try {
+var isUseLoginKeepingSubmit = false;
+// isSeqNoKeyExpiretime
+function isSeqNoKeyExpiretime(iExpiretime)
+{
+var sDate = new Date();
+var iNow = Math.floor(sDate.getTime() / 1000);
+// 유효시간 확인
+if (iExpiretime > iNow) {
+return false;
+}
+return true;
+}
+function isUseLoginKeeping()
+{
+// 디바이스 확인
+if (EC_MOBILE_DEVICE === false) {
+return;
+}
+// 로그인 여부
+var isLogin = document.cookie.match(/(?:^| |;)iscache=F/) ? true : false
+if (isLogin) {
+return;
+}
+var sLoginKeepingInfo = localStorage.getItem('use_login_keeping_info');
+var iSeqnoExpiretime;
+var iSeqNoKey;
+if (sLoginKeepingInfo == null) {
+iSeqnoExpiretime = localStorage.getItem('seq_no_key_expiretime');
+iSeqNoKey = localStorage.getItem('seq_no_key');
+// 유효시간, key 값 확인
+if (iSeqnoExpiretime === null || iSeqNoKey === null) {
+return;
+}
+} else {
+var oLoginKeepingInfo = JSON.parse(sLoginKeepingInfo);
+iSeqNoKey = oLoginKeepingInfo.seq_no_key;
+iSeqnoExpiretime = oLoginKeepingInfo.seq_no_key_expiretime;
+if (isNaN(iSeqNoKey) === true || isNaN(iSeqnoExpiretime) === true) {
+return;
+}
+}
+if (isSeqNoKeyExpiretime(iSeqnoExpiretime) === false) {
+return;
+}
+useLoginKeepingSubmit();
+}
+function findGetParamValue(paramKey)
+{
+var result = null,
+tmp = [];
+location.search.substr(1).split('&').forEach(function (item) {
+tmp = item.split('=');
+if (tmp[0] === paramKey) result = decodeURIComponent(tmp[1]);
+});
+return result;
+}
+function useLoginKeepingSubmit()
+{
+var iSeqnoExpiretime;
+var iSeqNoKey;
+var sUseLoginKeepingIp;
+var sLoginKeepingInfo = localStorage.getItem('use_login_keeping_info');
+if (sLoginKeepingInfo == null) {
+iSeqnoExpiretime = localStorage.getItem('seq_no_key_expiretime');
+iSeqNoKey = localStorage.getItem('seq_no_key');
+} else {
+var oLoginKeepingInfo = JSON.parse(sLoginKeepingInfo);
+iSeqNoKey = oLoginKeepingInfo.seq_no_key;
+iSeqnoExpiretime = oLoginKeepingInfo.seq_no_key_expiretime;
+sUseLoginKeepingIp = oLoginKeepingInfo.use_login_keeping_ip;
+}
+var oForm = document.createElement('form');
+oForm.method = 'post';
+oForm.action = '/exec/front/member/LoginKeeping';
+document.body.appendChild(oForm);
+var oSeqNoObj = document.createElement('input');
+oSeqNoObj.name = 'seq_no_key';
+oSeqNoObj.type = 'hidden';
+oSeqNoObj.value = iSeqNoKey;
+oForm.appendChild(oSeqNoObj);
+oSeqNoObj = document.createElement('input');
+oSeqNoObj.name = 'seq_no_key_expiretime';
+oSeqNoObj.type = 'hidden';
+oSeqNoObj.value = iSeqnoExpiretime;
+oForm.appendChild(oSeqNoObj);
+var returnUrl = findGetParamValue('returnUrl');
+if (returnUrl == '' || returnUrl == null) {
+returnUrl = location.pathname + location.search;
+}
+oSeqNoObj = document.createElement('input');
+oSeqNoObj.name = 'returnUrl';
+oSeqNoObj.type = 'hidden';
+oSeqNoObj.value = returnUrl;
+oForm.appendChild(oSeqNoObj);
+if (sUseLoginKeepingIp != undefined) {
+oSeqNoObj = document.createElement('input');
+oSeqNoObj.name = 'use_login_keeping_ip';
+oSeqNoObj.type = 'hidden';
+oSeqNoObj.value = sUseLoginKeepingIp;
+oForm.appendChild(oSeqNoObj);
+}
+oForm.submit();
+isUseLoginKeepingSubmit = true;
+}
+isUseLoginKeeping();
+} catch(e) {
+}
+CAFE24.KAKAO_PIXEL_BRIDGE.init("7724023408260630784");
+if (typeof CAFE24.SHOP_FRONT_NEW_LIKE_COMMON !== "undefined") {CAFE24.SHOP_FRONT_NEW_LIKE_COMMON.init({"bIsUseLikeProduct":false,"bIsUseLikeCategory":false});}
+if (typeof CAFE24.SHOP_FRONT_REVIEW_TALK_REVIEW_COUNT !== "undefined") {CAFE24.SHOP_FRONT_REVIEW_TALK_REVIEW_COUNT.bIsReviewTalk = 'F';}
+var aLogData = {"log_server1":"eclog2-225.cafe24.com","log_server2":"elg-db-svcm-367.cafe24.com","mid":"arfino","stype":"e","domain":"","shop_no":1,"lang":"ko_KR","ver":2,"hash":"","ca":"cfa-js.cafe24.com\/cfa.js","etc":"","mobile_flag":"F"};
+var sMileageName = '적립금';
+var sMileageUnit = '[:PRICE:]원';
+var sDepositName = '예치금';
+var sDepositUnit = '원';
+CAFE24.SHOP_CURRENCY_INFO = {"1":{"aShopCurrencyInfo":{"currency_code":"KRW","currency_no":"410","currency_symbol":"\uffe6","currency_name":"South Korean won","currency_desc":"\uffe6 \uc6d0 (\ud55c\uad6d)","decimal_place":0,"round_method_type":"F"},"aShopSubCurrencyInfo":null,"aBaseCurrencyInfo":{"currency_code":"KRW","currency_no":"410","currency_symbol":"\uffe6","currency_name":"South Korean won","currency_desc":"\uffe6 \uc6d0 (\ud55c\uad6d)","decimal_place":0,"round_method_type":"F"},"fExchangeRate":1,"fExchangeSubRate":null,"aFrontCurrencyFormat":{"head":"","tail":""},"aFrontSubCurrencyFormat":{"head":"","tail":""}}}; var SHOP_CURRENCY_INFO = CAFE24.SHOP_CURRENCY_INFO;
+CAFE24.APPSCRIPT_ASSIGN_DATA = CAFE24.APPSCRIPT_ASSIGN_DATA || [{'src':'https://apps.hyapps.com/BannerManagerApp/view/HY.js?vs=20250828155030.1&client_id=gSOPn7dNJxAp8cu31kDDtD'},{'src':'https://calendar-app.cafe24.com/openapi/inject.js?vs=20250829144152.1&client_id=A8RQp67UIt9nBlqvThz2jC'},{'src':'https://review.poxo.com/script/pro_review.js?mall_id=arfino&shop_no=1&star=%23000000&graph=%23000000&url_api=pro-review.cafe24.com&url_static=https%3A%2F%2Freview.poxo.com%2Fscript&vs=20260413175910.1&client_id=w7eza2j1NKcXPrZPW3iwvF'},{'src':'https://static.alphwidget.com/script/Push-Script/PRODUCTION/alphapush_main.js?vs=20251013000451.1&client_id=tgHZp6LCG5KuklqvIYgrtB'},{'src':'https://static.alphwidget.com/script/Push-Script/PRODUCTION/alphapush_onsite.js?vs=20251020011025.1&client_id=tgHZp6LCG5KuklqvIYgrtB'},{'src':'https://static.alphwidget.com/script/Common-Script/PRODUCTION/alphacore_alpha_data.js?vs=20260205192126.1&client_id=tgHZp6LCG5KuklqvIYgrtB'},{'src':'https://api-serv.net/js/pixel?mid=arfino&vs=20260524082935.1&client_id=Q9cpfk94O6rHL9T2j7ov4B'},{'src':'https://app4you.cafe24.com/SmartPopup/tunnel/scriptTags?vs=20250925160646.1&client_id=AyPifbe9TEq8i4fmvfUgaZ', 'integrity': 'sha384-j+WLOriOo0/sb+Ho5fn6lGPknv0cW+wMxOLlx8qpy01ShkkynynGNJQ53niqAdze'},{'src':'https://cax.channel.io/cafe24/plugins/9d5c0917-56f7-44d6-88dd-83613da84d20.js?vs=20260415213543.1&client_id=QKWiDNLcK9koJO0swpfnuE'}];
+CAFE24.APPSCRIPT_SDK_DATA = CAFE24.APPSCRIPT_SDK_DATA || ['application','category','collection','design','product','store','customer','order','promotion','supply','community','notification','mileage','salesreport','analytics','personal','privacy','shipping'];
+var EC_APPSCRIPT_ASSIGN_DATA = CAFE24.getDeprecatedNamespace('EC_APPSCRIPT_ASSIGN_DATA');
+var EC_APPSCRIPT_SDK_DATA = CAFE24.getDeprecatedNamespace('EC_APPSCRIPT_SDK_DATA');
+</script></body>
+</html>
+<script>
+/* Local-navigation shim (lightweight, click-only — no MutationObserver, no timers).
+   With <base> pointing at the live site, all assets load from the CDN. This intercepts
+   clicks on links to mirrored pages and routes them to the local file instead, and keeps
+   in-page (#) anchors scrolling locally instead of navigating to the live domain. */
+(function () {
+  var prod = {32:1,38:1,40:1,41:1,46:1,47:1,48:1,49:1,50:1,51:1,52:1,53:1};
+  var cat = {
+    '0':'category-all.html','1':'category-all.html','9':'category-all.html','13':'category-all.html',
+    '42':'category-42.html','44':'category-44.html','45':'category-45.html','46':'category-all.html',
+    '47':'category-47.html','48':'category-48.html','49':'category-49.html','51':'category-gift.html',
+    '53':'category-53.html'
+  };
+  var stat = {
+    'collection':'collection.html','experience':'experience.html','contact':'contact.html',
+    'stockist':'stockist.html','about':'about.html','index':'index.html'
+  };
+  function mapLink(href) {
+    if (!href) return null;
+    if (/^(javascript:|mailto:|tel:)/i.test(href)) return null;
+    var a = document.createElement('a'); a.href = href;
+    var host = a.hostname || '';
+    if (host && !/nectarofficial\.com$/.test(host) && !/arfino\.cafe24\.com$/.test(host) && host !== location.hostname) return null;
+    var p = a.pathname || '', q = a.search || '', m;
+    if (/\/product\/detail\.html$/i.test(p) && (m = /[?&]product_no=(\d+)/.exec(q)) && prod[m[1]]) return 'product-' + m[1] + '.html';
+    if ((m = /\/product\/[^\/]+\/(\d+)(?:\/|$)/.exec(p)) && prod[m[1]]) return 'product-' + m[1] + '.html';
+    if (/\/product\/list\.html$/i.test(p) && (m = /[?&]cate_no=(\d+)/.exec(q)) && cat[m[1]]) return cat[m[1]];
+    if ((m = /\/category\/[^\/]+\/(\d+)(?:\/|$)/.exec(p)) && cat[m[1]]) return cat[m[1]];
+    if ((m = /\/([A-Za-z]+)\.html$/.exec(p))) { var n = m[1].toLowerCase(); if (stat[n]) return stat[n]; }
+    if (p === '' || p === '/') return 'index.html';
+    return null;
+  }
+  var dir = location.href.replace(/[#?].*$/, '').replace(/[^\/]*$/, '');
+  document.addEventListener('click', function (e) {
+    var el = e.target;
+    while (el && el.tagName !== 'A') el = el.parentNode;
+    if (!el) return;
+    var raw = el.getAttribute('href');
+    if (raw && raw.charAt(0) === '#') {
+      e.preventDefault(); e.stopPropagation();
+      if (raw.length > 1) {
+        var id = raw.slice(1);
+        var tgt = document.getElementById(id) || document.getElementsByName(id)[0];
+        if (tgt && tgt.scrollIntoView) tgt.scrollIntoView({ behavior: 'smooth' });
+      }
+      return;
+    }
+    var t = mapLink(raw);
+    if (t) { e.preventDefault(); e.stopPropagation(); location.href = dir + t; }
+  }, true);
+})();
+</script>

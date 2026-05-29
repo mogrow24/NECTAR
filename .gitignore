@@ -1,0 +1,5 @@
+# 작업용 원본 다운로드 / 캡처 (배포·저장소에 불필요)
+.live_*.html
+.tpl_*.html
+.ref_*.png
+.fig_*.png

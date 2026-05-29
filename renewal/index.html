@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NECTAR — 리뉴얼 시안</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- 실제 사이트에서 쓰던 폰트: Spectral(영문 세리프) + Pretendard + Noto Sans KR -->
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@latest/dist/web/static/pretendard-dynamic-subset.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="topbar">The Red Invitation · 회원가입 시 적립금 즉시 증정 · 15만원 이상 무료배송</div>
+
+<header class="hdr">
+  <div class="hdr-in">
+    <button class="nav-toggle" id="navToggle" aria-label="메뉴">☰</button>
+    <nav class="nav" id="mainNav">
+      <a href="../site/category-all.html">Shop</a>
+      <a href="../site/category-47.html">Object</a>
+      <a href="../site/about.html">Brand</a>
+      <a href="../site/contact.html">Contact</a>
+    </nav>
+    <a class="logo" href="index.html">NECTAR</a>
+    <div class="utils">
+      <a href="#">Search</a>
+      <a href="https://nectarofficial.com/member/login.html">Login</a>
+      <a class="cart" href="https://nectarofficial.com/order/basket.html">Cart <b>0</b></a>
+    </div>
+  </div>
+</header>
+
+<!-- ===== 브랜드 필름 히어로 (상단 / 아래 상품이 살짝 걸쳐 보이게) ===== -->
+<section class="film-hero">
+  <div class="ghost">NECTAR</div>
+  <div class="inner">
+    <span class="eyebrow">The Red Invitation</span>
+    <h1>The Red<br>Invitation</h1>
+    <p class="ko">매일의 식탁을, 초대의 순간으로 — 유럽산 크리스탈 오브제.</p>
+    <a class="play" href="../site/about.html">
+      <span class="circ">▶</span>
+      <span class="lbl">브랜드 필름 재생</span>
+    </a>
+  </div>
+  <a class="scroll-cue" href="#best">Scroll</a>
+</section>
+
+<!-- ===== 상품 그리드 : 판매 메인, 상단 가까이 크게 =====
+     [Cafe24 통합 시] 아래 .grid 내부를 mundane/html/layout/main.html 의
+     xans-product-listmain 모듈 블록으로 교체하면 실제 상품 자동 연동 -->
+<section class="section" id="best">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="titles">
+        <span class="eyebrow">This Month</span>
+        <h2>Best Sellers</h2>
+        <div class="ko">이달의 인기 제품</div>
+      </div>
+      <a class="more" href="../site/category-all.html">전체 보기</a>
+    </div>
+
+    <!-- 탭: 클릭 시 제품만 필터(페이지 이동 X). 페이지 이동은 위 '전체 보기'만 -->
+    <div class="chips">
+      <button class="on" data-filter="all">All</button>
+      <button data-filter="bestseller">Bestseller</button>
+      <button data-filter="glassware">Glassware</button>
+      <button data-filter="essential">Essential</button>
+      <button data-filter="limited">Limited Edition</button>
+      <button data-filter="gifts">Gifts</button>
+    </div>
+
+    <div class="grid">
+      <a class="card" data-cat="glassware" href="../site/product-52.html">
+        <div class="card-thumb"><span class="badge sold">Sold out</span>
+          <img src="https://nectarofficial.com/web/product/medium/202602/261c56b6e17a1f417a82c549b453705a.png" alt="Floral Water Glass 2p Set"></div>
+        <div class="card-info"><div class="nm">Floral Water Glass</div><div class="nm-ko">넥타 플로럴 물컵 2p Set</div><div class="pr"><span class="won">₩34,800</span></div></div>
+      </a>
+      <a class="card" data-cat="glassware bestseller" href="../site/product-53.html">
+        <div class="card-thumb"><span class="badge sold">Sold out</span>
+          <img src="https://nectarofficial.com/web/product/medium/202602/dcfca0577722d9c10bb36877a06df206.png" alt="Gradation Water Glass 2p Set"></div>
+        <div class="card-info"><div class="nm">Gradation Water Glass</div><div class="nm-ko">넥타 그라데이션 물컵 2p Set</div><div class="pr"><span class="won">₩34,800</span></div></div>
+      </a>
+      <a class="card" data-cat="essential limited bestseller" href="../site/product-50.html">
+        <div class="card-thumb"><span class="badge">New</span>
+          <img src="https://nectarofficial.com/web/product/medium/202602/17d772e96e9e41f02b1416b335ecc972.png" alt="Bloom Crystal Stopper (Red)"></div>
+        <div class="card-info"><div class="nm">Bloom Crystal Stopper (Red)</div><div class="nm-ko">넥타 블룸 크리스탈 스토퍼</div><div class="pr"><span class="won">₩128,000</span></div></div>
+      </a>
+      <a class="card" data-cat="essential" href="../site/product-49.html">
+        <div class="card-thumb"><span class="badge">New</span>
+          <img src="https://nectarofficial.com/web/product/medium/202602/30af168d7fd388a215dfb7ebae4c1988.png" alt="Bloom Crystal Stopper (White)"></div>
+        <div class="card-info"><div class="nm">Bloom Crystal Stopper (White)</div><div class="nm-ko">넥타 블룸 크리스탈 스토퍼</div><div class="pr"><span class="won">₩128,000</span></div></div>
+      </a>
+      <a class="card" data-cat="glassware bestseller" href="../site/product-40.html">
+        <div class="card-thumb"><span class="badge sold">Sold out</span>
+          <img src="https://nectarofficial.com/web/product/medium/202509/1a6e83ecb13f16a5652b9a9fe8bcdb1e.png" alt="Velora Crystal Wine Glass (Red)"></div>
+        <div class="card-info"><div class="nm">Velora Crystal Wine Glass 2p Set</div><div class="nm-ko">넥타 벨로라 보르도 레드 와인잔</div><div class="pr"><span class="won">₩99,000</span></div></div>
+      </a>
+      <a class="card" data-cat="glassware" href="../site/product-38.html">
+        <div class="card-thumb"><span class="badge sold">Sold out</span>
+          <img src="https://nectarofficial.com/web/product/medium/202510/28c42f95a2128f43a1854663128f0b8e.png" alt="Velora Crystal Wine Glass (White)"></div>
+        <div class="card-info"><div class="nm">Velora Crystal Wine Glass 2p Set</div><div class="nm-ko">넥타 벨로라 화이트 와인잔</div><div class="pr"><span class="won">₩99,000</span></div></div>
+      </a>
+      <a class="card" data-cat="gifts" href="../site/product-41.html">
+        <div class="card-thumb"><span class="badge sold">Sold out</span>
+          <img src="https://nectarofficial.com/web/product/medium/202510/202bffcf62257237a515adfdc891ce68.png" alt="Alto Leather Wine Bag (Black)"></div>
+        <div class="card-info"><div class="nm">Alto Leather Wine Bag (Black)</div><div class="nm-ko">넥타 와인 콜키지 백</div><div class="pr"><span class="won">₩135,000</span></div></div>
+      </a>
+      <a class="card" data-cat="gifts bestseller" href="../site/product-32.html">
+        <div class="card-thumb"><span class="badge sold">Sold out</span>
+          <img src="https://nectarofficial.com/web/product/medium/202509/2121e071bfc2aafb38a6dfa0e2f8a98e.png" alt="Alto Leather Wine Bag (Red)"></div>
+        <div class="card-info"><div class="nm">Alto Leather Wine Bag</div><div class="nm-ko">넥타 와인 콜키지 백</div><div class="pr"><span class="won">₩135,000</span></div></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 브랜드 스토리 (About 녹임) ===== -->
+<section class="story">
+  <div class="story-in">
+    <div class="story-media">
+      <img src="https://nectarofficial.com/web/product/big/202602/623a8539c7fde0bd89a754ab41e5d1d0.png" alt="NECTAR table setting">
+    </div>
+    <div class="story-text">
+      <span class="eyebrow">Our Story</span>
+      <h2>매일의 식탁을,<br>초대의 순간으로</h2>
+      <p>
+        유럽산 무연 크리스탈로 빚어낸 일상의 오브제.<br>
+        한 잔의 물, 한 잔의 와인이 특별해지는 순간 —<br>
+        NECTAR는 당신의 테이블을 가장 우아한 무대로 바꿉니다.
+      </p>
+      <a class="lnk" href="../site/about.html">브랜드 이야기 →</a>
+    </div>
+  </div>
+  <div class="pillars">
+    <div class="pil"><div class="t">Made in Europe</div><div class="d">유럽 장인이 완성한 크리스탈</div></div>
+    <div class="pil"><div class="t">Lead-Free Crystal</div><div class="d">맑고 가벼운 무연 프리미엄 소재</div></div>
+    <div class="pil"><div class="t">Everyday Ritual</div><div class="d">매일을 특별하게 만드는 오브제</div></div>
+  </div>
+</section>
+
+<!-- ===== 카테고리 3분할 ===== -->
+<section class="section">
+  <div class="wrap">
+    <div class="sec-head"><div class="titles"><span class="eyebrow">Explore</span><h2>Shop by Object</h2><div class="ko">카테고리</div></div></div>
+    <div class="trio">
+      <a href="../site/category-48.html">
+        <img src="https://nectarofficial.com/web/product/medium/202602/261c56b6e17a1f417a82c549b453705a.png" alt="Glassware">
+        <div class="label"><div class="en">Glassware</div><div class="ko">워터글라스 · 와인잔</div><span class="go">View →</span></div>
+      </a>
+      <a href="../site/category-47.html">
+        <img src="https://nectarofficial.com/web/product/medium/202510/28c42f95a2128f43a1854663128f0b8e.png" alt="Bestseller">
+        <div class="label"><div class="en">Bestseller</div><div class="ko">이달의 인기</div><span class="go">View →</span></div>
+      </a>
+      <a href="../site/category-gift.html">
+        <img src="https://nectarofficial.com/web/product/big/202509/acc981d55116f778fc6ed3812a0447f9.jpg" alt="Gift Set">
+        <div class="label"><div class="en">Gifts</div><div class="ko">선물 · 기프트 세트</div><span class="go">View →</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 멤버십 (중앙형 레드 밴드) ===== -->
+<section class="member-band">
+  <span class="eyebrow">Membership</span>
+  <h3>레드 인비테이션 멤버십</h3>
+  <p class="m-desc">NECTAR 멤버가 되시면 가입 즉시 적립금을 드리고,<br>신제품과 한정 컬렉션 소식을 가장 먼저 전해드립니다.</p>
+  <div class="benefits">
+    <span>가입 즉시 적립금 증정</span>
+    <span>신제품 우선 안내</span>
+    <span>한정 컬렉션 초대</span>
+  </div>
+  <a class="btn" href="https://nectarofficial.com/member/join.html">회원가입 하기</a>
+</section>
+
+<!-- ===== 푸터 ===== -->
+<footer class="ft">
+  <div class="ft-in">
+    <div>
+      <div class="flogo">NECTAR</div>
+      <p>주식회사 아르피노 (ARFINO) · 대표 황수연<br>서울특별시 강남구 강남대로 464 (역삼동)<br>T. 02-2028-8399 · hello@nectarofficial.com<br>통신판매업신고 2025-서울강남-05084</p>
+    </div>
+    <div><h4>Shop</h4><ul>
+      <li><a href="../site/category-all.html">Collection</a></li>
+      <li><a href="../site/category-47.html">Object</a></li>
+      <li><a href="../site/about.html">Brand</a></li>
+      <li><a href="https://nectarofficial.com/order/basket.html">Cart</a></li>
+    </ul></div>
+    <div><h4>Help</h4><ul>
+      <li><a href="#">이용약관</a></li>
+      <li><a href="#">개인정보처리방침</a></li>
+      <li><a href="#">배송 / 교환 / 반품</a></li>
+      <li><a href="https://nectarofficial.com/member/login.html">My Account</a></li>
+    </ul></div>
+  </div>
+  <div class="ft-bottom">
+    <span>© NECTAR. All rights reserved.</span>
+    <span class="sns"><a href="#">Instagram</a><a href="#">KakaoTalk</a><a href="#">YouTube</a><a href="#">Naver</a></span>
+  </div>
+</footer>
+
+<!-- ===== 중앙 팝업 (리뷰 적립 / 반반 버튼) ===== -->
+<div class="pop-overlay" id="popOverlay">
+  <div class="popup" role="dialog" aria-modal="true">
+    <div class="p-body">
+      <div class="p-left">
+        <div class="p-logo">NECTAR</div>
+        <h3>구매 후 리뷰 작성 시<br><span class="hl">최대 5,000원</span> 적립금 혜택</h3>
+        <ul class="pts">
+          <li>베스트 리뷰 선정 시 3,000원 적립</li>
+          <li>포토 리뷰 작성 시 5,000원 적립</li>
+        </ul>
+      </div>
+      <div class="p-right">
+        <img src="https://nectarofficial.com/web/product/big/202602/623a8539c7fde0bd89a754ab41e5d1d0.png" alt="">
+      </div>
+    </div>
+    <div class="p-btns">
+      <button class="dont" type="button">오늘 하루 열지 않기</button>
+      <button class="close" type="button">닫기</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function () {
+    var ov = document.getElementById('popOverlay');
+    if (!ov) return;
+    try {
+      var until = localStorage.getItem('nectar_pop_v6');
+      if (until && Date.now() < +until) { ov.classList.add('hide'); return; }
+    } catch (e) {}
+    function hide() { ov.classList.add('hide'); }
+    ov.querySelector('.close').addEventListener('click', hide);
+    ov.querySelector('.dont').addEventListener('click', function () {
+      try { localStorage.setItem('nectar_pop_v6', Date.now() + 86400000); } catch (e) {}
+      hide();
+    });
+    ov.addEventListener('click', function (e) { if (e.target === ov) hide(); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') hide(); });
+  })();
+
+  // 모바일 햄버거 메뉴 토글
+  (function () {
+    var t = document.getElementById('navToggle'), n = document.getElementById('mainNav');
+    if (t && n) t.addEventListener('click', function () { n.classList.toggle('open'); });
+  })();
+
+  // 카테고리 칩 = 탭: 클릭 시 제품 그리드만 필터(페이지 이동 없음)
+  (function () {
+    var chips = document.querySelectorAll('.chips button');
+    var cards = document.querySelectorAll('#best .grid .card');
+    chips.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        chips.forEach(function (b) { b.classList.remove('on'); });
+        btn.classList.add('on');
+        var f = btn.getAttribute('data-filter');
+        cards.forEach(function (c) {
+          var cats = (c.getAttribute('data-cat') || '').split(' ');
+          if (f === 'all' || cats.indexOf(f) >= 0) c.classList.remove('hide');
+          else c.classList.add('hide');
+        });
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>
