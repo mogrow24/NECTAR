@@ -14,9 +14,9 @@
   --cream-2: #ece8e1;
   --white: #fff;
 
-  /* 실제 사이트에서 쓰던 폰트 */
-  --serif: "Spectral", serif;                                  /* 영문 헤드라인 / NECTAR 워드마크 */
-  --sans: "Pretendard", "Noto Sans KR", "Apple SD Gothic Neo", sans-serif; /* 본문 / 한글 */
+  /* 실제 사이트와 동일한 폰트 스택 (--sub/--base-font-familiy 그대로) */
+  --serif: 'Spectral', sans-serif;                             /* 사이트 --sub-font-familiy : 영문 헤드라인/워드마크 */
+  --sans: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Inter', 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif; /* 사이트 --base-font-familiy : 본문/한글 */
 
   --max: 1320px;
   --pad: 48px;
@@ -177,7 +177,17 @@ ul { list-style: none; }
 @media (max-width: 620px){ .popup .p-body{ grid-template-columns: 1fr; } .popup .p-right{ min-height: 180px; order: -1; } }
 
 @media (max-width: 1024px){ .grid{ grid-template-columns: repeat(2,1fr);} .trio{ grid-template-columns:1fr;} .ft-in{ grid-template-columns:1fr;} }
-@media (max-width: 560px){ :root{ --pad:18px; } .grid{ grid-template-columns: repeat(2,1fr); gap:18px 12px;} .section{ padding:52px 0;} .film-hero{ min-height: calc(100vh - 150px);} }
+@media (max-width: 560px){
+  :root{ --pad:18px; }
+  .grid{ grid-template-columns: repeat(2,1fr); gap:18px 12px;}
+  .section{ padding:52px 0;}
+  .film-hero{ min-height: calc(100vh - 150px);}
+  /* 모바일 헤더: 로고와 우측 메뉴 겹침 방지 */
+  .logo{ font-size:20px; letter-spacing:.22em; padding-left:.22em; }
+  .utils{ gap:12px; font-size:10.5px; }
+  .utils a:first-child{ display:none; } /* Search 라벨 숨김(공간 확보) */
+  .nav-toggle{ font-size:20px; }
+}
 
 /* ---------- chips as tab buttons (제품만 필터) ---------- */
 .chips button { padding: 9px 20px; border: 1px solid var(--line); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--gray); background: #fff; transition: .2s; }
