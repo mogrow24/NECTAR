@@ -3,3 +3,10 @@
 .tpl_*.html
 .ref_*.png
 .fig_*.png
+
+# 스크린샷 검증용 임시 파일 / node 의존성
+.shot.js
+.shot_*.png
+node_modules/
+package.json
+package-lock.json
