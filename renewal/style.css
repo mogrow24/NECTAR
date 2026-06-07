@@ -156,6 +156,14 @@ ul { list-style: none; }
 /* ---------- 중앙 팝업 ---------- */
 .pop-overlay { position: fixed; inset: 0; background: rgba(18,18,18,.6); z-index: 200; display: flex; align-items: center; justify-content: center; padding: 20px; }
 .pop-overlay.hide { display: none; }
+
+/* ===== 브랜드 필름 모달 (유튜브) ===== */
+.film-modal { position: fixed; inset: 0; background: rgba(8,8,8,.9); z-index: 300; display: none; align-items: center; justify-content: center; padding: 24px; }
+.film-modal.on { display: flex; }
+.film-modal .fm-box { position: relative; width: min(980px, 92vw); }
+.film-modal .fm-frame { position: relative; width: 100%; aspect-ratio: 16/9; background: #000; }
+.film-modal .fm-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.film-modal .fm-close { position: absolute; top: -42px; right: 0; width: 34px; height: 34px; color: #fff; font-size: 20px; line-height: 1; background: none; border: 0; cursor: pointer; }
 .popup { width: min(680px, 94vw); background: #fff; box-shadow: 0 40px 90px rgba(0,0,0,.35); display: flex; flex-direction: column; animation: pop .3s ease; }
 @keyframes pop { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
 .popup .p-body { display: grid; grid-template-columns: 1fr 1fr; align-items: stretch; }

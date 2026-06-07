@@ -13,7 +13,14 @@
 </head>
 <body>
 
-<div class="topbar">The Red Invitation · 회원가입 시 적립금 즉시 증정 · 15만원 이상 무료배송</div>
+<!-- ===== 상단 띠배너 : 모렌비(Morenvy Banner Manager)로 등록·교체 =====
+     카페24 배포 시 아래 .topbar 내부를 모렌비 배너영역 코드로 교체하면
+     관리자(앱)에서 코드 수정 없이 띠배너를 등록/교체할 수 있습니다.
+       <div class="topbar" morenvy-banner-group="발급받은_그룹ID">
+         <div morenvy-banner><a href="{#link_1}">{#imgTag_1}</a></div>
+       </div>
+     ↓ 정적 프리뷰용 기본 텍스트 (모렌비 스크립트가 로드되면 위 배너로 대체) -->
+<div class="topbar" morenvy-banner-group="">The Red Invitation · 회원가입 시 적립금 즉시 증정 · 15만원 이상 무료배송</div>
 
 <header class="hdr">
   <div class="hdr-in">
@@ -41,7 +48,10 @@
     <span class="eyebrow">The Red Invitation</span>
     <h1>The Red<br>Invitation</h1>
     <p class="ko">매일의 식탁을, 초대의 순간으로 — 유럽산 크리스탈 오브제.</p>
-    <a class="play" href="../site/about.html">
+    <!-- 브랜드 필름: 카페24에 등록된 유튜브 영상 ID를 data-video 에 넣으면 모달로 재생됨.
+         ↓ "REPLACE_VIDEO_ID" 를 실제 영상 ID로 교체 (예: youtu.be/Abcd1234 → Abcd1234)
+         ID 미설정 시에는 NECTAR 유튜브 채널이 새 탭으로 열립니다. -->
+    <a class="play" href="#filmModal" id="filmPlay" data-video="REPLACE_VIDEO_ID">
       <span class="circ">▶</span>
       <span class="lbl">브랜드 필름 재생</span>
     </a>
@@ -195,13 +205,18 @@
       <li><a href="../site/stockist.html">Stockist</a></li>
       <li><a href="../site/contact.html">Contact</a></li>
     </ul></div>
+    <div><h4>Social</h4><ul>
+      <li><a href="https://www.instagram.com/nectarofficial_com/" target="_blank" rel="noopener">Instagram</a></li>
+      <li><a href="https://pf.kakao.com/_xixiexen" target="_blank" rel="noopener">Kakaotalk</a></li>
+      <li><a href="https://www.youtube.com/@NECTAR_OFFICIAL" target="_blank" rel="noopener">Youtube</a></li>
+    </ul></div>
     <div><h4>Help</h4><ul>
       <li><a href="#">이용약관</a></li>
       <li><a href="#">개인정보처리방침</a></li>
       <li><a href="#">배송 / 교환 / 반품</a></li>
       <li><a href="https://nectarofficial.com/member/login.html">My Account</a></li>
     </ul></div>
-    <div><h4>Social</h4><ul>
+    <div style="display:none"><ul>
       <li><a href="https://www.instagram.com/nectarofficial_com/" target="_blank" rel="noopener">Instagram</a></li>
       <li><a href="https://pf.kakao.com/_xixiexen" target="_blank" rel="noopener">Kakaotalk</a></li>
       <li><a href="https://www.youtube.com/@NECTAR_OFFICIAL" target="_blank" rel="noopener">Youtube</a></li>
@@ -211,6 +226,14 @@
     <span>© NECTAR. All rights reserved.</span>
   </div>
 </footer>
+
+<!-- ===== 브랜드 필름 모달 (유튜브 임베드) ===== -->
+<div class="film-modal" id="filmModal" role="dialog" aria-modal="true" aria-label="브랜드 필름">
+  <div class="fm-box">
+    <button class="fm-close" type="button" aria-label="닫기">✕</button>
+    <div class="fm-frame"></div>
+  </div>
+</div>
 
 <!-- ===== 중앙 팝업 (리뷰 적립 / 반반 버튼) ===== -->
 <div class="pop-overlay" id="popOverlay">
@@ -276,7 +299,41 @@
       });
     });
   })();
+
+  // 브랜드 필름 모달 (유튜브) — data-video 의 영상 ID 를 모달 안에서 재생
+  (function () {
+    var btn = document.getElementById('filmPlay');
+    var modal = document.getElementById('filmModal');
+    if (!btn || !modal) return;
+    var frame = modal.querySelector('.fm-frame');
+    var channel = 'https://www.youtube.com/@NECTAR_OFFICIAL';
+    function open(e) {
+      e.preventDefault();
+      var id = btn.getAttribute('data-video');
+      if (!id || id === 'REPLACE_VIDEO_ID') { window.open(channel, '_blank', 'noopener'); return; }
+      frame.innerHTML = '<iframe src="https://www.youtube.com/embed/' + id +
+        '?autoplay=1&rel=0" title="NECTAR 브랜드 필름" frameborder="0" ' +
+        'allow="autoplay; encrypted-media; fullscreen" allowfullscreen></iframe>';
+      modal.classList.add('on');
+      document.body.style.overflow = 'hidden';
+    }
+    function close() {
+      modal.classList.remove('on');
+      frame.innerHTML = '';
+      document.body.style.overflow = '';
+    }
+    btn.addEventListener('click', open);
+    modal.querySelector('.fm-close').addEventListener('click', close);
+    modal.addEventListener('click', function (e) { if (e.target === modal) close(); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+  })();
 </script>
+
+<!-- ===== 모렌비(Morenvy Banner Manager) 설치 스크립트 =====
+     카페24 관리자 > 앱 > 배너관리(모렌비, mall_id=arfino)에서 발급되는
+     설치 스크립트를 아래에 붙여넣으면 띠배너/메인배너가 자동 노출·교체됩니다.
+       <script src="//arfino.cafe24.com/web/upload/appfiles/xxxxxxxx.js"></script>
+     (정적 프리뷰에서는 동작하지 않으며, 카페24 배포 시에만 적용됩니다) -->
 
 </body>
 </html>
