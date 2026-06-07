@@ -58,7 +58,8 @@
       "Bash(node .shot.js \"site/category-gift.html\" \".shot_gift.png\")",
       "Bash(node .shot.js \"site/category-48.html\" \".shot_c48.png\")",
       "Bash(node .shot.js \"site/about.html\" \".shot_about.png\")",
-      "Bash(curl -s -o /dev/null -w '%{http_code}' https://mogrow24.github.io/NECTAR/__TRACKED_VAR__)"
+      "Bash(curl -s -o /dev/null -w '%{http_code}' https://mogrow24.github.io/NECTAR/__TRACKED_VAR__)",
+      "WebFetch(domain:nectarofficial.com)"
     ],
     "additionalDirectories": [
       "c:\\Users\\dbslg\\Desktop\\NECTAR\\site",
