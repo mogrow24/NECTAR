@@ -87,8 +87,6 @@ ul { list-style: none; }
   width: 177.78vh; min-width: 100%; height: 56.25vw; min-height: 100%; border: 0; }
 .film-hero .film-bg::after { content: ""; position: absolute; inset: 0; background: rgba(10,10,10,.42); }
 .film-hero::before { content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none; background: radial-gradient(120% 90% at 50% 115%, rgba(199,23,42,.5), transparent 55%); }
-.film-hero .ghost { z-index: 1; }
-.film-hero .ghost { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); font-family: var(--serif); font-weight: 600; font-size: 30vw; color: rgba(255,255,255,.035); letter-spacing: .05em; white-space: nowrap; pointer-events: none; }
 .film-hero .inner { position: relative; z-index: 2; max-width: 760px; }
 .film-hero .eyebrow { color: #ff8a94; }
 .film-hero h1 { font-family: var(--serif); font-weight: 500; font-size: clamp(40px, 6vw, 86px); line-height: 1.05; letter-spacing: .01em; margin: 18px 0 14px; }
