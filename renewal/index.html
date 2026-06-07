@@ -253,6 +253,12 @@
 </div>
 
 <script>
+  // 새로고침/재진입 시 항상 홈 상단에서 시작 (브라우저 스크롤 위치 복원 끄기)
+  (function () {
+    try { if ('scrollRestoration' in history) history.scrollRestoration = 'manual'; } catch (e) {}
+    window.addEventListener('load', function () { window.scrollTo(0, 0); });
+  })();
+
   (function () {
     var ov = document.getElementById('popOverlay');
     if (!ov) return;
