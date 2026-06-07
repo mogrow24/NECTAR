@@ -1,0 +1,74 @@
+<!-- =========================================================================
+  NECTAR · 메인 배너 1 (브랜드 필름 히어로) — 모렌비 배너코드
+  ---------------------------------------------------------------------------
+  ▶ 붙여넣는 곳 : 모렌비 배너관리자 → 배너영역 "메인 배너 1"(영역ID 78b4)
+                 → 1번 배너 → 우측 [HTML] 필드에 이 파일 전체를 붙여넣기
+  ▶ 왼쪽 폼 입력값(이 코드가 끌어다 쓰는 변수):
+      · 텍스트 1   → {#text_1}  : 상단 eyebrow  (예: The Red Invitation)
+      · 텍스트 2   → {#text_2}  : 큰 제목       (예: The Red Invitation)
+      · 텍스트 3   → {#text_3}  : 버튼 문구     (예: 브랜드 필름 보기)
+      · 링크 1     → {#link_1} / {#target_1}   : 버튼 클릭 시 이동
+      · 동영상 URL 1 → {#video_1} : PC 영상  (16/9, 자동재생 ✔)  = youtu.be/pXa7K_1Dp8I
+      · 동영상 URL 2 → {#video_2} : 모바일 영상 (9/16, 자동재생 ✔)
+  ▶ 디자인(폰트·레이아웃·고스트 텍스트·CSS)은 우리 스킨 그대로,
+     영상/문구/링크만 관리자에서 코드 수정 없이 교체됩니다.
+  ⚠ 브라우저 자동재생 정책상 영상은 "음소거(mute)" 상태여야 자동재생됩니다.
+     (모렌비에서 자동재생 ✔ 시 보통 mute 파라미터가 함께 들어갑니다.)
+  ========================================================================= -->
+<section class="nectar-hero">
+  <!-- 영상 배경: PC = video_1(16:9), 모바일 = video_2(9:16) -->
+  <div class="nectar-hero__media nectar-hero__media--pc">{#video_1}</div>
+  <div class="nectar-hero__media nectar-hero__media--mo">{#video_2}</div>
+  <div class="nectar-hero__scrim"></div>
+
+  <span class="nectar-hero__ghost">NECTAR</span>
+  <div class="nectar-hero__inner">
+    <span class="nectar-hero__eyebrow">{#text_1}</span>
+    <h1 class="nectar-hero__title">{#text_2}</h1>
+    <a class="nectar-hero__cta" href="{#link_1}" target="{#target_1}">
+      <span class="nectar-hero__circ">&#9658;</span>
+      <span class="nectar-hero__lbl">{#text_3}</span>
+    </a>
+  </div>
+</section>
+
+<style>
+/* NECTAR 메인 히어로 — scoped (.nectar-hero), 라운드 없음(브랜드 가이드) */
+.nectar-hero { position: relative; min-height: 78vh; background: #121212; color: #fff;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; overflow: hidden; padding: 60px 24px; }
+.nectar-hero, .nectar-hero * { box-sizing: border-box; }
+
+/* 영상 cover 배치 (iframe은 object-fit이 안 되므로 비율 기반으로 화면을 덮음) */
+.nectar-hero__media { position: absolute; inset: 0; overflow: hidden; z-index: 0; pointer-events: none; }
+.nectar-hero__media iframe,
+.nectar-hero__media video,
+.nectar-hero__media > * { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); border: 0; }
+.nectar-hero__media--pc iframe,
+.nectar-hero__media--pc > * { width: 177.78vh; min-width: 100%; height: 56.25vw; min-height: 100%; }
+.nectar-hero__media--mo { display: none; }
+.nectar-hero__media--mo iframe,
+.nectar-hero__media--mo > * { width: 56.25vh; min-width: 100%; height: 177.78vw; min-height: 100%; }
+
+.nectar-hero__scrim { position: absolute; inset: 0; z-index: 1;
+  background: radial-gradient(120% 90% at 50% 115%, rgba(199,23,42,.45), transparent 55%), rgba(10,10,10,.42); }
+.nectar-hero__ghost { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+  z-index: 1; font-family: 'Spectral', serif; font-weight: 600; font-size: 30vw;
+  color: rgba(255,255,255,.05); letter-spacing: .05em; white-space: nowrap; pointer-events: none; }
+.nectar-hero__inner { position: relative; z-index: 2; max-width: 760px; }
+.nectar-hero__eyebrow { font-size: 11px; letter-spacing: .32em; text-transform: uppercase;
+  color: #ff8a94; font-weight: 600; }
+.nectar-hero__title { font-family: 'Spectral', serif; font-weight: 500;
+  font-size: clamp(40px, 6vw, 86px); line-height: 1.05; margin: 18px 0 14px; }
+.nectar-hero__cta { display: inline-flex; align-items: center; gap: 14px; margin-top: 30px; color: #fff; text-decoration: none; }
+.nectar-hero__circ { width: 60px; height: 60px; border-radius: 50%; border: 1px solid rgba(255,255,255,.55);
+  display: flex; align-items: center; justify-content: center; font-size: 15px; transition: .25s; }
+.nectar-hero__cta:hover .nectar-hero__circ { background: #c7172a; border-color: #c7172a; }
+.nectar-hero__lbl { font-size: 12px; letter-spacing: .2em; text-transform: uppercase; }
+
+@media (max-width: 768px) {
+  .nectar-hero { min-height: 72vh; }
+  .nectar-hero__media--pc { display: none; }
+  .nectar-hero__media--mo { display: block; }
+}
+</style>
