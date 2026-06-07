@@ -63,8 +63,8 @@
   /* ===== product grid (thin grid lines) ===== */
   .grid{ display:grid; grid-template-columns:repeat(4,1fr); margin-top:36px;
     border-top:1px solid var(--grid); border-left:1px solid var(--grid); }
-  .card{ display:block; border-right:1px solid var(--grid); border-bottom:1px solid var(--grid); padding:36px 12px 28px; }
-  .card-thumb{ position:relative; aspect-ratio:312/360; background:#fff; display:flex; align-items:center; justify-content:center; overflow:hidden; }
+  .card{ display:block; border-right:1px solid var(--grid); border-bottom:1px solid var(--grid); padding:32px 12px 25px; }
+  .card-thumb{ position:relative; aspect-ratio:312/324; background:#fff; display:flex; align-items:center; justify-content:center; overflow:hidden; }
   .card-thumb img{ width:82%; height:82%; object-fit:contain; mix-blend-mode:multiply; transition:transform .5s ease; }
   .card:hover .card-thumb img{ transform:scale(1.05); }
   .card-thumb .badge{ position:absolute; top:0; left:0; background:var(--ink); color:#fff; font-size:10px; letter-spacing:.1em;
@@ -104,13 +104,17 @@
     .ft-in > div:first-child{ grid-column:1 / -1; margin-bottom:8px; }
   }
   @media (max-width:760px){
-    .hdr-nav{ gap:28px; font-size:12px; }
+    .nav-toggle{ display:block; }
+    .hdr-nav{ position:absolute; top:100%; left:0; right:0; height:auto; gap:0;
+      flex-direction:column; background:#fff; border-bottom:1px solid var(--line); display:none; }
+    .hdr-nav.open{ display:flex; }
+    .hdr-nav a{ width:100%; padding:14px var(--pad); border-bottom:1px solid var(--line); }
+    .hdr-nav a:last-child{ border-bottom:0; }
     .grid{ grid-template-columns:repeat(2,1fr); }
     .shop-head h1{ font-size:28px; }
   }
   @media (max-width:480px){
     :root{ --pad:18px; }
-    .hdr-nav{ gap:18px; }
     .shop-bar{ flex-direction:column; align-items:flex-start; gap:14px; }
     .ft-in{ grid-template-columns:1fr 1fr; }
   }
@@ -122,6 +126,7 @@
 
 <header class="hdr">
   <div class="hdr-top">
+    <button class="nav-toggle" id="navToggle" aria-label="메뉴" aria-expanded="false">☰</button>
     <a class="logo" href="../renewal/index.html">NECTAR</a>
     <div class="utils">
       <a href="#" aria-label="검색"><svg viewBox="0 0 18.4 18.9"><path d="M13.6,13c1.2-1.4,2-3.2,2-5.2C15.6,3.5,12.1,0,7.8,0S0,3.5,0,7.8s3.5,7.8,7.8,7.8,3.3-.6,4.6-1.5l4.8,4.8.6-.6.6-.6-4.7-4.7ZM1.6,7.8C1.6,4.4,4.4,1.6,7.8,1.6s6.2,2.8,6.2,6.2-2.8,6.2-6.2,6.2S1.6,11.2,1.6,7.8Z"/></svg></a>
@@ -271,6 +276,17 @@
         });
       });
     });
+  })();
+
+  // 모바일 햄버거 메뉴 토글
+  (function () {
+    var t = document.getElementById('navToggle'), n = document.querySelector('.hdr-nav');
+    if (!t || !n) return;
+    t.addEventListener('click', function () {
+      var open = n.classList.toggle('open');
+      t.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    n.addEventListener('click', function (e) { if (e.target.tagName === 'A') n.classList.remove('open'); });
   })();
 </script>
 
