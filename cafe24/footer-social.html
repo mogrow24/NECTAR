@@ -1,0 +1,46 @@
+<!-- =========================================================================
+  NECTAR · 푸터 Social 블록 (Cafe24 붙여넣기용)
+  - 자체 스타일 포함(독립형). 테마 CSS와 충돌하지 않도록 .nectar-social 로 스코프.
+  - 링크: Instagram / Kakaotalk / Youtube (전부 새 탭)
+  - 적용 위치: [Cafe24 관리자] → 디자인(쇼핑몰) → 디자인 편집 →
+              레이아웃/공통 → footer.html (또는 footer 모듈)
+              → #footer 안, 카피라이트/회사정보 영역 근처에 그대로 붙여넣기
+  - rel="noopener" 로 새 탭 보안 처리.
+  ========================================================================= -->
+<div class="nectar-social">
+  <h4 class="nectar-social__title">Social</h4>
+  <ul class="nectar-social__list">
+    <li><a href="https://www.instagram.com/nectarofficial_com/" target="_blank" rel="noopener">Instagram</a></li>
+    <li><a href="https://pf.kakao.com/_xixiexen" target="_blank" rel="noopener">Kakaotalk</a></li>
+    <li><a href="https://www.youtube.com/@NECTAR_OFFICIAL" target="_blank" rel="noopener">Youtube</a></li>
+  </ul>
+</div>
+
+<style>
+/* NECTAR footer Social — scoped */
+.nectar-social { margin: 0; }
+.nectar-social__title {
+  margin: 0 0 14px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: #1a1a1a;
+  line-height: 1;
+}
+.nectar-social__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.nectar-social__list li { margin: 0; line-height: 2; }
+.nectar-social__list a {
+  font-size: 12px;
+  color: #8a857e;
+  text-decoration: none;
+  letter-spacing: .02em;
+  transition: color .15s ease;
+}
+.nectar-social__list a:hover,
+.nectar-social__list a:focus { color: #c7172a; }
+</style>
