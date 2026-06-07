@@ -48,6 +48,7 @@
     font-family:var(--sans); font-weight:500; font-size:12px; letter-spacing:.14em; text-transform:uppercase; }
   .hdr-nav a{ color:var(--ink); padding:4px 0; border-bottom:1px solid transparent; transition:.2s; }
   .hdr-nav a:hover{ color:var(--red); border-color:var(--red); }
+  .hdr-nav a.on{ color:var(--red); border-color:var(--red); }
 
   /* ===== page head (홈 Best Sellers .sec-head 와 동일 스타일) ===== */
   .shop{ padding:60px 0 0; }
@@ -62,8 +63,8 @@
   .cats{ display:flex; flex-wrap:wrap; gap:10px; }
   .cats button{ padding:9px 18px; border:1px solid var(--line); background:#fff; color:var(--ink);
     font-weight:500; font-size:13px; transition:.2s; }
-  .cats button.on{ background:var(--ink); color:#fff; border-color:var(--ink); }
-  .cats button:not(.on):hover{ border-color:var(--ink); }
+  .cats button.on{ background:#fff; color:#BE1818; border-color:#BE1818; }
+  .cats button:not(.on):hover{ border-color:#BE1818; color:#BE1818; }
   .sort{ font-size:14px; color:var(--ink); white-space:nowrap; cursor:pointer; }
 
   /* ===== product grid (thin grid lines) ===== */
