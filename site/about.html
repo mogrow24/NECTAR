@@ -4,6 +4,7 @@
 
 
     <head>
+<script src="../preview-guard.js"></script>
 <script>/* preview-guard: 라이브 도메인 자동이동 + 외부 앱스크립트 차단 (프리뷰 전용) */
 window.CAFE24=window.CAFE24||{};window.CAFE24.APPSCRIPT_ASSIGN_DATA=[];window.EC_APPSCRIPT_ASSIGN_DATA=[];
 (function(){try{var L=window.location,bad=/nectarofficial\.com|\.cafe24\.com/i;['assign','replace'].forEach(function(m){var o=L[m].bind(L);L[m]=function(u){if(bad.test(''+u)){return;}return o(u);};});var op=window.open;window.open=function(u){if(bad.test(''+u)){return null;}return op.apply(window,arguments);};}catch(e){}})();
