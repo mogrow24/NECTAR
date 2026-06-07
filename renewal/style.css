@@ -54,7 +54,9 @@ ul { list-style: none; }
 /* 통일 헤더 — 2줄형(로고 중앙 상단 + 아이콘 유틸 + nav 아래) */
 .hdr { position: sticky; top: 0; z-index: 80; background: #fff; border-bottom: 1px solid var(--line); }
 .hdr-top { position: relative; height: 72px; display: flex; align-items: center; justify-content: center; padding: 0 var(--pad); }
-.logo { font-family: var(--serif); font-weight: 600; font-size: 26px; letter-spacing: .44em; padding-left: .44em; color: var(--logo); }
+.logo { display: inline-flex; align-items: center; color: var(--logo); }
+.logo .logo-mark { height: 22px; width: auto; display: block; }
+.logo .st0 { fill: var(--logo); }
 .utils { position: absolute; right: var(--pad); top: 50%; transform: translateY(-50%); display: flex; gap: 20px; align-items: center; }
 .utils a { position: relative; display: flex; color: var(--logo); }
 .utils svg { width: 19px; height: 20px; fill: var(--logo); }
