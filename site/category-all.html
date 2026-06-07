@@ -120,6 +120,9 @@
   }
   @media (max-width:480px){
     :root{ --pad:18px; }
+    /* 좁은 폭에서 로고가 우측 아이콘과 겹치지 않도록 축소 */
+    .logo{ font-size:20px; letter-spacing:.24em; padding-left:.24em; }
+    .utils{ gap:15px; }
     .shop-bar{ flex-direction:column; align-items:flex-start; gap:14px; }
     .ft-in{ grid-template-columns:1fr 1fr; }
   }
