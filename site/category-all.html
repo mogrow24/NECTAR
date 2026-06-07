@@ -14,7 +14,8 @@
   :root{
     --red:#c71729; --ink:#121212; --gray:#808080; --line:#e0e0e0; --grid:#e8e8e8;
     --foot:#171717; --max:1320px; --pad:60px;
-    --logo:#1a1a3c;   /* 실사이트 로고 딥네이비 (이미지 근사값 — 정확 hex 주시면 교체) */
+    --logo:#1a1a3c;   /* 헤더 아이콘/햄버거 색 (딥네이비) */
+    --logo-mark:#BE1818;   /* NECTAR 로고 워드마크 색 (브랜드 레드) */
     --serif:'Spectral', serif;
     --sans:Pretendard, -apple-system, BlinkMacSystemFont, system-ui, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
   }
@@ -33,9 +34,9 @@
   /* ===== header (centered logo + utils) ===== */
   .hdr{ position:sticky; top:0; z-index:80; background:#fff; border-bottom:1px solid var(--line); }
   .hdr-top{ position:relative; height:72px; display:flex; align-items:center; justify-content:center; }
-  .logo{ display:inline-flex; align-items:center; color:var(--logo); }
+  .logo{ display:inline-flex; align-items:center; color:var(--logo-mark); }
   .logo .logo-mark{ height:22px; width:auto; display:block; }
-  .logo .st0{ fill:var(--logo); }
+  .logo .st0{ fill:var(--logo-mark); }
   .utils{ position:absolute; right:var(--pad); top:50%; transform:translateY(-50%); display:flex; gap:20px; align-items:center; }
   .utils a{ position:relative; display:flex; color:var(--logo); }
   .utils svg{ width:19px; height:20px; fill:var(--logo); }
