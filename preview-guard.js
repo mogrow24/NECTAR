@@ -70,5 +70,27 @@
       }
       // local 이 없으면(로그인/장바구니 등) 프리뷰에 머무름
     }, true);
+
+    // 4) 현재 들어온 페이지의 GNB 메뉴 활성 표시 (호버 스타일 고정)
+    function sectionOf(name) {
+      name = (name || '').toLowerCase();
+      if (/^category-/.test(name) || /^product-\d+\.html$/.test(name)) return 'shop';
+      if (name === 'collection.html') return 'collection';
+      if (name === 'about.html') return 'about';
+      if (name === 'experience.html') return 'experience';
+      if (name === 'contact.html') return 'contact';
+      return '';
+    }
+    function markActiveNav() {
+      var cur = sectionOf((location.pathname.split('/').pop() || 'index.html'));
+      if (!cur) return; // 홈 등은 활성 메뉴 없음
+      var links = document.querySelectorAll('.hdr-nav a, .nx-nav a');
+      for (var i = 0; i < links.length; i++) {
+        var href = (links[i].getAttribute('href') || '').split('/').pop();
+        if (sectionOf(href) === cur) { links[i].classList.add('on'); links[i].setAttribute('aria-current', 'page'); }
+      }
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', markActiveNav);
+    else markActiveNav();
   } catch (e) {}
 })();

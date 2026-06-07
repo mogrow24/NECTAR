@@ -213,7 +213,7 @@ ul { list-style: none; }
 
 /* ---------- chips as tab buttons (제품만 필터) ---------- */
 .chips button { padding: 9px 20px; border: 1px solid var(--line); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--gray); background: #fff; transition: .2s; }
-.chips button.on, .chips button:hover { border-color: var(--black); color: var(--black); }
+.chips button.on, .chips button:hover { border-color: #BE1818; color: #BE1818; }
 .card.hide { display: none; }
 
 /* ---------- brand story (About 녹임) ---------- */
