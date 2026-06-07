@@ -618,7 +618,36 @@ CAFE24.ROUTE = {"is_mobile":false,"is_need_route":false,"language_code":"ZZ","pa
 <style type="text/css">
 
 </style>
-<title> -  - NECTAR</title></head>
+<title> -  - NECTAR</title>
+<!-- ===== NECTAR 리뉴얼: 컬렉션 상품 그리드 (영상 사이 삽입, 우리 카드 디자인) ===== -->
+<style id="nectar-collection-grid">
+  .nectar-collection{ background:#fff; padding:72px 0; color:#121212;
+    font-family:Pretendard,-apple-system,BlinkMacSystemFont,system-ui,'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif;
+    -webkit-font-smoothing:antialiased; word-break:keep-all; }
+  .nectar-collection *{ box-sizing:border-box; }
+  .nectar-collection .nc-wrap{ max-width:1320px; margin:0 auto; padding:0 60px; }
+  .nectar-collection .nc-head{ text-align:center; margin-bottom:40px; }
+  .nectar-collection .nc-eyebrow{ display:block; font-size:12px; letter-spacing:.16em; text-transform:uppercase; color:#c71729; font-weight:600; margin-bottom:10px; }
+  .nectar-collection .nc-title{ font-size:30px; font-weight:700; line-height:1.2; }
+  .nectar-collection .nc-grid{ display:grid; grid-template-columns:repeat(4,1fr);
+    border-top:1px solid #e8e8e8; border-left:1px solid #e8e8e8; }
+  .nectar-collection .nc-card{ display:block; color:#121212; text-decoration:none;
+    border-right:1px solid #e8e8e8; border-bottom:1px solid #e8e8e8; padding:32px 12px 25px; }
+  .nectar-collection .nc-thumb{ position:relative; aspect-ratio:312/324; background:#fff;
+    display:flex; align-items:center; justify-content:center; overflow:hidden; }
+  .nectar-collection .nc-thumb img{ width:82%; height:82%; object-fit:contain; mix-blend-mode:multiply; transition:transform .5s ease; }
+  .nectar-collection .nc-card:hover .nc-thumb img{ transform:scale(1.05); }
+  .nectar-collection .nc-badge{ position:absolute; top:0; left:0; background:rgba(18,18,18,.5);
+    color:#fff; font-size:10px; letter-spacing:.1em; text-transform:uppercase; padding:5px 9px; }
+  .nectar-collection .nc-info{ padding-top:16px; display:flex; flex-direction:column; gap:5px; }
+  .nectar-collection .nc-nm{ font-size:15px; font-weight:600; line-height:1.35; }
+  .nectar-collection .nc-nm-ko{ font-size:12.5px; color:#808080; }
+  .nectar-collection .nc-pr{ margin-top:3px; font-size:16px; font-weight:700; }
+  @media(max-width:1024px){ .nectar-collection .nc-wrap{ padding:0 32px; } .nectar-collection .nc-grid{ grid-template-columns:repeat(3,1fr); } }
+  @media(max-width:760px){ .nectar-collection .nc-grid{ grid-template-columns:repeat(2,1fr); } .nectar-collection .nc-title{ font-size:25px; } }
+  @media(max-width:480px){ .nectar-collection{ padding:48px 0; } .nectar-collection .nc-wrap{ padding:0 18px; } }
+</style>
+</head>
     
     <body class="Mtype_layout">
 
@@ -728,6 +757,58 @@ CAFE24.ROUTE = {"is_mobile":false,"is_need_route":false,"language_code":"ZZ","pa
 
         <div class="xans-element- xans-product xans-product-menupackage title-Area "><h2 class="xans-element- xans-product xans-product-headcategory "></h2>
 </div>
+
+        <!-- NECTAR 리뉴얼: The Red Invitation 상품 그리드 -->
+        <div class="nectar-collection">
+          <div class="nc-wrap">
+            <div class="nc-head">
+              <span class="nc-eyebrow">The Red Invitation</span>
+              <h2 class="nc-title">컬렉션 전체 상품</h2>
+            </div>
+            <div class="nc-grid">
+              <a class="nc-card" href="/product/detail.html?product_no=46">
+                <div class="nc-thumb"><span class="nc-badge">Sold out</span><img src="https://nectarofficial.com/web/product/medium/202512/45333b4bf502b1d7f79134cceab9b65c.png" alt="Golden Hour Champagne Glass"></div>
+                <div class="nc-info"><div class="nc-nm">Golden Hour Champagne Glass</div><div class="nc-nm-ko">넥타 골든 아워 샴페인잔</div><div class="nc-pr">350,000원</div></div>
+              </a>
+              <a class="nc-card" href="/product/detail.html?product_no=48">
+                <div class="nc-thumb"><span class="nc-badge">Sold out</span><img src="https://nectarofficial.com/web/product/medium/202602/ebf6e1c5c53dea518891b04b2169e003.png" alt="Obea Crystal Wine Glass (Bubble)"></div>
+                <div class="nc-info"><div class="nc-nm">Obea Crystal Wine Glass (Bubble)</div><div class="nc-nm-ko">넥타 오베아 와인잔</div><div class="nc-pr">68,000원</div></div>
+              </a>
+              <a class="nc-card" href="/product/detail.html?product_no=51">
+                <div class="nc-thumb"><span class="nc-badge">Sold out</span><img src="https://nectarofficial.com/web/product/medium/202602/0c9c2d388eb6d0cf473243ff4eb21c5e.png" alt="Obea Crystal Wine Glass (Red)"></div>
+                <div class="nc-info"><div class="nc-nm">Obea Crystal Wine Glass (Red)</div><div class="nc-nm-ko">넥타 오베아 와인잔</div><div class="nc-pr">68,000원</div></div>
+              </a>
+              <a class="nc-card" href="/product/detail.html?product_no=49">
+                <div class="nc-thumb"><span class="nc-badge">Sold out</span><img src="https://nectarofficial.com/web/product/medium/202602/30af168d7fd388a215dfb7ebae4c1988.png" alt="Bloom Crystal Stopper (White)"></div>
+                <div class="nc-info"><div class="nc-nm">Bloom Crystal Stopper (White)</div><div class="nc-nm-ko">넥타 블룸 크리스탈 스토퍼</div><div class="nc-pr">128,000원</div></div>
+              </a>
+              <a class="nc-card" href="/product/detail.html?product_no=50">
+                <div class="nc-thumb"><span class="nc-badge">Sold out</span><img src="https://nectarofficial.com/web/product/medium/202602/17d772e96e9e41f02b1416b335ecc972.png" alt="Bloom Crystal Stopper (Red)"></div>
+                <div class="nc-info"><div class="nc-nm">Bloom Crystal Stopper (Red)</div><div class="nc-nm-ko">넥타 블룸 크리스탈 스토퍼</div><div class="nc-pr">128,000원</div></div>
+              </a>
+              <a class="nc-card" href="/product/detail.html?product_no=40">
+                <div class="nc-thumb"><span class="nc-badge">Sold out</span><img src="https://nectarofficial.com/web/product/medium/202509/1a6e83ecb13f16a5652b9a9fe8bcdb1e.png" alt="Velora Crystal Wine Glass 2p Set (Red)"></div>
+                <div class="nc-info"><div class="nc-nm">Velora Crystal Wine Glass 2p Set (Red)</div><div class="nc-nm-ko">넥타 벨로라 보르도 레드 와인잔</div><div class="nc-pr">99,000원</div></div>
+              </a>
+              <a class="nc-card" href="/product/detail.html?product_no=38">
+                <div class="nc-thumb"><span class="nc-badge">Sold out</span><img src="https://nectarofficial.com/web/product/medium/202510/28c42f95a2128f43a1854663128f0b8e.png" alt="Velora Crystal Wine Glass 2p Set (White)"></div>
+                <div class="nc-info"><div class="nc-nm">Velora Crystal Wine Glass 2p Set (White)</div><div class="nc-nm-ko">넥타 벨로라 화이트 와인잔</div><div class="nc-pr">99,000원</div></div>
+              </a>
+              <a class="nc-card" href="/product/detail.html?product_no=41">
+                <div class="nc-thumb"><span class="nc-badge">Sold out</span><img src="https://nectarofficial.com/web/product/medium/202510/202bffcf62257237a515adfdc891ce68.png" alt="Alto Leather Wine Bag (Black)"></div>
+                <div class="nc-info"><div class="nc-nm">Alto Leather Wine Bag (Black)</div><div class="nc-nm-ko">넥타 와인 콜키지 백</div><div class="nc-pr">135,000원</div></div>
+              </a>
+              <a class="nc-card" href="/product/detail.html?product_no=32">
+                <div class="nc-thumb"><span class="nc-badge">Sold out</span><img src="https://nectarofficial.com/web/product/medium/202509/2121e071bfc2aafb38a6dfa0e2f8a98e.png" alt="Alto Leather Wine Bag (Red)"></div>
+                <div class="nc-info"><div class="nc-nm">Alto Leather Wine Bag (Red)</div><div class="nc-nm-ko">넥타 와인 콜키지 백</div><div class="nc-pr">135,000원</div></div>
+              </a>
+              <a class="nc-card" href="/product/detail.html?product_no=47">
+                <div class="nc-thumb"><span class="nc-badge">Sold out</span><img src="https://nectarofficial.com/web/product/medium/202512/827514eb6974eba8f6c169f59580dbae.png" alt="Nectar Crystal Glass Cleaner"></div>
+                <div class="nc-info"><div class="nc-nm">Nectar Crystal Glass Cleaner</div><div class="nc-nm-ko">넥타 크리스탈 글라스 클리너</div><div class="nc-pr">28,000원</div></div>
+              </a>
+            </div>
+          </div>
+        </div>
 
             </div>
     
