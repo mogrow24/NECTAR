@@ -280,21 +280,32 @@
 </footer>
 
 <script>
-  // 카테고리 탭 필터 (페이지 이동 없이 그리드만 필터)
+  // 카테고리 탭 필터 — 페이지 이동 없이 그리드만 필터(상단 타이틀 'All Products'는 항상 고정).
+  // URL 해시(#glassware 등)로 진입하면 해당 카테고리로 자동 필터되며, 다른 카테고리 페이지는
+  // 모두 이 페이지의 해시로 리다이렉트되어 '어떤 카테고리를 눌러도' 동일한 화면이 유지됨.
   (function () {
     var btns = document.querySelectorAll('.cats button');
     var cards = document.querySelectorAll('#shopGrid .card');
+    function apply(f) {
+      f = (f || 'all');
+      var matched = false;
+      btns.forEach(function (x) { if (x.getAttribute('data-filter') === f) matched = true; });
+      if (!matched) f = 'all';
+      btns.forEach(function (x) { x.classList.toggle('on', x.getAttribute('data-filter') === f); });
+      cards.forEach(function (c) {
+        var cats = (c.getAttribute('data-cat') || '').split(' ');
+        c.style.display = (f === 'all' || cats.indexOf(f) >= 0) ? '' : 'none';
+      });
+    }
     btns.forEach(function (b) {
       b.addEventListener('click', function () {
-        btns.forEach(function (x) { x.classList.remove('on'); });
-        b.classList.add('on');
         var f = b.getAttribute('data-filter');
-        cards.forEach(function (c) {
-          var cats = (c.getAttribute('data-cat') || '').split(' ');
-          c.style.display = (f === 'all' || cats.indexOf(f) >= 0) ? '' : 'none';
-        });
+        apply(f);
+        try { history.replaceState(null, '', f === 'all' ? location.pathname + location.search : '#' + f); } catch (e) {}
       });
     });
+    apply((location.hash || '').replace('#', ''));
+    window.addEventListener('hashchange', function () { apply((location.hash || '').replace('#', '')); });
   })();
 
   // 모바일 햄버거 메뉴 토글
