@@ -7,13 +7,15 @@
 <meta name="description" content="NECTAR 전체 상품 — 유럽산 크리스탈 글라스웨어 · 오브제 · 와인백">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@500;600&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@latest/dist/web/static/pretendard-dynamic-subset.css">
 <style>
   :root{
     --red:#c71729; --ink:#121212; --gray:#808080; --line:#e0e0e0; --grid:#e8e8e8;
     --foot:#171717; --max:1320px; --pad:60px;
-    --serif:'Playfair Display', serif;
-    --sans:'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+    --logo:#1a1a3c;   /* 실사이트 로고 딥네이비 (이미지 근사값 — 정확 hex 주시면 교체) */
+    --serif:'Spectral', serif;
+    --sans:Pretendard, -apple-system, BlinkMacSystemFont, system-ui, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
   }
   *{ margin:0; padding:0; box-sizing:border-box; border-radius:0; }
   body{ font-family:var(--sans); color:var(--ink); background:#fff; line-height:1.6; -webkit-font-smoothing:antialiased; word-break:keep-all; }
@@ -30,23 +32,23 @@
   /* ===== header (centered logo + utils) ===== */
   .hdr{ position:sticky; top:0; z-index:80; background:#fff; border-bottom:1px solid var(--line); }
   .hdr-top{ position:relative; height:72px; display:flex; align-items:center; justify-content:center; }
-  .logo{ font-family:var(--serif); font-weight:700; font-size:26px; letter-spacing:4px; padding-left:4px; color:var(--ink); }
-  .utils{ position:absolute; right:var(--pad); top:50%; transform:translateY(-50%); display:flex; gap:22px; align-items:center; }
-  .utils a{ position:relative; display:flex; color:var(--ink); }
-  .utils svg{ width:19px; height:20px; fill:var(--ink); }
-  .utils .cart .cnt{ position:absolute; bottom:2px; right:-7px; font-family:'Inter',sans-serif; font-weight:700; font-size:9px; color:var(--ink); }
-  .nav-toggle{ display:none; position:absolute; left:var(--pad); top:50%; transform:translateY(-50%); font-size:22px; line-height:1; color:var(--ink); }
+  .logo{ font-family:var(--serif); font-weight:600; font-size:26px; letter-spacing:.44em; padding-left:.44em; color:var(--logo); }
+  .utils{ position:absolute; right:var(--pad); top:50%; transform:translateY(-50%); display:flex; gap:20px; align-items:center; }
+  .utils a{ position:relative; display:flex; color:var(--logo); }
+  .utils svg{ width:19px; height:20px; fill:var(--logo); }
+  .utils .cart .cnt{ position:absolute; bottom:2px; right:-7px; font-weight:700; font-size:9px; color:var(--red); }
+  .nav-toggle{ display:none; position:absolute; left:var(--pad); top:50%; transform:translateY(-50%); font-size:22px; line-height:1; color:var(--logo); }
 
   /* ===== nav row ===== */
-  .hdr-nav{ height:41px; display:flex; align-items:center; justify-content:center; gap:48px;
-    font-family:'Inter', var(--sans); font-weight:500; font-size:13px; letter-spacing:.5px; }
+  .hdr-nav{ height:42px; display:flex; align-items:center; justify-content:center; gap:44px;
+    font-family:var(--sans); font-weight:500; font-size:12px; letter-spacing:.14em; text-transform:uppercase; }
   .hdr-nav a{ color:var(--ink); padding:4px 0; border-bottom:1px solid transparent; transition:.2s; }
   .hdr-nav a:hover{ color:var(--red); border-color:var(--red); }
 
   /* ===== page head ===== */
   .shop{ padding:60px 0 0; }
   .shop-head{ display:flex; align-items:flex-end; justify-content:space-between; gap:20px; }
-  .eyebrow{ display:block; font-family:'Inter', var(--sans); font-weight:600; font-size:12px; letter-spacing:2px;
+  .eyebrow{ display:block; font-family:var(--sans); font-weight:600; font-size:12px; letter-spacing:2px;
     text-transform:uppercase; color:var(--red); margin-bottom:8px; }
   .shop-head h1{ font-weight:700; font-size:34px; color:var(--ink); line-height:1.1; }
   .shop-head .count{ font-size:13px; color:var(--gray); white-space:nowrap; padding-bottom:4px; }
@@ -88,7 +90,7 @@
   .ft-in{ display:grid; grid-template-columns:1.6fr 1fr 1fr 1fr 1fr; gap:30px; }
   .ft .flogo{ font-family:var(--serif); font-weight:700; font-size:24px; letter-spacing:3px; }
   .ft .ftag{ margin-top:10px; font-weight:300; font-size:13px; letter-spacing:1px; color:#999; }
-  .ft h4{ font-family:'Inter', var(--sans); font-weight:600; font-size:12px; letter-spacing:1.5px; color:#fff; margin-bottom:14px; }
+  .ft h4{ font-family:var(--sans); font-weight:600; font-size:12px; letter-spacing:1.5px; color:#fff; margin-bottom:14px; }
   .ft li{ font-size:13px; line-height:24px; }
   .ft li a{ color:#999; transition:.2s; }
   .ft li a:hover{ color:#fff; }
@@ -125,7 +127,7 @@
 </head>
 <body>
 
-<div class="topbar">NECTAR 단독 컬렉션 · THE RED INVITATION&nbsp;&nbsp;|&nbsp;&nbsp;전 상품 무료배송</div>
+<div class="topbar">카카오톡 채널 추가 시, 1,000원 쿠폰 증정</div>
 
 <header class="hdr">
   <div class="hdr-top">

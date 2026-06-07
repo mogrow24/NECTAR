@@ -20,25 +20,26 @@
          <div morenvy-banner><a href="{#link_1}">{#imgTag_1}</a></div>
        </div>
      ↓ 정적 프리뷰용 기본 텍스트 (모렌비 스크립트가 로드되면 위 배너로 대체) -->
-<div class="topbar" morenvy-banner-group="">The Red Invitation · 회원가입 시 적립금 즉시 증정 · 15만원 이상 무료배송</div>
+<div class="topbar" morenvy-banner-group="">카카오톡 채널 추가 시, 1,000원 쿠폰 증정</div>
 
+<!-- 통일 헤더: 2줄형(로고 중앙 상단 + 아이콘 유틸 + nav 아래 가운데), 실사이트와 동일 구조 -->
 <header class="hdr">
-  <div class="hdr-in">
-    <button class="nav-toggle" id="navToggle" aria-label="메뉴">☰</button>
-    <nav class="nav" id="mainNav">
-      <a href="../site/category-all.html">SHOP</a>
-      <a href="../site/collection.html">COLLECTION</a>
-      <a href="../site/about.html">ABOUT</a>
-      <a href="../site/experience.html">STORY</a>
-      <a href="../site/contact.html">CONTACT</a>
-    </nav>
+  <div class="hdr-top">
+    <button class="nav-toggle" id="navToggle" aria-label="메뉴" aria-expanded="false">☰</button>
     <a class="logo" href="index.html">NECTAR</a>
     <div class="utils">
-      <a href="#">Search</a>
-      <a href="https://nectarofficial.com/member/login.html">Login</a>
-      <a class="cart" href="https://nectarofficial.com/order/basket.html">Cart <b>0</b></a>
+      <a href="#" aria-label="검색"><svg viewBox="0 0 18.4 18.9"><path d="M13.6,13c1.2-1.4,2-3.2,2-5.2C15.6,3.5,12.1,0,7.8,0S0,3.5,0,7.8s3.5,7.8,7.8,7.8,3.3-.6,4.6-1.5l4.8,4.8.6-.6.6-.6-4.7-4.7ZM1.6,7.8C1.6,4.4,4.4,1.6,7.8,1.6s6.2,2.8,6.2,6.2-2.8,6.2-6.2,6.2S1.6,11.2,1.6,7.8Z"/></svg></a>
+      <a href="https://nectarofficial.com/member/login.html" aria-label="계정"><svg viewBox="0 0 18.6 20"><path d="M9.7,10.8c2.8-.2,5-2.5,5-5.4S12.3,0,9.3,0,3.9,2.4,3.9,5.4s2.2,5.2,5,5.4C4,11,0,15,0,20h1.5c0-4.3,3.5-7.8,7.8-7.8s7.8,3.5,7.8,7.8h1.5c0-5-4-9.1-8.9-9.3ZM5.4,5.4c0-2.1,1.7-3.9,3.9-3.9s3.9,1.7,3.9,3.9-1.7,3.9-3.9,3.9-3.9-1.7-3.9-3.9Z"/></svg></a>
+      <a class="cart" href="https://nectarofficial.com/order/basket.html" aria-label="장바구니"><svg viewBox="0 0 17.6 18.6"><path d="M16.8,4h-2.5l-1.8-3.6-.2-.4h-7l-.2.4-1.8,3.6H0v14.6h17.6V4h-.8ZM6.3,1.6h5l1.2,2.4h-7.4l1.2-2.4ZM3.8,5.6h12.2v11.4H1.6V5.6h2.2Z"/></svg><span class="cnt">0</span></a>
     </div>
   </div>
+  <nav class="hdr-nav" id="mainNav">
+    <a href="../site/category-all.html">SHOP</a>
+    <a href="../site/collection.html">COLLECTION</a>
+    <a href="../site/about.html">ABOUT</a>
+    <a href="../site/experience.html">STORY</a>
+    <a href="../site/contact.html">CONTACT</a>
+  </nav>
 </header>
 
 <!-- ===== 브랜드 필름 히어로 (상단 / 아래 상품이 살짝 걸쳐 보이게) ===== -->
@@ -48,9 +49,10 @@
     <span class="eyebrow">The Red Invitation</span>
     <h1>The Red<br>Invitation</h1>
     <p class="ko">매일의 식탁을, 초대의 순간으로 — 유럽산 크리스탈 오브제.</p>
-    <!-- 브랜드 필름: NECTAR 'Breeze 26 S/S Campaign' (youtu.be/nLkD14kB3m4)
-         카페24 모렌비 '상단 공지 띠배너'에 등록된 동영상과 동일. 영상 변경 시 data-video 값만 교체. -->
-    <a class="play" href="#filmModal" id="filmPlay" data-video="nLkD14kB3m4">
+    <!-- 브랜드 필름(PC): NECTAR 'Brand Mood Film (Pc)' = youtu.be/pXa7K_1Dp8I
+         카페24에선 모렌비 '메인 배너 1'(영역ID 78b4)에 PC 16:9 / 모바일 9:16 영상으로 등록.
+         영상 변경 시 data-video 값만 교체. -->
+    <a class="play" href="#filmModal" id="filmPlay" data-video="pXa7K_1Dp8I">
       <span class="circ">▶</span>
       <span class="lbl">브랜드 필름 재생</span>
     </a>
