@@ -60,7 +60,12 @@
       "Bash(node .shot.js \"site/about.html\" \".shot_about.png\")",
       "Bash(curl -s -o /dev/null -w '%{http_code}' https://mogrow24.github.io/NECTAR/__TRACKED_VAR__)",
       "WebFetch(domain:nectarofficial.com)",
-      "Bash(curl -s --max-time 25 \"https://mogrow24.github.io/NECTAR/site/collection.html?cb=$\\(date +%s\\)\" -o /tmp/col.html)"
+      "Bash(curl -s --max-time 25 \"https://mogrow24.github.io/NECTAR/site/collection.html?cb=$\\(date +%s\\)\" -o /tmp/col.html)",
+      "Bash(curl -s --max-time 25 \"https://mogrow24.github.io/NECTAR/site/collection.html?cb=$\\(date +%s\\)\")",
+      "Bash(git ls-files *)",
+      "Bash(node _style_update.js)",
+      "Bash(node .shot_clip3.js)",
+      "Bash(findstr \"^??\")"
     ],
     "additionalDirectories": [
       "c:\\Users\\dbslg\\Desktop\\NECTAR\\site",
