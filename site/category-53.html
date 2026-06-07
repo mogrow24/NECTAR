@@ -1346,7 +1346,7 @@ var EC_APPSCRIPT_SDK_DATA = CAFE24.getDeprecatedNamespace('EC_APPSCRIPT_SDK_DATA
   };
   var stat = {
     'collection':'collection.html','experience':'experience.html','contact':'contact.html',
-    'stockist':'stockist.html','about':'about.html','index':'index.html'
+    'stockist':'stockist.html','about':'about.html','index':'../renewal/index.html'
   };
   function mapLink(href) {
     if (!href) return null;
@@ -1360,7 +1360,7 @@ var EC_APPSCRIPT_SDK_DATA = CAFE24.getDeprecatedNamespace('EC_APPSCRIPT_SDK_DATA
     if (/\/product\/list\.html$/i.test(p) && (m = /[?&]cate_no=(\d+)/.exec(q)) && cat[m[1]]) return cat[m[1]];
     if ((m = /\/category\/[^\/]+\/(\d+)(?:\/|$)/.exec(p)) && cat[m[1]]) return cat[m[1]];
     if ((m = /\/([A-Za-z]+)\.html$/.exec(p))) { var n = m[1].toLowerCase(); if (stat[n]) return stat[n]; }
-    if (p === '' || p === '/') return 'index.html';
+    if (p === '' || p === '/') return '../renewal/index.html';
     return null;
   }
   var dir = location.href.replace(/[#?].*$/, '').replace(/[^\/]*$/, '');
