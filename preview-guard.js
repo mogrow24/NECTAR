@@ -37,7 +37,8 @@
       if (last === 'detail.html' && q.get('product_no')) return 'product-' + q.get('product_no') + '.html';
       if (last === 'list.html' && q.get('cate_no')) {
         var c = q.get('cate_no');
-        return c === '46' ? 'category-all.html' : 'category-' + c + '.html';
+        var special = { '46': 'category-all.html', '51': 'category-gift.html' };
+        return special[c] || 'category-' + c + '.html';
       }
       if (PAGES[last]) return last;
       if (/^category-[\w-]+\.html$/.test(last) || /^product-\d+\.html$/.test(last)) return last;
