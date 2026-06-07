@@ -48,7 +48,7 @@ ul { list-style: none; }
 .btn--light:hover { background: #fff; color: var(--black); border-color: #fff; }
 
 /* ---------- top bar ---------- */
-.topbar { background: var(--red); color: #fff; text-align: center; font-size: 12px; letter-spacing: .02em; font-weight: 500; padding: 10px; }
+.topbar { background: var(--red); color: #fff; height: 40px; display: flex; align-items: center; justify-content: center; text-align: center; font-size: 12px; letter-spacing: .02em; font-weight: 500; padding: 0 16px; }
 
 /* ---------- header ---------- */
 /* 통일 헤더 — 2줄형(로고 중앙 상단 + 아이콘 유틸 + nav 아래) */
