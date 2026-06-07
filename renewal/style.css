@@ -145,7 +145,7 @@ ul { list-style: none; }
 
 /* ---------- footer ---------- */
 .ft { border-top: 3px solid var(--red); background: var(--cream); }
-.ft-in { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 30px; padding: 58px var(--pad); }
+.ft-in { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr; gap: 30px; padding: 58px var(--pad); }
 .ft .flogo { font-family: var(--serif); font-size: 22px; letter-spacing: .3em; margin-bottom: 16px; }
 .ft h4 { font-size: 11px; letter-spacing: .16em; text-transform: uppercase; margin-bottom: 14px; }
 .ft li, .ft p { font-size: 12px; color: var(--gray); line-height: 2; }
