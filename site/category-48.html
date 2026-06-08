@@ -226,40 +226,54 @@
 </main>
 
 <!-- ===== FOOTER ===== -->
+<style data-nectar-footer>
+.ft{ box-sizing:border-box; border-top:3px solid #c7172a; background:#f4f2ee; color:#1d1d1d;
+  font-family:'Pretendard',-apple-system,BlinkMacSystemFont,system-ui,'Apple SD Gothic Neo','Malgun Gothic',sans-serif; margin:0; }
+.ft *{ box-sizing:border-box; }
+.ft .ft-in{ display:grid; grid-template-columns:1fr repeat(4,auto); column-gap:100px; row-gap:30px;
+  padding:58px 48px; align-items:start; max-width:none; width:auto; margin:0; }
+.ft .flogo{ font-family:'Spectral',serif; font-weight:400; font-size:22px; letter-spacing:.3em; margin-bottom:16px; color:#1d1d1d; }
+.ft h4{ font-size:11px; letter-spacing:.16em; text-transform:uppercase; margin:0 0 14px; color:#1d1d1d; font-weight:700; }
+.ft ul{ list-style:none; margin:0; padding:0; }
+.ft li, .ft p{ font-size:12px; color:#8a857e; line-height:2; margin:0; }
+.ft a{ color:inherit; text-decoration:none; }
+.ft a:hover{ color:#c7172a; }
+.ft .ft-bottom{ border-top:1px solid #e6e2db; padding:18px 48px; display:flex; justify-content:space-between;
+  flex-wrap:wrap; gap:10px; font-size:11px; color:#8a857e; letter-spacing:.04em; margin:0; }
+@media (max-width:1024px){ .ft .ft-in{ grid-template-columns:1fr; padding:48px 18px; } .ft .ft-bottom{ padding:18px; } }
+</style>
 <footer class="ft">
-  <div class="wrap">
-    <div class="ft-in">
-      <div>
-        <div class="flogo">NECTAR</div>
-        <div class="ftag">식탁 위, 가장 빛나는 초대</div>
-      </div>
-      <div><h4>SHOP</h4><ul>
-        <li><a href="category-all.html">전체상품</a></li>
-        <li><a href="category-48.html">와인글라스</a></li>
-        <li><a href="category-48.html">워터글라스</a></li>
-        <li><a href="category-47.html">오브제 · 와인백</a></li>
-      </ul></div>
-      <div><h4>ABOUT</h4><ul>
-        <li><a href="about.html">브랜드</a></li>
-        <li><a href="about.html">스토리</a></li>
-        <li><a href="collection.html">컬렉션</a></li>
-      </ul></div>
-      <div><h4>HELP</h4><ul>
-        <li><a href="#">배송 · 교환/반품</a></li>
-        <li><a href="#">FAQ</a></li>
-        <li><a href="contact.html">1:1 문의</a></li>
-      </ul></div>
-      <div><h4>FOLLOW</h4><ul>
-        <li><a href="#">Instagram</a></li>
-        <li><a href="#">YouTube</a></li>
-        <li><a href="#">Kakao</a></li>
-      </ul></div>
+  <div class="ft-in">
+    <div>
+      <div class="flogo">NECTAR</div>
+      <p>주식회사 아르피노 (ARFINO) · 대표 황수연<br>서울특별시 강남구 강남대로 464 (역삼동)<br>T. 02-2028-8399 · hello@nectarofficial.com<br>통신판매업신고 2025-서울강남-05084</p>
     </div>
-    <div class="ft-bottom">
-      <p>주식회사 아르피노(ARFINO)&nbsp;&nbsp;|&nbsp;&nbsp;대표이사 황수연&nbsp;&nbsp;|&nbsp;&nbsp;전화 02-2028-8399&nbsp;&nbsp;|&nbsp;&nbsp;서울특별시 강남구</p>
-      <p>사업자등록번호 000-00-00000&nbsp;&nbsp;|&nbsp;&nbsp;통신판매업신고 제2026-서울강남-0000호</p>
-      <p class="copy">© 2026 NECTAR. All rights reserved.</p>
-    </div>
+    <div><h4>Shop</h4><ul>
+      <li><a href="category-all.html">Collection</a></li>
+      <li><a href="category-47.html">Object</a></li>
+      <li><a href="about.html">Brand</a></li>
+      <li><a href="https://nectarofficial.com/order/basket.html">Cart</a></li>
+    </ul></div>
+    <div><h4>Content</h4><ul>
+      <li><a href="experience.html">Experience</a></li>
+      <li><a href="collection.html">Lookbook</a></li>
+      <li><a href="stockist.html">Stockist</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul></div>
+    <div><h4>Social</h4><ul>
+      <li><a href="https://www.instagram.com/nectarofficial_com/" target="_blank" rel="noopener">Instagram</a></li>
+      <li><a href="https://pf.kakao.com/_xixiexen" target="_blank" rel="noopener">Kakaotalk</a></li>
+      <li><a href="https://www.youtube.com/@NECTAR_OFFICIAL" target="_blank" rel="noopener">Youtube</a></li>
+    </ul></div>
+    <div><h4>Help</h4><ul>
+      <li><a href="#">이용약관</a></li>
+      <li><a href="#">개인정보처리방침</a></li>
+      <li><a href="#">배송 / 교환 / 반품</a></li>
+      <li><a href="https://nectarofficial.com/member/login.html">My Account</a></li>
+    </ul></div>
+  </div>
+  <div class="ft-bottom">
+    <span>© NECTAR. All rights reserved.</span>
   </div>
 </footer>
 
