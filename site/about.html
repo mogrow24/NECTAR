@@ -662,10 +662,10 @@ CAFE24.ROUTE = {"is_mobile":false,"is_need_route":false,"language_code":"ZZ","pa
     .nx-nav.open{ display:flex; }
     .nx-nav a{ width:100%; padding:14px 48px; border-bottom:1px solid #e6e2db; }
   }
-  /* NECTAR: GNB와 본문 첫 이미지 사이 공백 제거 (카페24 고정헤더용 여백 무효화) */
-  #contents.header_notice_margin{ margin-top:0 !important; }
-  #about.header_layout_padding{ padding-top:0 !important; }
-  #about .section1{ margin-top:0 !important; }
+  /* NECTAR: GNB와 본문 첫 이미지(히어로) 사이 흰색 공백 완전 제거 */
+  #contents_cover, #contents.header_notice_margin{ margin-top:0 !important; padding-top:0 !important; }
+  #about.header_layout_padding{ margin-top:0 !important; padding-top:0 !important; }
+  #about > .nectar-about, .nectar-about .na-hero, #about .section1{ margin-top:0 !important; padding-top:0 !important; }
 </style>
 <script>(function(){var t=document.getElementById('nxToggle'),n=document.getElementById('nxNav');if(t&&n)t.addEventListener('click',function(){n.classList.toggle('open');});})();</script>
         <div id="loading"></div>
