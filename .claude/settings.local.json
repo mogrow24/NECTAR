@@ -65,7 +65,20 @@
       "Bash(git ls-files *)",
       "Bash(node _style_update.js)",
       "Bash(node .shot_clip3.js)",
-      "Bash(findstr \"^??\")"
+      "Bash(findstr \"^??\")",
+      "Bash(grep -E '\\\\.html$')",
+      "PowerShell($edge = Get-Command msedge.exe -ErrorAction SilentlyContinue; if\\(-not $edge\\){ $p = \"C:\\\\Program Files \\(x86\\)\\\\Microsoft\\\\Edge\\\\Application\\\\msedge.exe\"; if\\(Test-Path $p\\){ $edge = $p } else { $edge = \"C:\\\\Program Files\\\\Microsoft\\\\Edge\\\\Application\\\\msedge.exe\" } } else { $edge = $edge.Source }; \"Edge: $edge\"; Test-Path $edge)",
+      "PowerShell(git add site/collection.html)",
+      "PowerShell(\"---remote---\")",
+      "Bash(python _unify_footer.py)",
+      "Bash(python3 _unify_footer.py)",
+      "PowerShell(git push origin main)",
+      "Bash(node _unify_footer.js)",
+      "Bash(cd /c/Users/dbslg/Desktop/NECTAR/site && echo \"=== HAS nx-hdr ===\" && grep -L \"nx-hdr\" *.html 2>/dev/null | sed 's/^/MISSING: /'; echo \"=== all html ===\"; ls *.html | wc -l; echo \"=== which have old #header block ===\"; grep -l 'id=\"header\"' *.html | wc -l)",
+      "Read(//c/c/Users/dbslg/Desktop/NECTAR/**)",
+      "Bash(node _nxinject.js)",
+      "PowerShell(gh api repos/mogrow24/NECTAR/pages/builds/latest --jq '{status: .status, commit: .commit, created: .created_at, updated: .updated_at}' 2>$null)",
+      "PowerShell(\"--- pages build status ---\")"
     ],
     "additionalDirectories": [
       "c:\\Users\\dbslg\\Desktop\\NECTAR\\site",
