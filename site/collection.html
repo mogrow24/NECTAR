@@ -622,10 +622,13 @@ CAFE24.ROUTE = {"is_mobile":false,"is_need_route":false,"language_code":"ZZ","pa
 <title> -  - NECTAR</title>
 <!-- ===== NECTAR 리뉴얼: 컬렉션 상품 그리드 (영상 사이 삽입, 우리 카드 디자인) ===== -->
 <style id="nectar-collection-grid">
-  /* NECTAR: 히어로 영상과 '컬렉션 전체 상품' 사이 공백 제거 */
-  #collection .section1 .image-Area .M_pc.window-height-layout{ height:auto !important; min-height:0 !important; }
+  /* NECTAR: GNB 아래 ~ 히어로 이미지 위 흰색 공백 완전 제거 */
+  #contents_cover, #contents.header_notice_margin{ margin-top:0 !important; padding-top:0 !important; }
+  #collection.header_layout_padding{ margin-top:0 !important; padding-top:0 !important; }
   #collection .section2{ padding-top:0 !important; margin-top:0 !important; }
   #collection .section2 .title-Area{ display:none !important; }
+  #collection .nectar-collection{ padding-top:0 !important; }
+  #collection .nectar-collection .nc-hero{ margin-top:0 !important; }
   .nectar-collection{ background:#fff; padding:0 0 72px; color:#121212;
     font-family:Pretendard,-apple-system,BlinkMacSystemFont,system-ui,'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif;
     -webkit-font-smoothing:antialiased; word-break:keep-all; }
