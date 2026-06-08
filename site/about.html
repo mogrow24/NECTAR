@@ -718,54 +718,59 @@ CAFE24.ROUTE = {"is_mobile":false,"is_need_route":false,"language_code":"ZZ","pa
     
 <link href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;600&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
 <style id="nectar-about">
-  .nectar-about{ --red:#c7172a; --ink:#1d1d1d; --gray:#8a857e; --line:#e6e2db; --cream:#f4f2ee;
+  .nectar-about{ --red:#c7172a; --ink:#1d1d1d; --gray:#6f6a64; --line:#e6e2db; --cream:#f4f2ee;
     --serif:'Spectral', serif; --sans:'Pretendard','Noto Sans KR',-apple-system,BlinkMacSystemFont,system-ui,'Malgun Gothic',sans-serif;
     background:#fff; color:var(--ink); font-family:var(--sans); }
   .nectar-about *{ box-sizing:border-box; }
   .nectar-about img{ display:block; max-width:100%; }
-  .na-hero{ max-width:1320px; margin:0 auto; padding:64px 60px 0; text-align:center; }
-  .na-hero .eyebrow{ display:block; font-size:12px; letter-spacing:.2em; text-transform:uppercase; color:var(--red); font-weight:600; margin-bottom:16px; }
-  .na-hero h1{ font-family:var(--serif); font-weight:600; font-size:40px; line-height:1.3; letter-spacing:.01em; margin:0; }
-  .na-hero .lead{ max-width:680px; margin:24px auto 0; font-size:15px; line-height:2; color:var(--gray); }
-  .na-media{ max-width:1320px; margin:56px auto 0; padding:0 60px; }
-  .na-media img{ width:100%; height:auto; background:var(--cream); }
-  .na-story{ max-width:760px; margin:0 auto; padding:72px 60px; text-align:center; }
-  .na-story .eyebrow{ display:block; font-size:12px; letter-spacing:.2em; text-transform:uppercase; color:var(--red); font-weight:600; margin-bottom:16px; }
-  .na-story h2{ font-family:var(--serif); font-weight:600; font-size:30px; line-height:1.35; margin:0 0 20px; }
-  .na-story p{ font-size:15px; line-height:2.1; color:var(--gray); margin:0; }
-  .na-pillars{ border-top:1px solid var(--line); }
-  .na-pillars .in{ max-width:1320px; margin:0 auto; padding:56px 60px 80px; display:grid; grid-template-columns:repeat(3,1fr); gap:30px; }
-  .na-pillars .pil{ text-align:center; padding:0 16px; }
-  .na-pillars .t{ font-family:var(--serif); font-size:18px; font-weight:600; margin-bottom:10px; }
-  .na-pillars .d{ font-size:13px; color:var(--gray); line-height:1.8; }
+  .na-wrap{ max-width:1100px; margin:0 auto; padding:0 60px; }
+  .na-sec{ padding:72px 0; }
+  .na-sec.first{ padding-top:56px; }
+  .na-eyebrow{ display:block; text-align:center; font-size:12px; letter-spacing:.22em; text-transform:uppercase; color:var(--red); font-weight:600; margin-bottom:18px; }
+  .na-h{ font-family:var(--serif); font-weight:600; font-size:32px; line-height:1.35; text-align:center; margin:0 0 36px; letter-spacing:.01em; }
+  .na-img{ margin:0 0 40px; }
+  .na-img img{ width:100%; height:auto; background:var(--cream); }
+  .na-p{ max-width:760px; margin:0 auto; font-size:15px; line-height:2.05; color:var(--gray); text-align:center; }
+  .na-p + .na-p{ margin-top:20px; }
+  .na-verse{ border-top:1px solid var(--line); text-align:center; padding:80px 0 88px; }
+  .na-mark{ font-family:var(--serif); font-weight:600; font-size:26px; letter-spacing:.34em; color:var(--ink); margin-bottom:40px; }
+  .na-verse p{ font-size:16px; line-height:2; color:var(--ink); margin:0 auto; max-width:680px; }
+  .na-verse p + p{ margin-top:26px; }
   @media (max-width:900px){
-    .na-hero{ padding:44px 24px 0; } .na-hero h1{ font-size:30px; }
-    .na-media{ padding:0 24px; margin-top:36px; }
-    .na-story{ padding:48px 24px; } .na-story h2{ font-size:24px; }
-    .na-pillars .in{ grid-template-columns:1fr; padding:40px 24px 56px; gap:28px; }
+    .na-wrap{ padding:0 24px; }
+    .na-sec{ padding:48px 0; } .na-sec.first{ padding-top:40px; }
+    .na-h{ font-size:25px; margin-bottom:28px; }
+    .na-img{ margin-bottom:28px; }
+    .na-verse{ padding:56px 0 60px; } .na-mark{ font-size:22px; margin-bottom:30px; }
+    .na-verse p{ font-size:15px; }
   }
 </style>
 <div class="nectar-about">
-  <div class="na-hero">
-    <span class="eyebrow">Our Story</span>
-    <h1>매일의 식탁을,<br>초대의 순간으로</h1>
-    <p class="lead">감각적인 와인웨어와 테이블 오브제로, 일상을 리프레시하는 NECTAR. 한 잔의 물, 한 잔의 와인이 특별해지는 순간을 위해 빚어낸 오브제입니다.</p>
-  </div>
-  <div class="na-media">
-    <img src="https://nectarofficial.com/web/product/big/202602/623a8539c7fde0bd89a754ab41e5d1d0.png" alt="NECTAR table setting">
-  </div>
-  <div class="na-story">
-    <span class="eyebrow">Philosophy</span>
-    <h2>식탁 위, 가장 빛나는 초대</h2>
-    <p>유럽산 무연 크리스탈로 빚어낸 일상의 오브제.<br>한 잔의 물, 한 잔의 와인이 특별해지는 순간 —<br>NECTAR는 당신의 테이블을 가장 우아한 무대로 바꿉니다.</p>
-  </div>
-  <div class="na-pillars">
-    <div class="in">
-      <div class="pil"><div class="t">Made in Europe</div><div class="d">유럽 장인이 완성한 크리스탈</div></div>
-      <div class="pil"><div class="t">Lead-Free Crystal</div><div class="d">맑고 가벼운 무연 프리미엄 소재</div></div>
-      <div class="pil"><div class="t">Everyday Ritual</div><div class="d">매일을 특별하게 만드는 오브제</div></div>
+  <section class="na-sec first">
+    <div class="na-wrap">
+      <span class="na-eyebrow">About</span>
+      <h2 class="na-h">일상에 새로운 리듬을 더하는<br>리프레시웨어 브랜드</h2>
+      <div class="na-img"><img src="https://nectarofficial.com/web/upload/NNEditor/20250909/72837506fadecb64f2c3a8bf52174fe8.jpg" alt="NECTAR"></div>
+      <p class="na-p">와인 글라스를 시작으로 다양한 와인 제품을 통해 일상에 새로운 리듬을 더하는 리프레시웨어 브랜드입니다.</p>
+      <p class="na-p">와인을 즐기는 경험에 작은 변주를 더해 신선한 즐거움을 전합니다. 과거와 미래, 어느 한쪽에도 얽매이지 않는 자유롭고 현대적인 라이프스타일을 제안하며, 고급스러운 소재와 타협하지 않는 품질 기준 그리고 넥타만의 시선으로 재해석한 컨템포러리 디자인으로 오래도록 곁에 두고 싶은 제품을 만듭니다.</p>
     </div>
-  </div>
+  </section>
+  <section class="na-sec">
+    <div class="na-wrap">
+      <span class="na-eyebrow">Philosophy</span>
+      <h2 class="na-h">진정한 럭셔리에 대한<br>우리의 철학</h2>
+      <div class="na-img"><img src="https://nectarofficial.com/web/upload/NNEditor/20250909/8420b0e91855b518e05404925a6c34a2.jpg" alt="NECTAR philosophy"></div>
+      <p class="na-p">우리의 삶은 무수한 영감으로 가득합니다. 그리고 NECTAR는 진정한 럭셔리한 삶 속에서 영감을 마주하는 방식을 제안합니다. 진정한 럭셔리는 무엇일까요. 그 답은 화려한 샹들리에 아래가 아니라 소중한 사람들과 함께하는 시간 속에 있습니다. 테이블 위 살며시 내려앉은 햇살, 신선한 제철 재료의 싱그러운 색. 와인 한 잔의 깊은 향, 그리고 주변에서 들려오는 웃음소리. 영감은 바로 그 순간 피어납니다.</p>
+    </div>
+  </section>
+  <section class="na-verse">
+    <div class="na-wrap">
+      <div class="na-mark">NECTAR</div>
+      <p>사람들을 대화의 자리로 모으며 자리에 생동감을 더하고<br>잔에 담긴 이야기를 한층 더 풍부하게 끌어냅니다.</p>
+      <p>그것은 설레는 세계로 이끄는 작은 주문과도 같습니다.</p>
+      <p>이름을 조용히 속삭이는 순간, 즐거웠던 그 시간으로 다시 돌아갑니다.</p>
+    </div>
+  </section>
 </div>
     
 </div>
