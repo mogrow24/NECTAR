@@ -633,6 +633,7 @@ CAFE24.ROUTE = {"is_mobile":false,"is_need_route":false,"language_code":"ZZ","pa
     <a href="category-all.html">SHOP</a>
     <a href="collection.html">COLLECTION</a>
     <a href="about.html">ABOUT</a>
+    <a href="stockist.html">STOCKIST</a>
     <a href="experience.html">EXPERIENCE</a>
     <a href="contact.html">CONTACT</a>
   </nav>
@@ -715,40 +716,57 @@ CAFE24.ROUTE = {"is_mobile":false,"is_need_route":false,"language_code":"ZZ","pa
 
 <div id="about" class="header_layout_padding">
     
-    <div class="section1 morenvy-banner-area" area_id="bc19">
-        <div class="app-box morenvy-banner">
-            <div class="image-Area">{#imgTag_1}</div>
-            <div class="text-Area">
-                <div class="title">{#title}</div>
-                <div class="desc">{#html}</div>
-            </div>
-        </div>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;600&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<style id="nectar-about">
+  .nectar-about{ --red:#c7172a; --ink:#1d1d1d; --gray:#8a857e; --line:#e6e2db; --cream:#f4f2ee;
+    --serif:'Spectral', serif; --sans:'Pretendard','Noto Sans KR',-apple-system,BlinkMacSystemFont,system-ui,'Malgun Gothic',sans-serif;
+    background:#fff; color:var(--ink); font-family:var(--sans); }
+  .nectar-about *{ box-sizing:border-box; }
+  .nectar-about img{ display:block; max-width:100%; }
+  .na-hero{ max-width:1320px; margin:0 auto; padding:64px 60px 0; text-align:center; }
+  .na-hero .eyebrow{ display:block; font-size:12px; letter-spacing:.2em; text-transform:uppercase; color:var(--red); font-weight:600; margin-bottom:16px; }
+  .na-hero h1{ font-family:var(--serif); font-weight:600; font-size:40px; line-height:1.3; letter-spacing:.01em; margin:0; }
+  .na-hero .lead{ max-width:680px; margin:24px auto 0; font-size:15px; line-height:2; color:var(--gray); }
+  .na-media{ max-width:1320px; margin:56px auto 0; padding:0 60px; }
+  .na-media img{ width:100%; height:auto; background:var(--cream); }
+  .na-story{ max-width:760px; margin:0 auto; padding:72px 60px; text-align:center; }
+  .na-story .eyebrow{ display:block; font-size:12px; letter-spacing:.2em; text-transform:uppercase; color:var(--red); font-weight:600; margin-bottom:16px; }
+  .na-story h2{ font-family:var(--serif); font-weight:600; font-size:30px; line-height:1.35; margin:0 0 20px; }
+  .na-story p{ font-size:15px; line-height:2.1; color:var(--gray); margin:0; }
+  .na-pillars{ border-top:1px solid var(--line); }
+  .na-pillars .in{ max-width:1320px; margin:0 auto; padding:56px 60px 80px; display:grid; grid-template-columns:repeat(3,1fr); gap:30px; }
+  .na-pillars .pil{ text-align:center; padding:0 16px; }
+  .na-pillars .t{ font-family:var(--serif); font-size:18px; font-weight:600; margin-bottom:10px; }
+  .na-pillars .d{ font-size:13px; color:var(--gray); line-height:1.8; }
+  @media (max-width:900px){
+    .na-hero{ padding:44px 24px 0; } .na-hero h1{ font-size:30px; }
+    .na-media{ padding:0 24px; margin-top:36px; }
+    .na-story{ padding:48px 24px; } .na-story h2{ font-size:24px; }
+    .na-pillars .in{ grid-template-columns:1fr; padding:40px 24px 56px; gap:28px; }
+  }
+</style>
+<div class="nectar-about">
+  <div class="na-hero">
+    <span class="eyebrow">Our Story</span>
+    <h1>매일의 식탁을,<br>초대의 순간으로</h1>
+    <p class="lead">감각적인 와인웨어와 테이블 오브제로, 일상을 리프레시하는 NECTAR. 한 잔의 물, 한 잔의 와인이 특별해지는 순간을 위해 빚어낸 오브제입니다.</p>
+  </div>
+  <div class="na-media">
+    <img src="https://nectarofficial.com/web/product/big/202602/623a8539c7fde0bd89a754ab41e5d1d0.png" alt="NECTAR table setting">
+  </div>
+  <div class="na-story">
+    <span class="eyebrow">Philosophy</span>
+    <h2>식탁 위, 가장 빛나는 초대</h2>
+    <p>유럽산 무연 크리스탈로 빚어낸 일상의 오브제.<br>한 잔의 물, 한 잔의 와인이 특별해지는 순간 —<br>NECTAR는 당신의 테이블을 가장 우아한 무대로 바꿉니다.</p>
+  </div>
+  <div class="na-pillars">
+    <div class="in">
+      <div class="pil"><div class="t">Made in Europe</div><div class="d">유럽 장인이 완성한 크리스탈</div></div>
+      <div class="pil"><div class="t">Lead-Free Crystal</div><div class="d">맑고 가벼운 무연 프리미엄 소재</div></div>
+      <div class="pil"><div class="t">Everyday Ritual</div><div class="d">매일을 특별하게 만드는 오브제</div></div>
     </div>
-    
-    <div class="section2 morenvy-banner-area" area_id="bc19">
-        <div class="app-box morenvy-banner">
-            <div class="image-Area">{#imgTag_1}</div>
-            <div class="text-Area">
-                <div class="title">{#title}</div>
-                <div class="desc">{#html}</div>
-            </div>
-        </div>
-    </div>
-    
-    <div class="section3 morenvy-banner-area" area_id="bc19">
-        <div class="app-box morenvy-banner">
-            <div class="image-Area">{#imgTag_1}</div>
-            <div class="text-Area">
-                <div class="desc">{#html}</div>
-            </div>
-        </div>
-    </div>
-    
-    <div class="section4 morenvy-banner-area" area_id="bc19">
-        <div class="app-box morenvy-banner">
-            <div class="image-Area">{#imgTag_1_or_video_1}</div>
-        </div>
-    </div>
+  </div>
+</div>
     
 </div>
 
