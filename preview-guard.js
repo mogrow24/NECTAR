@@ -75,11 +75,14 @@
     // 4) 현재 들어온 페이지의 GNB 메뉴 활성 표시 (호버 스타일 고정)
     function sectionOf(name) {
       name = (name || '').toLowerCase();
-      if (/^category-/.test(name) || /^product-\d+\.html$/.test(name)) return 'shop';
-      if (name === 'collection.html') return 'collection';
+      // 특정 미러 카테고리는 해당 GNB 영역으로 우선 매핑 (42=Collection, 44=Experience)
+      if (name === 'collection.html' || name === 'category-42.html') return 'collection';
+      if (name === 'experience.html' || name === 'category-44.html' || /^experience-detail-/.test(name)) return 'experience';
       if (name === 'about.html') return 'about';
-      if (name === 'experience.html' || /^experience-detail-/.test(name)) return 'experience';
+      if (name === 'stockist.html') return 'stockist';
       if (name === 'contact.html') return 'contact';
+      // 그 외 카테고리/상품 상세는 모두 SHOP 영역
+      if (/^category-/.test(name) || /^product-\d+\.html$/.test(name)) return 'shop';
       return '';
     }
     function markActiveNav() {
