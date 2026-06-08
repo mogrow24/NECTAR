@@ -626,11 +626,24 @@ CAFE24.ROUTE = {"is_mobile":false,"is_need_route":false,"language_code":"ZZ","pa
   #collection .section1 .image-Area .M_pc.window-height-layout{ height:auto !important; min-height:0 !important; }
   #collection .section2{ padding-top:0 !important; margin-top:0 !important; }
   #collection .section2 .title-Area{ display:none !important; }
-  .nectar-collection{ background:#fff; padding:72px 0; color:#121212;
+  .nectar-collection{ background:#fff; padding:0 0 72px; color:#121212;
     font-family:Pretendard,-apple-system,BlinkMacSystemFont,system-ui,'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif;
     -webkit-font-smoothing:antialiased; word-break:keep-all; }
   .nectar-collection *{ box-sizing:border-box; }
   .nectar-collection .nc-wrap{ max-width:1320px; margin:0 auto; padding:0 60px; }
+
+  /* 실사이트 스플릿 히어로 (좌: 카피 / 우: 이미지) */
+  .nectar-collection .nc-hero{ width:100vw; margin-left:calc(50% - 50vw); display:grid; grid-template-columns:1fr 1fr; align-items:stretch; }
+  .nectar-collection .nc-hero-text{ display:flex; flex-direction:column; justify-content:center; padding:64px 9% 64px 11%; }
+  .nectar-collection .nc-hero-eyebrow{ font-size:12px; letter-spacing:.16em; text-transform:uppercase; color:#c71729; font-weight:600; margin-bottom:16px; }
+  .nectar-collection .nc-hero h2{ font-family:'Spectral',serif; font-weight:500; font-size:23px; line-height:1.45; letter-spacing:.02em; margin:0 0 22px; color:#1d1d1d; }
+  .nectar-collection .nc-hero p{ font-size:13.5px; line-height:2.05; color:#6f6a64; margin:0; max-width:480px; }
+  .nectar-collection .nc-hero-img{ background:#0e0e0e; min-height:430px; }
+  .nectar-collection .nc-hero-img img{ width:100%; height:100%; object-fit:cover; display:block; }
+
+  /* COLLECTION 섹션 라벨 */
+  .nectar-collection .nc-collection-label{ text-align:center; font-size:13px; letter-spacing:.24em; text-transform:uppercase; color:#1d1d1d; padding:34px 0; border-bottom:1px solid #e6e2db; margin:0 0 48px; }
+
   .nectar-collection .nc-head{ text-align:center; margin-bottom:40px; }
   .nectar-collection .nc-eyebrow{ display:block; font-size:12px; letter-spacing:.16em; text-transform:uppercase; color:#c71729; font-weight:600; margin-bottom:10px; }
   .nectar-collection .nc-title{ font-size:30px; font-weight:700; line-height:1.2; }
@@ -652,7 +665,8 @@ CAFE24.ROUTE = {"is_mobile":false,"is_need_route":false,"language_code":"ZZ","pa
   .nectar-collection .nc-nm-ko{ font-size:12.5px; color:#808080; }
   .nectar-collection .nc-pr{ margin-top:3px; font-size:16px; font-weight:700; }
   @media(max-width:1024px){ .nectar-collection .nc-wrap{ padding:0 32px; } .nectar-collection .nc-grid{ grid-template-columns:repeat(3,1fr); } }
-  @media(max-width:760px){ .nectar-collection .nc-grid{ grid-template-columns:repeat(2,1fr); } .nectar-collection .nc-title{ font-size:25px; } }
+  @media(max-width:900px){ .nectar-collection .nc-hero{ grid-template-columns:1fr; } .nectar-collection .nc-hero-text{ padding:44px 24px; order:2; } .nectar-collection .nc-hero-img{ order:1; min-height:300px; } }
+  @media(max-width:760px){ .nectar-collection .nc-grid{ grid-template-columns:repeat(2,1fr); } .nectar-collection .nc-title{ font-size:25px; } .nectar-collection .nc-hero h2{ font-size:21px; } }
   @media(max-width:480px){ .nectar-collection{ padding:48px 0; } .nectar-collection .nc-wrap{ padding:0 18px; } }
 </style>
 </head>
@@ -756,11 +770,20 @@ CAFE24.ROUTE = {"is_mobile":false,"is_need_route":false,"language_code":"ZZ","pa
 
         <!-- NECTAR 리뉴얼: The Red Invitation 상품 그리드 -->
         <div class="nectar-collection">
-          <div class="nc-wrap">
-            <div class="nc-head">
-              <span class="nc-eyebrow">The Red Invitation</span>
-              <h2 class="nc-title">컬렉션 전체 상품</h2>
+
+          <!-- 실사이트 스플릿 히어로 -->
+          <section class="nc-hero">
+            <div class="nc-hero-text">
+              <span class="nc-hero-eyebrow">1st Collection</span>
+              <h2>NECTAR’s Debut Collection : THE RED INVITATION</h2>
+              <p>새로운 영감의 세계에 오신 것을 환영합니다.<br>넥타의 첫 번째 컬렉션은 사랑하는 이들과 나누는 대화 속에서 만나게 되는 에너지와<br>그 속에서 피어나는 새로운 감정을 넥타만의 시선으로 조명합니다.<br>넥타가 전하는 일상의 새로운 리듬.<br>붉게 피어난 영감의 시간 속으로 초대합니다.<br><br>Savor the red inspiration. NECTAR.</p>
             </div>
+            <div class="nc-hero-img"><img src="https://nectarofficial.com/web/upload/NNEditor/20251217/cf56bc1284be2e90c440317f668bd862.png" alt="The Red Invitation"></div>
+          </section>
+
+          <div class="nc-collection-label">COLLECTION</div>
+
+          <div class="nc-wrap">
             <div class="nc-grid">
               <a class="nc-card" href="/product/detail.html?product_no=46">
                 <div class="nc-thumb"><span class="nc-badge">Sold out</span><img class="nc-img-main" src="https://nectarofficial.com/web/product/medium/202512/45333b4bf502b1d7f79134cceab9b65c.png" alt="Golden Hour Champagne Glass"><img class="nc-img-hover" src="https://nectarofficial.com/web/product/small/202512/ea7376918760d72ee2540e823080f6a8.png" alt="" loading="lazy"></div>
