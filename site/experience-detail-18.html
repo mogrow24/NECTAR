@@ -41,8 +41,14 @@
   .exp-crumb{ display:inline-flex; align-items:center; gap:8px; margin-bottom:30px; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:#8a857e; text-decoration:none; }
   .exp-crumb:hover{ color:#c7172a; }
 
-  .exp-hero{ width:100%; margin:0; }
+  .exp-hero{ position:relative; width:100%; margin:0; background:#000; }
   .exp-hero img{ width:100%; display:block; }
+  .exp-hero-cap{ position:absolute; left:0; right:0; top:50%; transform:translateY(-50%);
+    text-align:center; color:#fff; padding:0 20px; }
+  .exp-hero-brand{ font-family:'Spectral',serif; font-weight:400; font-size:46px; letter-spacing:.16em; line-height:1; }
+  .exp-hero-collab{ margin-top:18px; font-family:'Spectral',serif; font-size:16px; letter-spacing:.22em;
+    text-transform:uppercase; }
+  @media (max-width:980px){ .exp-hero-brand{ font-size:30px; } .exp-hero-collab{ font-size:12px; letter-spacing:.14em; } }
 
   .exp-body{ padding:32px 0 24px; line-height:2; font-size:15px; color:#2a2a2a; }
   .exp-body h2{ font-family:'Spectral',serif; font-size:18px; font-weight:600; letter-spacing:.01em; margin:0 0 22px; color:#1a1a3c; }
@@ -116,7 +122,11 @@
   </div>
 
   <div class="exp-hero">
-    <img src="https://nectarofficial.com/web/upload/NNEditor/20260210/1770701378525.png" alt="NECTAR Table : Golden Hour Glass — Champagne &amp; Caviar Brunch">
+    <img src="https://nectarofficial.com/web/product/big/202602/008876de5a93c1b91bc52b5be57f5f76.png" alt="NECTAR Table : Golden Hour Glass — Champagne &amp; Caviar Brunch">
+    <div class="exp-hero-cap">
+      <div class="exp-hero-brand">NECTAR</div>
+      <div class="exp-hero-collab">ENOTECA &nbsp;|&nbsp; Debbie&rsquo;s &nbsp;|&nbsp; ALMAS CAVIAR</div>
+    </div>
   </div>
 
   <div class="exp-wrap">
