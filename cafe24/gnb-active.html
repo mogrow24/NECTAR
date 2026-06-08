@@ -1,0 +1,62 @@
+<!-- ===========================================================================
+  NECTAR · GNB 현재영역 활성표시 (Cafe24 스킨 붙여넣기용)
+  ---------------------------------------------------------------------------
+  어떤 경로로 들어와도(GNB 클릭 / 푸터 링크 / 홈에서 이동 / 주소 직접입력)
+  지금 보고 있는 페이지에 해당하는 상단 GNB 메뉴에 .on 을 붙여 활성표시합니다.
+
+  · 라이브 카페24 URL( /About.html, /Stockist.html, /Collection.html?cate_no=42,
+    /product/list.html?cate_no=48, /product/detail.html?product_no=46 ... )과
+    리뉴얼 프리뷰 평면 파일명( about.html, category-48.html, product-46.html ... )
+    두 형식을 모두 인식합니다.
+  · 리뉴얼 GNB 마크업(.nx-nav / .hdr-nav)을 대상으로 합니다.
+  · 활성 스타일(.nx-nav a.on / .hdr-nav a.on)은 GNB 헤더 CSS에 이미 포함돼 있습니다
+    (color/border:#c7172a). 없다면 아래 주석의 보강 CSS를 함께 넣으세요.
+
+  [적용] 카페24 관리자 → 디자인(PC/모바일) → 스킨 [편집] →
+         GNB(.nx-nav)가 포함된 공통 레이아웃(header 모듈)의 GNB 마크업 바로 아래,
+         또는 공통 레이아웃 </body> 직전에 이 블록을 통째로 붙여넣기.
+         ※ PC/모바일 스킨이 분리돼 있으면 모바일 스킨에도 동일하게 한 번 더 붙여넣기.
+============================================================================ -->
+<script>
+(function () {
+  // URL/링크 → GNB 영역 키. 카페24 라우트 + 프리뷰 평면 파일명 모두 처리.
+  function areaOf(href) {
+    if (!href) return '';
+    var u; try { u = new URL(href, window.location.href); } catch (e) { return ''; }
+    var name = (u.pathname.split('/').pop() || '').toLowerCase();
+    var cate = u.searchParams.get('cate_no') || '';
+    if (name === 'about.html') return 'about';
+    if (name === 'stockist.html') return 'stockist';
+    if (name === 'contact.html') return 'contact';
+    // 컬렉션(=The Red Invitation, cate_no 42) / 익스피리언스(cate_no 44)는
+    // /product/list.html 로 들어와도 cate_no 로 먼저 판별 (list/detail 검사보다 앞)
+    if (name === 'collection.html' || name === 'category-42.html' || cate === '42') return 'collection';
+    if (name === 'experience.html' || name === 'experience_detail.html'
+        || name === 'category-44.html' || /^experience-detail-/.test(name) || cate === '44') return 'experience';
+    if (name === 'list.html' || name === 'detail.html') return 'shop';              // /product/list|detail.html
+    if (/^category-/.test(name) || /^product-\d+\.html$/.test(name)) return 'shop'; // 프리뷰 평면 파일
+    return ''; // 홈(/ , index.html 등)은 활성 메뉴 없음
+  }
+
+  function mark() {
+    var cur = areaOf(window.location.href);
+    if (!cur) return;
+    var links = document.querySelectorAll('.nx-nav a, .hdr-nav a');
+    for (var i = 0; i < links.length; i++) {
+      if (areaOf(links[i].getAttribute('href')) === cur) {
+        links[i].classList.add('on');
+        links[i].setAttribute('aria-current', 'page');
+      }
+    }
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', mark);
+  else mark();
+})();
+</script>
+
+<!-- 활성 스타일이 GNB CSS에 없을 때만 아래 보강 CSS를 함께 넣으세요.
+<style>
+  .nx-nav a.on, .hdr-nav a.on { color:#c7172a; border-color:#c7172a; }
+</style>
+-->

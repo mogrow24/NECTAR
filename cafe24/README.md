@@ -55,6 +55,20 @@ PC·모바일에 자동 대응합니다(모바일 기준 375px, 980px 이하에�
 
 > 모든 링크는 새 탭(`target="_blank"`) + 보안(`rel="noopener"`) 처리됨.
 
+## GNB 현재영역 활성표시
+
+상단 GNB에서 **지금 보고 있는 페이지의 메뉴를 활성표시**(브랜드 레드)하는 코드입니다.
+GNB 클릭·푸터 링크·홈에서 이동·주소 직접입력 등 **진입 경로와 무관하게** 로드 시 자동 표시됩니다.
+
+| 파일 | 용도 |
+|------|------|
+| [gnb-active.html](gnb-active.html) | 현재 URL을 GNB 영역(SHOP/COLLECTION/ABOUT/STOCKIST/EXPERIENCE/CONTACT)에 매핑해 `.on` 부여 |
+
+- 라이브 카페24 URL(`/About.html`, `/product/list.html?cate_no=48` 등)과 프리뷰 평면 파일명(`about.html`, `category-48.html` 등)을 **모두 인식**합니다.
+- 리뉴얼 GNB 마크업(`.nx-nav` / `.hdr-nav`)을 대상으로 하며, 활성 스타일(`a.on`)은 GNB 헤더 CSS에 이미 포함돼 있습니다.
+- **적용**: 스킨 [편집] → GNB가 포함된 공통 레이아웃(header 모듈)의 GNB 마크업 바로 아래(또는 `</body>` 직전)에 붙여넣기. PC/모바일 스킨 분리 시 모바일에도 동일하게 한 번 더.
+- 프리뷰(GitHub Pages)에서는 동일 로직이 `preview-guard.js` 에 이미 포함돼 자동 동작합니다 — 이 파일은 **라이브 스킨용 별도 핸드오프**입니다.
+
 ## 적용 방법 (Cafe24 관리자)
 
 1. **Cafe24 관리자 로그인** → 상단 메뉴 **[디자인(PC/모바일)]** → **디자인 보관함** → 사용 중 스킨 **[편집]**
