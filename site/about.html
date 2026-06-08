@@ -718,58 +718,75 @@ CAFE24.ROUTE = {"is_mobile":false,"is_need_route":false,"language_code":"ZZ","pa
     
 <link href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;600&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
 <style id="nectar-about">
-  .nectar-about{ --red:#c7172a; --ink:#1d1d1d; --gray:#6f6a64; --line:#e6e2db; --cream:#f4f2ee;
+  /* 실사이트 About 구조 그대로: 풀블리드 히어로 → 인트로 → 철학 스플릿(좌 이미지/우 블랙) → 3단 verse */
+  .nectar-about{ --ink:#1d1d1d; --gray:#6f6a64; --line:#e6e2db; --cream:#f4f2ee;
     --serif:'Spectral', serif; --sans:'Pretendard','Noto Sans KR',-apple-system,BlinkMacSystemFont,system-ui,'Malgun Gothic',sans-serif;
     background:#fff; color:var(--ink); font-family:var(--sans); }
   .nectar-about *{ box-sizing:border-box; }
   .nectar-about img{ display:block; max-width:100%; }
-  .na-wrap{ max-width:1100px; margin:0 auto; padding:0 60px; }
-  .na-sec{ padding:72px 0; }
-  .na-sec.first{ padding-top:56px; }
-  .na-eyebrow{ display:block; text-align:center; font-size:12px; letter-spacing:.22em; text-transform:uppercase; color:var(--red); font-weight:600; margin-bottom:18px; }
-  .na-h{ font-family:var(--serif); font-weight:600; font-size:32px; line-height:1.35; text-align:center; margin:0 0 36px; letter-spacing:.01em; }
-  .na-img{ margin:0 0 40px; }
-  .na-img img{ width:100%; height:auto; background:var(--cream); }
-  .na-p{ max-width:760px; margin:0 auto; font-size:15px; line-height:2.05; color:var(--gray); text-align:center; }
-  .na-p + .na-p{ margin-top:20px; }
-  .na-verse{ border-top:1px solid var(--line); text-align:center; padding:80px 0 88px; }
-  .na-mark{ font-family:var(--serif); font-weight:600; font-size:26px; letter-spacing:.34em; color:var(--ink); margin-bottom:40px; }
-  .na-verse p{ font-size:16px; line-height:2; color:var(--ink); margin:0 auto; max-width:680px; }
-  .na-verse p + p{ margin-top:26px; }
+
+  /* 1) 풀블리드 히어로 */
+  .na-hero{ width:100vw; margin-left:calc(50% - 50vw); }
+  .na-hero img{ width:100%; height:auto; object-fit:cover; background:var(--cream); }
+
+  /* 2) 인트로 (가운데 정렬) */
+  .na-intro{ text-align:center; padding:78px 24px 82px; }
+  .na-intro h2{ font-family:var(--serif); font-weight:500; font-size:27px; letter-spacing:.04em; margin:0 0 30px; }
+  .na-intro p{ max-width:720px; margin:0 auto; font-size:14.5px; line-height:2.15; color:var(--gray); }
+  .na-intro p + p{ margin-top:20px; }
+
+  /* 3) 철학 스플릿 — 좌: 사진 / 우: 블랙 패널 */
+  .na-split{ width:100vw; margin-left:calc(50% - 50vw); display:grid; grid-template-columns:1fr 1fr; align-items:stretch; }
+  .na-split .na-photo{ overflow:hidden; min-height:520px; }
+  .na-split .na-photo img{ width:100%; height:100%; object-fit:cover; }
+  .na-split .na-panel{ background:#111; color:#fff; display:flex; flex-direction:column; justify-content:center; align-items:center; padding:80px 64px; text-align:center; }
+  .na-panel h3{ font-family:var(--serif); font-weight:500; font-size:23px; line-height:1.5; margin:0 0 32px; letter-spacing:.04em; }
+  .na-panel p{ font-size:14px; line-height:2.2; color:#d8d4cf; margin:0; max-width:430px; }
+
+  /* 4) 3단 verse — NECTAR 마크 + 문구 */
+  .na-verse{ display:grid; grid-template-columns:repeat(3,1fr); border-top:1px solid var(--line); padding:74px 48px 86px; }
+  .na-verse .col{ padding:0 30px; text-align:center; }
+  .na-vmark{ display:inline-block; height:17px; margin:0 0 24px; }
+  .na-vmark svg{ height:17px; width:auto; } .na-vmark .st0{ fill:var(--ink); }
+  .na-verse p{ font-size:13.5px; line-height:2.05; color:var(--gray); margin:0; }
+
   @media (max-width:900px){
-    .na-wrap{ padding:0 24px; }
-    .na-sec{ padding:48px 0; } .na-sec.first{ padding-top:40px; }
-    .na-h{ font-size:25px; margin-bottom:28px; }
-    .na-img{ margin-bottom:28px; }
-    .na-verse{ padding:56px 0 60px; } .na-mark{ font-size:22px; margin-bottom:30px; }
-    .na-verse p{ font-size:15px; }
+    .na-intro{ padding:48px 22px 52px; } .na-intro h2{ font-size:22px; margin-bottom:24px; }
+    .na-split{ grid-template-columns:1fr; }
+    .na-split .na-photo{ min-height:0; }
+    .na-split .na-panel{ padding:54px 28px; } .na-panel h3{ font-size:20px; }
+    .na-verse{ grid-template-columns:1fr; padding:48px 24px 56px; gap:42px; }
+    .na-verse .col{ padding:0; }
   }
 </style>
 <div class="nectar-about">
-  <section class="na-sec first">
-    <div class="na-wrap">
-      <span class="na-eyebrow">About</span>
-      <h2 class="na-h">일상에 새로운 리듬을 더하는<br>리프레시웨어 브랜드</h2>
-      <div class="na-img"><img src="https://nectarofficial.com/web/upload/NNEditor/20250909/72837506fadecb64f2c3a8bf52174fe8.jpg" alt="NECTAR"></div>
-      <p class="na-p">와인 글라스를 시작으로 다양한 와인 제품을 통해 일상에 새로운 리듬을 더하는 리프레시웨어 브랜드입니다.</p>
-      <p class="na-p">와인을 즐기는 경험에 작은 변주를 더해 신선한 즐거움을 전합니다. 과거와 미래, 어느 한쪽에도 얽매이지 않는 자유롭고 현대적인 라이프스타일을 제안하며, 고급스러운 소재와 타협하지 않는 품질 기준 그리고 넥타만의 시선으로 재해석한 컨템포러리 디자인으로 오래도록 곁에 두고 싶은 제품을 만듭니다.</p>
+  <!-- NECTAR 워드마크(verse용 심볼) -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="na-logo" viewBox="0 0 1027.4 210"><path class="st0" d="M998.7,174l-41.7-68.7c21.8-7.6,37.1-26.5,37.1-51.5s-16.8-48.5-57.4-48.5-33.8.6-50,.6-22.4-.3-31.5-.6v.6c15.3,7.6,16.8,14.4,16.8,99.7s-.7,84-7.9,92.8c-4.9,5.4-9.4,1.7-11.3-.4-7.2-8.4-16.4-28.1-45.1-93.6-38.8-86.5-41.2-93.2-42.4-99.1h-16.3c-5.7,0-23.2-.6-23.2-.6v.6c4.5,2.3,7.8,4.4,10.2,8.6.2.4,1.9,4.3.4,9.9l-3.4,7.8-3.8,8.7h0s-27.8,64.1-27.8,64.1c-39.2,91.1-42.9,94.7-53.8,100.3v.6h57.9v-.6c-5.3-3.5-8.8-6.8-8.8-15.3s5.3-27.6,19.1-61.8c10.9-.6,23.2-.6,37.4-.6s22.4,0,32.1.3c15,35.6,20.6,52.9,20.6,62.9s-3.5,10.6-9.1,14.4v.6h122.8v-.6c-15.6-7.6-17.1-13.5-17.1-96.5,6.8.9,15,1.2,25,1.2,19.7,34.1,38.2,67.6,50.3,85l7.3,10.9h42.2v-.8s-12.6-3.9-28.7-30.5ZM753.3,108.2c-10.6,0-20.6,0-29.1-.3.9-2.6,2.1-5.3,3.2-7.9,10.6-24.4,17.9-41.5,23.2-54.7,6.5,15,12.9,31.8,22.9,54.7,1.2,2.9,2.4,5.6,3.5,8.2h-23.8ZM928.5,88.5c-5.9,0-15.6-.3-25.9-1.5.3-25.9.6-44.7,1.8-60,9.7-.6,16.5-.9,22.9-.9,24.1,0,34.7,10,34.7,31.2s-12.9,31.2-33.5,31.2Z"/><path class="st0" d="M124.7,5.9c16.2,8.5,17.9,15.9,17.9,89.4s.3,28.8.3,39.7C105.6,92.6,48.5,29.7,18.2,0l-2.9.6c1.2,29.4,1.5,49.1,1.5,68.5v36.5c0,86.2-1.2,91.2-16.8,99.1v.6h61.8v-.6c-16.2-8.2-17.9-15.6-17.9-92.1s-.3-35-.6-46.8c40,43.8,97.9,108.5,126.8,144.1l2.1-.6c-1.5-17.1-2.4-37.9-2.4-103.8s1.2-92.1,15.9-99.7v-.6h-60.9v.6Z"/><path class="st0" d="M275.9,181.2c-9.4,0-17.4,0-24.1-.3-1.2-15-1.8-37.9-1.8-75.3v-3.5h1.8c15.6,0,35.6,0,61.2,2.1l-.9-26.5c-18.2,2.1-34.1,2.6-47.6,2.6s-9.7-.3-14.1-.3c.3-24.1.9-40.6,2.1-52.4h22.4c17.6,0,28.8,2.1,40.9,7.9h.6l-1.5-32.1h-.6c-5.6,1.8-25.6,2.1-111.5,2.1v.3c15,8.5,16.8,15.9,16.8,99.7s-1.8,90.6-16.8,99.1v.6h30.9c39.1-.3,77.9-.3,84.4,1.8h.6l1.5-35.9h-.6c-13.2,6.8-24.7,10-43.5,10Z"/><path class="st0" d="M452,183.5c-47.4,0-81.8-29.4-81.8-82.9s34.1-73.2,77.6-73.2,40,6.2,52.9,25.9h.6l-3.2-46.2c-8.8-.6-32.4-5.3-49.4-5.3-62.9,0-112.1,39.4-112.1,103.8s46.2,102.9,105.6,102.9,50-6.5,60.3-13.8l2.9-36.8h-.3c-15,17.4-32.4,25.6-53.2,25.6Z"/><path class="st0" d="M611.2,105.6c0-38.5.3-60.6.9-75h3.2c30.9,0,38.8.6,52.4,7.1h.6l2.1-34.1h-.6c-5.9,2.6-65.9,3.2-75.6,3.2s-65.6-.6-70.9-3.2h-.6l-1.8,34.1h.6c14.1-6.5,20.6-7.1,51.8-7.1h5.9c1.2,14.4,1.5,36.8,1.5,75,0,81.2-1.8,89.7-17.9,99.1v.6h66.5v-.6c-16.2-9.4-17.9-17.4-17.9-99.1Z"/></symbol></svg>
+
+  <!-- 1) 풀블리드 히어로 -->
+  <div class="na-hero"><img src="https://nectarofficial.com/web/upload/NNEditor/20250909/72837506fadecb64f2c3a8bf52174fe8.jpg" alt="NECTAR"></div>
+
+  <!-- 2) 인트로 -->
+  <section class="na-intro">
+    <h2>NECTAR는</h2>
+    <p>와인 글라스를 시작으로 다양한 와인 제품을 통해 일상에 새로운 리듬을 더하는 리프레시웨어 브랜드입니다.</p>
+    <p>와인을 즐기는 경험에 작은 변주를 더해 신선한 즐거움을 전합니다. 과거와 미래, 어느 한쪽에도 얽매이지 않는 자유롭고 현대적인 라이프스타일을 제안하며, 고급스러운 소재와 타협하지 않는 품질 기준 그리고 넥타만의 시선으로 재해석한 컨템포러리 디자인으로 오래도록 곁에 두고 싶은 제품을 만듭니다.</p>
+  </section>
+
+  <!-- 3) 철학 스플릿 -->
+  <section class="na-split">
+    <div class="na-photo"><img src="https://nectarofficial.com/web/upload/NNEditor/20250909/8420b0e91855b518e05404925a6c34a2.jpg" alt="NECTAR philosophy"></div>
+    <div class="na-panel">
+      <h3>진정한 럭셔리에 대한<br>우리의 철학</h3>
+      <p>우리의 삶은 무수한 영감으로 가득합니다. 그리고 NECTAR는 진정한 럭셔리한 삶 속에서 영감을 마주하는 방식을 제안합니다. 진정한 럭셔리는 무엇일까요. 그 답은 화려한 샹들리에 아래가 아니라 소중한 사람들과 함께하는 시간 속에 있습니다. 테이블 위 살며시 내려앉은 햇살, 신선한 제철 재료의 싱그러운 색. 와인 한 잔의 깊은 향, 그리고 주변에서 들려오는 웃음소리. 영감은 바로 그 순간 피어납니다.</p>
     </div>
   </section>
-  <section class="na-sec">
-    <div class="na-wrap">
-      <span class="na-eyebrow">Philosophy</span>
-      <h2 class="na-h">진정한 럭셔리에 대한<br>우리의 철학</h2>
-      <div class="na-img"><img src="https://nectarofficial.com/web/upload/NNEditor/20250909/8420b0e91855b518e05404925a6c34a2.jpg" alt="NECTAR philosophy"></div>
-      <p class="na-p">우리의 삶은 무수한 영감으로 가득합니다. 그리고 NECTAR는 진정한 럭셔리한 삶 속에서 영감을 마주하는 방식을 제안합니다. 진정한 럭셔리는 무엇일까요. 그 답은 화려한 샹들리에 아래가 아니라 소중한 사람들과 함께하는 시간 속에 있습니다. 테이블 위 살며시 내려앉은 햇살, 신선한 제철 재료의 싱그러운 색. 와인 한 잔의 깊은 향, 그리고 주변에서 들려오는 웃음소리. 영감은 바로 그 순간 피어납니다.</p>
-    </div>
-  </section>
+
+  <!-- 4) 3단 verse -->
   <section class="na-verse">
-    <div class="na-wrap">
-      <div class="na-mark">NECTAR</div>
-      <p>사람들을 대화의 자리로 모으며 자리에 생동감을 더하고<br>잔에 담긴 이야기를 한층 더 풍부하게 끌어냅니다.</p>
-      <p>그것은 설레는 세계로 이끄는 작은 주문과도 같습니다.</p>
-      <p>이름을 조용히 속삭이는 순간, 즐거웠던 그 시간으로 다시 돌아갑니다.</p>
-    </div>
+    <div class="col"><span class="na-vmark"><svg><use href="#na-logo"></use></svg></span><p>사람들을 대화의 자리로 모으며 자리에 생동감을 더하고<br>잔에 담긴 이야기를 한층 더 풍부하게 끌어냅니다.</p></div>
+    <div class="col"><span class="na-vmark"><svg><use href="#na-logo"></use></svg></span><p>그것은 설레는 세계로 이끄는<br>작은 주문과도 같습니다.</p></div>
+    <div class="col"><span class="na-vmark"><svg><use href="#na-logo"></use></svg></span><p>이름을 조용히 속삭이는 순간,<br>즐거웠던 그 시간으로 다시 돌아갑니다.</p></div>
   </section>
 </div>
     
