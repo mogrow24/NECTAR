@@ -34,6 +34,7 @@
       var q = u.searchParams;
       if (seg.length === 0) return '../renewal/index.html';            // 홈(/) → 리뉴얼 홈
       var last = seg[seg.length - 1].toLowerCase();
+      if (last === 'experience_detail.html' && q.get('product_no')) return 'experience-detail-' + q.get('product_no') + '.html';
       if (last === 'detail.html' && q.get('product_no')) return 'product-' + q.get('product_no') + '.html';
       if (last === 'list.html' && q.get('cate_no')) {
         var c = q.get('cate_no');
@@ -41,7 +42,7 @@
         return special[c] || 'category-' + c + '.html';
       }
       if (PAGES[last]) return last;
-      if (/^category-[\w-]+\.html$/.test(last) || /^product-\d+\.html$/.test(last)) return last;
+      if (/^category-[\w-]+\.html$/.test(last) || /^product-\d+\.html$/.test(last) || /^experience-detail-\d+\.html$/.test(last)) return last;
       return null;
     }
 
@@ -77,7 +78,7 @@
       if (/^category-/.test(name) || /^product-\d+\.html$/.test(name)) return 'shop';
       if (name === 'collection.html') return 'collection';
       if (name === 'about.html') return 'about';
-      if (name === 'experience.html') return 'experience';
+      if (name === 'experience.html' || /^experience-detail-/.test(name)) return 'experience';
       if (name === 'contact.html') return 'contact';
       return '';
     }
