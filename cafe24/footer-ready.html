@@ -1,0 +1,73 @@
+<!-- ===========================================================================
+  NECTAR · 하단 회사정보 레이아웃(footer.html) 교체용 (Cafe24 스킨 붙여넣기)
+  ---------------------------------------------------------------------------
+  적용: 디자인 편집 → 레이아웃 → 기본 레이아웃(basic) → '레이아웃 (하단 회사…)'
+        (= footer.html) 열기 → [전체 선택(Ctrl+A) → 삭제] → 이 파일 전체 붙여넣기 → 저장
+  원리: 회사정보(상호/대표/주소/사업자번호 등)는 카페24 연동값({$...})을 그대로
+        사용 → 관리자에서 회사정보 바꾸면 자동 반영. 모양만 NECTAR 디자인으로.
+  주의: {$mall_name} 등 변수는 반드시 module="Layout_footer" 안에 있어야 출력됩니다.
+============================================================================ -->
+<div id="footer">
+  <div module="Layout_footer">
+    <footer class="ft">
+      <div class="ft-in">
+        <div>
+          <div class="flogo">NECTAR</div>
+          <p>
+            {$mall_name}<br>
+            ceo : {$president_name}<br>
+            <span>{$cpo_email}</span><br><br>
+            {$mall_zipcode} {$mall_addr2} {$mall_addr1}<br><br>
+            permit number : {$network_regno}<br>
+            business number : {$company_regno}
+            <a href="http://www.ftc.go.kr/info/bizinfo/communicationViewPopup.jsp?wrkr_no={$company_regno}" target="_blank" rel="noopener">(checking)</a>
+          </p>
+        </div>
+        <div><h4>Shop</h4><ul>
+          <li><a href="/product/list.html">Collection</a></li>
+          <li><a href="/Collection.html">Lookbook</a></li>
+          <li><a href="/About.html">Brand</a></li>
+          <li><a href="/order/basket.html">Cart</a></li>
+        </ul></div>
+        <div><h4>Content</h4><ul>
+          <li><a href="/Experience.html">Experience</a></li>
+          <li><a href="/Stockist.html">Stockist</a></li>
+          <li><a href="/Contact.html">Contact</a></li>
+          <li><a href="/myshop/index.html">My Account</a></li>
+        </ul></div>
+        <div><h4>Social</h4><ul>
+          <li><a href="https://www.instagram.com/nectarofficial_com/" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="https://pf.kakao.com/_xixiexen" target="_blank" rel="noopener">Kakaotalk</a></li>
+          <li><a href="https://www.youtube.com/@NECTAR_OFFICIAL" target="_blank" rel="noopener">Youtube</a></li>
+        </ul></div>
+        <div><h4>Help</h4><ul>
+          <li><a href="/board/free/list.html">Notice</a></li>
+          <li><a href="/member/login.html">Login</a></li>
+          <li><a href="/myshop/order/list.html">주문조회</a></li>
+          <li><a href="/product/recent_view_product.html">최근본상품</a></li>
+        </ul></div>
+      </div>
+      <div class="ft-bottom">
+        <span>&copy; NECTAR. All rights reserved.</span>
+      </div>
+    </footer>
+  </div>
+</div>
+
+<style>
+  /* NECTAR 푸터 — scoped (.ft) */
+  #footer .ft{ box-sizing:border-box; border-top:3px solid #c7172a; background:#f4f2ee; color:#1d1d1d;
+    font-family:'Pretendard',-apple-system,BlinkMacSystemFont,system-ui,'Apple SD Gothic Neo','Malgun Gothic',sans-serif; margin:0; }
+  #footer .ft *{ box-sizing:border-box; }
+  #footer .ft .ft-in{ display:grid; grid-template-columns:1fr repeat(4,auto); column-gap:100px; row-gap:30px;
+    padding:58px 48px; align-items:start; max-width:none; width:auto; margin:0; }
+  #footer .ft .flogo{ font-family:'Spectral',serif; font-weight:400; font-size:22px; letter-spacing:.3em; margin-bottom:16px; color:#1d1d1d; }
+  #footer .ft h4{ font-size:11px; letter-spacing:.16em; text-transform:uppercase; margin:0 0 14px; color:#1d1d1d; font-weight:700; }
+  #footer .ft ul{ list-style:none; margin:0; padding:0; }
+  #footer .ft li, #footer .ft p{ font-size:12px; color:#8a857e; line-height:2; margin:0; }
+  #footer .ft a{ color:inherit; text-decoration:none; }
+  #footer .ft a:hover{ color:#c7172a; }
+  #footer .ft .ft-bottom{ border-top:1px solid #e6e2db; padding:18px 48px; display:flex; justify-content:space-between;
+    flex-wrap:wrap; gap:10px; font-size:11px; color:#8a857e; letter-spacing:.04em; margin:0; }
+  @media (max-width:1024px){ #footer .ft .ft-in{ grid-template-columns:1fr; padding:48px 18px; } #footer .ft .ft-bottom{ padding:18px; } }
+</style>

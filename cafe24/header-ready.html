@@ -1,0 +1,169 @@
+<!-- ===========================================================================
+  NECTAR · header.html 교체용 (Cafe24 스킨 붙여넣기)
+  ---------------------------------------------------------------------------
+  적용: 디자인 편집 → 레이아웃 → 기본 레이아웃(basic) → header.html 열기
+        → [전체 선택(Ctrl+A) → 삭제] → 이 파일 전체 붙여넣기 → 저장
+  원리: 카페24 원본 헤더(#header)는 '숨김'으로 보존(아래 그대로 남겨둠).
+        그 위에 우리 NECTAR 헤더를 얹고, 장바구니 수량은 카페24 실시간
+        연동({$basket_count})을 그대로 사용 → 연결 유지, 모양만 교체.
+  복구: 문제가 생기면 skin-source/header.html 내용으로 되돌리면 원상복구.
+============================================================================ -->
+
+<!-- ===== NECTAR 통일 헤더 (우리 디자인) ===== -->
+<header class="nx-hdr">
+  <div class="nx-hdr-top">
+    <button class="nx-toggle" id="nxToggle" aria-label="메뉴">&#9776;</button>
+    <a class="nx-logo" href="/index.html" aria-label="NECTAR">
+      <svg class="nx-mark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1027.4 210" role="img" aria-label="NECTAR"><path class="st0" d="M998.7,174l-41.7-68.7c21.8-7.6,37.1-26.5,37.1-51.5s-16.8-48.5-57.4-48.5-33.8.6-50,.6-22.4-.3-31.5-.6v.6c15.3,7.6,16.8,14.4,16.8,99.7s-.7,84-7.9,92.8c-4.9,5.4-9.4,1.7-11.3-.4-7.2-8.4-16.4-28.1-45.1-93.6-38.8-86.5-41.2-93.2-42.4-99.1h-16.3c-5.7,0-23.2-.6-23.2-.6v.6c4.5,2.3,7.8,4.4,10.2,8.6.2.4,1.9,4.3.4,9.9l-3.4,7.8-3.8,8.7h0s-27.8,64.1-27.8,64.1c-39.2,91.1-42.9,94.7-53.8,100.3v.6h57.9v-.6c-5.3-3.5-8.8-6.8-8.8-15.3s5.3-27.6,19.1-61.8c10.9-.6,23.2-.6,37.4-.6s22.4,0,32.1.3c15,35.6,20.6,52.9,20.6,62.9s-3.5,10.6-9.1,14.4v.6h122.8v-.6c-15.6-7.6-17.1-13.5-17.1-96.5,6.8.9,15,1.2,25,1.2,19.7,34.1,38.2,67.6,50.3,85l7.3,10.9h42.2v-.8s-12.6-3.9-28.7-30.5ZM753.3,108.2c-10.6,0-20.6,0-29.1-.3.9-2.6,2.1-5.3,3.2-7.9,10.6-24.4,17.9-41.5,23.2-54.7,6.5,15,12.9,31.8,22.9,54.7,1.2,2.9,2.4,5.6,3.5,8.2h-23.8ZM928.5,88.5c-5.9,0-15.6-.3-25.9-1.5.3-25.9.6-44.7,1.8-60,9.7-.6,16.5-.9,22.9-.9,24.1,0,34.7,10,34.7,31.2s-12.9,31.2-33.5,31.2Z"/><path class="st0" d="M124.7,5.9c16.2,8.5,17.9,15.9,17.9,89.4s.3,28.8.3,39.7C105.6,92.6,48.5,29.7,18.2,0l-2.9.6c1.2,29.4,1.5,49.1,1.5,68.5v36.5c0,86.2-1.2,91.2-16.8,99.1v.6h61.8v-.6c-16.2-8.2-17.9-15.6-17.9-92.1s-.3-35-.6-46.8c40,43.8,97.9,108.5,126.8,144.1l2.1-.6c-1.5-17.1-2.4-37.9-2.4-103.8s1.2-92.1,15.9-99.7v-.6h-60.9v.6Z"/><path class="st0" d="M275.9,181.2c-9.4,0-17.4,0-24.1-.3-1.2-15-1.8-37.9-1.8-75.3v-3.5h1.8c15.6,0,35.6,0,61.2,2.1l-.9-26.5c-18.2,2.1-34.1,2.6-47.6,2.6s-9.7-.3-14.1-.3c.3-24.1.9-40.6,2.1-52.4h22.4c17.6,0,28.8,2.1,40.9,7.9h.6l-1.5-32.1h-.6c-5.6,1.8-25.6,2.1-111.5,2.1v.3c15,8.5,16.8,15.9,16.8,99.7s-1.8,90.6-16.8,99.1v.6h30.9c39.1-.3,77.9-.3,84.4,1.8h.6l1.5-35.9h-.6c-13.2,6.8-24.7,10-43.5,10Z"/><path class="st0" d="M452,183.5c-47.4,0-81.8-29.4-81.8-82.9s34.1-73.2,77.6-73.2,40,6.2,52.9,25.9h.6l-3.2-46.2c-8.8-.6-32.4-5.3-49.4-5.3-62.9,0-112.1,39.4-112.1,103.8s46.2,102.9,105.6,102.9,50-6.5,60.3-13.8l2.9-36.8h-.3c-15,17.4-32.4,25.6-53.2,25.6Z"/><path class="st0" d="M611.2,105.6c0-38.5.3-60.6.9-75h3.2c30.9,0,38.8.6,52.4,7.1h.6l2.1-34.1h-.6c-5.9,2.6-65.9,3.2-75.6,3.2s-65.6-.6-70.9-3.2h-.6l-1.8,34.1h.6c14.1-6.5,20.6-7.1,51.8-7.1h5.9c1.2,14.4,1.5,36.8,1.5,75,0,81.2-1.8,89.7-17.9,99.1v.6h66.5v-.6c-16.2-9.4-17.9-17.4-17.9-99.1Z"/></svg>
+    </a>
+    <div class="nx-utils">
+      <a href="/product/search.html" aria-label="검색"><svg viewBox="0 0 18.4 18.9"><path d="M13.6,13c1.2-1.4,2-3.2,2-5.2C15.6,3.5,12.1,0,7.8,0S0,3.5,0,7.8s3.5,7.8,7.8,7.8,3.3-.6,4.6-1.5l4.8,4.8.6-.6.6-.6-4.7-4.7ZM1.6,7.8C1.6,4.4,4.4,1.6,7.8,1.6s6.2,2.8,6.2,6.2-2.8,6.2-6.2,6.2S1.6,11.2,1.6,7.8Z"/></svg></a>
+      <a href="/myshop/index.html" aria-label="계정"><svg viewBox="0 0 18.6 20"><path d="M9.7,10.8c2.8-.2,5-2.5,5-5.4S12.3,0,9.3,0,3.9,2.4,3.9,5.4s2.2,5.2,5,5.4C4,11,0,15,0,20h1.5c0-4.3,3.5-7.8,7.8-7.8s7.8,3.5,7.8,7.8h1.5c0-5-4-9.1-8.9-9.3ZM5.4,5.4c0-2.1,1.7-3.9,3.9-3.9s3.9,1.7,3.9,3.9-1.7,3.9-3.9,3.9-3.9-1.7-3.9-3.9Z"/></svg></a>
+      <a class="nx-cart" href="/order/basket.html" module="Layout_orderBasketcount" aria-label="장바구니"><svg viewBox="0 0 17.6 18.6"><path d="M16.8,4h-2.5l-1.8-3.6-.2-.4h-7l-.2.4-1.8,3.6H0v14.6h17.6V4h-.8ZM6.3,1.6h5l1.2,2.4h-7.4l1.2-2.4ZM3.8,5.6h12.2v11.4H1.6V5.6h2.2Z"/></svg><span class="nx-cnt {$basket_count_display|display} {$basket_count_display_class}"><span class="{$basket_count_class}">{$basket_count}</span></span></a>
+    </div>
+  </div>
+  <nav class="nx-nav" id="nxNav">
+    <a href="/product/list.html">SHOP</a>
+    <a href="/Collection.html">COLLECTION</a>
+    <a href="/About.html">ABOUT</a>
+    <a href="/Stockist.html">STOCKIST</a>
+    <a href="/Experience.html">EXPERIENCE</a>
+    <a href="/Contact.html">CONTACT</a>
+  </nav>
+</header>
+
+<style id="nx-style">
+  /* 카페24 원본 헤더/배너 숨김 (아래에 보존됨) */
+  #header, .main_top_banner { display:none !important; }
+  /* NECTAR 통일 헤더 (namespaced .nx-) */
+  .nx-hdr{ position:sticky; top:0; z-index:9000; background:#fff; border-bottom:1px solid #e6e2db; font-family:Pretendard,-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif; }
+  .nx-hdr-top{ position:relative; height:72px; display:flex; align-items:center; justify-content:center; padding:0 48px; }
+  .nx-logo{ display:inline-flex; align-items:center; }
+  .nx-mark{ height:22px; width:auto; display:block; } .nx-logo .st0{ fill:#1a1a3c; }
+  .nx-utils{ position:absolute; right:48px; top:50%; transform:translateY(-50%); display:flex; gap:20px; align-items:center; }
+  .nx-utils a{ position:relative; display:flex; color:#1a1a3c; } .nx-utils svg{ width:19px; height:20px; fill:#1a1a3c; }
+  .nx-cnt{ position:absolute; bottom:2px; right:-7px; font-weight:700; font-size:9px; color:#c7172a; }
+  .nx-toggle{ display:none; position:absolute; left:48px; top:50%; transform:translateY(-50%); font-size:22px; line-height:1; color:#1a1a3c; background:none; border:0; cursor:pointer; }
+  .nx-nav{ height:42px; display:flex; align-items:center; justify-content:center; gap:44px; border-top:1px solid #e6e2db;
+    font-size:12px; letter-spacing:.14em; text-transform:uppercase; }
+  .nx-nav a{ color:#1d1d1d; text-decoration:none; padding:4px 0; border-bottom:1px solid transparent; transition:.2s; }
+  .nx-nav a:hover{ color:#c7172a; border-color:#c7172a; }
+  .nx-nav a.on{ color:#c7172a; border-color:#c7172a; }
+  @media (max-width:980px){
+    .nx-toggle{ display:block; }
+    .nx-nav{ position:absolute; top:100%; left:0; right:0; height:auto; flex-direction:column; gap:0; background:#fff; border-bottom:1px solid #e6e2db; display:none; }
+    .nx-nav.open{ display:flex; }
+    .nx-nav a{ width:100%; padding:14px 48px; border-bottom:1px solid #e6e2db; }
+  }
+</style>
+<script>
+/* 햄버거 토글 */
+(function(){var t=document.getElementById('nxToggle'),n=document.getElementById('nxNav');if(t&&n)t.addEventListener('click',function(){n.classList.toggle('open');});})();
+/* 현재 페이지 GNB 활성표시 (.on) */
+(function(){
+  function areaOf(href){ if(!href) return ''; var u; try{u=new URL(href,location.href);}catch(e){return '';}
+    var name=(u.pathname.split('/').pop()||'').toLowerCase(), cate=u.searchParams.get('cate_no')||'';
+    if(name==='about.html') return 'about';
+    if(name==='stockist.html') return 'stockist';
+    if(name==='contact.html') return 'contact';
+    if(name==='collection.html'||cate==='42') return 'collection';
+    if(name==='experience.html'||/^experience-detail/.test(name)||cate==='44') return 'experience';
+    if(name==='list.html'||name==='detail.html') return 'shop';
+    return ''; }
+  function mark(){ var cur=areaOf(location.href); if(!cur) return;
+    var a=document.querySelectorAll('.nx-nav a'); for(var i=0;i<a.length;i++){
+      if(areaOf(a[i].getAttribute('href'))===cur){ a[i].classList.add('on'); a[i].setAttribute('aria-current','page'); } } }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',mark); else mark();
+})();
+</script>
+<!-- ===== /NECTAR 통일 헤더 ===== -->
+
+
+<!-- ===========================================================================
+  ▼▼▼ 카페24 원본 헤더 (수정 금지 / 위 CSS로 화면에서 숨김 처리됨) ▼▼▼
+  로그인 상태·다국어·고객센터 등 카페24 모듈을 보존하기 위해 그대로 둡니다.
+============================================================================ -->
+<div class="main_top_banner ez-align-left" data-ez-module="top-banner" data-ez-align="left" data-ez-role="style.color" data-ez-display="visible" data-ez="contents-1svcw9z-1">
+	<div class="top_banner_box_inner">
+		<div class="top_banner_text"><!-- 최상단 배너 수정하는곳 -->
+			<a data-ez-role="a" href="#" data-href="#" target="_blank" style="color: black;">첫 쇼핑을 지원하는 3,000원 할인 회원가입 쿠폰</a>
+		</div><!-- //top_banner_text -->
+
+		<div class="top_banner_close" data-ez-role="close">
+			<input type="checkbox" name="chkbox" id="top_banner_box_cloase" value="1" data-ez-role="disable-term"><label for="top_banner_box_cloase" data-ez-role="disable-text">오늘 하루 보지 않기</label>
+			<i aria-hidden="true" class="icon icoClose">닫기</i>
+		</div><!-- //top_banner_close -->
+	</div><!-- //top_banner_box_inner -->
+</div>
+<header id="header" class="layout1" data-ez-layout="layout1" data-ez="contents-0ilmfop-1">
+	<ez-prop data-version="1.0.0">
+		<ez-var data-prop="layout" data-namespace="ez.layout.header.layout" data-type="array">
+			<ez-item data-id="layout3" data-name="1단 기본형"></ez-item>
+			<ez-item data-id="layout2" data-name="2단 좌측형"></ez-item>
+			<ez-item data-id="layout4" data-name="2단 혼합형"></ez-item>
+			<ez-item data-id="layout1" data-name="2단 중앙형 (아이콘 하단)"></ez-item>
+			<ez-item data-id="layout5" data-name="2단 중앙형 (아이콘 상단)"></ez-item>
+  	    </ez-var>
+	</ez-prop>
+	<div class="inner">
+		<div class="toparea display_pc_only">
+			<div class="toparea_shoppinginfo">
+				<div module="Layout_multishopList">
+					<button type="button" class="toggle">{$current_language} <i aria-hidden="true" class="icon icoArrowBottom"></i></button>
+					<ul module="Layout_multishopListitem">
+						<li class="{$selected_class}">
+							<a href="//{$shop_domain}/">{$locale_language}</a>
+						</li>
+						<li class="{$selected_class}">
+							<a href="//{$shop_domain}/">{$locale_language}</a>
+						</li>
+					</ul>
+				</div>
+                <div data-ez-group="shopping-info" data-ez-role="list">
+				<ul module="Layout_shoppingInfo">
+					<li class="{$use_mileage|display}"><a href="/myshop/mileage/historyList.html">{$mileage_name} <strong>{$mileage}</strong></a></li>
+					<li class="{$use_deposit|display}"><a href="/myshop/deposits/historyList.html">{$deposit_name} <strong>{$deposit}</strong></a></li>
+					<li class="{$use_coupon_cnt|display}"><a href="/myshop/coupon/coupon.html">쿠폰 <strong>{$coupon_cnt}</strong></a></li>
+					<li class="{$use_interest_prd|display}"><a href="/myshop/wish_list.html">관심상품 <strong>{$interest_prd_cnt}</strong></a></li>
+					<li class="{$use_like_product_cnt|display}">{$like_prd_tag}</li>
+					<li class="{$use_basket_cnt|display}"><a href="/order/basket.html">장바구니 <strong>{$basket_cnt}<span class="{$use_basket_price|display}">({$basket_price})</span></strong></a></li>
+				</ul>
+                </div>
+			</div><!-- //toparea_shoppinginfo -->
+
+			<div class="toparea_state" data-ez-group="top-util-menu" data-ez-role="list">
+				<a data-ez-item="join" module="Layout_statelogoff" href="/member/agreement.html">회원가입</a>
+				<a data-ez-item="login" module="Layout_statelogoff" href="/member/login.html">로그인</a>
+				<a data-ez-item="modify" module="Layout_stateLogon" href="/member/modify.html">내정보수정</a>
+				<a data-ez-item="logout" module="Layout_stateLogon" href="{$action_logout}">로그아웃</a>
+				<a data-ez-item="order" href="/myshop/order/list.html">주문조회</a>
+				<a data-ez-item="mypage" module="Layout_stateLogon" href="/myshop/index.html">마이페이지</a>
+				<a data-ez-item="recent" href="/product/recent_view_product.html">최근본상품</a>
+				<div class="toparea_state_board">
+					<a data-ez-item="board" href="#none">고객센터 <i aria-hidden="true" class="icon icoArrowBottom"></i></a>
+					<ul module="Layout_BoardInfo">
+						<li><a href="{$link_board_list}">{$board_name}</a></li>
+						<li><a href="{$link_board_list}">{$board_name}</a></li>
+					</ul>
+				</div>
+			</div><!-- //toparea_state -->
+		</div><!-- //toparea -->
+
+		<div class="top_nav_box" id="top_nav_box">
+			<div class="top_logo" module="Layout_LogoTop"><a href="/index.html">{$mall_name}</a></div><!-- //top_logo -->
+			<div class="top_nav"><a href="javascript:;" class="eNavFold"><i aria-hidden="true" class="icon icoNav"></i></a></div>
+
+			<div data-ez-module="menu-main/1" data-ez-mode="manual">
+        <div class="xans-element- xans-layout xans-layout-category top_category">
+<ul><li><a href="/category/(%EB%8C%80%EB%B6%84%EB%A5%98)-Outerwear/24/">(대분류) Outerwear</a></li></ul>
+</div>
+      </div><!-- //menu-main/1 -->
+
+			<div class="top_mypage">
+				<a href="javascript:;" class="eSearch"><!--@import(/svg/icon-search.html)--></a>
+				<a href="/myshop/index.html"><!--@import(/svg/icon-user.html)--></a>
+				<a href="/order/basket.html" module="Layout_orderBasketcount"><!--@import(/svg/icon-cart.html)--><span class="count {$basket_count_display|display} {$basket_count_display_class}"><span class="{$basket_count_class}">{$basket_count}</span></span></a>
+			</div><!-- //top_mypage -->
+		</div><!-- //top_nav_box -->
+	</div><!-- //inner -->
+</header>

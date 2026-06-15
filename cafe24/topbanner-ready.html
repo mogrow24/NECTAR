@@ -1,0 +1,28 @@
+<!-- ===========================================================================
+  NECTAR · topbanner.html 교체용 (Cafe24 스킨 붙여넣기)
+  ---------------------------------------------------------------------------
+  적용: 디자인 편집 → 레이아웃 → 기본 레이아웃(basic) → topbanner.html 열기
+        → [전체 선택(Ctrl+A) → 삭제] → 이 파일 전체 붙여넣기 → 저장
+  원리: 카페24 원본 배너(#topBanner)의 문구·닫기버튼은 그대로 유지하고,
+        모양만 NECTAR 레드 띠배너로 교체. (문구는 모듈에서 그대로 수정 가능)
+============================================================================ -->
+<div id="topBanner" role="banner" module="custom_moduleedit">
+    <div class="desc">25,000원 이상 구매시 무료배송 / 신규가입 시 <br class="RTMB">3,000원 즉시 사용가능 쿠폰 증정</div>
+    <button type="button" class="btnClose"><i aria-hidden="true" class="icon icoClose white"></i>닫기</button>
+</div>
+
+<style>
+  /* NECTAR 레드 띠배너 */
+  #topBanner{ position:relative; background:#c7172a; color:#fff; text-align:center;
+    font-family:Pretendard,-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;
+    font-size:12px; font-weight:500; letter-spacing:.02em; line-height:1.5; padding:10px 44px; }
+  #topBanner .desc{ margin:0; }
+  #topBanner .desc br.RTMB{ display:none; }
+  #topBanner .btnClose{ position:absolute; right:14px; top:50%; transform:translateY(-50%);
+    background:none; border:0; color:#fff; font-size:0; cursor:pointer; line-height:0; padding:4px; }
+  #topBanner .btnClose .icon.icoClose{ font-size:12px; }
+  @media (max-width:980px){
+    #topBanner{ font-size:11px; padding:9px 36px; }
+    #topBanner .desc br.RTMB{ display:inline; }
+  }
+</style>

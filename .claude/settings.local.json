@@ -78,7 +78,21 @@
       "Read(//c/c/Users/dbslg/Desktop/NECTAR/**)",
       "Bash(node _nxinject.js)",
       "PowerShell(gh api repos/mogrow24/NECTAR/pages/builds/latest --jq '{status: .status, commit: .commit, created: .created_at, updated: .updated_at}' 2>$null)",
-      "PowerShell(\"--- pages build status ---\")"
+      "PowerShell(\"--- pages build status ---\")",
+      "Bash(node -c preview-guard.js)",
+      "Bash(curl -s -A \"Mozilla/5.0\" \"https://arfino.cafe24.com/web/upload/appfiles/gSOPn7dNJxAp8cu31kDDtD/70b9cb3c154d1c9c8d566bd4bbd01e40.js\" -o /tmp/banner.js)",
+      "Bash(gh auth *)",
+      "Bash(curl -s -o /dev/null -w 'HTTP %{http_code}\\\\n' https://mogrow24.github.io/NECTAR/site/experience-detail-18.html)",
+      "Bash(curl -s https://mogrow24.github.io/NECTAR/preview-guard.js)",
+      "Bash(grep -nA7 'class=\"hdr-nav\"' renewal/index.html)",
+      "Bash(curl -s \"https://nectarofficial.com/About.html\" -o about_live.html)",
+      "Bash(sed -i \"s#C:\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\Program Files\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\Google\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\Chrome\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\Application\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\chrome.exe#C:/Program Files/Google/Chrome/Application/chrome.exe#\" _scrape_about.js)",
+      "Bash(node _scrape_about.js)",
+      "PowerShell($edge = \"C:\\\\Program Files \\(x86\\)\\\\Microsoft\\\\Edge\\\\Application\\\\msedge.exe\"; $real = \"C:\\\\Users\\\\dbslg\\\\Desktop\\\\NECTAR\\\\_real.png\"; $local = \"C:\\\\Users\\\\dbslg\\\\Desktop\\\\NECTAR\\\\_local.png\"; foreach\\($f in @\\($real,$local\\)\\){ if\\(Test-Path $f\\){ Remove-Item $f -Force } }; & $edge --headless=new --disable-gpu --hide-scrollbars --window-size=1280,6000 --virtual-time-budget=12000 --screenshot=\"$real\" \"https://nectarofficial.com/Experience_detail.html?product_no=18&cate_no=44&display_group=1\" 2>$null | Out-Null; Start-Sleep -Seconds 2; & $edge --headless=new --disable-gpu --hide-scrollbars --window-size=1280,6000 --virtual-time-budget=12000 --screenshot=\"$local\" \"https://mogrow24.github.io/NECTAR/site/experience-detail-18.html?v=$\\(Get-Random\\)\" 2>$null | Out-Null; Start-Sleep -Seconds 2; \"real:\"; \\(Get-Item $real\\).Length; \"local:\"; \\(Get-Item $local\\).Length)",
+      "Bash(grep -nA8 'class=\"hdr-nav\"' site/category-all.html)",
+      "PowerShell($edge = \"C:\\\\Program Files \\(x86\\)\\\\Microsoft\\\\Edge\\\\Application\\\\msedge.exe\"; $rt = \"C:\\\\Users\\\\dbslg\\\\Desktop\\\\NECTAR\\\\_real_top.png\"; $lt = \"C:\\\\Users\\\\dbslg\\\\Desktop\\\\NECTAR\\\\_local_top.png\"; foreach\\($f in @\\($rt,$lt\\)\\){ if\\(Test-Path $f\\){ Remove-Item $f -Force } }; & $edge --headless=new --disable-gpu --hide-scrollbars --window-size=1280,1700 --virtual-time-budget=12000 --screenshot=\"$rt\" \"https://nectarofficial.com/Experience_detail.html?product_no=18&cate_no=44&display_group=1\" 2>$null | Out-Null; Start-Sleep -Seconds 2; & $edge --headless=new --disable-gpu --hide-scrollbars --window-size=1280,1700 --virtual-time-budget=10000 --screenshot=\"$lt\" \"https://mogrow24.github.io/NECTAR/site/experience-detail-18.html?v=$\\(Get-Random\\)\" 2>$null | Out-Null; Start-Sleep -Seconds 2; \"ok\")",
+      "PowerShell(git add site/experience-detail-18.html)",
+      "PowerShell($edge = \"C:\\\\Program Files \\(x86\\)\\\\Microsoft\\\\Edge\\\\Application\\\\msedge.exe\"; $out = \"C:\\\\Users\\\\dbslg\\\\Desktop\\\\NECTAR\\\\_verify.png\"; if\\(Test-Path $out\\){ Remove-Item $out -Force }; Start-Sleep -Seconds 80; & $edge --headless=new --disable-gpu --hide-scrollbars --window-size=1280,1700 --virtual-time-budget=12000 --screenshot=\"$out\" \"https://mogrow24.github.io/NECTAR/site/experience-detail-18.html?v=$\\(Get-Random\\)\" 2>$null | Out-Null; Start-Sleep -Seconds 2; \\(Get-Item $out\\).Length)"
     ],
     "additionalDirectories": [
       "c:\\Users\\dbslg\\Desktop\\NECTAR\\site",
