@@ -6,7 +6,7 @@
   원칙: 카테고리/상품/정렬/페이징 module·{$...} 전부 유지. 모양만 NECTAR.
   복구: skin-source/WF_ProductList_11.html 로 되돌리면 원상복구.
 ============================================================================ -->
-<!--@css(/mundane/css/wireframe/WF_ProductList_11.css)-->
+<!-- (원래 mundane 카드 CSS는 우리 디자인과 충돌해서 로드하지 않음) -->
 
 <div id="WF_ProductList_11" class="nx-skin header_layout_padding">
 
@@ -152,7 +152,7 @@ $basket_option = /product/basket_option.html
 #WF_ProductList_11.nx-skin .nx-grid{ list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(4,1fr); gap:48px 24px; align-items:start; }
 #WF_ProductList_11.nx-skin .mun-prd-list{ margin:0; }
 #WF_ProductList_11.nx-skin .mun-prd-list-cover{ position:relative; border:1px solid #e6e2db; background:#fff; height:auto; }
-#WF_ProductList_11.nx-skin .mun-prd-thumb{ position:relative; overflow:hidden; aspect-ratio:312/324; background:#fff; border-bottom:1px solid #e6e2db; display:flex; align-items:center; justify-content:center; }
+#WF_ProductList_11.nx-skin .mun-prd-thumb{ position:relative; overflow:hidden; aspect-ratio:312/324; background:#fff; border:0 !important; padding:0 !important; display:flex; align-items:center; justify-content:center; }
 #WF_ProductList_11.nx-skin .mun-prd-thumb > img{ width:82%; height:82%; object-fit:contain; mix-blend-mode:multiply; display:block; border:0 !important; outline:0; transition:opacity .4s ease, transform .5s ease; }
 #WF_ProductList_11.nx-skin .mun-prd-thumb-hover{ position:absolute; inset:0; opacity:0; display:flex; align-items:center; justify-content:center; transition:opacity .4s ease; }
 #WF_ProductList_11.nx-skin .mun-prd-thumb-hover a{ display:flex; align-items:center; justify-content:center; width:100%; height:100%; }

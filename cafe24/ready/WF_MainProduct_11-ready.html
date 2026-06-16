@@ -7,7 +7,7 @@
         캐러셀(swiper) 대신 NECTAR 그리드로 + 카드 디자인.
   복구: skin-source/WF_MainProduct_11.html 로 되돌리면 원상복구.
 ============================================================================ -->
-<!--@css(/mundane/css/wireframe/WF_MainProduct_11.css)-->
+<!-- (원래 mundane 카드 CSS는 우리 디자인과 충돌해서 로드하지 않음) -->
 
 <div id="WF_MainProduct_11" class="nx-skin">
     <div class="ec-base-product fade_section">
@@ -69,7 +69,7 @@
 #WF_MainProduct_11.nx-skin .mun-prd-list-cover{ position:relative; border:1px solid #e6e2db; background:#fff; height:auto; }
 
 /* 썸네일 (흰 배경, 상품을 가운데 contain — 자르지 않음, 아래 구분선) */
-#WF_MainProduct_11.nx-skin .mun-prd-thumb{ position:relative; overflow:hidden; aspect-ratio:312/324; background:#fff; border-bottom:1px solid #e6e2db; display:flex; align-items:center; justify-content:center; }
+#WF_MainProduct_11.nx-skin .mun-prd-thumb{ position:relative; overflow:hidden; aspect-ratio:312/324; background:#fff; border:0 !important; padding:0 !important; display:flex; align-items:center; justify-content:center; }
 #WF_MainProduct_11.nx-skin .mun-prd-thumb > img{ width:82%; height:82%; object-fit:contain; mix-blend-mode:multiply; display:block; border:0 !important; outline:0; transition:opacity .4s ease, transform .5s ease; }
 #WF_MainProduct_11.nx-skin .mun-prd-thumb-hover{ position:absolute; inset:0; opacity:0; display:flex; align-items:center; justify-content:center; transition:opacity .4s ease; }
 #WF_MainProduct_11.nx-skin .mun-prd-thumb-hover a{ display:flex; align-items:center; justify-content:center; width:100%; height:100%; }
