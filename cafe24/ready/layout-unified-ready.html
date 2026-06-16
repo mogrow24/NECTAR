@@ -1,0 +1,125 @@
+<!-- ===========================================================================
+  NECTAR · 공통 레이아웃 통일 (layout.html / detail_layout.html 교체용)
+  ---------------------------------------------------------------------------
+  목적: 상품목록·상품상세·장바구니·회원 등 모든 페이지를 홈과 동일한
+        NECTAR 헤더/푸터로 통일 (카페24 기본 헤더·사이드바·호스팅푸터 제거).
+  적용: 디자인 편집 → 레이아웃 → 기본 레이아웃(basic) →
+        ① layout.html, ② detail_layout.html 둘 다 열어서
+        전체선택(Ctrl+A) 삭제 → 이 파일 전체 붙여넣기 → 저장
+  원칙: 헤더/푸터는 mundane(홈) 것을 @import → 홈에서 만든 NECTAR 디자인 그대로.
+        결제/다국어배송/PC전환 등 필수 모듈은 유지. <!--@contents--> 에 각 페이지 본문 출력.
+  복구: skin-source/layout-common.html / detail-layout.html 로 되돌리면 원상복구.
+============================================================================ -->
+<!DOCTYPE html>
+<html xmlns="//www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=yes">
+    <!-- PG크로스브라우징필수내용 -->
+    <meta http-equiv="Cache-Control" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <!-- // PG크로스브라우징필수내용 -->
+
+    <!-- 카페24 기본/상품 모듈 CSS (전체 페이지 영향, 유지) -->
+    <!--@css(/layout/basic/css/common.css)-->
+    <!--@css(/layout/basic/css/layout.css)-->
+    <!--@css(/layout/basic/css/ec-base-ui.css)-->
+    <!--@css(/layout/basic/css/ec-base-tooltip.css)-->
+    <!--@css(/layout/basic/css/ec-base-help.css)-->
+    <!--@css(/layout/basic/css/ec-base-product.css)-->
+    <!--@css(/layout/basic/css/ec-base-paginate.css)-->
+    <!--@css(/layout/basic/css/ec-base-tab.css)-->
+    <!--@css(/layout/basic/css/ec-base-button.css)-->
+    <!--@css(/layout/basic/css/ec-base-box.css)-->
+    <!--@css(/layout/basic/css/ec-base-table.css)-->
+
+    <!-- mundane(홈 테마) 공통 CSS — 헤더/푸터/상품 진열용 -->
+    <!--@css(/mundane/css/base.css)-->
+
+    <!-- 폰트 / Swiper (홈과 동일) -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/earlyaccess/notosanskr.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard-dynamic-subset.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.min.css">
+
+    <!-- 스마트디자인 내장 jQuery 1.4.4 (중복 호출 금지) -->
+    <!--@js(/layout/basic/js/basic.js)-->
+    <!--@js(/js/common.js)-->
+    <!--@js(/js/module/layout/quick_view.js)-->
+
+    <style>
+      /* 본문 영역: 사이드바 없이 풀폭 */
+      #contents{ max-width:none; margin:0; padding:0; min-height:40vh; }
+    </style>
+</head>
+<body id="contents-page" class="nx-unified">
+    <div id="loading"></div>
+    <div id="background-opacity"></div>
+
+    <!-- 홈과 동일한 NECTAR 헤더 -->
+    <!--@import(/mundane/html/layout/header.html)-->
+
+    <!-- 각 페이지 본문 -->
+    <div id="contents" class="header_notice_margin"><!--@contents--></div>
+
+    <!-- 모바일 메뉴 / 푸터 / 검색 / 공통 스크립트 (홈과 동일) -->
+    <!--@import(/mundane/html/layout/mobile_menu.html)-->
+    <!--@import(/mundane/html/layout/footer.html)-->
+    <!--@import(/mundane/html/layout/search.html)-->
+    <!--@import(/mundane/html/layout/mundane.html)-->
+
+    <!-- ===== 카페24 필수 모듈 (유지) ===== -->
+    <!-- 결제 진행 영역 -->
+    <div id="progressPaybar" style="display:none;">
+        <div id="progressPaybarBackground" class="layerProgress"></div>
+        <div id="progressPaybarView">
+            <div class="box">
+                <p class="graph">
+                    <span><img src="//img.echosting.cafe24.com/skin/base_ko_KR/layout/txt_progress.gif" alt="현재 결제가 진행중입니다." /></span>
+                    <span><img src="//img.echosting.cafe24.com/skin/base/layout/img_loading.gif" alt="" /></span>
+                </p>
+                <p class="txt">본 결제 창은 결제완료 후 자동으로 닫히며, 결제 진행 중에 본 결제 창을 닫으시면<br />주문이 되지 않으니 결제 완료 될 때 까지 닫지 마시기 바랍니다.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 다국어/해외배송 레이어 -->
+    <div module="Layout_multishopShipping">
+        <!--@css(/layout/basic/css/ec-base-layer.css)-->
+        <!--@css(/css/module/layout/multishopShipping.css)-->
+        <!--@js(/js/module/layout/multishopShipping.js)-->
+        <div class="dimmed"></div>
+        <div class="worldshipLayer ec-base-layer">
+            <div class="header"><h3>WORLD SHIPPING</h3></div>
+            <div class="content">
+                <p class="desc">PLEASE SELECT THE DESTINATION COUNTRY AND LANGUAGE :</p>
+                <div class="select">
+                    <select module="Layout_multishopShippingCountrylist">
+                        <option value="{$country_code}" {$country_default_selected}>SHIPPING TO : {$country_name}</option>
+                        <option value="{$country_code}" {$country_default_selected}>SHIPPING TO : {$country_name}</option>
+                    </select>
+                </div>
+                <div class="select">
+                    <select module="Layout_multishopShippingLanguagelist">
+                        <option value="{$shop_domain}" {$shop_default_selected}>LANGUAGE : {$shop_language_name}</option>
+                        <option value="{$shop_domain}" {$shop_default_selected}>LANGUAGE : {$shop_language_name}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="ec-base-button"><a href="#none"><img src="//img.echosting.cafe24.com/skin/base_ko_KR/link/btn_go.gif" alt="GO" /></a></div>
+            <a href="#none" class="close"><img src="//img.echosting.cafe24.com/skin/base/common/btn_close.gif" width="13" height="13" alt="close" /></a>
+        </div>
+    </div>
+
+    <!-- PC/모바일 전환 -->
+    <div module="Layout_conversionPc">
+        <!--@css(/css/module/layout/conversionpc.css)-->
+        <a href="{$mobile_url}">모바일 화면보기</a>
+    </div>
+</body>
+</html>
