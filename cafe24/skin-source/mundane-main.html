@@ -1,0 +1,60 @@
+<!-- /mundane/html/layout/main.html — 홈 본문(레이아웃 배치) -->
+<!--@css(/mundane/css/main.css)-->
+<!--@js(/mundane/js/main.js)-->
+<div id="main_popup" class="displaynone">
+    <div class="close"><span class="arrow"></span>CLOSE</div>
+    <div class="thumb swiper morenvy-banner-area" area_id="40ab">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide morenvy-banner">
+                <h2>{#title}</h2>
+                <p>{#html}</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="Mpage_main">
+
+    <!-- [순서변경] 제품 리스트(main_3)를 최상단으로 이동 -->
+    <div id="main_3" module="product_listmain_1">
+        <!--@import(/mundane/html/wireframe/WF_MainProduct_11.html)-->
+    </div>
+
+    <div id="main_1">
+        <!--@import(/mundane/html/wireframe/WF_MainBanner_11.html)-->
+    </div>
+
+    <div id="main_2" class="morenvy-banner-area" area_id="bea4">
+        <div class="app-box morenvy-banner">
+            <div class="image-Area">
+                <div class="M_pc background-type">{#imgTag_1}</div>
+                <div class="M_mobile">{#imgTag_2}</div>
+            </div>
+            <div class="text-Area">
+                <div class="title">{#title}</div>
+                <div class="desc">{#text_1}</div>
+                <a href="{#link_1}">{#text_2}</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="main_4" class="morenvy-banner-area" area_id="7456">
+        <div class="app-box morenvy-banner">
+            <div class="image-Area">
+                <div class="M_pc background-type">{#imgTag_1}</div>
+                <div class="M_mobile">{#imgTag_2}</div>
+            </div>
+            <div class="text-Area">
+                <div class="title">{#title}</div>
+                <div class="desc">{#text_1}</div>
+                <a href="{#link_1}">{#text_2}</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="main_5" class="morenvy-banner-area" area_id="09ed">
+        <div class="app-box morenvy-banner">
+            <a href="{#link_1}">{#text_1}</a>
+        </div>
+    </div>
+
+</div>
