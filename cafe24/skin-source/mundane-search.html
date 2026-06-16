@@ -1,0 +1,28 @@
+<!-- /mundane/html/layout/search.html — 검색 오버레이(검색 버튼 클릭 시) -->
+<!--@css(/mundane/css/layout/search.css)-->
+<div id="search-Area">
+    <div class="cover header_notice_margin window-height-layoutN">
+        <div class="sectionT">
+            <div class="close"><a href="#;" class="search-btn"><span></span><span></span></a></div>
+            <!--@import(/mundane/html/layout/logo.html)-->
+            <div class="right"></div>
+        </div>
+        <div class="sectionB">
+            <div module="search_form" class="cover">
+                <!--
+                $product_page=/product/detail.html
+                $category_page=/product/list.html
+                -->
+                <fieldset>
+                    <legend>검색</legend>
+                    <span class="displaynone">{$form.category_no}</span>
+                    <span class="ePlaceholder" title="원하시는 상품을 검색하세요.">{$form.keyword}</span><input type="image" src="/web/upload/mundane/search_.png" alt="검색" onclick="{$action_search_submit}" />
+                </fieldset>
+            </div>
+            <div class="popular" module="search_hotkeyword">
+                <a href="{$hot_keyword_url}">{$hot_keyword_name}</a>
+                <a href="{$hot_keyword_url}">{$hot_keyword_name}</a>
+            </div>
+        </div>
+    </div>
+</div>
