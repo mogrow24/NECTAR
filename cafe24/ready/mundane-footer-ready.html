@@ -1,0 +1,79 @@
+<!-- ===========================================================================
+  NECTAR · 홈 푸터 리스킨 (mundane/html/layout/footer.html 교체용)
+  ---------------------------------------------------------------------------
+  적용: 디자인 편집 → mundane/html/layout/footer.html 열기
+        → 전체선택(Ctrl+A) 삭제 → 이 파일 전체 붙여넣기 → 저장
+  원칙: 회사정보({$company_name} 등)·로고는 연동 그대로. 모양만 NECTAR 디자인.
+  복구: skin-source/mundane-footer.html 로 되돌리면 원상복구.
+============================================================================ -->
+<div id="Mpage_footer" class="nx-skin" module="Layout_footer">
+    <footer class="ft">
+        <div class="ft-in">
+            <div class="ft-brand">
+                <div class="flogo"><!--@import(/mundane/html/svg/footer_logo.html)--></div>
+                <p class="ft-company">
+                    주식회사 {$company_name} · 대표이사 {$president_name}<br>
+                    {$mall_addr1}<br>
+                    T. {$phone} · {$cpo_email}<br>
+                    사업자등록번호 {$company_regno} · 통신판매업 {$network_regno}
+                    <a href="http://www.ftc.go.kr/info/bizinfo/communicationViewPopup.jsp?wrkr_no={$company_regno}" target="_blank" rel="noopener">사업자정보확인</a>
+                </p>
+            </div>
+
+            <div class="ft-col"><h4>Shop</h4><ul>
+                <li><a href="/product/list.html?cate_no=45">Object</a></li>
+                <li><a href="/product/list.html?cate_no=47">Bestseller</a></li>
+                <li><a href="/product/list.html?cate_no=48">Glassware</a></li>
+                <li><a href="/order/basket.html">Cart</a></li>
+            </ul></div>
+
+            <div class="ft-col"><h4>Content</h4><ul>
+                <li><a href="/Collection.html?cate_no=42">Collection</a></li>
+                <li><a href="/Experience.html?cate_no=44">Experience</a></li>
+                <li><a href="/About.html">About</a></li>
+                <li><a href="/Stockist.html">Stockist</a></li>
+            </ul></div>
+
+            <div class="ft-col"><h4>Social</h4><ul>
+                <li><a href="https://www.instagram.com/nectarofficial_com/" target="_blank" rel="noopener">Instagram</a></li>
+                <li><a href="https://pf.kakao.com/_xixiexen" target="_blank" rel="noopener">Kakaotalk</a></li>
+                <li><a href="https://www.youtube.com/@NECTAR_OFFICIAL" target="_blank" rel="noopener">Youtube</a></li>
+            </ul></div>
+
+            <div class="ft-col"><h4>Help</h4><ul>
+                <li><a href="/member/agreement.html">이용약관</a></li>
+                <li><a href="/member/privacy.html">개인정보처리방침</a></li>
+                <li><a href="/myshop/order/list.html">주문조회</a></li>
+                <li><a href="/myshop/index.html">My Account</a></li>
+            </ul></div>
+        </div>
+        <div class="ft-bottom">
+            <span>&copy; NECTAR. All rights reserved.</span>
+        </div>
+    </footer>
+</div>
+
+<style id="nx-footer-style">
+/* ===== NECTAR 홈 푸터 리스킨 (scoped: #Mpage_footer.nx-skin) ===== */
+#Mpage_footer.nx-skin .ft{ box-sizing:border-box; border-top:3px solid #c7172a; background:#f4f2ee; color:#1d1d1d;
+  font-family:'Pretendard',-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif; margin:0; }
+#Mpage_footer.nx-skin .ft *{ box-sizing:border-box; }
+#Mpage_footer.nx-skin .ft .ft-in{ display:grid; grid-template-columns:1.4fr repeat(4,auto); column-gap:80px; row-gap:30px;
+  padding:58px 48px; align-items:start; }
+#Mpage_footer.nx-skin .ft .flogo{ margin-bottom:16px; }
+#Mpage_footer.nx-skin .ft .flogo svg{ height:30px; width:auto; }
+#Mpage_footer.nx-skin .ft .flogo .st0{ fill:#1d1d1d; }
+#Mpage_footer.nx-skin .ft .ft-company{ font-size:12px; color:#8a857e; line-height:2; margin:0; }
+#Mpage_footer.nx-skin .ft .ft-company a{ color:#8a857e; text-decoration:underline; }
+#Mpage_footer.nx-skin .ft h4{ font-size:11px; letter-spacing:.16em; text-transform:uppercase; margin:0 0 14px; color:#1d1d1d; font-weight:700; }
+#Mpage_footer.nx-skin .ft ul{ list-style:none; margin:0; padding:0; }
+#Mpage_footer.nx-skin .ft li{ font-size:12px; line-height:2; margin:0; }
+#Mpage_footer.nx-skin .ft a{ color:#8a857e; text-decoration:none; }
+#Mpage_footer.nx-skin .ft a:hover{ color:#c7172a; }
+#Mpage_footer.nx-skin .ft .ft-bottom{ border-top:1px solid #e6e2db; padding:18px 48px; font-size:11px; color:#8a857e; letter-spacing:.04em; }
+@media (max-width:1024px){
+  #Mpage_footer.nx-skin .ft .ft-in{ grid-template-columns:1fr 1fr; column-gap:30px; padding:40px 18px; }
+  #Mpage_footer.nx-skin .ft .ft-brand{ grid-column:1 / -1; }
+  #Mpage_footer.nx-skin .ft .ft-bottom{ padding:18px; }
+}
+</style>
