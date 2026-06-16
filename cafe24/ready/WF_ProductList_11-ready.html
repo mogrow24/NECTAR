@@ -149,15 +149,16 @@ $basket_option = /product/basket_option.html
 
 /* 상품 그리드 (홈과 동일 카드) */
 #WF_ProductList_11.nx-skin .ec-base-product{ max-width:1600px; margin:0 auto; }
-#WF_ProductList_11.nx-skin .nx-grid{ list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(4,1fr); gap:48px 24px; }
+#WF_ProductList_11.nx-skin .nx-grid{ list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(4,1fr); gap:48px 24px; align-items:start; }
 #WF_ProductList_11.nx-skin .mun-prd-list{ margin:0; }
-#WF_ProductList_11.nx-skin .mun-prd-list-cover{ position:relative; border:1px solid #e6e2db; background:#fff; }
-#WF_ProductList_11.nx-skin .mun-prd-thumb{ position:relative; overflow:hidden; aspect-ratio:1/1; background:#f7f6f3; border-bottom:1px solid #e6e2db; }
-#WF_ProductList_11.nx-skin .mun-prd-thumb > img{ width:100%; height:100%; object-fit:cover; display:block; border:0 !important; outline:0; transition:opacity .4s ease; }
-#WF_ProductList_11.nx-skin .mun-prd-thumb-hover{ position:absolute; inset:0; opacity:0; transition:opacity .4s ease; }
-#WF_ProductList_11.nx-skin .mun-prd-thumb-hover a, #WF_ProductList_11.nx-skin .mun-prd-thumb-hover img{ display:block; width:100%; height:100%; object-fit:cover; }
+#WF_ProductList_11.nx-skin .mun-prd-list-cover{ position:relative; border:1px solid #e6e2db; background:#fff; height:auto; }
+#WF_ProductList_11.nx-skin .mun-prd-thumb{ position:relative; overflow:hidden; aspect-ratio:312/324; background:#fff; border-bottom:1px solid #e6e2db; display:flex; align-items:center; justify-content:center; }
+#WF_ProductList_11.nx-skin .mun-prd-thumb > img{ width:82%; height:82%; object-fit:contain; mix-blend-mode:multiply; display:block; border:0 !important; outline:0; transition:opacity .4s ease, transform .5s ease; }
+#WF_ProductList_11.nx-skin .mun-prd-thumb-hover{ position:absolute; inset:0; opacity:0; display:flex; align-items:center; justify-content:center; transition:opacity .4s ease; }
+#WF_ProductList_11.nx-skin .mun-prd-thumb-hover a{ display:flex; align-items:center; justify-content:center; width:100%; height:100%; }
+#WF_ProductList_11.nx-skin .mun-prd-thumb-hover img{ width:82%; height:82%; object-fit:contain; mix-blend-mode:multiply; }
 #WF_ProductList_11.nx-skin .mun-prd-list:hover .mun-prd-thumb-hover{ opacity:1; }
-#WF_ProductList_11.nx-skin .mun-prd-info{ padding:18px 14px 20px; text-align:center; }
+#WF_ProductList_11.nx-skin .mun-prd-info{ padding:16px 14px 18px; text-align:center; }
 #WF_ProductList_11.nx-skin .mun-prd-info a{ text-decoration:none; color:#1d1d1d; }
 #WF_ProductList_11.nx-skin .comming{ font-size:11px; color:#c7172a; letter-spacing:.04em; margin-bottom:6px; }
 #WF_ProductList_11.nx-skin .comming:empty{ display:none; }
