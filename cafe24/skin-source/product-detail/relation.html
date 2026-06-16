@@ -1,0 +1,45 @@
+<!-- /mundane/html/product/detail/relation.html — 관련상품 -->
+<!--@css(/css/module/product/relation.css)-->
+
+<div id="mun_relation" class="clear-fix fade_section" module="product_relation">
+    <div class="cover fade-list" fade_set_top="0" fade_set_speed="2" fade_set_delay="0">
+        <h3>RELATED ITEM</h3>
+        <div class="swiper ec-base-product" module="product_relationlist">
+            <ul class="swiper-wrapper">
+                <li class="mun-prd-list swiper-slide">
+                    <div class="mun-prd-list-cover">
+                        <div class="mun-prd-info">
+                            <a href="{$link_product_detail}">
+                                <div class="comming">{$summary_description}</div>
+                                <div class="name">{$name}</div>
+                                <div class="info-Area">
+                                    <div class="price {$product_sale_strike}">{$disp_product_price}{$product_tax_type_text}</div>
+                                    <div class="sale-price {$sale_price_display|display}">{$disp_sale_price}</div>
+                                    <div class="mun-prd-sold_out">{$soldout_icon}<span class="M_soldout">Sold out</span></div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="mun-prd-thumb"><img src="{$img_medium}" alt="{$seo_alt_tag}" /><div class="mun-prd-thumb-hover"><a href="{$link_product_detail}"><img src="{$img_big}"></a></div></div>
+                    </div>
+                </li>
+                <li class="mun-prd-list swiper-slide">
+                    <div class="mun-prd-list-cover">
+                        <div class="mun-prd-info">
+                            <a href="{$link_product_detail}">
+                                <div class="comming">{$summary_description}</div>
+                                <div class="name">{$name}</div>
+                                <div class="info-Area">
+                                    <div class="price {$product_sale_strike}">{$disp_product_price}{$product_tax_type_text}</div>
+                                    <div class="sale-price {$sale_price_display|display}">{$disp_sale_price}</div>
+                                    <div class="mun-prd-sold_out">{$soldout_icon}<span class="M_soldout">Sold out</span></div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="mun-prd-thumb"><img src="{$img_medium}" alt="{$seo_alt_tag}" /><div class="mun-prd-thumb-hover"><a href="{$link_product_detail}"><img src="{$img_big}"></a></div></div>
+                    </div>
+                </li>
+            </ul>
+            <div class="relation-pagination"></div>
+        </div>
+    </div>
+</div>

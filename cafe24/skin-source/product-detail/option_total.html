@@ -1,0 +1,34 @@
+<!-- /mundane/html/product/detail/option_total.html — 옵션 선택 완료 시 상품 합계 테이블 -->
+<div id="{$total.total_id}" class="{$total.total_display|display}">
+    <table border="1" summary="">
+        <caption>상품 목록</caption>
+        <colgroup>
+            <col style="width:284px;" />
+            <col style="width:80px;" />
+            <col style="width:110px;" />
+        </colgroup>
+        <thead>
+            <tr>
+                <th scope="col">상품명</th>
+                <th scope="col">상품수</th>
+                <th scope="col">가격</th>
+            </tr>
+        </thead>
+        <tbody class="{$quantity_display|display}">
+            <tr>
+                <td>{$name}</td>
+                <td>
+                    <div class="ec-base-qty">
+                        {$quantity}
+                        <a href="#none"><img src="//img.echosting.cafe24.com/skin/base_ko_KR/product/btn_count_up.gif" alt="수량증가" class="{$quantity_up_class} up" /></a>
+                        <a href="#none"><img src="//img.echosting.cafe24.com/skin/base_ko_KR/product/btn_count_down.gif" alt="수량감소" class="{$quantity_down_class} down" /></a>
+                    </div>
+                </td>
+                <td class="right"><span class="{$total.quantity_price}">{$product_price}</span> <span class="mileage {$mileage_display|display}">(<img src="{$mileage_mileage_icon}" /> <span class="{$total.mileage_price}">{$mileage_value}</span>)</span></td>
+            </tr>
+        </tbody>
+        <tbody class="select-option-Area">
+            <!-- 옵션/세트 선택 시 상품 추가 영역 (삭제 금지) -->
+        </tbody>
+    </table>
+</div>

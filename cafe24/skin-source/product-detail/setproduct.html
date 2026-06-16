@@ -1,0 +1,12 @@
+<!-- /mundane/html/product/detail/setproduct.html — 세트상품 -->
+<div id="mun_setproduct" class="ec-base-table typeList toggleList" module="product_setproduct">
+    <div class="mun-list view"><!--토글적용위해 클래스추가-->
+        <h3>set item <span class="toggleList-btn"></span></h3>
+    </div>
+    <!--@import(/mundane/html/product/detail/addproduct_list.html)-->
+    <div class="ec-base-qty mun-detail-qty" module="product_quantity">
+        {$form.quantity}
+        <a href="javascript:;"><img src="//img.echosting.cafe24.com/skin/base/common/btn_quantity_up.gif" id="{$quantity_up_id}" alt="증가" class="up {$quantity_up_class}"></a>
+        <a href="javascript:;"><img src="//img.echosting.cafe24.com/skin/base/common/btn_quantity_down.gif" id="{$quantity_down_id}" alt="감소" class="down {$quantity_down_class}"></a>
+    </div>
+</div>

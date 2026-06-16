@@ -1,0 +1,42 @@
+<!-- /mundane/html/product/detail/coupon.html — 상세 쿠폰 다운로드 -->
+<div id="mun_coupon" class="ec-base-table typeList toggleList" module="coupon_productdetail">
+    <!--@css(/css/module/coupon/productDetail.css)-->
+    <!--
+    	$coupon_down_result_url = /coupon/coupon_down_result.html
+    -->
+    <div class="mun-list M_coupon"><!--토글적용위해 클래스추가-->
+        <h3>coupon<span class="toggleList-btn"></span></h3><!--<a href="#none" id="btn_all_coupondown" class="btnNormal">전체쿠폰다운받기</a>-->
+    </div>
+    <div class="form-typeList">
+        <div class="mun-list">
+            <div class="mun-title"><span class="text-en">coupon</span>
+                <div class="mun-questionMark">
+                    <i class="fa fa-question-circle"></i>
+                    <div class="mun-questionInfo">
+                        <ul>
+                            <li>{$coupon_name}</li>
+                            <li>{$coupon_content}</li>
+                            <li>{$coupon_period}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div><!--//mun-title-->
+            <div class="coupon-button"><a href="{$coupon_issue_url}"><span class="text-en mun-underline">download</span></a></div>
+        </div><!--//mun-list-->
+        <div class="mun-list">
+            <div class="mun-title"><span class="text-en">coupon</span>
+                <div class="mun-questionMark">
+                    <i class="fa fa-question-circle"></i>
+                    <div class="mun-questionInfo">
+                        <ul>
+                            <li>{$coupon_name}</li>
+                            <li>{$coupon_content}</li>
+                            <li>{$coupon_period}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div><!--//mun-title-->
+            <div class="coupon-button"><a href="{$coupon_issue_url}"><span class="text-en mun-underline">download</span></a></div>
+        </div><!--//mun-list-->
+    </div>
+</div>

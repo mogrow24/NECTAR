@@ -1,0 +1,32 @@
+<!-- /mundane/html/product/detail/option.html — 상품 옵션 -->
+<div id="mun_option" class="mun-detail-option" module="product_option">
+    <!--상품추가옵션체크시 노출-->
+    <div class="mun-detail-list mun-option-addoption" module="product_addoption">
+        <div class="mun-detail-title">{$add_option_name}</div>
+        <div class="mun-detail-desc"><div class="ePlaceholder_addoption">{$form.add_option}</div><span class="txtByte" title="현재글자수/최대글자수">(<strong class="length">0</strong>/{$option_maxlength})</span></div>
+    </div>
+
+    <!--상품 일반옵션-->
+    <div class="mun-detail-list mun-option" module="product_option">
+        <div class="mun-detail-title">{$option_name}</div>
+        <div class="mun-detail-desc">{$form.option}</div>
+        <div class="mun-detail-qty" module="product_quantity">
+            <div class="ec-base-qty">
+                {$form.quantity}
+                <a href="javascript:;"><img src="//img.echosting.cafe24.com/skin/base/common/btn_quantity_up.gif" id="{$quantity_up_id}" alt="증가" class="up {$quantity_up_class}"></a>
+                <a href="javascript:;"><img src="//img.echosting.cafe24.com/skin/base/common/btn_quantity_down.gif" id="{$quantity_down_id}" alt="감소" class="down {$quantity_down_class}"></a>
+            </div>
+        </div>
+    </div>
+
+    <!--"상품연동형옵션사용시 옵션추가버튼제공 사용함" 설정시 옵션선택버튼이 노출-->
+    <div class="mun-detail-list {$option_push_button_display|display}" id="{$option_push_button_id}">
+        <div class="mun-detail-desc"><a href="#none" class="mun-btn text-en mun-underline weight500" onclick="{$action_push_button}">option +</a></div>
+    </div>
+
+    <!--상품옵션첨부파일-->
+    <div class="mun-detail-list" module="product_fileoption">
+        <div class="mun-detail-title">{$file_option_name}</div>
+        <div class="mun-detail-desc">{$form.file_option}</div>
+    </div>
+</div>

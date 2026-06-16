@@ -1,0 +1,26 @@
+<!-- /mundane/html/product/detail/qna.html — 상세 Q&A 게시판 -->
+<!--@js(/js/module/product/qna.js)-->
+<div id="mun_qna" module="product_additional" class="displaynone">
+    <div class="title clear-fix">
+        <h3 class="text-en"> Q&amp;A</h3>
+        <div class="mun-button-Area mun-right">
+            <a href="{$qna_write}" class="mun-btn">write</a>
+            <a href="{$qna_list}" class="mun-btn paddingL10">all</a>
+        </div>
+    </div>
+    <div module="product_qna" class="ec-base-table typeList">
+        <a name="use_qna"></a>
+        <!--@import(/mundane/html/product/detail/board_list.html)-->
+    </div>
+    <div module="product_qnapaging" class="ec-base-paginate">
+        <a href="{$param_before}"><img src="//img.echosting.cafe24.com/skin/base/common/btn_page_prev2.gif" alt="이전 페이지" /></a>
+        <ol>
+            <li><a href="{$param}" class="{$param_class}">{$no}</a></li>
+            <li><a href="{$param}" class="{$param_class}">{$no}</a></li>
+            <li><a href="{$param}" class="{$param_class}">{$no}</a></li>
+            <li><a href="{$param}" class="{$param_class}">{$no}</a></li>
+            <li><a href="{$param}" class="{$param_class}">{$no}</a></li>
+        </ol>
+        <a href="{$param_next}"><img src="//img.echosting.cafe24.com/skin/base/common/btn_page_next2.gif" alt="다음 페이지" /></a>
+    </div>
+</div>

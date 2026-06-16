@@ -1,0 +1,26 @@
+<!-- /mundane/html/product/detail/review.html — 상세 리뷰 게시판 -->
+<!--@js(/js/module/product/review.js)-->
+<div id="mun_review" module="product_additional">
+    <div class="title clear-fix">
+        <h3 class="text-en">Review</h3>
+        <div class="mun-button-Area mun-right">
+            <a href="{$review_write}" class="mun-btn">write</a>
+            <a href="{$review_list}" class="mun-btn paddingL10">all</a>
+        </div>
+    </div>
+    <div module="product_review" class="ec-base-table typeList">
+        <a name="use_review"></a>
+        <!--@import(/mundane/html/product/detail/board_list.html)-->
+    </div>
+    <div module="product_reviewpaging" class="ec-base-paginate">
+        <a href="{$param_before}"><img src="//img.echosting.cafe24.com/skin/base/common/btn_page_prev2.gif" alt="이전 페이지" /></a>
+        <ol>
+            <li><a href="{$param}" class="{$param_class}">{$no}</a></li>
+            <li><a href="{$param}" class="{$param_class}">{$no}</a></li>
+            <li><a href="{$param}" class="{$param_class}">{$no}</a></li>
+            <li><a href="{$param}" class="{$param_class}">{$no}</a></li>
+            <li><a href="{$param}" class="{$param_class}">{$no}</a></li>
+        </ol>
+        <a href="{$param_next}"><img src="//img.echosting.cafe24.com/skin/base/common/btn_page_next2.gif" alt="다음 페이지" /></a>
+    </div>
+</div>

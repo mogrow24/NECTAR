@@ -1,0 +1,19 @@
+<!-- /mundane/html/product/detail/ — 상세 게시판 목록(리뷰/Q&A 공용 리스트) -->
+<div class="form-typeList board thumb-none">
+    <ul class="{$list_display|display}">
+        <li class="mun-list clear-fix">
+            <div class="number">{$no}</div>
+            <div class="info">
+                <div class="mun-name">{$icon_re} <a href="{$link_board_detail}{$param_read}">{$subject}</a> {$icon_lock}{$icon_new}{$icon_hit}{$icon_file}<span class="txtEm">{$comment_count}</span></div>
+                <div class="mun-writer-date">{$writer} <span class="{$date_display|display}">| {$write_date}</span><span class="grade {$use_point_display|display}"><img src="//img.echosting.cafe24.com/skin/base/board/ico_point{$point_count}.gif" alt="{$point_count}점"></span></div>
+            </div>
+        </li>
+        <li class="mun-list clear-fix">
+            <div class="number">{$no}</div>
+            <div class="info">
+                <div class="mun-name">{$icon_re} <a href="{$link_board_detail}{$param_read}">{$subject}</a> {$icon_lock}{$icon_new}{$icon_hit}{$icon_file}<span class="txtEm">{$comment_count}</span></div>
+                <div class="mun-writer-date">{$writer} <span class="{$date_display|display}">| {$write_date}</span><span class="grade {$use_point_display|display}"><img src="//img.echosting.cafe24.com/skin/base/board/ico_point{$point_count}.gif" alt="{$point_count}점"></span></div>
+            </div>
+        </li>
+    </ul>
+</div>

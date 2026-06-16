@@ -1,0 +1,39 @@
+<!-- /mundane/html/product/detail/regular_delivery.html — 정기배송 -->
+<div id="mun_regularDelivery" class="ec-base-table typeWrite">
+    <div class="form-typeWrite">
+        <div class="regularDelivery mun-detail-option {$regular_delivery_display|display}">
+            <div class="mun-detail-list mun-option">
+                <div class="mun-detail-title"><h3>구매방법</h3></div>
+                <div class="mun-detail-desc">
+                    <label class="{$one_time_purchase_display|display}">{$regular_deliveryF} 1회구매</label>
+                    <label class="gLabel"><span class="{$one_time_purchase_display|display}">{$regular_deliveryT}</span> 정기배송</label>
+                </div>
+            </div>
+            <div id="{$regular_cycle_period_id}" class="mun-detail-list mun-option shippingCycle paddingT10 {$regular_cycle_period|display}">
+                <div class="mun-detail-title">
+                    <h3 class="mun-questionMark-cover">
+                        배송주기
+                        <div class="mun-questionMark {$regular_delivery_discount_display|display}">
+                            <i class="fa fa-question-circle"></i>
+                            <div id="{$regular_delivery_discount_id}" class="mun-questionInfo">
+                                <ul module="product_regularDiscount">
+                                    <li class="mun-list clear-fix">
+                                        <div class="mun-title">{$discount_count} 결제 시</div>
+                                        <div class="mun-desc">{$discount_value} 할인</div>
+                                    </li>
+                                    <li class="mun-list clear-fix">
+                                        <div class="mun-title">{$discount_count} 결제 시</div>
+                                        <div class="mun-desc">{$discount_value} 할인</div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </h3>
+                </div>
+                <div class="mun-detail-desc">
+                    {$regularPeriod}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
