@@ -1,0 +1,65 @@
+<!-- 검색 결과 페이지 (module="Search_Result") — WF_ProductList_11.css 공유 -->
+<!--@css(/mundane/css/wireframe/WF_ProductList_11.css)-->
+
+<div id="WF_ProductList_11" class="header_layout_padding">
+
+    <div module="search_form">
+        <div class="noData {$search_fail_display|display}">
+            No Data!
+        </div>
+    </div>
+
+    <div module="Search_Result" class="ec-base-product product">
+        <!--
+$count = 1000
+※ 상품진열갯수를 설정하는 변수입니다. 설정하지 않을 경우, 최대 200개의 상품이 진열 됩니다.
+※ 진열된 상품이 많으면, 쇼핑몰에 부하가 발생할 수 있습니다.
+$basket_result = /product/add_basket.html
+$basket_option = /product/basket_option.html
+-->
+        <ul>
+            <li class="mun-prd-list">
+                <div class="mun-prd-list-cover">
+                    <div class="mun-prd-info">
+                        <a href="/product/detail.html{$param}" class="{$product_name_display|display}">
+                            <div class="comming">{$summary_desc}</div>
+                            <div class="name"><span class="title {$product_name_title_display|display}">{$product_name_title} :</span> {$product_name}</div>
+                            <div class="info-Area">
+                                <ul module="search_ListItem">
+                                    <li class="{$item_display|display}" data-title="{$item_title|striptag}"><span class="title {$item_title_display|display}">{$item_title} :</span> {$item_content}</li>
+                                    <li class="{$item_display|display}" data-title="{$item_title|striptag}"><span class="title {$item_title_display|display}">{$item_title} :</span> {$item_content}</li>
+                                </ul>
+                                <div class="icon">
+                                    {$stock_icon} {$product_icons} {$benefit_icons}
+                                </div>
+                                <div class="mun-prd-sold_out">{$soldout_icon}<span class="M_soldout">Sold out</span></div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="mun-prd-thumb"><img src="{$image_medium}" id="{$image_medium_id}" alt="{$seo_alt_tag}" /><div class="mun-prd-thumb-hover"><a href="/product/detail.html{$param}"><img src="{$image_big}"></a></div></div>
+                </div>
+            </li>
+            <li class="mun-prd-list">
+                <div class="mun-prd-list-cover">
+                    <div class="mun-prd-info">
+                        <a href="/product/detail.html{$param}" class="{$product_name_display|display}">
+                            <div class="comming">{$summary_desc}</div>
+                            <div class="name"><span class="title {$product_name_title_display|display}">{$product_name_title} :</span> {$product_name}</div>
+                            <div class="info-Area">
+                                <ul module="search_ListItem">
+                                    <li class="{$item_display|display}" data-title="{$item_title|striptag}"><span class="title {$item_title_display|display}">{$item_title} :</span> {$item_content}</li>
+                                    <li class="{$item_display|display}" data-title="{$item_title|striptag}"><span class="title {$item_title_display|display}">{$item_title} :</span> {$item_content}</li>
+                                </ul>
+                                <div class="icon">
+                                    {$stock_icon} {$product_icons} {$benefit_icons}
+                                </div>
+                                <div class="mun-prd-sold_out">{$soldout_icon}<span class="M_soldout">Sold out</span></div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="mun-prd-thumb"><img src="{$image_medium}" id="{$image_medium_id}" alt="{$seo_alt_tag}" /><div class="mun-prd-thumb-hover"><a href="/product/detail.html{$param}"><img src="{$image_big}"></a></div></div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

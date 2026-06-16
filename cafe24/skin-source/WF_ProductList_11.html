@@ -1,0 +1,120 @@
+<!-- /mundane/html/wireframe/WF_ProductList_11.html — 상품목록(카테고리) 그리드 + 필터/정렬/페이징 -->
+<!--@css(/mundane/css/wireframe/WF_ProductList_11.css)-->
+
+<div id="WF_ProductList_11" class="header_layout_padding">
+
+    <div class="title-Area" module="Product_menupackage">
+        <h2 module="product_headcategory">{$title_text}</h2>
+
+        <div class="sectionB">
+            <div class="category-Area">
+                <ul class="menuCategory">
+                    <li module="product_displaycategory" style="display:{$display};" class="{$selected}">
+                        <a href="{$link_product_list_sub}">{$category_name} <span class="count {$product_count_display|display}">({$product_count})</span></a>
+                        <ul module="product_children">
+                            <li class="{$selected}">
+                                <a href="{$link_product_list_sub}">{$category_name} <span class="{$product_count_display|display}">({$product_count})</span></a>
+                                <div class="button">
+                                    {$children_icon}
+                                    <ul module="product_children" class="subCategory">
+                                        <li class="{$selected}"><a href="{$link_product_list_sub}">{$category_name} <span class="{$product_count_display|display}">({$product_count})</span></a></li>
+                                        <li class="{$selected}"><a href="{$link_product_list_sub}">{$category_name} <span class="{$product_count_display|display}">({$product_count})</span></a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="{$selected}">
+                                <a href="{$link_product_list_sub}">{$category_name} <span class="{$product_count_display|display}">({$product_count})</span></a>
+                                <div class="button">
+                                    {$children_icon}
+                                    <ul module="product_children" class="subCategory">
+                                        <li class="{$selected}"><a href="{$link_product_list_sub}">{$category_name} <span class="{$product_count_display|display}">({$product_count})</span></a></li>
+                                        <li class="{$selected}"><a href="{$link_product_list_sub}">{$category_name} <span class="{$product_count_display|display}">({$product_count})</span></a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="sort-Area" module="product_normalpackage">
+                <div class="cover" module="product_normalmenu">
+                    <div class="sort-btn">Filter</div>
+                    <div class="content">
+                        <ul module="product_Orderby">
+                            <li><a href="{$param}" {$style}>{$sort_name}</a></li>
+                            <li><a href="{$param}" {$style}>{$sort_name}</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div module="product_listnormal" class="ec-base-product fade">
+        <!--
+$count = 12
+※ 상품진열갯수를 설정하는 변수입니다. 설정하지 않을 경우, 최대 200개의 상품이 진열 됩니다.
+※ 진열된 상품이 많으면, 쇼핑몰에 부하가 발생할 수 있습니다.
+$cache = yes
+$basket_result = /product/add_basket.html
+$basket_option = /product/basket_option.html
+-->
+        <ul>
+            <li class="mun-prd-list">
+                <div class="mun-prd-list-cover">
+                    <div class="mun-prd-info">
+                        <a href="/product/detail.html{$param}" class="{$product_name_display|display}">
+                            <div class="comming">{$summary_desc}</div>
+                            <div class="name"><span class="title {$product_name_title_display|display}">{$product_name_title} :</span> {$product_name}</div>
+                            <div class="info-Area">
+                                <ul module="product_ListItem">
+                                    <li class="{$item_display|display}" data-title="{$item_title|striptag}"><span class="title {$item_title_display|display}">{$item_title} :</span> {$item_content}</li>
+                                    <li class="{$item_display|display}" data-title="{$item_title|striptag}"><span class="title {$item_title_display|display}">{$item_title} :</span> {$item_content}</li>
+                                </ul>
+                                <div class="icon">
+                                    {$stock_icon} {$product_icons} {$benefit_icons}
+                                </div>
+                                <div class="mun-prd-sold_out">{$soldout_icon}<span class="M_soldout">Sold out</span></div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="mun-prd-thumb"><img src="{$image_medium}" id="{$image_medium_id}" alt="{$seo_alt_tag}" /><div class="mun-prd-thumb-hover"><a href="/product/detail.html{$param}"><img src="{$image_big}"></a></div></div>
+                </div>
+            </li>
+            <li class="mun-prd-list">
+                <div class="mun-prd-list-cover">
+                    <div class="mun-prd-info">
+                        <a href="/product/detail.html{$param}" class="{$product_name_display|display}">
+                            <div class="comming">{$summary_desc}</div>
+                            <div class="name"><span class="title {$product_name_title_display|display}">{$product_name_title} :</span> {$product_name}</div>
+                            <div class="info-Area">
+                                <ul module="product_ListItem">
+                                    <li class="{$item_display|display}" data-title="{$item_title|striptag}"><span class="title {$item_title_display|display}">{$item_title} :</span> {$item_content}</li>
+                                    <li class="{$item_display|display}" data-title="{$item_title|striptag}"><span class="title {$item_title_display|display}">{$item_title} :</span> {$item_content}</li>
+                                </ul>
+                                <div class="icon">
+                                    {$stock_icon} {$product_icons} {$benefit_icons}
+                                </div>
+                                <div class="mun-prd-sold_out">{$soldout_icon}<span class="M_soldout">Sold out</span></div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="mun-prd-thumb"><img src="{$image_medium}" id="{$image_medium_id}" alt="{$seo_alt_tag}" /><div class="mun-prd-thumb-hover"><a href="/product/detail.html{$param}"><img src="{$image_big}"></a></div></div>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <div module="product_normalpaging" class="ec-base-paginate">
+        <a href="{$param_before}" class="paginate-arrow prev"><img src="//img.echosting.cafe24.com/skin/base/common/btn_page_prev.gif" alt="이전 페이지" /></a>
+        <ol>
+            <li><a href="{$param}" class="{$param_class}">{$no}</a></li>
+            <li><a href="{$param}" class="{$param_class}">{$no}</a></li>
+            <li><a href="{$param}" class="{$param_class}">{$no}</a></li>
+            <li><a href="{$param}" class="{$param_class}">{$no}</a></li>
+            <li><a href="{$param}" class="{$param_class}">{$no}</a></li>
+        </ol>
+        <a href="{$param_next}" class="paginate-arrow next"><img src="//img.echosting.cafe24.com/skin/base/common/btn_page_next.gif" alt="다음 페이지" /></a>
+    </div>
+</div>

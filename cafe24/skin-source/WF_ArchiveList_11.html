@@ -1,0 +1,30 @@
+<!-- /mundane/html/wireframe/WF_ArchiveList_11.html — 아카이브/룩북 리스트(outfit) -->
+<!--@css(/mundane/css/wireframe/WF_ArchiveList_11.css)-->
+<!--@js(/mundane/js/outfit.js)-->
+
+<div id="WF_ArchiveList_1" class="header_layout_padding">
+
+    <div class="title-Area"  module="Product_menupackage">
+        <div class="cover" module="product_headcategory">
+            <h2>{$title_text_or_image}</h2>
+        </div>
+    </div>
+    <div module="product_listnormal" class="ec-base-product fade outfit-Area">
+        <!--
+        $count =
+        ※ 상품진열갯수를 설정하는 변수입니다. 설정하지 않을 경우, 최대 200개의 상품이 진열 됩니다.
+        ※ 진열된 상품이 많으면, 쇼핑몰에 부하가 발생할 수 있습니다.
+        $basket_result = /product/add_basket.html
+        $basket_option = /product/basket_option.html
+        -->
+        <ul>
+            <li class="mun-prd-list fade_section">
+                <div class="mun-prd-thumb fade-list" fade_set_top="0" fade_set_speed="2" fade_set_delay="0"><a href="/outfit_detail.html{$param}"><img src="{$image_medium}" id="{$image_medium_id}" alt="{$seo_alt_tag}" /></a></div>
+            </li>
+            <li class="mun-prd-list fade_section">
+                <div class="mun-prd-thumb fade-list" fade_set_top="0" fade_set_speed="2" fade_set_delay="0"><a href="/outfit_detail.html{$param}"><img src="{$image_medium}" id="{$image_medium_id}" alt="{$seo_alt_tag}" /></a></div>
+            </li>
+        </ul>
+    </div>
+</div>
+<div id="M_modal" class="header_notice_margin"></div>

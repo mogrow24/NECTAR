@@ -1,0 +1,108 @@
+<!-- /mundane/html/wireframe/WF_ProductDetail_11.html — 상품상세 -->
+<!--@css(/mundane/css/wireframe/WF_ProductDetail_11.css)-->
+<!--@js(/mundane/js/detail.js)-->
+
+<div id="WF_ProductDetail_11" class="header_layout_padding">
+    <div id="mun_detail"  class="tapType1 slideType1" module="product_detail">
+        <!--
+※ 옵션 선택시 품목의 할인가로 표시됩니다.
+$use_item_sale_price = T
+-->
+
+        <div id="mun_detailTop">
+
+            <div id="mun_detailLeft" class="fade_section">
+                <!--추가이미지구간-->
+                <!--@import(/mundane/html/product/detail/addimage.html)-->
+            </div>
+
+            <div id="mun_detailLeftB" class="fade_section">
+                <!--상품상세설명구간-->
+                <div id="mun_productDetail" module="product_additional" class="fade-list" fade_set_top="0" fade_set_speed="2" fade_set_delay="0">{$product_detail}</div>
+            </div>
+
+            <div id="mun_detailRight" class="fade_section">
+                <div class="cover window-height-layout sticky-top-layout">
+                    <!--상품정보구간-->
+                    <!--@import(/mundane/html/product/detail/information.html)-->
+
+                    <!--탭구간-->
+                    <div id="mun_tap">
+                        <div class="mun-tap-cover">
+                            <ul class="mun-tap-title-Area morenvy-banner-area" area_id="4093">
+                                <li class="morenvy-banner">{#title}</li>
+                            </ul>
+                            <ul class="mun-tap-desc-Area" module="product_additional">
+                                <li>{$payment_info}</li><!--상품결제안내-->
+                                <li>{$shipping_info}</li><!--상품배송안내-->
+                                <li>{$exchange_info}</li><!--교환/반품안내-->
+                                <li>{$service_info}</li><!--서비스문의/안내-->
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!--정기결제-->
+                    <!--@import(/mundane/html/product/detail/regular_delivery.html)-->
+
+                    <!--옵션이 없는상품에서 옵션선택방식이(관리자설정) 단일선택형일경우 노출-->
+                    <div class="mun-detail-qty" module="product_quantity">
+                        <div class="ec-base-qty">
+                            {$form.quantity}
+                            <a href="javascript:;"><img src="//img.echosting.cafe24.com/skin/base/common/btn_quantity_up.gif" id="{$quantity_up_id}" alt="증가" class="up {$quantity_up_class}"></a>
+                            <a href="javascript:;"><img src="//img.echosting.cafe24.com/skin/base/common/btn_quantity_down.gif" id="{$quantity_down_id}" alt="감소" class="down {$quantity_down_class}"></a>
+                        </div>
+                    </div>
+
+                    <!--상품옵션-->
+                    <!--@import(/mundane/html/product/detail/option.html)-->
+
+                    <!--옵션선택완료시 추가되는 HTML-->
+                    <!--@import(/mundane/html/product/detail/option_total.html)-->
+
+                    <!--사이즈가이드-->
+                    <div id="mun_sizeGuide" class="{$size_guide_display|display}"><a href="#none" class="{$size_guide_class} mun-btn mun-underline" product_no="{$product_no}">view size chart</a></div>
+
+                    <div class="total-board-Area">
+                        <!--총가격합계 구간-->
+                        <!--@import(/mundane/html/product/detail/total_price.html)-->
+
+                        <!--게시판-->
+                        <!--@import(/mundane/html/product/detail/board.html)-->
+                    </div>
+
+                    <!--버튼구간-->
+                    <!--@import(/mundane/html/product/detail/button.html)-->
+
+                    <!--세트상품-->
+                    <!--@import(/mundane/html/product/detail/setproduct.html)-->
+
+                    <!--추가구매상품-->
+                    <!--@import(/mundane/html/product/detail/addproduct.html)-->
+
+                    <!--쿠폰구간-->
+                    <!--@import(/mundane/html/product/detail/coupon.html)-->
+
+                    <!-- 공급사:판매사정보 -->
+                    <div class="{$supply_info_display|display}">{$supply_info}</div>
+                    <div class="{$common_event_a|display}">{$common_event_a}</div>
+
+                </div>
+            </div>
+        </div>
+
+        <div id="mun_detailBottom">
+            <div class="cover">
+
+                <!--리뷰게시판-->
+                <!--@import(/mundane/html/product/detail/review.html)-->
+
+                <!--Q&A게시판-->
+                <!--@import(/mundane/html/product/detail/qna.html)-->
+
+                <!--관련상품-->
+                <!--@import(/mundane/html/product/detail/relation.html)-->
+            </div>
+        </div>
+
+    </div>
+</div>

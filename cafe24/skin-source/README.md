@@ -35,3 +35,33 @@
    - `/mundane/html/layout/main.html` (홈 본문: 히어로·상품 슬라이더)
    - `/mundane/html/wireframe/WF_ProductList_11.html` (상품목록 그리드)
    - `/mundane/html/wireframe/WF_ProductDetail_11.html` (상품상세)
+
+## ⭐ 실제 카테고리 번호 (mundane-category.html 에서 확정)
+
+| 메뉴 | URL | cate_no |
+|---|---|---|
+| Collection (The Red Invitation) | /Collection.html?cate_no=42 | 42 |
+| Experience | /Experience.html?cate_no=44 | 44 |
+| Object (Shop 상위) | /product/list.html?cate_no=45 | 45 |
+| └ All | /product/list.html?cate_no=46 | 46 |
+| └ Bestseller | /product/list.html?cate_no=47 | 47 |
+| └ Glassware | /product/list.html?cate_no=48 | 48 |
+| └ Essential | /product/list.html?cate_no=49 | 49 |
+| └ Limited Edition | /product/list.html?cate_no=53 | 53 |
+| └ Gifts | /product/list.html?cate_no=51 | 51 |
+| Brand → About / Stockist | /About.html , /Stockist.html | - |
+| Contact | /Contact.html | - |
+
+→ **TODO(내일):** `header-ready.html`·`footer-ready.html` 의 SHOP 링크를
+실제 번호로 교체 (SHOP=Object → `/product/list.html?cate_no=45` 또는 46=All).
+라이브 메뉴 라벨은 Collection/Experience/Object/Brand/Contact 구조.
+
+## 받은 wireframe / 메뉴 파일
+- WF_MainBanner_11.html (홈 히어로), WF_MainProduct_11.html (홈 상품)
+- WF_ProductList_11.html (카테고리 목록), WF_SearchResult_11.html (검색결과)
+- WF_ProductDetail_11.html (상품상세), WF_ArchiveList_11.html (룩북/outfit)
+- mundane-category.html (메뉴 + 카테고리 번호)
+
+## 아직 안 받음 (필요시 내일)
+- 상품상세 부속: `/mundane/html/product/detail/*.html` (정보·옵션·버튼·리뷰 등 다수)
+- svg 아이콘: `/mundane/html/svg/*.html` (우리 디자인 아이콘으로 대체 가능)
