@@ -35,17 +35,7 @@ $use_item_sale_price = T
 
                     <!--탭구간-->
                     <div id="mun_tap">
-                        <div class="mun-tap-cover">
-                            <ul class="mun-tap-title-Area morenvy-banner-area" area_id="4093">
-                                <li class="morenvy-banner">{#title}</li>
-                            </ul>
-                            <ul class="mun-tap-desc-Area" module="product_additional">
-                                <li>{$payment_info}</li><!--상품결제안내-->
-                                <li>{$shipping_info}</li><!--상품배송안내-->
-                                <li>{$exchange_info}</li><!--교환/반품안내-->
-                                <li>{$service_info}</li><!--서비스문의/안내-->
-                            </ul>
-                        </div>
+                        <!--@import(/mundane/html/product/detail/tap_list.html)-->
                     </div>
 
                     <!--정기결제-->
@@ -140,11 +130,13 @@ $use_item_sale_price = T
 #WF_ProductDetail_11.nx-skin .ec-base-qty{ display:inline-flex; align-items:center; border:1px solid #d8d3cb; }
 #WF_ProductDetail_11.nx-skin .ec-base-qty input{ width:42px; height:40px; text-align:center; border:0; }
 
-/* 탭(결제/배송/교환/서비스 안내) */
+/* 탭(결제/배송/교환/서비스 안내) — 아코디언(접힘 기본) */
 #WF_ProductDetail_11.nx-skin #mun_tap{ margin:18px 0; }
-#WF_ProductDetail_11.nx-skin .mun-tap-title-Area{ list-style:none; display:flex; gap:18px; margin:0 0 12px; padding:0; border-bottom:1px solid #e6e2db; }
-#WF_ProductDetail_11.nx-skin .mun-tap-title-Area li{ font-size:12px; letter-spacing:.06em; padding-bottom:10px; color:#8a857e; cursor:pointer; }
-#WF_ProductDetail_11.nx-skin .mun-tap-desc-Area{ list-style:none; margin:0; padding:0; font-size:12px; color:#8a857e; line-height:1.8; }
+#WF_ProductDetail_11.nx-skin .mun-tap-cover{ border-top:1px solid #e6e2db; }
+#WF_ProductDetail_11.nx-skin .mun-tap-list{ border-bottom:1px solid #e6e2db; }
+#WF_ProductDetail_11.nx-skin .mun-tap-title{ display:flex; justify-content:space-between; align-items:center; padding:14px 2px; font-size:12px; letter-spacing:.06em; color:#1d1d1d; cursor:pointer; margin:0; }
+#WF_ProductDetail_11.nx-skin .mun-tap-desc{ display:none; padding:0 2px 16px; font-size:12px; color:#8a857e; line-height:1.8; }
+#WF_ProductDetail_11.nx-skin .mun-tap-list.open .mun-tap-desc{ display:block; }
 
 /* 총 가격 */
 #WF_ProductDetail_11.nx-skin #mun_totalPrice{ font-size:14px; letter-spacing:.06em; margin:18px 0; }
