@@ -1,0 +1,96 @@
+<!-- ===========================================================================
+  NECTAR · 홈 상품 진열 리스킨 (mundane/html/wireframe/WF_MainProduct_11.html 교체용)
+  ---------------------------------------------------------------------------
+  적용: 디자인 편집 → mundane/html/wireframe/WF_MainProduct_11.html 열기
+        → 전체선택(Ctrl+A) 삭제 → 이 파일 전체 붙여넣기 → 저장
+  원칙: 상품 데이터({$product_name}/{$image_medium}/{$param} 등)·module 전부 유지.
+        캐러셀(swiper) 대신 NECTAR 그리드로 + 카드 디자인.
+  복구: skin-source/WF_MainProduct_11.html 로 되돌리면 원상복구.
+============================================================================ -->
+<!--@css(/mundane/css/wireframe/WF_MainProduct_11.css)-->
+
+<div id="WF_MainProduct_11" class="nx-skin">
+    <div class="ec-base-product fade_section">
+        <ul class="nx-grid fade-list" fade_set_top="0" fade_set_speed="1.5" fade_set_delay="0.2">
+            <li class="mun-prd-list">
+                <div class="mun-prd-list-cover">
+                    <div class="mun-prd-thumb"><img src="{$image_medium}" id="{$image_medium_id}" alt="{$seo_alt_tag}" /><div class="mun-prd-thumb-hover"><a href="/product/detail.html{$param}"><img src="{$image_big}"></a></div></div>
+                    <div class="mun-prd-info">
+                        <a href="/product/detail.html{$param}" class="{$product_name_display|display}">
+                            <div class="comming">{$summary_desc}</div>
+                            <div class="name"><span class="title {$product_name_title_display|display}">{$product_name_title} :</span> {$product_name}</div>
+                            <div class="info-Area">
+                                <ul module="product_ListItem">
+                                    <li class="{$item_display|display}" data-title="{$item_title|striptag}"><span class="title {$item_title_display|display}">{$item_title} :</span> {$item_content}</li>
+                                    <li class="{$item_display|display}" data-title="{$item_title|striptag}"><span class="title {$item_title_display|display}">{$item_title} :</span> {$item_content}</li>
+                                </ul>
+                                <div class="icon">
+                                    {$stock_icon} {$product_icons} {$benefit_icons}
+                                </div>
+                                <div class="mun-prd-sold_out">{$soldout_icon}<span class="M_soldout">Sold out</span></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </li>
+            <li class="mun-prd-list">
+                <div class="mun-prd-list-cover">
+                    <div class="mun-prd-thumb"><img src="{$image_medium}" id="{$image_medium_id}" alt="{$seo_alt_tag}" /><div class="mun-prd-thumb-hover"><a href="/product/detail.html{$param}"><img src="{$image_big}"></a></div></div>
+                    <div class="mun-prd-info">
+                        <a href="/product/detail.html{$param}" class="{$product_name_display|display}">
+                            <div class="comming">{$summary_desc}</div>
+                            <div class="name"><span class="title {$product_name_title_display|display}">{$product_name_title} :</span> {$product_name}</div>
+                            <div class="info-Area">
+                                <ul module="product_ListItem">
+                                    <li class="{$item_display|display}" data-title="{$item_title|striptag}"><span class="title {$item_title_display|display}">{$item_title} :</span> {$item_content}</li>
+                                    <li class="{$item_display|display}" data-title="{$item_title|striptag}"><span class="title {$item_title_display|display}">{$item_title} :</span> {$item_content}</li>
+                                </ul>
+                                <div class="icon">
+                                    {$stock_icon} {$product_icons} {$benefit_icons}
+                                </div>
+                                <div class="mun-prd-sold_out">{$soldout_icon}<span class="M_soldout">Sold out</span></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<style id="nx-mainproduct-style">
+/* ===== NECTAR 홈 상품 그리드 (scoped: #WF_MainProduct_11.nx-skin) ===== */
+#WF_MainProduct_11.nx-skin{ font-family:'Pretendard',-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif; padding:0 48px 80px; }
+#WF_MainProduct_11.nx-skin .ec-base-product{ max-width:1600px; margin:0 auto; }
+#WF_MainProduct_11.nx-skin .nx-grid{ list-style:none; margin:0; padding:0;
+  display:grid; grid-template-columns:repeat(4,1fr); gap:48px 24px; }
+#WF_MainProduct_11.nx-skin .mun-prd-list{ margin:0; }
+#WF_MainProduct_11.nx-skin .mun-prd-list-cover{ position:relative; }
+
+/* 썸네일 (정사각, 라운드 없음) */
+#WF_MainProduct_11.nx-skin .mun-prd-thumb{ position:relative; overflow:hidden; aspect-ratio:1/1; background:#f4f2ee; }
+#WF_MainProduct_11.nx-skin .mun-prd-thumb > img{ width:100%; height:100%; object-fit:cover; display:block; transition:opacity .4s ease; }
+#WF_MainProduct_11.nx-skin .mun-prd-thumb-hover{ position:absolute; inset:0; opacity:0; transition:opacity .4s ease; }
+#WF_MainProduct_11.nx-skin .mun-prd-thumb-hover a,
+#WF_MainProduct_11.nx-skin .mun-prd-thumb-hover img{ display:block; width:100%; height:100%; object-fit:cover; }
+#WF_MainProduct_11.nx-skin .mun-prd-list:hover .mun-prd-thumb-hover{ opacity:1; }
+
+/* 상품 정보 */
+#WF_MainProduct_11.nx-skin .mun-prd-info{ padding:16px 2px 0; text-align:center; }
+#WF_MainProduct_11.nx-skin .mun-prd-info a{ text-decoration:none; color:#1d1d1d; }
+#WF_MainProduct_11.nx-skin .comming{ font-size:11px; color:#c7172a; letter-spacing:.04em; margin-bottom:6px; }
+#WF_MainProduct_11.nx-skin .comming:empty{ display:none; }
+#WF_MainProduct_11.nx-skin .name{ font-size:14px; line-height:1.5; color:#1d1d1d; margin-bottom:8px; }
+#WF_MainProduct_11.nx-skin .name .title{ color:#8a857e; }
+#WF_MainProduct_11.nx-skin .info-Area{ font-size:12px; color:#8a857e; }
+#WF_MainProduct_11.nx-skin .info-Area ul{ list-style:none; margin:0; padding:0; }
+#WF_MainProduct_11.nx-skin .info-Area li{ line-height:1.7; }
+#WF_MainProduct_11.nx-skin .info-Area .title{ color:#b3ada4; }
+#WF_MainProduct_11.nx-skin .icon{ margin-top:6px; }
+#WF_MainProduct_11.nx-skin .mun-prd-sold_out .M_soldout{ display:inline-block; margin-top:6px; font-size:11px; letter-spacing:.1em; color:#999; text-transform:uppercase; }
+
+@media (max-width:1024px){
+  #WF_MainProduct_11.nx-skin{ padding:0 18px 56px; }
+  #WF_MainProduct_11.nx-skin .nx-grid{ grid-template-columns:repeat(2,1fr); gap:32px 14px; }
+}
+</style>
