@@ -1,0 +1,112 @@
+<!-- ===========================================================================
+  NECTAR · 홈 헤더 리스킨 (mundane/html/layout/header.html 교체용)
+  ---------------------------------------------------------------------------
+  적용: 디자인 편집 → mundane/html/layout/header.html 열기
+        → 전체선택(Ctrl+A) 삭제 → 이 파일 전체 붙여넣기 → 저장
+  원칙: 원본 마크업/@import/연동모듈 전부 유지(장바구니수량·로그인·로고·검색).
+        모양만 NECTAR 디자인으로 + 데스크탑 가로 메뉴바 추가.
+  복구: 문제 시 skin-source/mundane-header.html 로 되돌리면 원상복구.
+============================================================================ -->
+<div id="Mpage_header" class="nx-skin">
+    <div id="header_notice" class="swiper header_notice_slide">
+        <!--@import(/mundane/html/layout/header_notice.html)-->
+    </div>
+    <div id="header">
+        <div class="header-left">
+            <a href="#;" class="mobile-btn"><span class="arrow"><span></span><span></span><span></span></span></a>
+        </div>
+        <div class="header-center">
+            <!--@import(/mundane/html/layout/logo.html)-->
+        </div>
+        <div class="header-right">
+            <ul class="list-cover"><!--@import(/mundane/html/layout/category_sub_1.html)--></ul>
+        </div>
+    </div>
+    <!-- 데스크탑 가로 메뉴바 (NECTAR) -->
+    <nav class="nx-nav" id="nxNav">
+        <a href="/product/list.html?cate_no=45">SHOP</a>
+        <a href="/Collection.html?cate_no=42">COLLECTION</a>
+        <a href="/About.html">ABOUT</a>
+        <a href="/Stockist.html">STOCKIST</a>
+        <a href="/Experience.html?cate_no=44">EXPERIENCE</a>
+        <a href="/Contact.html">CONTACT</a>
+    </nav>
+</div>
+<div class="morenvy-banner-area displaynone" area_id="831b">
+    <div class="morenvy-banner M_search_target">{#title}</div>
+</div>
+
+<style id="nx-header-style">
+/* ===== NECTAR 홈 헤더 리스킨 (scoped: #Mpage_header.nx-skin) ===== */
+#Mpage_header.nx-skin{ font-family:'Pretendard',-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif; }
+
+/* 상단 공지 띠배너 (레드) */
+#Mpage_header.nx-skin #header_notice{
+  background:#c7172a; color:#fff; text-align:center;
+  font-size:12px; font-weight:500; letter-spacing:.02em; min-height:0; }
+#Mpage_header.nx-skin #header_notice,
+#Mpage_header.nx-skin #header_notice *{ color:#fff !important; }
+#Mpage_header.nx-skin #header_notice .swiper-slide{ display:flex; align-items:center; justify-content:center; padding:10px 16px; box-sizing:border-box; }
+
+/* 헤더 본체 (스티키 · 3열: 햄버거 / 로고 / 아이콘) */
+#Mpage_header.nx-skin #header{
+  position:sticky; top:0; z-index:9000; background:#fff;
+  border-bottom:1px solid #e6e2db;
+  display:grid; grid-template-columns:1fr auto 1fr; align-items:center;
+  height:72px; padding:0 48px; box-sizing:border-box; }
+
+/* 햄버거 (모바일 전용) */
+#Mpage_header.nx-skin .header-left{ justify-self:start; }
+#Mpage_header.nx-skin .mobile-btn{ display:none; width:24px; height:18px; position:relative; }
+#Mpage_header.nx-skin .mobile-btn .arrow{ display:block; }
+#Mpage_header.nx-skin .mobile-btn .arrow span{ display:block; width:22px; height:1.5px; background:#1a1a3c; margin:5px 0; }
+
+/* 로고 (가운데) */
+#Mpage_header.nx-skin .header-center{ justify-self:center; }
+#Mpage_header.nx-skin .header-center .logo a,
+#Mpage_header.nx-skin .header-center .logo img{ height:22px !important; width:auto !important; display:block; }
+
+/* 우측 아이콘 (검색·계정·장바구니) */
+#Mpage_header.nx-skin .header-right{ justify-self:end; }
+#Mpage_header.nx-skin .list-cover{ display:flex; align-items:center; gap:20px; margin:0; padding:0; list-style:none; }
+#Mpage_header.nx-skin .list-cover > li{ position:relative; margin:0; }
+#Mpage_header.nx-skin .list-cover a{ display:flex; align-items:center; color:#1a1a3c; }
+#Mpage_header.nx-skin .list-cover svg{ width:19px; height:20px; }
+#Mpage_header.nx-skin .list-cover .st0{ fill:#1a1a3c; }
+#Mpage_header.nx-skin .list-cover .count{ position:absolute; bottom:-2px; right:-8px; font-size:9px; font-weight:700; color:#c7172a; }
+
+/* 데스크탑 가로 메뉴바 */
+#Mpage_header.nx-skin .nx-nav{
+  display:flex; align-items:center; justify-content:center; gap:44px;
+  height:42px; border-top:1px solid #e6e2db; background:#fff;
+  font-size:12px; letter-spacing:.14em; text-transform:uppercase; }
+#Mpage_header.nx-skin .nx-nav a{ color:#1d1d1d; text-decoration:none; padding:4px 0; border-bottom:1px solid transparent; transition:.2s; }
+#Mpage_header.nx-skin .nx-nav a:hover{ color:#c7172a; border-color:#c7172a; }
+#Mpage_header.nx-skin .nx-nav a.on{ color:#c7172a; border-color:#c7172a; }
+
+/* ===== 반응형: 980px 이하 = 햄버거, 메뉴바 숨김(드로어 사용) ===== */
+@media (max-width:980px){
+  #Mpage_header.nx-skin #header{ height:60px; padding:0 18px; }
+  #Mpage_header.nx-skin .mobile-btn{ display:block; }
+  #Mpage_header.nx-skin .nx-nav{ display:none; }
+}
+</style>
+
+<script>
+/* 현재 페이지 GNB 활성표시 (.on) */
+(function(){
+  function areaOf(href){ if(!href) return ''; var u; try{u=new URL(href,location.href);}catch(e){return '';}
+    var name=(u.pathname.split('/').pop()||'').toLowerCase(), cate=u.searchParams.get('cate_no')||'';
+    if(name==='about.html') return 'about';
+    if(name==='stockist.html') return 'stockist';
+    if(name==='contact.html') return 'contact';
+    if(name==='collection.html'||cate==='42') return 'collection';
+    if(name==='experience.html'||/^experience-detail/.test(name)||cate==='44') return 'experience';
+    if(name==='list.html'||name==='detail.html') return 'shop';
+    return ''; }
+  function mark(){ var cur=areaOf(location.href); if(!cur) return;
+    var a=document.querySelectorAll('#nxNav a'); for(var i=0;i<a.length;i++){
+      if(areaOf(a[i].getAttribute('href'))===cur){ a[i].classList.add('on'); a[i].setAttribute('aria-current','page'); } } }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',mark); else mark();
+})();
+</script>
