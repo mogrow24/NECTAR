@@ -1,0 +1,202 @@
+<!-- ===========================================================================
+  NECTAR · 상품상세 리스킨 (mundane/html/wireframe/WF_ProductDetail_11.html 교체용)
+  ---------------------------------------------------------------------------
+  적용: 디자인 편집 → mundane/html/wireframe/WF_ProductDetail_11.html 열기
+        → 전체선택(Ctrl+A) 삭제 → 이 파일 전체 붙여넣기 → 저장
+  원칙: 모든 @import·module·{$...}(옵션·가격·구매·리뷰·Q&A) 그대로 유지.
+        2단 레이아웃(설명 좌 / 구매 우 스티키) + 버튼·옵션 NECTAR 디자인.
+  복구: skin-source/WF_ProductDetail_11.html 로 되돌리면 원상복구.
+============================================================================ -->
+<!--@css(/mundane/css/wireframe/WF_ProductDetail_11.css)-->
+<!--@js(/mundane/js/detail.js)-->
+
+<div id="WF_ProductDetail_11" class="nx-skin header_layout_padding">
+    <div id="mun_detail" class="tapType1 slideType1" module="product_detail">
+        <!--
+※ 옵션 선택시 품목의 할인가로 표시됩니다.
+$use_item_sale_price = T
+-->
+        <div id="mun_detailTop">
+
+            <div id="mun_detailLeft" class="fade_section">
+                <!--추가이미지구간-->
+                <!--@import(/mundane/html/product/detail/addimage.html)-->
+            </div>
+
+            <div id="mun_detailLeftB" class="fade_section">
+                <!--상품상세설명구간-->
+                <div id="mun_productDetail" module="product_additional" class="fade-list" fade_set_top="0" fade_set_speed="2" fade_set_delay="0">{$product_detail}</div>
+            </div>
+
+            <div id="mun_detailRight" class="fade_section">
+                <div class="cover window-height-layout sticky-top-layout">
+                    <!--상품정보구간-->
+                    <!--@import(/mundane/html/product/detail/information.html)-->
+
+                    <!--탭구간-->
+                    <div id="mun_tap">
+                        <div class="mun-tap-cover">
+                            <ul class="mun-tap-title-Area morenvy-banner-area" area_id="4093">
+                                <li class="morenvy-banner">{#title}</li>
+                            </ul>
+                            <ul class="mun-tap-desc-Area" module="product_additional">
+                                <li>{$payment_info}</li><!--상품결제안내-->
+                                <li>{$shipping_info}</li><!--상품배송안내-->
+                                <li>{$exchange_info}</li><!--교환/반품안내-->
+                                <li>{$service_info}</li><!--서비스문의/안내-->
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!--정기결제-->
+                    <!--@import(/mundane/html/product/detail/regular_delivery.html)-->
+
+                    <!--옵션이 없는상품에서 옵션선택방식이(관리자설정) 단일선택형일경우 노출-->
+                    <div class="mun-detail-qty" module="product_quantity">
+                        <div class="ec-base-qty">
+                            {$form.quantity}
+                            <a href="javascript:;"><img src="//img.echosting.cafe24.com/skin/base/common/btn_quantity_up.gif" id="{$quantity_up_id}" alt="증가" class="up {$quantity_up_class}"></a>
+                            <a href="javascript:;"><img src="//img.echosting.cafe24.com/skin/base/common/btn_quantity_down.gif" id="{$quantity_down_id}" alt="감소" class="down {$quantity_down_class}"></a>
+                        </div>
+                    </div>
+
+                    <!--상품옵션-->
+                    <!--@import(/mundane/html/product/detail/option.html)-->
+
+                    <!--옵션선택완료시 추가되는 HTML-->
+                    <!--@import(/mundane/html/product/detail/option_total.html)-->
+
+                    <!--사이즈가이드-->
+                    <div id="mun_sizeGuide" class="{$size_guide_display|display}"><a href="#none" class="{$size_guide_class} mun-btn mun-underline" product_no="{$product_no}">view size chart</a></div>
+
+                    <div class="total-board-Area">
+                        <!--총가격합계 구간-->
+                        <!--@import(/mundane/html/product/detail/total_price.html)-->
+
+                        <!--게시판-->
+                        <!--@import(/mundane/html/product/detail/board.html)-->
+                    </div>
+
+                    <!--버튼구간-->
+                    <!--@import(/mundane/html/product/detail/button.html)-->
+
+                    <!--세트상품-->
+                    <!--@import(/mundane/html/product/detail/setproduct.html)-->
+
+                    <!--추가구매상품-->
+                    <!--@import(/mundane/html/product/detail/addproduct.html)-->
+
+                    <!--쿠폰구간-->
+                    <!--@import(/mundane/html/product/detail/coupon.html)-->
+
+                    <!-- 공급사:판매사정보 -->
+                    <div class="{$supply_info_display|display}">{$supply_info}</div>
+                    <div class="{$common_event_a|display}">{$common_event_a}</div>
+
+                </div>
+            </div>
+        </div>
+
+        <div id="mun_detailBottom">
+            <div class="cover">
+                <!--리뷰게시판-->
+                <!--@import(/mundane/html/product/detail/review.html)-->
+
+                <!--Q&A게시판-->
+                <!--@import(/mundane/html/product/detail/qna.html)-->
+
+                <!--관련상품-->
+                <!--@import(/mundane/html/product/detail/relation.html)-->
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<style id="nx-detail-style">
+/* ===== NECTAR 상품상세 (scoped: #WF_ProductDetail_11.nx-skin) ===== */
+#WF_ProductDetail_11.nx-skin{ font-family:'Pretendard',-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif; color:#1d1d1d; padding:40px 48px 90px; }
+
+/* 2단 레이아웃: 설명 좌 / 구매 우(스티키) */
+#WF_ProductDetail_11.nx-skin #mun_detailTop{ display:flex; gap:60px; align-items:flex-start; max-width:1500px; margin:0 auto; }
+#WF_ProductDetail_11.nx-skin #mun_detailLeft{ display:none; }            /* 모바일 이미지 갤러리(데스크탑 숨김) */
+#WF_ProductDetail_11.nx-skin #mun_detailLeftB{ flex:1; min-width:0; }
+#WF_ProductDetail_11.nx-skin #mun_detailLeftB img{ max-width:100%; height:auto; display:block; }
+#WF_ProductDetail_11.nx-skin #mun_detailRight{ width:400px; flex:none; }
+#WF_ProductDetail_11.nx-skin #mun_detailRight .sticky-top-layout{ position:sticky; top:90px; }
+
+/* 상품정보 */
+#WF_ProductDetail_11.nx-skin #mun_information{ border-bottom:1px solid #e6e2db; padding-bottom:22px; margin-bottom:22px; }
+#WF_ProductDetail_11.nx-skin #mun_information .mun-detail-list{ display:flex; gap:12px; font-size:13px; line-height:1.9; }
+#WF_ProductDetail_11.nx-skin #mun_information .mun-detail-title{ color:#b3ada4; min-width:90px; }
+#WF_ProductDetail_11.nx-skin #mun_information .mun-detail-desc{ color:#1d1d1d; }
+
+/* 옵션·수량 */
+#WF_ProductDetail_11.nx-skin .mun-detail-option,
+#WF_ProductDetail_11.nx-skin .mun-detail-qty{ margin:14px 0; }
+#WF_ProductDetail_11.nx-skin .mun-detail-title{ font-size:12px; letter-spacing:.04em; color:#8a857e; margin-bottom:6px; }
+#WF_ProductDetail_11.nx-skin select,
+#WF_ProductDetail_11.nx-skin .mun-detail-desc select{ width:100%; height:44px; border:1px solid #d8d3cb; background:#fff; padding:0 12px; font-size:13px; border-radius:0; }
+#WF_ProductDetail_11.nx-skin .ec-base-qty{ display:inline-flex; align-items:center; border:1px solid #d8d3cb; }
+#WF_ProductDetail_11.nx-skin .ec-base-qty input{ width:42px; height:40px; text-align:center; border:0; }
+
+/* 탭(결제/배송/교환/서비스 안내) */
+#WF_ProductDetail_11.nx-skin #mun_tap{ margin:18px 0; }
+#WF_ProductDetail_11.nx-skin .mun-tap-title-Area{ list-style:none; display:flex; gap:18px; margin:0 0 12px; padding:0; border-bottom:1px solid #e6e2db; }
+#WF_ProductDetail_11.nx-skin .mun-tap-title-Area li{ font-size:12px; letter-spacing:.06em; padding-bottom:10px; color:#8a857e; cursor:pointer; }
+#WF_ProductDetail_11.nx-skin .mun-tap-desc-Area{ list-style:none; margin:0; padding:0; font-size:12px; color:#8a857e; line-height:1.8; }
+
+/* 총 가격 */
+#WF_ProductDetail_11.nx-skin #mun_totalPrice{ font-size:14px; letter-spacing:.06em; margin:18px 0; }
+#WF_ProductDetail_11.nx-skin #mun_totalPrice em{ font-style:normal; font-weight:700; color:#c7172a; }
+#WF_ProductDetail_11.nx-skin .total-board-Area table{ width:100%; font-size:12px; border-collapse:collapse; }
+
+/* 게시판 버튼(Review/Q&A) */
+#WF_ProductDetail_11.nx-skin #mun_boardButton{ display:flex; gap:8px; margin:14px 0; }
+#WF_ProductDetail_11.nx-skin #mun_boardButton a{ flex:1; text-align:center; padding:10px; border:1px solid #d8d3cb; font-size:12px; color:#1d1d1d; text-decoration:none; }
+#WF_ProductDetail_11.nx-skin #mun_boardButton a:hover{ border-color:#1d1d1d; }
+
+/* 구매 버튼 */
+#WF_ProductDetail_11.nx-skin #mun_paymentButton{ margin-top:18px; }
+#WF_ProductDetail_11.nx-skin #mun_paymentButton .buy,
+#WF_ProductDetail_11.nx-skin #mun_paymentButton .cart{ display:block; width:100%; text-align:center; padding:16px; font-size:13px; letter-spacing:.1em; text-transform:uppercase; text-decoration:none; box-sizing:border-box; margin-bottom:8px; cursor:pointer; }
+#WF_ProductDetail_11.nx-skin #mun_paymentButton .buy{ background:#c7172a; color:#fff; border:1px solid #c7172a; }
+#WF_ProductDetail_11.nx-skin #mun_paymentButton .buy:hover{ background:#a8121f; }
+#WF_ProductDetail_11.nx-skin #mun_paymentButton .cart{ background:#fff; color:#1d1d1d; border:1px solid #1d1d1d; }
+#WF_ProductDetail_11.nx-skin #mun_paymentButton .cart:hover{ background:#1d1d1d; color:#fff; }
+#WF_ProductDetail_11.nx-skin #mun_paymentButton .soldout{ display:block; width:100%; text-align:center; padding:16px; background:#e6e2db; color:#8a857e; letter-spacing:.1em; text-transform:uppercase; }
+#WF_ProductDetail_11.nx-skin #mun_paymentButton .pay-Area{ display:flex; gap:8px; margin-top:8px; }
+#WF_ProductDetail_11.nx-skin #mun_paymentButton .pay-Area a{ flex:1; }
+#WF_ProductDetail_11.nx-skin #mun_paymentButton .pay-Area img{ width:100%; height:auto; display:block; }
+#WF_ProductDetail_11.nx-skin #mun_sizeGuide{ margin:14px 0; font-size:12px; }
+#WF_ProductDetail_11.nx-skin #mun_sizeGuide a{ color:#8a857e; }
+
+/* 토글 박스(쿠폰/세트/추가구매) */
+#WF_ProductDetail_11.nx-skin .toggleList{ border-top:1px solid #e6e2db; margin-top:14px; }
+#WF_ProductDetail_11.nx-skin .toggleList h3{ font-size:12px; letter-spacing:.08em; text-transform:uppercase; padding:14px 0; margin:0; cursor:pointer; display:flex; justify-content:space-between; align-items:center; }
+
+/* 하단(리뷰/Q&A/관련상품) */
+#WF_ProductDetail_11.nx-skin #mun_detailBottom{ max-width:1500px; margin:80px auto 0; }
+#WF_ProductDetail_11.nx-skin #mun_detailBottom .title{ display:flex; align-items:center; justify-content:space-between; border-bottom:2px solid #1d1d1d; padding-bottom:14px; margin:50px 0 20px; }
+#WF_ProductDetail_11.nx-skin #mun_detailBottom h3{ font-family:'Spectral',serif; font-size:22px; font-weight:400; letter-spacing:.04em; margin:0; }
+#WF_ProductDetail_11.nx-skin #mun_detailBottom .mun-btn{ font-size:12px; color:#8a857e; text-decoration:none; padding-left:12px; }
+#WF_ProductDetail_11.nx-skin #mun_relation h3{ font-family:'Spectral',serif; font-size:22px; font-weight:400; text-align:center; margin:0 0 24px; }
+#WF_ProductDetail_11.nx-skin #mun_relation .ec-base-product ul{ list-style:none; display:grid; grid-template-columns:repeat(4,1fr); gap:24px; margin:0; padding:0; }
+#WF_ProductDetail_11.nx-skin #mun_relation .mun-prd-thumb{ aspect-ratio:1/1; overflow:hidden; background:#f7f6f3; border:1px solid #e6e2db; }
+#WF_ProductDetail_11.nx-skin #mun_relation .mun-prd-thumb img{ width:100%; height:100%; object-fit:cover; }
+#WF_ProductDetail_11.nx-skin #mun_relation .mun-prd-info{ text-align:center; padding-top:12px; font-size:13px; }
+#WF_ProductDetail_11.nx-skin #mun_relation .name{ margin-bottom:4px; }
+#WF_ProductDetail_11.nx-skin #mun_relation .price{ color:#8a857e; font-size:12px; }
+
+/* ===== 반응형 (980px 이하) ===== */
+@media (max-width:980px){
+  #WF_ProductDetail_11.nx-skin{ padding:24px 0 64px; }
+  #WF_ProductDetail_11.nx-skin #mun_detailTop{ flex-direction:column; gap:0; }
+  #WF_ProductDetail_11.nx-skin #mun_detailLeft{ display:block; }       /* 모바일 이미지 갤러리 노출 */
+  #WF_ProductDetail_11.nx-skin #mun_detailRight{ width:100%; padding:0 18px; box-sizing:border-box; }
+  #WF_ProductDetail_11.nx-skin #mun_detailRight .sticky-top-layout{ position:static; }
+  #WF_ProductDetail_11.nx-skin #mun_detailLeftB{ order:3; }
+  #WF_ProductDetail_11.nx-skin #mun_detailBottom{ padding:0 18px; }
+  #WF_ProductDetail_11.nx-skin #mun_relation .ec-base-product ul{ grid-template-columns:repeat(2,1fr); gap:14px; }
+}
+</style>

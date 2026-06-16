@@ -1,0 +1,187 @@
+<!-- ===========================================================================
+  NECTAR · 상품목록(카테고리) 리스킨 (mundane/html/wireframe/WF_ProductList_11.html 교체용)
+  ---------------------------------------------------------------------------
+  적용: 디자인 편집 → mundane/html/wireframe/WF_ProductList_11.html 열기
+        → 전체선택(Ctrl+A) 삭제 → 이 파일 전체 붙여넣기 → 저장
+  원칙: 카테고리/상품/정렬/페이징 module·{$...} 전부 유지. 모양만 NECTAR.
+  복구: skin-source/WF_ProductList_11.html 로 되돌리면 원상복구.
+============================================================================ -->
+<!--@css(/mundane/css/wireframe/WF_ProductList_11.css)-->
+
+<div id="WF_ProductList_11" class="nx-skin header_layout_padding">
+
+    <div class="title-Area" module="Product_menupackage">
+        <h2 module="product_headcategory">{$title_text}</h2>
+
+        <div class="sectionB">
+            <div class="category-Area">
+                <ul class="menuCategory">
+                    <li module="product_displaycategory" style="display:{$display};" class="{$selected}">
+                        <a href="{$link_product_list_sub}">{$category_name} <span class="count {$product_count_display|display}">({$product_count})</span></a>
+                        <ul module="product_children">
+                            <li class="{$selected}">
+                                <a href="{$link_product_list_sub}">{$category_name} <span class="{$product_count_display|display}">({$product_count})</span></a>
+                                <div class="button">
+                                    {$children_icon}
+                                    <ul module="product_children" class="subCategory">
+                                        <li class="{$selected}"><a href="{$link_product_list_sub}">{$category_name} <span class="{$product_count_display|display}">({$product_count})</span></a></li>
+                                        <li class="{$selected}"><a href="{$link_product_list_sub}">{$category_name} <span class="{$product_count_display|display}">({$product_count})</span></a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="{$selected}">
+                                <a href="{$link_product_list_sub}">{$category_name} <span class="{$product_count_display|display}">({$product_count})</span></a>
+                                <div class="button">
+                                    {$children_icon}
+                                    <ul module="product_children" class="subCategory">
+                                        <li class="{$selected}"><a href="{$link_product_list_sub}">{$category_name} <span class="{$product_count_display|display}">({$product_count})</span></a></li>
+                                        <li class="{$selected}"><a href="{$link_product_list_sub}">{$category_name} <span class="{$product_count_display|display}">({$product_count})</span></a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="sort-Area" module="product_normalpackage">
+                <div class="cover" module="product_normalmenu">
+                    <div class="sort-btn">Filter</div>
+                    <div class="content">
+                        <ul module="product_Orderby">
+                            <li><a href="{$param}" {$style}>{$sort_name}</a></li>
+                            <li><a href="{$param}" {$style}>{$sort_name}</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div module="product_listnormal" class="ec-base-product fade">
+        <!--
+$count = 12
+$cache = yes
+$basket_result = /product/add_basket.html
+$basket_option = /product/basket_option.html
+-->
+        <ul class="nx-grid">
+            <li class="mun-prd-list">
+                <div class="mun-prd-list-cover">
+                    <div class="mun-prd-thumb"><img src="{$image_medium}" id="{$image_medium_id}" alt="{$seo_alt_tag}" /><div class="mun-prd-thumb-hover"><a href="/product/detail.html{$param}"><img src="{$image_big}"></a></div></div>
+                    <div class="mun-prd-info">
+                        <a href="/product/detail.html{$param}" class="{$product_name_display|display}">
+                            <div class="comming">{$summary_desc}</div>
+                            <div class="name"><span class="title {$product_name_title_display|display}">{$product_name_title} :</span> {$product_name}</div>
+                            <div class="info-Area">
+                                <ul module="product_ListItem">
+                                    <li class="{$item_display|display}" data-title="{$item_title|striptag}"><span class="title {$item_title_display|display}">{$item_title} :</span> {$item_content}</li>
+                                    <li class="{$item_display|display}" data-title="{$item_title|striptag}"><span class="title {$item_title_display|display}">{$item_title} :</span> {$item_content}</li>
+                                </ul>
+                                <div class="icon">
+                                    {$stock_icon} {$product_icons} {$benefit_icons}
+                                </div>
+                                <div class="mun-prd-sold_out">{$soldout_icon}<span class="M_soldout">Sold out</span></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </li>
+            <li class="mun-prd-list">
+                <div class="mun-prd-list-cover">
+                    <div class="mun-prd-thumb"><img src="{$image_medium}" id="{$image_medium_id}" alt="{$seo_alt_tag}" /><div class="mun-prd-thumb-hover"><a href="/product/detail.html{$param}"><img src="{$image_big}"></a></div></div>
+                    <div class="mun-prd-info">
+                        <a href="/product/detail.html{$param}" class="{$product_name_display|display}">
+                            <div class="comming">{$summary_desc}</div>
+                            <div class="name"><span class="title {$product_name_title_display|display}">{$product_name_title} :</span> {$product_name}</div>
+                            <div class="info-Area">
+                                <ul module="product_ListItem">
+                                    <li class="{$item_display|display}" data-title="{$item_title|striptag}"><span class="title {$item_title_display|display}">{$item_title} :</span> {$item_content}</li>
+                                    <li class="{$item_display|display}" data-title="{$item_title|striptag}"><span class="title {$item_title_display|display}">{$item_title} :</span> {$item_content}</li>
+                                </ul>
+                                <div class="icon">
+                                    {$stock_icon} {$product_icons} {$benefit_icons}
+                                </div>
+                                <div class="mun-prd-sold_out">{$soldout_icon}<span class="M_soldout">Sold out</span></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <div module="product_normalpaging" class="ec-base-paginate nx-paginate">
+        <a href="{$param_before}" class="paginate-arrow prev">&#8249;</a>
+        <ol>
+            <li><a href="{$param}" class="{$param_class}">{$no}</a></li>
+            <li><a href="{$param}" class="{$param_class}">{$no}</a></li>
+            <li><a href="{$param}" class="{$param_class}">{$no}</a></li>
+            <li><a href="{$param}" class="{$param_class}">{$no}</a></li>
+            <li><a href="{$param}" class="{$param_class}">{$no}</a></li>
+        </ol>
+        <a href="{$param_next}" class="paginate-arrow next">&#8250;</a>
+    </div>
+</div>
+
+<style id="nx-productlist-style">
+/* ===== NECTAR 상품목록 (scoped: #WF_ProductList_11.nx-skin) ===== */
+#WF_ProductList_11.nx-skin{ font-family:'Pretendard',-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif; padding:48px 48px 90px; }
+#WF_ProductList_11.nx-skin .title-Area{ text-align:center; margin-bottom:36px; }
+#WF_ProductList_11.nx-skin .title-Area h2{ font-family:'Spectral',serif; font-weight:400; font-size:30px; letter-spacing:.06em; color:#1d1d1d; margin:0 0 22px; }
+
+/* 카테고리 서브메뉴 (가로) */
+#WF_ProductList_11.nx-skin .category-Area .menuCategory{ list-style:none; display:flex; flex-wrap:wrap; justify-content:center; gap:10px 22px; margin:0; padding:0; }
+#WF_ProductList_11.nx-skin .category-Area .menuCategory > li{ margin:0; }
+#WF_ProductList_11.nx-skin .category-Area a{ font-size:13px; letter-spacing:.04em; color:#8a857e; text-decoration:none; }
+#WF_ProductList_11.nx-skin .category-Area a:hover{ color:#1d1d1d; }
+#WF_ProductList_11.nx-skin .category-Area .selected > a{ color:#c7172a; }
+#WF_ProductList_11.nx-skin .category-Area .count{ font-size:11px; color:#b3ada4; }
+#WF_ProductList_11.nx-skin .category-Area .subCategory{ list-style:none; display:flex; flex-wrap:wrap; justify-content:center; gap:6px 16px; margin:8px 0 0; padding:0; }
+#WF_ProductList_11.nx-skin .category-Area .button{ display:inline; }
+
+/* 정렬(Filter) */
+#WF_ProductList_11.nx-skin .sort-Area{ display:flex; justify-content:flex-end; margin-top:18px; }
+#WF_ProductList_11.nx-skin .sort-Area .sort-btn{ font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:#1d1d1d; cursor:pointer; }
+#WF_ProductList_11.nx-skin .sort-Area .content ul{ list-style:none; display:flex; gap:16px; margin:8px 0 0; padding:0; }
+#WF_ProductList_11.nx-skin .sort-Area .content a{ font-size:12px; color:#8a857e; text-decoration:none; }
+#WF_ProductList_11.nx-skin .sort-Area .content a:hover{ color:#c7172a; }
+
+/* 상품 그리드 (홈과 동일 카드) */
+#WF_ProductList_11.nx-skin .ec-base-product{ max-width:1600px; margin:0 auto; }
+#WF_ProductList_11.nx-skin .nx-grid{ list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(4,1fr); gap:48px 24px; }
+#WF_ProductList_11.nx-skin .mun-prd-list{ margin:0; }
+#WF_ProductList_11.nx-skin .mun-prd-list-cover{ position:relative; border:1px solid #e6e2db; background:#fff; }
+#WF_ProductList_11.nx-skin .mun-prd-thumb{ position:relative; overflow:hidden; aspect-ratio:1/1; background:#f7f6f3; border-bottom:1px solid #e6e2db; }
+#WF_ProductList_11.nx-skin .mun-prd-thumb > img{ width:100%; height:100%; object-fit:cover; display:block; border:0 !important; outline:0; transition:opacity .4s ease; }
+#WF_ProductList_11.nx-skin .mun-prd-thumb-hover{ position:absolute; inset:0; opacity:0; transition:opacity .4s ease; }
+#WF_ProductList_11.nx-skin .mun-prd-thumb-hover a, #WF_ProductList_11.nx-skin .mun-prd-thumb-hover img{ display:block; width:100%; height:100%; object-fit:cover; }
+#WF_ProductList_11.nx-skin .mun-prd-list:hover .mun-prd-thumb-hover{ opacity:1; }
+#WF_ProductList_11.nx-skin .mun-prd-info{ padding:18px 14px 20px; text-align:center; }
+#WF_ProductList_11.nx-skin .mun-prd-info a{ text-decoration:none; color:#1d1d1d; }
+#WF_ProductList_11.nx-skin .comming{ font-size:11px; color:#c7172a; letter-spacing:.04em; margin-bottom:6px; }
+#WF_ProductList_11.nx-skin .comming:empty{ display:none; }
+#WF_ProductList_11.nx-skin .name{ font-size:14px; line-height:1.5; color:#1d1d1d; margin-bottom:8px; }
+#WF_ProductList_11.nx-skin .name .title{ color:#8a857e; }
+#WF_ProductList_11.nx-skin .info-Area{ font-size:12px; color:#8a857e; }
+#WF_ProductList_11.nx-skin .info-Area ul{ list-style:none; margin:0; padding:0; }
+#WF_ProductList_11.nx-skin .info-Area li{ line-height:1.7; }
+#WF_ProductList_11.nx-skin .info-Area .title{ color:#b3ada4; }
+#WF_ProductList_11.nx-skin .icon{ margin-top:6px; }
+#WF_ProductList_11.nx-skin .mun-prd-sold_out .M_soldout{ display:inline-block; margin-top:6px; font-size:11px; letter-spacing:.1em; color:#999; text-transform:uppercase; }
+
+/* 페이징 */
+#WF_ProductList_11.nx-skin .nx-paginate{ display:flex; align-items:center; justify-content:center; gap:6px; margin-top:60px; }
+#WF_ProductList_11.nx-skin .nx-paginate ol{ list-style:none; display:flex; gap:4px; margin:0; padding:0; }
+#WF_ProductList_11.nx-skin .nx-paginate a{ display:inline-flex; align-items:center; justify-content:center; min-width:32px; height:32px; font-size:13px; color:#8a857e; text-decoration:none; }
+#WF_ProductList_11.nx-skin .nx-paginate a:hover{ color:#1d1d1d; }
+#WF_ProductList_11.nx-skin .nx-paginate ol a.this,
+#WF_ProductList_11.nx-skin .nx-paginate ol a[class*="select"]{ color:#c7172a; border-bottom:1px solid #c7172a; }
+#WF_ProductList_11.nx-skin .nx-paginate .paginate-arrow{ font-size:16px; color:#1d1d1d; }
+
+@media (max-width:1024px){
+  #WF_ProductList_11.nx-skin{ padding:32px 18px 64px; }
+  #WF_ProductList_11.nx-skin .title-Area h2{ font-size:24px; }
+  #WF_ProductList_11.nx-skin .nx-grid{ grid-template-columns:repeat(2,1fr); gap:32px 14px; }
+}
+</style>
