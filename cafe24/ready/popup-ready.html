@@ -1,0 +1,65 @@
+<!-- ===========================================================================
+  NECTAR · 메인 팝업 (목업 디자인) — 홈 본문의 기존 #main_popup 블록과 교체
+  위치: mundane/html/layout/main.html 맨 위, <div id="main_popup">...</div> 자리
+  '오늘 하루 열지 않기' = 24시간 동안 안 뜸(localStorage)
+============================================================================ -->
+<div class="nx-pop-overlay" id="nxPop">
+    <div class="nx-popup" role="dialog" aria-modal="true">
+        <div class="p-body">
+            <div class="p-left">
+                <div class="p-logo">NECTAR</div>
+                <h3>구매 후 리뷰 작성 시<br><span class="hl">최대 5,000원</span> 적립금 혜택</h3>
+                <ul class="pts">
+                    <li>베스트 리뷰 선정 시 3,000원 적립</li>
+                    <li>포토 리뷰 작성 시 5,000원 적립</li>
+                </ul>
+            </div>
+            <div class="p-right">
+                <img src="https://nectarofficial.com/web/product/big/202602/623a8539c7fde0bd89a754ab41e5d1d0.png" alt="">
+            </div>
+        </div>
+        <div class="p-btns">
+            <button class="dont" type="button">오늘 하루 열지 않기</button>
+            <button class="close" type="button">닫기</button>
+        </div>
+    </div>
+</div>
+
+<style id="nx-pop-style">
+.nx-pop-overlay{ position:fixed; inset:0; background:rgba(18,18,18,.6); z-index:99990; display:flex; align-items:center; justify-content:center; padding:20px;
+  font-family:'Pretendard',-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif; }
+.nx-pop-overlay.hide{ display:none; }
+.nx-popup{ width:min(680px,94vw); background:#fff; box-shadow:0 40px 90px rgba(0,0,0,.35); display:flex; flex-direction:column; }
+.nx-popup .p-body{ display:grid; grid-template-columns:1fr 1fr; align-items:stretch; }
+.nx-popup .p-left{ padding:52px 44px; display:flex; flex-direction:column; justify-content:center; }
+.nx-popup .p-logo{ font-family:'Spectral',serif; letter-spacing:.42em; font-size:17px; color:#141414; padding-left:.42em; margin-bottom:30px; }
+.nx-popup h3{ font-weight:700; font-size:26px; line-height:1.45; color:#141414; letter-spacing:-.01em; margin:0; }
+.nx-popup h3 .hl{ color:#c7172a; }
+.nx-popup .pts{ margin:26px 0 0; padding:0; list-style:none; display:flex; flex-direction:column; gap:6px; }
+.nx-popup .pts li{ font-size:13px; color:#8a857e; line-height:1.7; padding-left:15px; position:relative; }
+.nx-popup .pts li::before{ content:"*"; position:absolute; left:0; color:#c7172a; }
+.nx-popup .p-right{ background:#f4f2ee; position:relative; min-height:460px; }
+.nx-popup .p-right img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+.nx-popup .p-btns{ display:grid; grid-template-columns:1fr 1fr; border-top:1px solid #e6e2db; }
+.nx-popup .p-btns button{ height:58px; font-size:13px; letter-spacing:.06em; cursor:pointer; border:0; transition:.2s; }
+.nx-popup .p-btns .dont{ background:#141414; color:#fff; }
+.nx-popup .p-btns .close{ background:#fff; color:#141414; border-left:1px solid #e6e2db; }
+.nx-popup .p-btns .close:hover{ background:#f4f2ee; }
+@media (max-width:620px){
+  .nx-popup .p-body{ grid-template-columns:1fr; }
+  .nx-popup .p-right{ min-height:180px; order:-1; }
+  .nx-popup .p-left{ padding:36px 24px; }
+}
+</style>
+
+<script>
+(function(){
+  var ov=document.getElementById('nxPop'); if(!ov) return;
+  try{ var until=localStorage.getItem('nectar_pop'); if(until && Date.now()<+until){ ov.classList.add('hide'); return; } }catch(e){}
+  function hide(){ ov.classList.add('hide'); }
+  ov.querySelector('.close').addEventListener('click', hide);
+  ov.querySelector('.dont').addEventListener('click', function(){ try{ localStorage.setItem('nectar_pop', Date.now()+86400000); }catch(e){} hide(); });
+  ov.addEventListener('click', function(e){ if(e.target===ov) hide(); });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') hide(); });
+})();
+</script>
