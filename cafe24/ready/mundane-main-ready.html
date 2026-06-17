@@ -1,0 +1,277 @@
+<!-- ===========================================================================
+  NECTAR · 홈 본문 리스킨 (mundane/html/layout/main.html 교체용)
+  ---------------------------------------------------------------------------
+  적용: 디자인 편집 → mundane → html → layout → main.html 열기
+        → 전체선택(Ctrl+A) 삭제 → 이 파일 전체 붙여넣기 → 저장
+  구성: 필름히어로 / Best Sellers(상품 연동) / Our Story / 3컬럼 / Shop by Object / Membership
+  원칙: 상품 진열은 카페24 모듈(product_listmain_1) 연동 유지. 나머지는 NECTAR 디자인.
+  복구: skin-source/mundane-main.html 로 되돌리면 원상복구.
+============================================================================ -->
+<!--@js(/mundane/js/main.js)-->
+
+<!-- 메인 팝업(모렌비) 유지 -->
+<div id="main_popup" class="displaynone">
+    <div class="close"><span class="arrow"></span>CLOSE</div>
+    <div class="thumb swiper morenvy-banner-area" area_id="40ab">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide morenvy-banner">
+                <h2>{#title}</h2>
+                <p>{#html}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="Mpage_main" class="nx-home">
+
+    <!-- ===== 1. 브랜드 필름 히어로 ===== -->
+    <section class="nx-hero">
+        <div class="nx-hero-bg" aria-hidden="true">
+            <iframe src="https://www.youtube-nocookie.com/embed/pXa7K_1Dp8I?autoplay=1&mute=1&loop=1&playlist=pXa7K_1Dp8I&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&disablekb=1" title="NECTAR Brand Film" frameborder="0" allow="autoplay; encrypted-media"></iframe>
+        </div>
+        <div class="nx-hero-in">
+            <span class="nx-eyebrow">The Red Invitation</span>
+            <h1>The Red<br>Invitation</h1>
+            <p class="nx-ko">매일의 식탁을, 초대의 순간으로 — 유럽산 크리스탈 오브제.</p>
+            <a class="nx-play" id="nxFilmPlay" href="#" data-video="pXa7K_1Dp8I">
+                <span class="circ">&#9654;</span><span class="lbl">사운드로 전체 보기</span>
+            </a>
+        </div>
+        <span class="nx-scroll">SCROLL</span>
+    </section>
+
+    <!-- ===== 2. Best Sellers (상품 연동) ===== -->
+    <section class="nx-section">
+        <div class="nx-wrap">
+            <div class="nx-sec-head">
+                <div class="nx-titles">
+                    <span class="nx-eyebrow">This Month</span>
+                    <h2>Best Sellers</h2>
+                    <div class="nx-ko">이달의 인기 제품</div>
+                </div>
+                <a class="nx-more" href="/product/list.html?cate_no=45">전체 보기</a>
+            </div>
+            <div class="nx-chips">
+                <a href="/product/list.html?cate_no=46">All</a>
+                <a href="/product/list.html?cate_no=47">Bestseller</a>
+                <a href="/product/list.html?cate_no=48">Glassware</a>
+                <a href="/product/list.html?cate_no=49">Essential</a>
+                <a href="/product/list.html?cate_no=53">Limited Edition</a>
+                <a href="/product/list.html?cate_no=51">Gifts</a>
+            </div>
+
+            <div id="main_3" module="product_listmain_1" class="ec-base-product">
+                <ul class="nx-grid">
+                    <li class="mun-prd-list">
+                        <a class="nx-card" href="/product/detail.html{$param}">
+                            <div class="nx-card-thumb">
+                                <img src="{$image_medium}" id="{$image_medium_id}" alt="{$seo_alt_tag}" />
+                                <div class="nx-badges"><span class="icon">{$product_icons} {$benefit_icons}</span><span class="mun-prd-sold_out">{$soldout_icon}<span class="M_soldout">Sold out</span></span></div>
+                            </div>
+                            <div class="nx-card-info">
+                                <div class="nm"><span class="nx-en {$product_name_title_display|display}">{$product_name_title}</span>{$product_name}</div>
+                                <div class="pr info-Area"><ul module="product_ListItem"><li class="{$item_display|display}"><span class="title {$item_title_display|display}">{$item_title} :</span> {$item_content}</li><li class="{$item_display|display}"><span class="title {$item_title_display|display}">{$item_title} :</span> {$item_content}</li></ul></div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="mun-prd-list">
+                        <a class="nx-card" href="/product/detail.html{$param}">
+                            <div class="nx-card-thumb">
+                                <img src="{$image_medium}" id="{$image_medium_id}" alt="{$seo_alt_tag}" />
+                                <div class="nx-badges"><span class="icon">{$product_icons} {$benefit_icons}</span><span class="mun-prd-sold_out">{$soldout_icon}<span class="M_soldout">Sold out</span></span></div>
+                            </div>
+                            <div class="nx-card-info">
+                                <div class="nm"><span class="nx-en {$product_name_title_display|display}">{$product_name_title}</span>{$product_name}</div>
+                                <div class="pr info-Area"><ul module="product_ListItem"><li class="{$item_display|display}"><span class="title {$item_title_display|display}">{$item_title} :</span> {$item_content}</li><li class="{$item_display|display}"><span class="title {$item_title_display|display}">{$item_title} :</span> {$item_content}</li></ul></div>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== 3. Our Story ===== -->
+    <section class="nx-story">
+        <div class="nx-story-in">
+            <div class="nx-story-media">
+                <img src="https://nectarofficial.com/web/product/big/202602/623a8539c7fde0bd89a754ab41e5d1d0.png" alt="NECTAR table setting">
+            </div>
+            <div class="nx-story-text">
+                <span class="nx-eyebrow">Our Story</span>
+                <h2>매일의 식탁을,<br>초대의 순간으로</h2>
+                <p>유럽산 무연 크리스탈로 빚어낸 일상의 오브제.<br>한 잔의 물, 한 잔의 와인이 특별해지는 순간 —<br>NECTAR는 당신의 테이블을 가장 우아한 무대로 바꿉니다.</p>
+                <a class="nx-lnk" href="/About.html">브랜드 이야기 &rarr;</a>
+            </div>
+        </div>
+        <div class="nx-pillars">
+            <div class="pil"><div class="t">Made in Europe</div><div class="d">유럽 장인이 완성한 크리스탈</div></div>
+            <div class="pil"><div class="t">Lead-Free Crystal</div><div class="d">맑고 가벼운 무연 프리미엄 소재</div></div>
+            <div class="pil"><div class="t">Everyday Ritual</div><div class="d">매일을 특별하게 만드는 오브제</div></div>
+        </div>
+    </section>
+
+    <!-- ===== 4. Shop by Object ===== -->
+    <section class="nx-section">
+        <div class="nx-wrap">
+            <div class="nx-sec-head"><div class="nx-titles"><span class="nx-eyebrow">Explore</span><h2>Shop by Object</h2><div class="nx-ko">카테고리</div></div></div>
+            <div class="nx-trio">
+                <a href="/product/list.html?cate_no=48">
+                    <img src="https://nectarofficial.com/web/product/medium/202602/261c56b6e17a1f417a82c549b453705a.png" alt="Glassware">
+                    <div class="label"><div class="en">Glassware</div><div class="ko">워터글라스 · 와인잔</div><span class="go">View &rarr;</span></div>
+                </a>
+                <a href="/product/list.html?cate_no=47">
+                    <img src="https://nectarofficial.com/web/product/medium/202510/28c42f95a2128f43a1854663128f0b8e.png" alt="Bestseller">
+                    <div class="label"><div class="en">Bestseller</div><div class="ko">이달의 인기</div><span class="go">View &rarr;</span></div>
+                </a>
+                <a href="/product/list.html?cate_no=51">
+                    <img src="https://nectarofficial.com/web/product/big/202603/4be6eef2e434aa0e8dc357449075d141.png" alt="Gift Set">
+                    <div class="label"><div class="en">Gifts</div><div class="ko">선물 · 기프트 세트</div><span class="go">View &rarr;</span></div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== 5. Membership ===== -->
+    <section class="nx-member">
+        <span class="nx-eyebrow">Membership</span>
+        <h3>레드 인비테이션 멤버십</h3>
+        <p class="m-desc">NECTAR 멤버가 되시면 가입 즉시 적립금을 드리고,<br>신제품과 한정 컬렉션 소식을 가장 먼저 전해드립니다.</p>
+        <div class="benefits"><span>가입 즉시 적립금 증정</span><span>신제품 우선 안내</span><span>한정 컬렉션 초대</span></div>
+        <a class="nx-btn" href="/member/join.html">회원가입 하기</a>
+    </section>
+
+</div>
+
+<!-- 필름 모달 -->
+<div class="nx-film-modal" id="nxFilmModal"><div class="fm-box"><button class="fm-close" type="button" aria-label="닫기">&times;</button><div class="fm-frame"></div></div></div>
+
+<style id="nx-home-style">
+/* ===== NECTAR 홈 (scoped: #Mpage_main.nx-home) ===== */
+#Mpage_main.nx-home{ --red:#c7172a; --black:#141414; --ink:#1d1d1d; --gray:#8a857e; --line:#e6e2db; --cream:#f4f2ee; --serif:'Spectral',serif; --sans:'Pretendard',-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif; --max:1320px; --pad:48px;
+  font-family:var(--sans); color:var(--ink); line-height:1.65; }
+#Mpage_main.nx-home *{ box-sizing:border-box; }
+#Mpage_main.nx-home .nx-wrap{ max-width:var(--max); margin:0 auto; padding:0 var(--pad); }
+#Mpage_main.nx-home .nx-eyebrow{ font-size:11px; letter-spacing:.32em; text-transform:uppercase; color:var(--red); font-weight:600; }
+#Mpage_main.nx-home .nx-ko{ color:var(--gray); }
+
+/* 1. 히어로 */
+#Mpage_main.nx-home .nx-hero{ position:relative; min-height:88vh; display:flex; flex-direction:column; justify-content:center; padding:0 var(--pad); color:#fff; overflow:hidden; text-align:center; align-items:center; }
+#Mpage_main.nx-home .nx-hero-bg{ position:absolute; inset:0; z-index:0; overflow:hidden; pointer-events:none; }
+#Mpage_main.nx-home .nx-hero-bg iframe{ position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:100vw; height:56.25vw; min-height:100%; min-width:177.78vh; }
+#Mpage_main.nx-home .nx-hero-bg::after{ content:""; position:absolute; inset:0; background:rgba(10,10,10,.42); }
+#Mpage_main.nx-home .nx-hero::before{ content:""; position:absolute; inset:0; z-index:1; pointer-events:none; background:radial-gradient(120% 90% at 50% 115%, rgba(199,23,42,.5), transparent 55%); }
+#Mpage_main.nx-home .nx-hero-in{ position:relative; z-index:2; max-width:760px; }
+#Mpage_main.nx-home .nx-hero .nx-eyebrow{ color:#ff8a94; }
+#Mpage_main.nx-home .nx-hero h1{ font-family:var(--serif); font-weight:500; font-size:clamp(40px,6vw,86px); line-height:1.05; margin:18px 0 14px; color:#fff; }
+#Mpage_main.nx-home .nx-hero .nx-ko{ font-size:16px; color:rgba(255,255,255,.82); }
+#Mpage_main.nx-home .nx-play{ margin-top:36px; display:inline-flex; align-items:center; gap:14px; color:#fff; text-decoration:none; }
+#Mpage_main.nx-home .nx-play .circ{ width:60px; height:60px; border-radius:50%; border:1px solid rgba(255,255,255,.55); display:flex; align-items:center; justify-content:center; font-size:13px; transition:.25s; }
+#Mpage_main.nx-home .nx-play:hover .circ{ background:var(--red); border-color:var(--red); }
+#Mpage_main.nx-home .nx-play .lbl{ font-size:12px; letter-spacing:.2em; text-transform:uppercase; }
+#Mpage_main.nx-home .nx-scroll{ position:absolute; bottom:18px; left:50%; transform:translateX(-50%); z-index:2; font-size:11px; letter-spacing:.2em; color:rgba(255,255,255,.6); }
+
+/* 2 & 4. 섹션 공통 */
+#Mpage_main.nx-home .nx-section{ padding:84px 0; }
+#Mpage_main.nx-home .nx-sec-head{ display:flex; align-items:flex-end; justify-content:space-between; margin-bottom:32px; gap:20px; flex-wrap:wrap; }
+#Mpage_main.nx-home .nx-titles h2{ font-family:var(--serif); font-weight:600; font-size:34px; color:var(--black); margin:2px 0; }
+#Mpage_main.nx-home .nx-titles .nx-ko{ font-size:13px; margin-top:4px; }
+#Mpage_main.nx-home .nx-more{ font-size:12px; letter-spacing:.16em; text-transform:uppercase; color:var(--ink); border-bottom:1px solid var(--black); padding-bottom:4px; text-decoration:none; }
+#Mpage_main.nx-home .nx-more:hover{ color:var(--red); border-color:var(--red); }
+#Mpage_main.nx-home .nx-chips{ display:flex; flex-wrap:wrap; gap:8px; margin-bottom:28px; }
+#Mpage_main.nx-home .nx-chips a{ padding:9px 20px; border:1px solid var(--line); background:#fff; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--gray); text-decoration:none; transition:.2s; }
+#Mpage_main.nx-home .nx-chips a:hover{ border-color:#BE1818; color:#BE1818; }
+
+/* 상품 그리드 (홈) */
+#Mpage_main.nx-home .nx-grid{ list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(4,1fr); border-top:1px solid var(--line); border-left:1px solid var(--line); }
+#Mpage_main.nx-home .mun-prd-list{ margin:0; border-right:1px solid var(--line); border-bottom:1px solid var(--line); }
+#Mpage_main.nx-home .nx-card{ display:block; text-decoration:none; color:var(--ink); }
+#Mpage_main.nx-home .nx-card-thumb{ position:relative; aspect-ratio:1/1; background:#fff; display:flex; align-items:center; justify-content:center; overflow:hidden; }
+#Mpage_main.nx-home .nx-card-thumb > img{ width:82%; height:82%; object-fit:contain; mix-blend-mode:multiply; border:0!important; transition:transform .5s ease; }
+#Mpage_main.nx-home .nx-card:hover .nx-card-thumb > img{ transform:scale(1.05); }
+#Mpage_main.nx-home .nx-badges{ position:absolute; top:10px; left:10px; z-index:2; display:flex; flex-direction:column; gap:4px; align-items:flex-start; }
+#Mpage_main.nx-home .nx-badges .icon img{ height:20px; display:block; }
+#Mpage_main.nx-home .nx-badges .M_soldout{ display:inline-block; background:rgba(20,20,20,.5); color:#fff; font-size:10px; letter-spacing:.1em; text-transform:uppercase; padding:5px 9px; }
+#Mpage_main.nx-home .nx-card-info{ padding:14px 16px 20px; }
+#Mpage_main.nx-home .nx-card-info .nm{ font-size:14px; font-weight:600; color:var(--black); line-height:1.4; }
+#Mpage_main.nx-home .nx-card-info .nm .nx-en{ display:block; }
+#Mpage_main.nx-home .nx-card-info .pr ul{ list-style:none; margin:6px 0 0; padding:0; }
+#Mpage_main.nx-home .nx-card-info .pr li,
+#Mpage_main.nx-home .nx-card-info .pr li *{ font-size:15px!important; font-weight:700!important; color:var(--ink)!important; }
+#Mpage_main.nx-home .nx-card-info .pr li:not(.displaynone)::after{ content:'원'; font-weight:700; }
+#Mpage_main.nx-home .nx-card-info .pr li.displaynone{ display:none!important; }
+#Mpage_main.nx-home .nx-card-info .pr .title{ display:none; }
+
+/* 3. Our Story */
+#Mpage_main.nx-home .nx-story{ background:var(--cream); }
+#Mpage_main.nx-home .nx-story-in{ display:grid; grid-template-columns:1fr minmax(440px,600px); }
+#Mpage_main.nx-home .nx-story-media{ position:relative; min-height:480px; background:#2a0d12; }
+#Mpage_main.nx-home .nx-story-media img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+#Mpage_main.nx-home .nx-story-text{ padding:72px clamp(36px,5vw,72px); display:flex; flex-direction:column; justify-content:center; }
+#Mpage_main.nx-home .nx-story-text h2{ font-family:var(--sans); font-weight:600; font-size:clamp(24px,2.6vw,34px); line-height:1.5; color:var(--black); margin:16px 0; }
+#Mpage_main.nx-home .nx-story-text p{ color:var(--gray); max-width:440px; margin-bottom:26px; }
+#Mpage_main.nx-home .nx-lnk{ font-size:12px; letter-spacing:.16em; text-transform:uppercase; color:var(--red); border-bottom:1px solid var(--red); padding-bottom:4px; width:max-content; text-decoration:none; }
+#Mpage_main.nx-home .nx-pillars{ display:grid; grid-template-columns:repeat(3,1fr); border-top:1px solid var(--line); }
+#Mpage_main.nx-home .nx-pillars .pil{ padding:40px var(--pad); text-align:center; border-right:1px solid var(--line); }
+#Mpage_main.nx-home .nx-pillars .pil:last-child{ border-right:0; }
+#Mpage_main.nx-home .nx-pillars .pil .t{ font-family:var(--serif); font-size:18px; color:var(--black); margin-bottom:8px; letter-spacing:.04em; }
+#Mpage_main.nx-home .nx-pillars .pil .d{ font-size:12.5px; color:var(--gray); }
+
+/* 4. Shop by Object */
+#Mpage_main.nx-home .nx-trio{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+#Mpage_main.nx-home .nx-trio a{ position:relative; aspect-ratio:3/4; background:#fff; border:1px solid var(--line); display:flex; align-items:flex-end; overflow:hidden; text-decoration:none; }
+#Mpage_main.nx-home .nx-trio a img{ position:absolute; inset:0; width:100%; height:100%; object-fit:contain; mix-blend-mode:multiply; padding:16% 12% 22%; transition:transform .5s; }
+#Mpage_main.nx-home .nx-trio a:hover img{ transform:scale(1.05); }
+#Mpage_main.nx-home .nx-trio .label{ position:relative; width:100%; padding:22px; }
+#Mpage_main.nx-home .nx-trio .label .en{ font-family:var(--serif); font-size:24px; color:var(--black); }
+#Mpage_main.nx-home .nx-trio .label .ko{ font-size:12px; color:var(--gray); margin-top:2px; }
+#Mpage_main.nx-home .nx-trio .label .go{ display:inline-block; margin-top:8px; font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--red); }
+
+/* 5. Membership */
+#Mpage_main.nx-home .nx-member{ position:relative; background:var(--black); color:#fff; text-align:center; padding:100px 24px; overflow:hidden; }
+#Mpage_main.nx-home .nx-member::before{ content:""; position:absolute; inset:0; background:radial-gradient(circle at 50% 125%, rgba(199,23,42,.42), transparent 58%); }
+#Mpage_main.nx-home .nx-member > *{ position:relative; }
+#Mpage_main.nx-home .nx-member .nx-eyebrow{ color:#ff8a94; }
+#Mpage_main.nx-home .nx-member h3{ font-family:var(--sans); font-weight:700; font-size:clamp(24px,2.6vw,34px); margin:14px 0; }
+#Mpage_main.nx-home .nx-member .m-desc{ color:rgba(255,255,255,.8); max-width:500px; margin:0 auto 26px; line-height:1.7; }
+#Mpage_main.nx-home .nx-member .benefits{ display:flex; gap:26px; justify-content:center; flex-wrap:wrap; margin-bottom:32px; font-size:12.5px; color:rgba(255,255,255,.85); }
+#Mpage_main.nx-home .nx-member .benefits span::before{ content:"·"; margin-right:26px; color:rgba(255,255,255,.45); }
+#Mpage_main.nx-home .nx-member .benefits span:first-child::before{ content:""; margin:0; }
+#Mpage_main.nx-home .nx-btn{ display:inline-block; padding:15px 40px; font-size:12px; letter-spacing:.14em; text-transform:uppercase; text-decoration:none; background:var(--red); color:#fff; border:1px solid var(--red); transition:.25s; }
+#Mpage_main.nx-home .nx-btn:hover{ background:#fff; color:var(--red); }
+
+/* 필름 모달 */
+.nx-film-modal{ position:fixed; inset:0; z-index:99999; background:rgba(0,0,0,.85); display:none; align-items:center; justify-content:center; }
+.nx-film-modal.on{ display:flex; }
+.nx-film-modal .fm-box{ position:relative; width:min(90vw,960px); aspect-ratio:16/9; }
+.nx-film-modal .fm-frame, .nx-film-modal .fm-frame iframe{ width:100%; height:100%; }
+.nx-film-modal .fm-close{ position:absolute; top:-40px; right:0; background:none; border:0; color:#fff; font-size:26px; cursor:pointer; }
+
+@media (max-width:1024px){
+  #Mpage_main.nx-home .nx-grid{ grid-template-columns:repeat(2,1fr); }
+  #Mpage_main.nx-home .nx-trio{ grid-template-columns:1fr; }
+  #Mpage_main.nx-home .nx-story-in{ grid-template-columns:1fr; }
+  #Mpage_main.nx-home .nx-story-media{ min-height:320px; order:-1; }
+  #Mpage_main.nx-home .nx-pillars{ grid-template-columns:1fr; }
+  #Mpage_main.nx-home .nx-pillars .pil{ border-right:0; border-bottom:1px solid var(--line); }
+}
+@media (max-width:768px){
+  #Mpage_main.nx-home{ --pad:18px; }
+  #Mpage_main.nx-home .nx-section{ padding:52px 0; }
+}
+</style>
+
+<script>
+/* 필름 모달 */
+(function(){
+  var btn=document.getElementById('nxFilmPlay'), modal=document.getElementById('nxFilmModal');
+  if(!btn||!modal) return;
+  var frame=modal.querySelector('.fm-frame');
+  btn.addEventListener('click', function(e){ e.preventDefault();
+    frame.innerHTML='<iframe src="https://www.youtube.com/embed/'+btn.getAttribute('data-video')+'?autoplay=1&rel=0" frameborder="0" allow="autoplay; encrypted-media; fullscreen" allowfullscreen></iframe>';
+    modal.classList.add('on'); document.body.style.overflow='hidden'; });
+  function close(){ modal.classList.remove('on'); frame.innerHTML=''; document.body.style.overflow=''; }
+  modal.querySelector('.fm-close').addEventListener('click', close);
+  modal.addEventListener('click', function(e){ if(e.target===modal) close(); });
+})();
+</script>
