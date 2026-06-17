@@ -54,7 +54,11 @@
 
     <style>
       /* 본문 영역: 사이드바 없이 풀폭 */
-      #contents{ max-width:none; margin:0; padding:0; min-height:40vh; }
+      #contents{ max-width:none; margin:0 !important; padding:0; min-height:40vh; }
+      /* 헤더가 본문을 덮지 않게 (흰배경 + 정상 위치) */
+      #Mpage_header{ position:relative !important; background:#fff !important; z-index:9000; }
+      #Mpage_header #header{ position:sticky !important; top:0 !important; background:#fff !important; z-index:9000 !important; }
+      #Mpage_header #header_notice{ position:relative !important; }
     </style>
 </head>
 <body id="contents-page" class="nx-unified">
