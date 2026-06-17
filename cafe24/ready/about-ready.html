@@ -1,0 +1,86 @@
+<!-- ===========================================================================
+  NECTAR · ABOUT 페이지 리스킨 (About 페이지 교체용)
+  적용: 해당 About 페이지 열기 → 전체선택(Ctrl+A) 삭제 → 붙여넣기 → 저장
+  원칙: 4개 섹션 모렌비 배너(area bc19) 연동 유지. 레이아웃/타이포만 NECTAR.
+============================================================================ -->
+<!--@layout(/layout/basic/layout.html)-->
+
+<div id="about" class="nx-about header_layout_padding">
+
+    <!-- 1. 히어로 (이미지 + 타이틀/설명) -->
+    <div class="section1 nx-hero morenvy-banner-area" area_id="bc19">
+        <div class="app-box morenvy-banner">
+            <div class="image-Area">{#imgTag_1}</div>
+            <div class="text-Area">
+                <div class="title">{#title}</div>
+                <div class="desc">{#html}</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. 스토리 (이미지 + 텍스트) -->
+    <div class="section2 nx-split morenvy-banner-area" area_id="bc19">
+        <div class="app-box morenvy-banner">
+            <div class="image-Area">{#imgTag_1}</div>
+            <div class="text-Area">
+                <div class="title">{#title}</div>
+                <div class="desc">{#html}</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. 스토리 (이미지 + 설명) -->
+    <div class="section3 nx-split reverse morenvy-banner-area" area_id="bc19">
+        <div class="app-box morenvy-banner">
+            <div class="image-Area">{#imgTag_1}</div>
+            <div class="text-Area">
+                <div class="desc">{#html}</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 4. 풀 미디어 -->
+    <div class="section4 nx-media morenvy-banner-area" area_id="bc19">
+        <div class="app-box morenvy-banner">
+            <div class="image-Area">{#imgTag_1_or_video_1}</div>
+        </div>
+    </div>
+
+</div>
+
+<style id="nx-about-style">
+/* ===== NECTAR ABOUT (scoped: #about.nx-about) ===== */
+#about.nx-about{ --red:#c7172a; --ink:#1d1d1d; --gray:#8a857e; --line:#e6e2db; --cream:#f4f2ee; --serif:'Spectral',serif; --sans:'Pretendard',-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;
+  font-family:var(--sans); color:var(--ink); }
+#about.nx-about *{ box-sizing:border-box; }
+#about.nx-about .app-box{ position:relative; }
+#about.nx-about .image-Area img,
+#about.nx-about .image-Area video{ display:block; width:100%; height:auto; }
+
+/* 1. 히어로: 이미지 위 텍스트 오버레이 */
+#about.nx-about .nx-hero{ position:relative; }
+#about.nx-about .nx-hero .image-Area{ position:relative; }
+#about.nx-about .nx-hero .image-Area img{ width:100%; height:62vh; object-fit:cover; }
+#about.nx-about .nx-hero .text-Area{ position:absolute; left:0; right:0; bottom:0; top:0; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; color:#fff; background:rgba(20,20,20,.28); padding:0 24px; }
+#about.nx-about .nx-hero .title{ font-family:var(--serif); font-weight:500; font-size:clamp(32px,5vw,64px); line-height:1.1; }
+#about.nx-about .nx-hero .desc{ margin-top:16px; font-size:16px; color:rgba(255,255,255,.9); max-width:620px; line-height:1.7; }
+
+/* 2·3. 분할 섹션 (이미지 + 텍스트 좌우) */
+#about.nx-about .nx-split{ display:grid; grid-template-columns:1fr 1fr; align-items:center; max-width:1320px; margin:0 auto; padding:90px 48px; gap:56px; }
+#about.nx-about .nx-split .app-box{ display:contents; }
+#about.nx-about .nx-split .image-Area img{ width:100%; height:auto; }
+#about.nx-about .nx-split.reverse .image-Area{ order:2; }
+#about.nx-about .nx-split .title{ font-family:var(--serif); font-weight:500; font-size:clamp(26px,3vw,40px); line-height:1.25; color:var(--ink); margin-bottom:18px; }
+#about.nx-about .nx-split .desc{ font-size:15px; line-height:1.9; color:var(--gray); }
+
+/* 4. 풀 미디어 */
+#about.nx-about .nx-media{ margin-top:0; }
+#about.nx-about .nx-media .image-Area img,
+#about.nx-about .nx-media .image-Area video{ width:100%; height:auto; display:block; }
+
+@media (max-width:860px){
+  #about.nx-about .nx-hero .image-Area img{ height:46vh; }
+  #about.nx-about .nx-split{ grid-template-columns:1fr; gap:24px; padding:52px 18px; }
+  #about.nx-about .nx-split.reverse .image-Area{ order:0; }
+}
+</style>
