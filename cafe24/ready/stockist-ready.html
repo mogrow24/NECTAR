@@ -69,11 +69,14 @@
 #stockist.nx-stockist h2{ font-family:var(--serif); font-weight:400; font-size:30px; letter-spacing:.06em; text-align:center; color:var(--ink); margin:0 0 28px; }
 
 /* OFFLINE / ONLINE 탭 */
-#stockist.nx-stockist .stockist-head{ display:flex; justify-content:center; gap:36px; margin-bottom:44px; }
-#stockist.nx-stockist .stockist-head button{ background:none; border:0; cursor:pointer; font-size:14px; letter-spacing:.16em; text-transform:uppercase; color:var(--gray); padding:8px 2px; position:relative; transition:.2s; }
-#stockist.nx-stockist .stockist-head button:hover{ color:var(--ink); }
-#stockist.nx-stockist .stockist-head button.is-active{ color:var(--red); }
-#stockist.nx-stockist .stockist-head button.is-active::after{ content:""; position:absolute; left:0; right:0; bottom:0; height:1px; background:var(--red); }
+/* 세그먼트 토글 (목업 동일) */
+#stockist.nx-stockist .stockist-head{ display:flex !important; justify-content:center; align-items:center; gap:0; margin:8px auto 40px; padding:0; border:0; }
+#stockist.nx-stockist .stockist-head button{ -webkit-appearance:none; appearance:none; min-width:150px; height:48px; padding:0 30px; margin:0;
+  font-family:var(--serif); font-size:13px; font-weight:500; letter-spacing:.2em; text-transform:uppercase;
+  color:#1a1a3c; background:#fff; border:1px solid #1a1a3c; cursor:pointer; transition:color .2s, background .2s, border-color .2s; }
+#stockist.nx-stockist .stockist-head button + button{ border-left:0; }
+#stockist.nx-stockist .stockist-head button:hover{ color:var(--red); }
+#stockist.nx-stockist .stockist-head button.is-active{ background:var(--red); border-color:var(--red); color:#fff; }
 
 /* 매장 카드 */
 #stockist.nx-stockist .stockist-store{ }
@@ -89,6 +92,6 @@
 @media (max-width:860px){
   #stockist.nx-stockist{ padding:40px 18px 64px; }
   #stockist.nx-stockist .cover .app-box{ grid-template-columns:1fr; gap:20px; }
-  #stockist.nx-stockist .stockist-head{ gap:24px; }
+  #stockist.nx-stockist .stockist-head button{ min-width:0; flex:1 1 50%; max-width:200px; padding:0 12px; letter-spacing:.14em; }
 }
 </style>
