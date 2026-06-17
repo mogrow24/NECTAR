@@ -1,0 +1,94 @@
+<!-- ===========================================================================
+  NECTAR · STOCKIST 페이지 리스킨
+  적용: STOCKIST 페이지 Ctrl+A 삭제 → 붙여넣기 → 저장
+  원칙: OFFLINE/ONLINE 토글(stockist.js)·모렌비 연동 유지. 탭·카드만 NECTAR.
+============================================================================ -->
+<!--@layout(/layout/basic/layout.html)-->
+<!--@js(/mundane/js/stockist.js)-->
+
+<div id="stockist" class="nx-stockist header_layout_padding">
+
+    <h2>STOCKIST</h2>
+
+    <div class="stockist-head">
+        <button type="button" class="is-active" data-stockist-target="offline">OFFLINE</button>
+        <button type="button" data-stockist-target="online">ONLINE</button>
+    </div>
+
+    <div class="stockist-content">
+
+        <div class="stockist-store offline">
+            <div class="cover morenvy-banner-area" area_id="0643">
+                <div class="app-box morenvy-banner">
+                    <div class="image-Area">{#imgTag_1}</div>
+                    <div class="text-Area">
+                        <div class="sectionT">
+                            <div class="title">{#title}</div>
+                            <a href="{#link_1}" target="_blank">VIEW MAP</a>
+                        </div>
+                        <div class="sectionB">
+                            <span>{#text_1}</span>
+                            <span>{#text_2}</span>
+                            <span>{#text_3}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="stockist-store online">
+            <div class="cover morenvy-banner-area" area_id="6f89">
+                <div class="app-box morenvy-banner">
+                    <div class="image-Area">{#imgTag_1}</div>
+                    <div class="text-Area">
+                        <div class="sectionT">
+                            <div class="title">{#title}</div>
+                            <a href="{#link_1}" target="_blank">LINK</a>
+                        </div>
+                        <div class="sectionB">
+                            <span>{#text_1}</span>
+                            <span>{#text_2}</span>
+                            <span>{#text_3}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<style id="nx-stockist-style">
+/* ===== NECTAR STOCKIST (scoped: #stockist.nx-stockist) ===== */
+#stockist.nx-stockist{ --red:#c7172a; --ink:#1d1d1d; --gray:#8a857e; --line:#e6e2db; --serif:'Spectral',serif; --sans:'Pretendard',-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;
+  font-family:var(--sans); color:var(--ink); max-width:1320px; margin:0 auto; padding:56px 48px 90px; }
+#stockist.nx-stockist *{ box-sizing:border-box; }
+
+/* 타이틀 */
+#stockist.nx-stockist h2{ font-family:var(--serif); font-weight:400; font-size:30px; letter-spacing:.06em; text-align:center; color:var(--ink); margin:0 0 28px; }
+
+/* OFFLINE / ONLINE 탭 */
+#stockist.nx-stockist .stockist-head{ display:flex; justify-content:center; gap:36px; margin-bottom:44px; }
+#stockist.nx-stockist .stockist-head button{ background:none; border:0; cursor:pointer; font-size:14px; letter-spacing:.16em; text-transform:uppercase; color:var(--gray); padding:8px 2px; position:relative; transition:.2s; }
+#stockist.nx-stockist .stockist-head button:hover{ color:var(--ink); }
+#stockist.nx-stockist .stockist-head button.is-active{ color:var(--red); }
+#stockist.nx-stockist .stockist-head button.is-active::after{ content:""; position:absolute; left:0; right:0; bottom:0; height:1px; background:var(--red); }
+
+/* 매장 카드 */
+#stockist.nx-stockist .stockist-store{ }
+#stockist.nx-stockist .cover .app-box{ display:grid; grid-template-columns:1fr 1fr; align-items:center; gap:48px; }
+#stockist.nx-stockist .image-Area img{ display:block; width:100%; height:auto; }
+#stockist.nx-stockist .text-Area{ }
+#stockist.nx-stockist .sectionT{ display:flex; align-items:baseline; justify-content:space-between; gap:16px; border-bottom:1px solid var(--line); padding-bottom:16px; margin-bottom:16px; }
+#stockist.nx-stockist .sectionT .title{ font-family:var(--serif); font-size:24px; color:var(--ink); }
+#stockist.nx-stockist .sectionT a{ font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--red); text-decoration:none; white-space:nowrap; border-bottom:1px solid var(--red); padding-bottom:2px; }
+#stockist.nx-stockist .sectionB{ display:flex; flex-direction:column; gap:6px; }
+#stockist.nx-stockist .sectionB span{ font-size:14px; color:var(--gray); line-height:1.7; }
+
+@media (max-width:860px){
+  #stockist.nx-stockist{ padding:40px 18px 64px; }
+  #stockist.nx-stockist .cover .app-box{ grid-template-columns:1fr; gap:20px; }
+  #stockist.nx-stockist .stockist-head{ gap:24px; }
+}
+</style>
