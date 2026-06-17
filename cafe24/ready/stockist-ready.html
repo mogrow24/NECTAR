@@ -1,12 +1,13 @@
 <!-- ===========================================================================
-  NECTAR · STOCKIST 페이지 리스킨
+  NECTAR · STOCKIST — 기존 코드 그대로 + OFFLINE/ONLINE 토글 버튼만 목업 스타일
   적용: STOCKIST 페이지 Ctrl+A 삭제 → 붙여넣기 → 저장
-  원칙: OFFLINE/ONLINE 토글(stockist.js)·모렌비 연동 유지. 탭·카드만 NECTAR.
+  (stockist.css/js·모렌비·매장카드 전부 원본 유지. 맨 아래 토글 style만 추가)
 ============================================================================ -->
 <!--@layout(/layout/basic/layout.html)-->
+<!--@css(/mundane/css/sub_page/stockist.css)-->
 <!--@js(/mundane/js/stockist.js)-->
 
-<div id="stockist" class="nx-stockist header_layout_padding">
+<div id="stockist" class="header_layout_padding">
 
     <h2>STOCKIST</h2>
 
@@ -59,39 +60,16 @@
 
 </div>
 
-<style id="nx-stockist-style">
-/* ===== NECTAR STOCKIST (scoped: #stockist.nx-stockist) ===== */
-#stockist.nx-stockist{ --red:#c7172a; --ink:#1d1d1d; --gray:#8a857e; --line:#e6e2db; --serif:'Spectral',serif; --sans:'Pretendard',-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;
-  font-family:var(--sans); color:var(--ink); max-width:1320px; margin:0 auto; padding:56px 48px 90px; }
-#stockist.nx-stockist *{ box-sizing:border-box; }
-
-/* 타이틀 */
-#stockist.nx-stockist h2{ font-family:var(--serif); font-weight:400; font-size:30px; letter-spacing:.06em; text-align:center; color:var(--ink); margin:0 0 28px; }
-
-/* OFFLINE / ONLINE 탭 */
-/* 세그먼트 토글 (목업 동일) */
-#stockist.nx-stockist .stockist-head{ display:flex !important; justify-content:center; align-items:center; gap:0; margin:8px auto 40px; padding:0; border:0; }
-#stockist.nx-stockist .stockist-head button{ -webkit-appearance:none; appearance:none; min-width:150px; height:48px; padding:0 30px; margin:0;
-  font-family:var(--serif); font-size:13px; font-weight:500; letter-spacing:.2em; text-transform:uppercase;
+<!-- OFFLINE/ONLINE 토글 버튼만 목업 스타일 (세그먼트형) -->
+<style>
+#stockist .stockist-head{ display:flex !important; justify-content:center; align-items:center; gap:0; margin:8px auto 40px; padding:0; border:0; }
+#stockist .stockist-head button{ -webkit-appearance:none; appearance:none; min-width:150px; height:48px; padding:0 30px; margin:0;
+  font-family:'Spectral',serif; font-size:13px; font-weight:500; letter-spacing:.2em; text-transform:uppercase;
   color:#1a1a3c; background:#fff; border:1px solid #1a1a3c; cursor:pointer; transition:color .2s, background .2s, border-color .2s; }
-#stockist.nx-stockist .stockist-head button + button{ border-left:0; }
-#stockist.nx-stockist .stockist-head button:hover{ color:var(--red); }
-#stockist.nx-stockist .stockist-head button.is-active{ background:var(--red); border-color:var(--red); color:#fff; }
-
-/* 매장 카드 */
-#stockist.nx-stockist .stockist-store{ }
-#stockist.nx-stockist .cover .app-box{ display:grid; grid-template-columns:1fr 1fr; align-items:center; gap:48px; }
-#stockist.nx-stockist .image-Area img{ display:block; width:100%; height:auto; }
-#stockist.nx-stockist .text-Area{ }
-#stockist.nx-stockist .sectionT{ display:flex; align-items:baseline; justify-content:space-between; gap:16px; border-bottom:1px solid var(--line); padding-bottom:16px; margin-bottom:16px; }
-#stockist.nx-stockist .sectionT .title{ font-family:var(--serif); font-size:24px; color:var(--ink); }
-#stockist.nx-stockist .sectionT a{ font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--red); text-decoration:none; white-space:nowrap; border-bottom:1px solid var(--red); padding-bottom:2px; }
-#stockist.nx-stockist .sectionB{ display:flex; flex-direction:column; gap:6px; }
-#stockist.nx-stockist .sectionB span{ font-size:14px; color:var(--gray); line-height:1.7; }
-
-@media (max-width:860px){
-  #stockist.nx-stockist{ padding:40px 18px 64px; }
-  #stockist.nx-stockist .cover .app-box{ grid-template-columns:1fr; gap:20px; }
-  #stockist.nx-stockist .stockist-head button{ min-width:0; flex:1 1 50%; max-width:200px; padding:0 12px; letter-spacing:.14em; }
+#stockist .stockist-head button + button{ border-left:0; }
+#stockist .stockist-head button:hover{ color:#c7172a; }
+#stockist .stockist-head button.is-active{ background:#c7172a; border-color:#c7172a; color:#fff; }
+@media (max-width:980px){
+  #stockist .stockist-head button{ min-width:0; flex:1 1 50%; max-width:200px; padding:0 12px; letter-spacing:.14em; }
 }
 </style>
