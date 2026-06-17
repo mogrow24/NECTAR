@@ -259,6 +259,11 @@
   #Mpage_main.nx-home{ --pad:18px; }
   #Mpage_main.nx-home .nx-section{ padding:52px 0; }
 }
+/* 홈: 헤더가 히어로와 겹치지 않게 (흰배경 + 정상 위치) */
+#Mpage_header{ position:relative !important; background:#fff !important; z-index:9000; }
+#Mpage_header #header{ position:sticky !important; top:0 !important; background:#fff !important; z-index:9000 !important; }
+#Mpage_header #header_notice{ position:relative !important; }
+#main_contents.header_notice_margin, #main_contents{ margin-top:0 !important; }
 </style>
 
 <script>
