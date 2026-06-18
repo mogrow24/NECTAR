@@ -35,7 +35,8 @@
     <!--@css(/layout/basic/css/ec-base-box.css)-->
     <!--@css(/layout/basic/css/ec-base-table.css)-->
 
-    <!-- ※ mundane/css/base.css 는 회원가입·장바구니 등 폼을 깨뜨려서 로드하지 않음 -->
+    <!-- mundane(홈 테마) 공통 CSS — 헤더/푸터/상품 진열용 (GNB 숨김 포함) -->
+    <!--@css(/mundane/css/base.css)-->
 
     <!-- 폰트 / Swiper (홈과 동일) -->
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
@@ -58,8 +59,39 @@
       #Mpage_header{ position:relative !important; background:#fff !important; z-index:9000; }
       #Mpage_header #header{ position:sticky !important; top:0 !important; background:#fff !important; z-index:9000 !important; }
       #Mpage_header #header_notice{ position:relative !important; }
-      /* 회원가입 등 cafe24 "필수표시" 아이콘이 64x64 원으로 깨지는 것 방지 */
-      #contents img[alt="필수"], #contents img[alt="필수항목"]{ width:auto !important; height:auto !important; max-width:none !important; border-radius:0 !important; background:none !important; vertical-align:middle; }
+
+      /* ── mundane/css/base.css 가 폼 페이지(회원가입·장바구니 등)에서 깨뜨리는 것 복구 ── */
+      /* 입력 필드: base.css 의 reset 이 width:100%·box-sizing 등을 덮어쓰는 것 방지 */
+      #contents input[type="text"],
+      #contents input[type="password"],
+      #contents input[type="email"],
+      #contents input[type="tel"],
+      #contents input[type="number"],
+      #contents textarea,
+      #contents select {
+        border-radius: 0 !important;
+        background: #fff !important;
+      }
+      /* 버튼: border-radius / font / color 리셋 방지 */
+      #contents input[type="submit"],
+      #contents input[type="button"],
+      #contents button {
+        border-radius: 0 !important;
+      }
+      /* 필수표시 아이콘(64x64 원으로 깨지는 것 방지) */
+      #contents img[alt="필수"],
+      #contents img[alt="필수항목"] {
+        width: auto !important; height: auto !important;
+        max-width: none !important; border-radius: 0 !important;
+        background: none !important; vertical-align: middle;
+      }
+      /* 폼 내 일반 이미지(아이콘·버튼 이미지)가 원형·풀폭으로 깨지는 것 방지 */
+      #contents .ec-base-button img,
+      #contents .ec-base-table img,
+      #contents form img {
+        width: auto !important; height: auto !important;
+        border-radius: 0 !important; max-width: none !important;
+      }
     </style>
 </head>
 <body id="contents-page" class="nx-unified">
