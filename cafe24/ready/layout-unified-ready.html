@@ -53,12 +53,8 @@
     <!--@js(/js/module/layout/quick_view.js)-->
 
     <style>
-      /* 본문 영역: 사이드바 없이 풀폭 */
-      #contents{ max-width:none; margin:0 !important; padding:0; min-height:40vh; }
-      /* 헤더가 본문을 덮지 않게 (흰배경 + 정상 위치) */
-      #Mpage_header{ position:relative !important; background:#fff !important; z-index:9000; }
-      #Mpage_header #header{ position:sticky !important; top:0 !important; background:#fff !important; z-index:9000 !important; }
-      #Mpage_header #header_notice{ position:relative !important; }
+      /* 본문 영역: 사이드바 없이 풀폭 (margin-top은 header_notice_margin 클래스에 맡김) */
+      #contents{ max-width:none !important; margin-left:0 !important; margin-right:0 !important; padding:0; min-height:40vh; }
 
       /* ── mundane/css/base.css 가 폼 페이지(회원가입·장바구니 등)에서 깨뜨리는 것 복구 ── */
       /* 입력 필드: base.css 의 reset 이 width:100%·box-sizing 등을 덮어쓰는 것 방지 */
