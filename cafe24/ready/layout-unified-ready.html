@@ -7,7 +7,7 @@
         ① layout.html, ② detail_layout.html 둘 다 열어서
         전체선택(Ctrl+A) 삭제 → 이 파일 전체 붙여넣기 → 저장
   원칙: 헤더/푸터는 mundane(홈) 것을 @import → 홈에서 만든 NECTAR 디자인 그대로.
-        결제/다국어배송/PC전환 등 필수 모듈은 유지. <!--@contents--> 에 각 페이지 본문 출력.
+        결제/다국어배송/PC전환 등 필수 모듈은 유지. @contents 에 각 페이지 본문 출력.
   복구: skin-source/layout-common.html / detail-layout.html 로 되돌리면 원상복구.
 ============================================================================ -->
 <!DOCTYPE html>
@@ -97,6 +97,33 @@
 <body id="contents-page" class="nx-unified">
     <div id="loading"></div>
     <div id="background-opacity"></div>
+
+    <!-- 카페24 회원/쇼핑 필수 모듈 — 숨김 처리, CSS 로드만 목적 -->
+    <div style="display:none !important;position:absolute;left:-9999px;">
+        <div module="Layout_statelogoff">
+            <!--@css(/css/module/layout/statelogoff.css)-->
+            <a href="/member/login.html">로그인</a>
+            <a href="/member/join.html">회원가입</a>
+            <a href="/order/basket.html">장바구니 <span class="count {$basket_count_display|display} {$basket_count_display_class}"><span class="{$basket_count_class}">{$basket_count}</span></span></a>
+            <a href="/myshop/order/list.html">주문조회</a>
+            <a href="/myshop/index.html">마이쇼핑</a>
+        </div>
+        <div module="Layout_stateLogon">
+            <!--@css(/css/module/layout/statelogon.css)-->
+            <span><strong>{$name}</strong>님 환영합니다.</span>
+            <a href="{$action_logout}">로그아웃</a>
+            <a href="/order/basket.html">장바구니 <span class="count {$basket_count_display|display} {$basket_count_display_class}"><span class="{$basket_count_class}">{$basket_count}</span></span></a>
+            <a href="/myshop/order/list.html">주문조회</a>
+            <a href="/myshop/index.html">마이쇼핑</a>
+        </div>
+        <ul module="Layout_shoppingInfo">
+            <!--@css(/css/module/layout/shoppingInfo.css)-->
+            <li class="{$use_mileage|display}"><a href="/myshop/mileage/historyList.html">{$mileage_name} <strong>{$mileage}</strong></a></li>
+            <li class="{$use_basket_cnt|display}"><a href="/order/basket.html">장바구니 <strong>{$basket_cnt}<span class="{$use_basket_price|display}">({$basket_price})</span></strong></a></li>
+            <li class="{$use_interest_prd|display}"><a href="/myshop/wish_list.html">관심상품 <strong>{$interest_prd_cnt}</strong></a></li>
+            <li class="{$use_coupon_cnt|display}"><a href="/myshop/coupon/coupon.html">쿠폰 <strong>{$coupon_cnt}</strong></a></li>
+        </ul>
+    </div>
 
     <!-- 홈과 동일한 NECTAR 헤더 -->
     <!--@import(/mundane/html/layout/header.html)-->
